@@ -67,11 +67,6 @@ public class Main extends JFrame {
 		this.setVisible(true);
 		panel.addMouseListener(new MouseAdapter() {
 
-            /*@Override
-            public void mousePressed(MouseEvent e) {
-            	
-            }*/
-
             @Override
             public void mouseReleased(MouseEvent e) {
             	if(Case.buttonSelected!=null && !(e.getSource() instanceof JLabel)) {
