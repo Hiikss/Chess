@@ -28,7 +28,7 @@ public class Main extends JFrame {
 	
 	public static Image boardImage = Toolkit.getDefaultToolkit().getImage(Main.class.getResource(RES_PATH+"chessboardblue.png"));
 	
-	public static String team = "white";
+	public static String team = "white";	//Définition de l'équipe qui commence
 	
 	public static JDialog fin = new JDialog(instance, "Fin de la partie", true);
 	
@@ -53,8 +53,7 @@ public class Main extends JFrame {
     { 5, 2, 3, 9, 500, 3, 2, 5 }
 };
 
-	public Main()
-	{
+	public Main() {
 		
 		panel.setLayout(null);
 		Case.initBoard();
