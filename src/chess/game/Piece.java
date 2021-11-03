@@ -261,8 +261,7 @@ public class Piece {
 		
 	}
 	
-	public static JButton valueToPieceButton()
-	{
+	public static JButton createPieceButton(){
 		JButton piece = new JButton();
 		
 		piece.setName("b"+btn);
@@ -304,8 +303,7 @@ public class Piece {
 		possibility.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		possibility.addMouseListener(new MouseAdapter()  
 		{  
-		    public void mouseReleased(MouseEvent e)  
-		    {  
+		    public void mouseReleased(MouseEvent e) {  
 		    	JLabel label = (JLabel)e.getSource();
 		    	JButton btn = Case.buttonSelected;
 		    	int x = btn.getX();
@@ -458,13 +456,10 @@ public class Piece {
 		    	Main.board[(btn.getY()-25)/75][(btn.getX()-200)/75]=Main.board[(nbtn.getY()-25)/75][(nbtn.getX()-200)/75];
 				Main.board[(nbtn.getY()-25)/75][(nbtn.getX()-200)/75]=0;
 				nbtn.setLocation(btn.getLocation());
-			
-	 			
-	 			
 
 	 				if(Main.team.equals("white") && Checked.isBlackKingAttacked(0,0)==true) {
-		    			System.out.println("Roi Noir attaqué");
-		    			piecesAttaquantRoiNoir.add(btn);	
+	 					System.out.println("Roi Noir attaqué");
+		    			piecesAttaquantRoiNoir.add(btn);
 		    			if(Checkmate.isBlackKingCheckmate(piecesAttaquantRoiNoir)==true) {
 		 					Case.gameEnd("Victoire des Blancs par Mat");
 		 				}
