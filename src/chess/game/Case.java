@@ -26,7 +26,7 @@ public class Case
 	
 	public static Timer timerBlanc;	
 	public static Timer timerNoir;	
-	public static int secondBlanc, minuteBlanc, secondNoir, minuteNoir;
+	public static int secondBlanc, minuteBlanc, secondNoir, minuteNoir, msBlanc, msNoir;
 	public static String ddSecondBlanc, ddMinuteBlanc, ddSecondNoir, ddMinuteNoir;	
 	public static DecimalFormat dFormat = new DecimalFormat("00");
 	
@@ -37,7 +37,7 @@ public class Case
 				int value = board[l][c];
 				
 				if(value!=0) {
-					piece = Piece.valueToPieceButton();
+					piece = Piece.createPieceButton();
 					piece.setBounds(200+75*c, 25+75*l, 75, 75);
 					piece.setLayout(null);
 					piece.setIcon(Piece.valueToPieceIcon(value));
@@ -57,6 +57,7 @@ public class Case
 		timerBlancLabel.setText("10:00");
 		timerBlancLabel.setBounds(75, 575, 100, 30);
 		timerBlancLabel.setFont(new Font("Arial",Font.PLAIN,29));
+		msBlanc = 0;
 		secondBlanc = 0;
 		minuteBlanc = 10;
 		Main.panel.add(timerBlancLabel);
@@ -64,6 +65,7 @@ public class Case
 		timerNoirLabel.setText("10:00");
 		timerNoirLabel.setBounds(75, 50, 100, 30);
 		timerNoirLabel.setFont(new Font("Arial",Font.PLAIN,29));
+		msNoir = 0;
 		secondNoir = 0;
 		minuteNoir = 10;
 		countdownTimer();
@@ -71,7 +73,7 @@ public class Case
 
 	}
 	
-	public static void diplayPossibilty(JButton piece) {
+	public static void displayPossibilty(JButton piece) {
 		int pieceValue = Main.board[(piece.getY()-25)/75][(piece.getX()-200)/75];
 		Piece.clearPossibility();
 		if((Main.team.equals("white")&& pieceValue>0) || (Main.team.equals("black")&& pieceValue<0)) {
@@ -103,16 +105,20 @@ public class Case
 	
 public static void countdownTimer() {
 		
-	timerBlanc = new Timer(1000, new ActionListener() {
+	timerBlanc = new Timer(10, new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				secondBlanc--;
-				ddSecondBlanc = dFormat.format(secondBlanc);
-				ddMinuteBlanc = dFormat.format(minuteBlanc);	
-				timerBlancLabel.setText(ddMinuteBlanc + ":" + ddSecondBlanc);
+				msBlanc--;
 				
+				if(msBlanc==-1) {
+					msBlanc = 59;
+					secondBlanc--;
+					ddSecondBlanc = dFormat.format(secondBlanc);
+					ddMinuteBlanc = dFormat.format(minuteBlanc);	
+					timerBlancLabel.setText(ddMinuteBlanc + ":" + ddSecondBlanc);
+				}
 				if(secondBlanc==-1) {
 					secondBlanc = 59;
 					minuteBlanc--;
@@ -120,22 +126,26 @@ public static void countdownTimer() {
 					ddMinuteBlanc = dFormat.format(minuteBlanc);	
 					timerBlancLabel.setText(ddMinuteBlanc + ":" + ddSecondBlanc);
 				}
-				if(minuteBlanc==0 && secondBlanc==0) {
-					timerBlanc.stop();
+				if(minuteBlanc==0 && secondBlanc==0 && msBlanc==0) {
 					gameEnd("Victoire des Noirs au temps");
 				}
 			}
 		});	
 	
-	timerNoir = new Timer(1000, new ActionListener() {
+	timerNoir = new Timer(10, new ActionListener() {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			secondNoir--;
-			ddSecondNoir = dFormat.format(secondNoir);
-			ddMinuteNoir = dFormat.format(minuteNoir);	
-			timerNoirLabel.setText(ddMinuteNoir + ":" + ddSecondNoir);
+			msNoir--;
+			
+			if(msNoir==-1) {
+				msNoir = 59;
+				secondNoir--;
+				ddSecondNoir = dFormat.format(secondNoir);
+				ddMinuteNoir = dFormat.format(minuteNoir);	
+				timerNoirLabel.setText(ddMinuteNoir + ":" + ddSecondNoir);
+			}
 			
 			if(secondNoir==-1) {
 				secondNoir = 59;
@@ -144,8 +154,7 @@ public static void countdownTimer() {
 				ddMinuteNoir = dFormat.format(minuteNoir);	
 				timerNoirLabel.setText(ddMinuteNoir + ":" + ddSecondNoir);
 			}
-			if(minuteNoir==0 && secondNoir==0) {
-				timerNoir.stop();
+			if(minuteNoir==0 && secondNoir==0 && msNoir==0) {
 				gameEnd("Victoire des Blancs au temps");
 			}
 		}
@@ -153,6 +162,8 @@ public static void countdownTimer() {
 	}
 
 	public static void gameEnd(String reason) {
+		timerNoir.stop();
+		timerBlanc.stop();
 		JLabel label = new JLabel();
 		label.setText(reason);
 		label.setFont(new Font("Arial",Font.PLAIN,20));
