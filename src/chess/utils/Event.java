@@ -22,7 +22,7 @@ public class Event {
 		 						Case.buttonSelected = null;
 		 				  }
 		 			   }
-	 				Case.diplayPossibilty(btn);
+	 				Case.displayPossibilty(btn);
 	 			  
 	 		   }
 		};
