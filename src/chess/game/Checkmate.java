@@ -24,7 +24,7 @@ public class Checkmate {
 					if(Main.board[l-i][c]==9 || Main.board[l-i][c]==5) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l-i][c]<0) {
+					else if(Main.board[l-i][c]<0 || (Main.board[l-i][c]>0 && Main.board[l-i][c]!=9 && Main.board[l-i][c]!=5)) {
 						i=8;
 					}
 				}
@@ -37,7 +37,7 @@ public class Checkmate {
 					else if(Main.board[l+i][c]==9 || Main.board[l+i][c]==5) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l+i][c]<0) {
+					else if(Main.board[l+i][c]<0 || (Main.board[l+i][c]>0 && Main.board[l+i][c]!=9 && Main.board[l+i][c]!=5)) {
 						i=8;
 					}
 				}
@@ -50,7 +50,7 @@ public class Checkmate {
 					if(Main.board[l][c-i]==9 || Main.board[l][c-i]==5) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l][c-i]<0) {
+					else if(Main.board[l][c-i]<0 || (Main.board[l][c-i]>0 && Main.board[l][c-i]!=9 && Main.board[l][c-i]!=5)) {
 						i=8;
 					}
 				}
@@ -63,7 +63,7 @@ public class Checkmate {
 					if(Main.board[l][c+i]==9 || Main.board[l][c+i]==5) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l][c+i]<0) {
+					else if(Main.board[l][c+i]<0 || (Main.board[l][c+i]>0 && Main.board[l][c+i]!=9 && Main.board[l][c+i]!=5)) {
 						i=8;
 					}
 				}	
@@ -76,7 +76,7 @@ public class Checkmate {
 					if(Main.board[l-i][c-i]==9 || Main.board[l-i][c-i]==3) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l-i][c-i]<0) {
+					else if(Main.board[l-i][c-i]<0 || (Main.board[l-i][c-i]>0 && Main.board[l-i][c-i]!=9 && Main.board[l-i][c-i]!=3)) {
 						i=8;
 					}
 				}
@@ -89,7 +89,7 @@ public class Checkmate {
 					if(Main.board[l+i][c-i]==9 || Main.board[l+i][c-i]==3) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l+i][c-i]<0) {
+					else if(Main.board[l+i][c-i]<0 || (Main.board[l+i][c-i]>0 && Main.board[l+i][c-i]!=9 && Main.board[l+i][c-i]!=3)) {
 						i=8;
 					}
 				}
@@ -102,7 +102,7 @@ public class Checkmate {
 					if(Main.board[l-i][c+i]==9 || Main.board[l-i][c+i]==3) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l-i][c+i]<0) {
+					else if(Main.board[l-i][c+i]<0 || (Main.board[l-i][c+i]>0 && Main.board[l-i][c+i]!=9 && Main.board[l-i][c+i]!=3)) {
 						i=8;
 					}
 				}
@@ -115,7 +115,7 @@ public class Checkmate {
 					if(Main.board[l+i][c+i]==9 || Main.board[l+i][c+i]==3) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l+i][c+i]<0) {
+					else if(Main.board[l+i][c+i]<0 || (Main.board[l+i][c+i]>0 && Main.board[l+i][c+i]!=9 && Main.board[l+i][c+i]!=3)) {
 						i=8;
 					}
 				}
@@ -216,84 +216,43 @@ public class Checkmate {
 		int c = (Piece.b28.getX()-200)/75;
 		if(l>0) {
 			if(c>0) {
-				if(Main.board[l-1][c-1]<0 && Checked.isWhiteKingAttacked(-1, -1)==false) {	
+				if(Main.board[l-1][c-1]<=0 && Checked.isWhiteKingAttacked(-1, -1)==false) {	
 					canWhiteKingMove = true;
 				}
-				else if(Main.board[l-1][c-1]==0 && Checked.isWhiteKingAttacked(-1, -1)==false){
-					canWhiteKingMove = true;
-				}
-				
 			}
 			if(c<7) {
-				if(Main.board[l-1][c+1]<0 && Checked.isWhiteKingAttacked(-1, 1)==false) {		
+				if(Main.board[l-1][c+1]<=0 && Checked.isWhiteKingAttacked(-1, 1)==false) {		
 					canWhiteKingMove = true;
-					
 				}
-				else if(Main.board[l-1][c+1]==0 && Checked.isWhiteKingAttacked(-1, 1)==false){
-					canWhiteKingMove = true;
-
-				}
-				
 			}
-			if(Main.board[l-1][c]<0 && Checked.isWhiteKingAttacked(-1, 0)==false) {	
+			if(Main.board[l-1][c]<=0 && Checked.isWhiteKingAttacked(-1, 0)==false) {	
 				canWhiteKingMove = true;
-
 			}
-			else if(Main.board[l-1][c]==0 && Checked.isWhiteKingAttacked(-1, 0)==false){
-				canWhiteKingMove = true;
-
-			}
-			
 		}
 		if(l<7) {
 			
 			if(c>0) {
-				if(Main.board[l+1][c-1]<0 && Checked.isWhiteKingAttacked(1, -1)==false) {	
+				if(Main.board[l+1][c-1]<=0 && Checked.isWhiteKingAttacked(1, -1)==false) {	
 					canWhiteKingMove = true;
-
-				}
-				else if(Main.board[l+1][c-1]==0 && Checked.isWhiteKingAttacked(1, -1)==false){
-					canWhiteKingMove = true;
-
 				}
 			}
 			if(c<7) {
-				if(Main.board[l+1][c+1]<0 && Checked.isWhiteKingAttacked(1, 1)==false) {
+				if(Main.board[l+1][c+1]<=0 && Checked.isWhiteKingAttacked(1, 1)==false) {
 					canWhiteKingMove = true;
-
-				}
-				else if(Main.board[l+1][c+1]==0 && Checked.isWhiteKingAttacked(1, 1)==false){
-					canWhiteKingMove = true;
-
-				}		
+				}	
 			}
-			if(Main.board[l+1][c]<0 && Checked.isWhiteKingAttacked(1, 0)==false) {
+			if(Main.board[l+1][c]<=0 && Checked.isWhiteKingAttacked(1, 0)==false) {
 				canWhiteKingMove = true;
-	
-			}
-			else if(Main.board[l+1][c]==0 && Checked.isWhiteKingAttacked(1, 0)==false){
-				canWhiteKingMove = true;
-
 			}
 		}
 		if(c>0) {
-			if(Main.board[l][c-1]<0 && Checked.isWhiteKingAttacked(0, -1)==false) {
+			if(Main.board[l][c-1]<=0 && Checked.isWhiteKingAttacked(0, -1)==false) {
 				canWhiteKingMove = true;
-
-			}
-			else if(Main.board[l][c-1]==0 && Checked.isWhiteKingAttacked(0, -1)==false){
-				canWhiteKingMove = true;
-
 			}
 		}
 		if(c<7) {
-			if(Main.board[l][c+1]<0 && Checked.isWhiteKingAttacked(0, 1)==false) {	
+			if(Main.board[l][c+1]<=0 && Checked.isWhiteKingAttacked(0, 1)==false) {	
 				canWhiteKingMove = true;
-
-			}
-			else if(Main.board[l][c+1]==0 && Checked.isWhiteKingAttacked(0, 1)==false){
-				canWhiteKingMove = true;
-
 			}
 		}
 		
@@ -322,7 +281,7 @@ public static boolean isBlackKingCheckmate(ArrayList<JButton> pieces) {
 					if(Main.board[l-i][c]==-9 || Main.board[l-i][c]==-5) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l-i][c]>0) {
+					else if(Main.board[l-i][c]>0 || (Main.board[l-i][c]<0 && Main.board[l-i][c]!=-9 && Main.board[l-i][c]!=-5)) {
 						i=8;
 					}
 				}
@@ -335,7 +294,7 @@ public static boolean isBlackKingCheckmate(ArrayList<JButton> pieces) {
 					else if(Main.board[l+i][c]==-9 || Main.board[l+i][c]==-5) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l+i][c]>0) {
+					else if(Main.board[l+i][c]>0  || (Main.board[l+i][c]<0 && Main.board[l+i][c]!=-9 && Main.board[l+i][c]!=-5)) {
 						i=8;
 					}
 				}
@@ -347,8 +306,9 @@ public static boolean isBlackKingCheckmate(ArrayList<JButton> pieces) {
 					}
 					if(Main.board[l][c-i]==-9 || Main.board[l][c-i]==-5) {
 						piecesCanBeKilled.add(btn);
+						System.out.println("tour");
 					}
-					else if(Main.board[l][c-i]>0) {
+					else if(Main.board[l][c-i]>0 || (Main.board[l][c-i]<0 && Main.board[l][c-i]!=-9 && Main.board[l][c-i]!=-5)) {
 						i=8;
 					}
 				}
@@ -360,8 +320,9 @@ public static boolean isBlackKingCheckmate(ArrayList<JButton> pieces) {
 					}
 					if(Main.board[l][c+i]==-9 || Main.board[l][c+i]==-5) {
 						piecesCanBeKilled.add(btn);
+						System.out.println("tour");
 					}
-					else if(Main.board[l][c+i]>0) {
+					else if(Main.board[l][c+i]>0 || (Main.board[l][c+i]<0 && Main.board[l][c+i]!=-9 && Main.board[l][c+i]!=-5)) {
 						i=8;
 					}
 				}	
@@ -374,7 +335,7 @@ public static boolean isBlackKingCheckmate(ArrayList<JButton> pieces) {
 					if(Main.board[l-i][c-i]==-9 || Main.board[l-i][c-i]==-3) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l-i][c-i]>0) {
+					else if(Main.board[l-i][c-i]>0 || (Main.board[l-i][c-i]<0 && Main.board[l-i][c-i]!=-9 && Main.board[l-i][c-i]!=-3)) {
 						i=8;
 					}
 				}
@@ -387,7 +348,7 @@ public static boolean isBlackKingCheckmate(ArrayList<JButton> pieces) {
 					if(Main.board[l+i][c-i]==-9 || Main.board[l+i][c-i]==-3) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l+i][c-i]>0) {
+					else if(Main.board[l+i][c-i]>0 || (Main.board[l+i][c-i]<0 && Main.board[l+i][c-i]!=-9 && Main.board[l+i][c-i]!=-3)) {
 						i=8;
 					}
 				}
@@ -400,7 +361,7 @@ public static boolean isBlackKingCheckmate(ArrayList<JButton> pieces) {
 					if(Main.board[l-i][c+i]==-9 || Main.board[l-i][c+i]==-3) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l-i][c+i]>0) {
+					else if(Main.board[l-i][c+i]>0 || (Main.board[l-i][c+i]<0 && Main.board[l-i][c+i]!=-9 && Main.board[l-i][c+i]!=-3)) {
 						i=8;
 					}
 				}
@@ -413,7 +374,7 @@ public static boolean isBlackKingCheckmate(ArrayList<JButton> pieces) {
 					if(Main.board[l+i][c+i]==-9 || Main.board[l+i][c+i]==-3) {
 						piecesCanBeKilled.add(btn);
 					}
-					else if(Main.board[l+i][c+i]>0) {
+					else if(Main.board[l+i][c+i]>0 || (Main.board[l+i][c+i]<0 && Main.board[l+i][c+i]!=-9 && Main.board[l+i][c+i]!=-3)) {
 						i=8;
 					}
 				}
@@ -431,7 +392,7 @@ public static boolean isBlackKingCheckmate(ArrayList<JButton> pieces) {
 				}
 				if(c>0) {
 					if(Main.board[l-1][c-1]==-1 && !piecesCanBeKilled.contains(btn)) {		
-						piecesCanBeKilled.add(btn);			
+						piecesCanBeKilled.add(btn);
 					}
 					if(Main.board[l-1][c-1]==-500 && !piecesCanBeKilled.contains(btn) && Checked.isBlackKingAttacked(1, 1)==false) {				
 						piecesCanBeKilled.add(btn);
@@ -514,88 +475,48 @@ public static boolean isBlackKingCheckmate(ArrayList<JButton> pieces) {
 		int c = (Piece.b4.getX()-200)/75;
 		if(l>0) {
 			if(c>0) {
-				if(Main.board[l-1][c-1]>0 && Checked.isBlackKingAttacked(-1, -1)==false) {	
+				if(Main.board[l-1][c-1]>=0 && Checked.isBlackKingAttacked(-1, -1)==false) {	
 					canBlackKingMove = true;
 				}
-				else if(Main.board[l-1][c-1]==0 && Checked.isBlackKingAttacked(-1, -1)==false){
-					canBlackKingMove = true;
-				}
-				
 			}
 			if(c<7) {
-				if(Main.board[l-1][c+1]>0 && Checked.isBlackKingAttacked(-1, 1)==false) {		
+				if(Main.board[l-1][c+1]>=0 && Checked.isBlackKingAttacked(-1, 1)==false) {		
 					canBlackKingMove = true;
-					
 				}
-				else if(Main.board[l-1][c+1]==0 && Checked.isBlackKingAttacked(-1, 1)==false){
-					canBlackKingMove = true;
-
-				}
-				
 			}
-			if(Main.board[l-1][c]>0 && Checked.isBlackKingAttacked(-1, 0)==false) {	
+			if(Main.board[l-1][c]>=0 && Checked.isBlackKingAttacked(-1, 0)==false) {	
 				canBlackKingMove = true;
-
 			}
-			else if(Main.board[l-1][c]==0 && Checked.isBlackKingAttacked(-1, 0)==false){
-				canBlackKingMove = true;
-
-			}
-			
 		}
 		if(l<7) {
 			
 			if(c>0) {
-				if(Main.board[l+1][c-1]>0 && Checked.isBlackKingAttacked(1, -1)==false) {	
+				if(Main.board[l+1][c-1]>=0 && Checked.isBlackKingAttacked(1, -1)==false) {	
 					canBlackKingMove = true;
-
-				}
-				else if(Main.board[l+1][c-1]==0 && Checked.isBlackKingAttacked(1, -1)==false){
-					canBlackKingMove = true;
-
 				}
 			}
 			if(c<7) {
-				if(Main.board[l+1][c+1]>0 && Checked.isBlackKingAttacked(1, 1)==false) {
+				if(Main.board[l+1][c+1]>=0 && Checked.isBlackKingAttacked(1, 1)==false) {
 					canBlackKingMove = true;
-
-				}
-				else if(Main.board[l+1][c+1]==0 && Checked.isBlackKingAttacked(1, 1)==false){
-					canBlackKingMove = true;
-
-				}		
+				}	
 			}
-			if(Main.board[l+1][c]>0 && Checked.isBlackKingAttacked(1, 0)==false) {
+			if(Main.board[l+1][c]>=0 && Checked.isBlackKingAttacked(1, 0)==false) {
 				canBlackKingMove = true;
-	
-			}
-			else if(Main.board[l+1][c]==0 && Checked.isBlackKingAttacked(1, 0)==false){
-				canBlackKingMove = true;
-
 			}
 		}
 		if(c>0) {
-			if(Main.board[l][c-1]>0 && Checked.isBlackKingAttacked(0, -1)==false) {
+			if(Main.board[l][c-1]>=0 && Checked.isBlackKingAttacked(0, -1)==false) {
 				canBlackKingMove = true;
-
-			}
-			else if(Main.board[l][c-1]==0 && Checked.isBlackKingAttacked(0, -1)==false){
-				canBlackKingMove = true;
-
 			}
 		}
 		if(c<7) {
-			if(Main.board[l][c+1]>0 && Checked.isBlackKingAttacked(0, 1)==false) {	
-				canBlackKingMove = true;
-
-			}
-			else if(Main.board[l][c+1]==0 && Checked.isBlackKingAttacked(0, 1)==false){
+			if(Main.board[l][c+1]>=0 && Checked.isBlackKingAttacked(0, 1)==false) {	
 				canBlackKingMove = true;
 
 			}
 		}
 		System.out.println(canBlackKingMove);
-		System.out.println(piecesCanBeKilled.size());
+		System.out.println("size "+piecesCanBeKilled.size());
 		if(piecesCanBeKilled.size()==0 && canBlackKingMove==false) {
 			return true;
 		}
