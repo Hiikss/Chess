@@ -1,0 +1,69 @@
+Explications Log4J :
+https://www.jmdoudoux.fr/java/dej/chap-logging.htm#logging-2
+
+Exemple :
+package com.jmdoudoux.test.log4j;
+
+import org.apache.log4j.Logger;
+
+public class TestLog4j1 {
+
+  private static Logger logger = Logger.getLogger(TestLog4j1.class);
+  
+  public static void main(String[] args) {
+    logger.debug("msg de debogage");
+    logger.info("msg d'information");
+    logger.warn("msg d'avertissement");
+    logger.error("msg d'erreur");
+    logger.fatal("msg d'erreur fatale");   
+  }
+}
+
+Log à mettre : 					//MESSAGES A MODIFIER !!!
+Controller :
+AUCUN
+
+Main :
+    logger.debug("msg de debogage");  //Possible de tous les mettre ?
+    logger.info("msg d'information");
+    logger.warn("msg d'avertissement");
+    logger.error("msg d'erreur");
+    logger.fatal("msg d'erreur fatale");  
+
+Model :
+AUCUN
+
+View :
+AUCUN
+
+MovmentTest :
+    logger.warn("msg d'avertissement");    //Possible d'en mettre plusieurs ?
+    logger.error("msg d'erreur");
+    logger.fatal("msg d'erreur fatale"); 
+
+Case :
+    logger.warn("msg d'avertissement");
+    logger.error("msg d'erreur");
+    logger.fatal("msg d'erreur fatale");  
+
+Checked :
+    logger.error("msg d'erreur");
+    logger.fatal("msg d'erreur fatale");  
+
+Checkmate :
+    logger.error("msg d'erreur");
+    logger.fatal("msg d'erreur fatale");  
+
+Movement :
+    logger.error("msg d'erreur");
+    logger.fatal("msg d'erreur fatale");  
+
+Piece :
+    logger.error("msg d'erreur");
+    logger.fatal("msg d'erreur fatale");  
+
+Event :
+    logger.info("msg d'information");
+    logger.warn("msg d'avertissement");
+    logger.error("msg d'erreur");
+    logger.fatal("msg d'erreur fatale");  
