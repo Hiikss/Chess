@@ -1,2 +1,2 @@
 Diagramme UML
-![alt text](https://cdn.discordapp.com/attachments/685214044478505146/909396554081796106/uml.png)
+![alt text](https://cdn.discordapp.com/attachments/685214044478505146/912417083126591550/A_Star-Based_LAN.png)
