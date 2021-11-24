@@ -69,7 +69,7 @@ public class Main extends JFrame {
             @Override
             public void mouseReleased(MouseEvent e) {
             	if(Case.buttonSelected!=null && !(e.getSource() instanceof JLabel)) {
-            		Piece.clearPossibility();
+            		Display.clearPossibility();
             		panel.repaint();
             		panel.revalidate();
             		Case.buttonSelected.setBackground(null);

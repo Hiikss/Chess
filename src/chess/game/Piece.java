@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import chess.Display;
 import chess.Main;
 
 public class Piece {
@@ -19,22 +20,22 @@ public class Piece {
 	
 	public static int p = 0;
 	
-	public static ImageIcon ipoint = new ImageIcon(Case.class.getResource(Main.RES_PATH+"point.png"));
-	public static ImageIcon icercle = new ImageIcon(Case.class.getResource(Main.RES_PATH+"cercle.png"));
+	public static ImageIcon ipoint = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"point.png"));
+	public static ImageIcon icercle = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"cercle.png"));
 	
-	private static ImageIcon ipb = new ImageIcon(Case.class.getResource(Main.RES_PATH+"pb.png"));
-	private static ImageIcon idb = new ImageIcon(Case.class.getResource(Main.RES_PATH+"db.png"));
-	private static ImageIcon irb = new ImageIcon(Case.class.getResource(Main.RES_PATH+"rb.png"));
-	private static ImageIcon ifb = new ImageIcon(Case.class.getResource(Main.RES_PATH+"fb.png"));
-	private static ImageIcon icb = new ImageIcon(Case.class.getResource(Main.RES_PATH+"cb.png"));
-	private static ImageIcon itb = new ImageIcon(Case.class.getResource(Main.RES_PATH+"tb.png"));
+	private static ImageIcon ipb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"pb.png"));
+	private static ImageIcon idb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"db.png"));
+	private static ImageIcon irb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"rb.png"));
+	private static ImageIcon ifb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"fb.png"));
+	private static ImageIcon icb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"cb.png"));
+	private static ImageIcon itb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"tb.png"));
 	
-	private static ImageIcon ipn = new ImageIcon(Case.class.getResource(Main.RES_PATH+"pn.png"));
-	private static ImageIcon idn = new ImageIcon(Case.class.getResource(Main.RES_PATH+"dn.png"));
-	private static ImageIcon irn = new ImageIcon(Case.class.getResource(Main.RES_PATH+"rn.png"));
-	private static ImageIcon ifn = new ImageIcon(Case.class.getResource(Main.RES_PATH+"fn.png"));
-	private static ImageIcon icn = new ImageIcon(Case.class.getResource(Main.RES_PATH+"cn.png"));
-	private static ImageIcon itn = new ImageIcon(Case.class.getResource(Main.RES_PATH+"tn.png"));
+	private static ImageIcon ipn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"pn.png"));
+	private static ImageIcon idn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"dn.png"));
+	private static ImageIcon irn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"rn.png"));
+	private static ImageIcon ifn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"fn.png"));
+	private static ImageIcon icn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"cn.png"));
+	private static ImageIcon itn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"tn.png"));
 	
 	public static boolean hasWhiteKingMoved = false;
 	public static boolean hasBlackKingMoved = false;
@@ -133,7 +134,7 @@ public class Piece {
 		int l = (y-25)/75;
 		int c = (x-200)/75;
 		
-		if(Case.buttonSelected!=null) {
+		if(Display.buttonSelected!=null) {
 			if(valeurPiece==1) {
 			
 				if(l==6) {
@@ -515,7 +516,7 @@ public class Piece {
 		
 	}
 	
-	public static void clearPossibility() {
+	/*public static void clearPossibility() {
 		Component[] components = Main.panel.getComponents();
 		for (Component component : components) {
 			if (component instanceof JLabel) {
@@ -536,7 +537,7 @@ public class Piece {
 		} 
 		
 		p=0;
-	}
+	}*/
 	
 	public static JButton getButtonTarget(int x, int y) {
 		JButton button = null;
@@ -557,7 +558,7 @@ public class Piece {
 		return button;
 	}
 	
-	public static void changeTeam() {
+	/*public static void changeTeam() {
 		if(Main.team.equals("white")) {
 				Main.team="black";
 				Case.timerBlanc.stop();
@@ -569,9 +570,9 @@ public class Piece {
 				Case.timerBlanc.start();
 			}
 		setCursor();
-	}
+	}*/
 	
-	public static void setCursor() {
+	/*public static void setCursor() {
 		if(Main.team.equals("white")) {
 			for(int i=0;i<=15;i++) {
 				piecesNoires.get(i).setCursor(null);
@@ -588,5 +589,5 @@ public class Piece {
 				piecesBlanches.get(i).setCursor(null);
 			}
 		}
-	}
+	}*/
 }
