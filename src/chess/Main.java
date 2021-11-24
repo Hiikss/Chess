@@ -14,8 +14,6 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import chess.game.Case;
-import chess.game.Piece;
 
 import javax.swing.JLabel;
 
@@ -56,7 +54,7 @@ public class Main extends JFrame {
 	public Main() {
 		
 		panel.setLayout(null);
-		Case.initBoard();
+		Player.initBoard();
 		this.setTitle("Chess");
 		this.setSize(1100, 700);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -68,13 +66,13 @@ public class Main extends JFrame {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-            	if(Case.buttonSelected!=null && !(e.getSource() instanceof JLabel)) {
+            	if(Display.buttonSelected!=null && !(e.getSource() instanceof JLabel)) {
             		Display.clearPossibility();
             		panel.repaint();
             		panel.revalidate();
-            		Case.buttonSelected.setBackground(null);
-        			Case.buttonSelected.setOpaque(false);
-        			Case.buttonSelected=null;
+            		Display.buttonSelected.setBackground(null);
+            		Display.buttonSelected.setOpaque(false);
+        			Display.buttonSelected=null;
             	}	
             }
         });
