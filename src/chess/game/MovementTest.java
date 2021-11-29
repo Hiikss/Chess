@@ -13,12 +13,13 @@ class MovementTest {
 	Movement c = new Movement();
 	Main d = new Main();
 	
+	/*
 	@Test
 	void testDeplacementLigne() {
 		Assertions.assertTrue(Main.board[3][3], c.deplacementLigne(5, 0, 0, 0, 0, null));
 	}
 	
-	/*
+	
 	void testDeplacementDiag() {
 		Assertions.assertSame(1, c.deplacementDiag(3, 0, 0, 0, 0, null));
 	}
