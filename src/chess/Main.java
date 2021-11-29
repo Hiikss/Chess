@@ -7,7 +7,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -62,6 +65,10 @@ public class Main extends JFrame {
 		this.setLocationRelativeTo(null);
  		this.setResizable(false);
 		this.setVisible(true);
+		
+		InputStream in = getClass().getResourceAsStream(RES_PATH+"chessboard.txt");
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+		
 		panel.addMouseListener(new MouseAdapter() {
 
             @Override
