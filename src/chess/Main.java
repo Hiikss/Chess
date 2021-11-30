@@ -70,7 +70,7 @@ public class Main extends JFrame {
         		board[l][c] = Integer.parseInt(strNums[c]);
         	}
         }
-        System.out.println(board);
+
 		Player.initBoard();
 		
 		this.setTitle("Chess");
