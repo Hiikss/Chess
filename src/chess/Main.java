@@ -42,30 +42,24 @@ public class Main extends JFrame {
     };
     
     public ImageIcon boardIcon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(Main.class.getResource(RES_PATH+"chessboardblue.png")));
-    
-	/*public static int [][] board = { //définition position échiquier
-    { -5, -2, -3, -9, -500, -3, -2, -5 },
-    { -1, -1, -1, -1, -1, -1, -1, -1 },
-    { 0, 0, 0, 0, 0, 0, 0, 0 },
-    { 0, 0, 0, 0, 0, 0, 0, 0 },
-    { 0, 0, 0, 0, 0, 0, 0, 0 },
-    { 0, 0, 0, 0, 0, 0, 0, 0 },
-    { 1, 1, 1, 1, 1, 1, 1, 1 },
-    { 5, 2, 3, 9, 500, 3, 2, 5 }
-};*/
 
 	String[] strNums;
 	
 	public static int [][] board = new int [8][8];
 	
-	public Main() throws IOException {
+	public Main() {
 		
 		panel.setLayout(null);
 		
 		InputStream in = getClass().getResourceAsStream(RES_PATH+"chessboard.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(in));
         for(int l = 0; l<8; l++) {
-            strNums = br.readLine().split(", ");
+            try {
+				strNums = br.readLine().split(", ");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
         	for (int c = 0; c < 8; c++) {
         		board[l][c] = Integer.parseInt(strNums[c]);
         	}
