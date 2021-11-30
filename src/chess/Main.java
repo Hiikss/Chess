@@ -43,7 +43,7 @@ public class Main extends JFrame {
     
     public ImageIcon boardIcon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(Main.class.getResource(RES_PATH+"chessboardblue.png")));
     
-	public static int [][] board = { //définition position échiquier
+	/*public static int [][] board = { //définition position échiquier
     { -5, -2, -3, -9, -500, -3, -2, -5 },
     { -1, -1, -1, -1, -1, -1, -1, -1 },
     { 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -52,12 +52,27 @@ public class Main extends JFrame {
     { 0, 0, 0, 0, 0, 0, 0, 0 },
     { 1, 1, 1, 1, 1, 1, 1, 1 },
     { 5, 2, 3, 9, 500, 3, 2, 5 }
-};
+};*/
 
-	public Main() {
+	String[] strNums;
+	
+	public static int [][] board = new int [8][8];
+	
+	public Main() throws IOException {
 		
 		panel.setLayout(null);
+		
+		InputStream in = getClass().getResourceAsStream(RES_PATH+"chessboard.txt");
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        for(int l = 0; l<8; l++) {
+            strNums = br.readLine().split(", ");
+        	for (int c = 0; c < 8; c++) {
+        		board[l][c] = Integer.parseInt(strNums[c]);
+        	}
+        }
+        System.out.println(board);
 		Player.initBoard();
+		
 		this.setTitle("Chess");
 		this.setSize(1100, 700);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -66,9 +81,7 @@ public class Main extends JFrame {
  		this.setResizable(false);
 		this.setVisible(true);
 		
-		InputStream in = getClass().getResourceAsStream(RES_PATH+"chessboard.txt");
-        BufferedReader br = new BufferedReader(new InputStreamReader(in));
-		
+    	
 		panel.addMouseListener(new MouseAdapter() {
 
             @Override
