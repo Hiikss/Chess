@@ -46,6 +46,11 @@ public class Main extends JFrame {
 	
 	public static int [][] board = new int [8][8]; //déclaration du tableau tableau multidimensionel
 	
+	
+	/**
+	 * @param 
+	 *
+	 */
 	public Main() {
 		
 		panel.setLayout(null); //layout null

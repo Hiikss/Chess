@@ -12,19 +12,19 @@ public class Piece {
 	
 	public static int p = 0;
 	
-	private static ImageIcon ipb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"pb.png"));
-	private static ImageIcon idb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"db.png"));
-	private static ImageIcon irb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"rb.png"));
-	private static ImageIcon ifb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"fb.png"));
-	private static ImageIcon icb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"cb.png"));
-	private static ImageIcon itb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"tb.png"));
+	public static ImageIcon ipb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"pb.png"));
+	public static ImageIcon idb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"db.png"));
+	public static ImageIcon irb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"rb.png"));
+	public static ImageIcon ifb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"fb.png"));
+	public static ImageIcon icb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"cb.png"));
+	public static ImageIcon itb = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"tb.png"));
 	
-	private static ImageIcon ipn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"pn.png"));
-	private static ImageIcon idn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"dn.png"));
-	private static ImageIcon irn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"rn.png"));
-	private static ImageIcon ifn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"fn.png"));
-	private static ImageIcon icn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"cn.png"));
-	private static ImageIcon itn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"tn.png"));
+	public static ImageIcon ipn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"pn.png"));
+	public static ImageIcon idn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"dn.png"));
+	public static ImageIcon irn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"rn.png"));
+	public static ImageIcon ifn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"fn.png"));
+	public static ImageIcon icn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"cn.png"));
+	public static ImageIcon itn = new ImageIcon(Piece.class.getResource(Main.RES_PATH+"tn.png"));
 	
 	public static JButton b24 = null;
 	public static JButton b31 = null;
@@ -32,6 +32,11 @@ public class Piece {
 	public static JButton b7 = null;
 	public static JButton b4 = null;
 	public static JButton b28 = null;
+	
+	/**
+	 * Cette fonction permet d'attribuer une image de type ImageIcon à une valeur de type int
+	 * <p>
+	 */
 	
 	public static ImageIcon valueToPieceIcon(int valPiece)
 	{
@@ -89,6 +94,7 @@ public class Piece {
 	   }
 		return piece;
 	}
+	
 	
 	public static JButton createPieceButton(){
 		JButton piece = new JButton();

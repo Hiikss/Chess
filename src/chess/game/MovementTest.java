@@ -16,6 +16,7 @@ class MovementTest {
 	/*
 	@Test
 	void testDeplacementLigne() {
+		
 		Assertions.assertTrue(Main.board[3][3], c.deplacementLigne(5, 0, 0, 0, 0, null));
 	}
 	
@@ -31,6 +32,6 @@ class MovementTest {
 	void testDeplacementRoi() {
 		Assertions.assertSame(1, c.deplacementRoi(3, 0, 0, 0, 0, null));
 	}
-	*/
 	
+	*/
 }
