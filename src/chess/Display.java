@@ -1,6 +1,5 @@
 package chess;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Cursor;
@@ -283,36 +282,6 @@ public static JLabel casePossible() {
 		
 		} 
 		p=0;
-	}
-	
-	public static void displayPossibilty(JButton piece) {
-		int pieceValue = Main.board[(piece.getY()-25)/75][(piece.getX()-200)/75];
-		clearPossibility();
-		if((Main.team.equals("white")&& pieceValue>0) || (Main.team.equals("black")&& pieceValue<0)) {
-			if(buttonSelected!=null) {
-				buttonSelected.setBackground(null);
-				buttonSelected.setOpaque(false);
-				if(buttonSelected!=piece) {
-					piece.setBackground(Color.decode("#348339"));
-					buttonSelected = piece;
-					piece.setOpaque(true);
-				}
-				else {
-					buttonSelected = null;
-				}
-			
-			}
-			else {
-				piece.setBackground(Color.decode("#348339"));
-				buttonSelected = piece;
-				piece.setOpaque(true);
-			}
-			Game.piecePossibility(piece);
-		
-	}
-		Main.panel.repaint();
-		Main.panel.revalidate();
-		
 	}
 
 }
