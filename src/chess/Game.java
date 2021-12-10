@@ -75,53 +75,7 @@ public class Game {
 		if(Display.buttonSelected!=null) {
 			if(valeurPiece==1) {
 			
-				if(l==6) {
-					for(int i=1;i<=2;i++) {
-				
-						if(Main.board[l-i][c]==0) {
-							possibility=Display.casePossible();
-							possibility.setLocation(x,y-(75*i));
-							Main.panel.add(possibility);
-						}
-						else {
-							i=3;
-						}
-					}
-				}
-				else if(l>0 && Main.board[l-1][c]==0){
-					possibility=Display.casePossible();
-					possibility.setLocation(x,y-75);
-					Main.panel.add(possibility);
-				}
-				if(l>0) {
-					if(c>0) {
-						if(Main.board[l-1][c-1]<0) {				
-							possibility=Display.casePossibleKill();
-							Piece.getButtonTarget(x-75,y-75).add(possibility);
-				
-						}
-					}
-					if(c<7) {
-						if(Main.board[l-1][c+1]<0) {			
-							possibility=Display.casePossibleKill();
-							Piece.getButtonTarget(x+75,y-75).add(possibility);
-						}
-					}
-			
-				}
-				if(l==3) {
-					Component[] components = Main.panel.getComponents();
-		 			   for (Component component : components) {
-		 				   if (component instanceof JButton) {
-		 					   if(Display.pep.contains(component) && (component.getX()==x+75 || component.getX()==x-75)  && component.getY()==250) {
-		 						  possibility=Display.casePossible();
-		 							possibility.setLocation(component.getX(),175);
-		 							Main.panel.add(possibility);
-		 							Display.pepkill=true;
-		 					   }
-		 				   }
-		 			   }
-				}
+				Movement.deplacementPionBlanc(x, y, l, c, possibility);
 			}
 			else if(valeurPiece==-1) {
 			
@@ -179,7 +133,7 @@ public class Game {
 			}
 			else if(valeurPiece==3 || valeurPiece==-3) {
 
-				Movement.deplacementDiag(valeurPiece,x,y,l,c,possibility);
+				Movement.deplacementDiag(x,y,l,c,possibility);
 			}
 			else if(valeurPiece==5 || valeurPiece==-5) {
 				
@@ -187,7 +141,7 @@ public class Game {
 			}
 			else if(valeurPiece==9 || valeurPiece==-9) {
 				
-				Movement.deplacementDiag(valeurPiece,x,y,l,c,possibility);
+				Movement.deplacementDiag(x,y,l,c,possibility);
 				Movement.deplacementLigne(valeurPiece,x,y,l,c,possibility);
 			}
 			
