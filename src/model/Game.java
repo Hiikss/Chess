@@ -1,4 +1,4 @@
-package chess;
+package model;
 
 import java.awt.Cursor;
 import java.awt.Font;
@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import chess.game.Chrono;
-import chess.game.Movement;
+import view.Display;
 
 public class Game {
 	

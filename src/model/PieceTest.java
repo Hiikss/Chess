@@ -1,4 +1,4 @@
-package chess.game;
+package model;
 
 
 import org.junit.jupiter.api.Assertions;

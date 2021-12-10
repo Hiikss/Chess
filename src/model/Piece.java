@@ -1,10 +1,7 @@
-package chess.game;
+package model;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
-import chess.Game;
-import chess.Main;
 
 public class Piece {
 	

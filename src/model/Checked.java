@@ -1,6 +1,4 @@
-package chess.game;
-
-import chess.Main;
+package model;
 
 public class Checked {
 

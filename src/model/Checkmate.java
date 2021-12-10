@@ -1,10 +1,8 @@
-package chess.game;
+package model;
 
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-
-import chess.Main;
 
 public class Checkmate {
 

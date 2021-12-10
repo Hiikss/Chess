@@ -1,13 +1,11 @@
-package chess.utils;
+package model;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 
-import chess.Display;
-import chess.Game;
-import chess.Main;
+import view.Display;
 
 public class Event {
 	

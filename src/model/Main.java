@@ -1,4 +1,4 @@
-package chess;
+package model;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -17,6 +17,8 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.Player;
+import view.Display;
 
 import javax.swing.JLabel;
 

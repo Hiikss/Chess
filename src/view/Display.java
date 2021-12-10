@@ -1,4 +1,4 @@
-package chess;
+package view;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -11,10 +11,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import chess.game.Piece;
-import chess.game.Checked;
-import chess.game.Checkmate;
-import chess.game.Chrono;
+import model.Checked;
+import model.Checkmate;
+import model.Chrono;
+import model.Game;
+import model.Main;
+import model.Piece;
 
 public class Display {
 	

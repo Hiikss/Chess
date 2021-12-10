@@ -1,13 +1,11 @@
-package chess.game;
+package model;
 
 import java.awt.Component;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import chess.Main;
-
-import chess.Display;
+import view.Display;
 
 public class Movement {
 	

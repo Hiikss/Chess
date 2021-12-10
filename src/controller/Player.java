@@ -1,13 +1,14 @@
-package chess;
+package controller;
 
 import java.awt.Cursor;
 import java.awt.Font;
 
 import javax.swing.JButton;
 
-import chess.game.Chrono;
-import chess.game.Piece;
-import chess.utils.Event;
+import model.Chrono;
+import model.Event;
+import model.Main;
+import model.Piece;
 
 public class Player {
 	
