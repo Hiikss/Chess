@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -40,7 +41,7 @@ public class Main extends JFrame {
         }
     };
     
-    //public ImageIcon boardIcon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(Main.class.getResource(RES_PATH+"chessboardblue.png"))); 
+    public ImageIcon boardIcon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(Main.class.getResource(RES_PATH+"chessboardblue.png"))); 
 
 	private String[] strNums;
 	
