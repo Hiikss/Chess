@@ -1,6 +1,5 @@
 package chess;
 
-import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -10,7 +9,6 @@ import javax.swing.JLabel;
 
 import chess.game.Chrono;
 import chess.game.Movement;
-import chess.game.Piece;
 
 public class Game {
 	
@@ -78,58 +76,11 @@ public class Game {
 				Movement.deplacementPionBlanc(x, y, l, c, possibility);
 			}
 			else if(valeurPiece==-1) {
-			
-				if(l==1) {
-					for(int i=1;i<=2;i++) {		
-						if(Main.board[l+i][c]==0) {
-							possibility=Display.casePossible();
-							possibility.setLocation(x,y+(75*i));
-							Main.panel.add(possibility);
-						}
-						else {
-							i=3;
-						}
-				
-					}
-				}
-				else if(l<7 && Main.board[l+1][c]==0){
-					possibility=Display.casePossible();
-					possibility.setLocation(x,y+75);
-					Main.panel.add(possibility);
-				}
-				if(l<7) {
-					if(c>0) {
-						if(Main.board[l+1][c-1]>0) {		
-							possibility=Display.casePossibleKill();
-							Piece.getButtonTarget(x-75,y+75).add(possibility);			
-						}
-					}	
-					if(c<7) {
-						if(Main.board[l+1][c+1]>0) {
-							possibility=Display.casePossibleKill();
-							Piece.getButtonTarget(x+75,y+75).add(possibility);
-						}
-					}
-			
-				}
-				if(l==4) {
-					Component[] components = Main.panel.getComponents();
-		 			   for (Component component : components) {
-		 				   if (component instanceof JButton) {
-		 					   if(Display.pep.contains(component) && (component.getX()==x+75 || component.getX()==x-75)  && component.getY()==325) {
-		 						  possibility=Display.casePossible();
-		 							possibility.setLocation(component.getX(),400);
-		 							Main.panel.add(possibility);
-		 							Display.pepkill=true;
-		 					   }
-		 				   }
-		 			   }
-				}
-			
+				Movement.deplacementPionNoir(x, y, l, c, possibility);
 			}
 			else if(valeurPiece==2 || valeurPiece==-2) {
 				
-				Movement.deplacementCavalier(valeurPiece,x,y,l,c,possibility);
+				Movement.deplacementCavalier(x,y,l,c,possibility);
 			}
 			else if(valeurPiece==3 || valeurPiece==-3) {
 
@@ -137,17 +88,17 @@ public class Game {
 			}
 			else if(valeurPiece==5 || valeurPiece==-5) {
 				
-				Movement.deplacementLigne(valeurPiece,x,y,l,c,possibility);
+				Movement.deplacementLigne(x,y,l,c,possibility);
 			}
 			else if(valeurPiece==9 || valeurPiece==-9) {
 				
 				Movement.deplacementDiag(x,y,l,c,possibility);
-				Movement.deplacementLigne(valeurPiece,x,y,l,c,possibility);
+				Movement.deplacementLigne(x,y,l,c,possibility);
 			}
 			
 			else if(valeurPiece==500 || valeurPiece==-500) {
 				
-				Movement.deplacementRoi(valeurPiece,x,y,l,c,possibility);
+				Movement.deplacementRoi(x,y,l,c,possibility);
 			}
 			
 		}

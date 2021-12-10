@@ -69,6 +69,52 @@ public class Movement {
 		
 	}
 	
+	public static void deplacementPionNoir(int x, int y, int l, int c, JLabel possibility) {
+		
+		if(l==1) {
+			for(int i=1;i<=2;i++) {		
+				if(Main.board[l+i][c]==0) {
+					displayPossibility(x,y+(75*i),possibility);
+				}
+				else {
+					i=3;
+				}
+		
+			}
+		}
+		else if(l<7 && Main.board[l+1][c]==0){
+			displayPossibility(x,y+75,possibility);
+		}
+		if(l<7) {
+			if(c>0) {
+				if(Main.board[l+1][c-1]>0) {
+					displayPossibleKill(x-75,y+75,possibility);		
+				}
+			}	
+			if(c<7) {
+				if(Main.board[l+1][c+1]>0) {
+					possibility=Display.casePossibleKill();
+					displayPossibleKill(x+75,y+75,possibility);		
+				}
+			}
+	
+		}
+		if(l==4) {
+			Component[] components = Main.panel.getComponents();
+ 			   for (Component component : components) {
+ 				   if (component instanceof JButton) {
+ 					   if(Display.pep.contains(component) && (component.getX()==x+75 || component.getX()==x-75)  && component.getY()==325) {
+ 						  possibility=Display.casePossible();
+ 							possibility.setLocation(component.getX(),400);
+ 							Main.panel.add(possibility);
+ 							Display.pepkill=true;
+ 					   }
+ 				   }
+ 			   }
+		}
+		
+	}
+	
 	public static void deplacementDiag(int x, int y, int l, int c, JLabel possibility) {
 
 		for(int i=1;i<=7;i++) {
@@ -151,7 +197,7 @@ public class Movement {
 		
 	}
 	
-	public static void deplacementLigne(int valeurDisplay, int x, int y, int l, int c, JLabel possibility) {
+	public static void deplacementLigne(int x, int y, int l, int c, JLabel possibility) {
 		
 		for(int i=1;i<=7;i++) {
 			if(l-i>=0) {
@@ -232,7 +278,7 @@ public class Movement {
 		}
 	}
 	
-	public static void deplacementCavalier(int valeurDisplay, int x, int y, int l, int c, JLabel possibility) {
+	public static void deplacementCavalier(int x, int y, int l, int c, JLabel possibility) {
 		
 		if(l>0) {
 			if(c>1) {
@@ -332,7 +378,7 @@ public class Movement {
 		}
 	}
 	
-	public static void deplacementRoi(int valeurDisplay, int x, int y, int l, int c, JLabel possibility) {
+	public static void deplacementRoi(int x, int y, int l, int c, JLabel possibility) {
 		if(l>0) {
 			if(c>0) {
 				if(Main.team.equals("white") && Main.board[l-1][c-1]<0 && Checked.isWhiteKingAttacked(-1, -1)==false) {				
