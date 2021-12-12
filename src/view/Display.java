@@ -17,6 +17,7 @@ import model.Chrono;
 import model.Game;
 import model.Main;
 import model.Piece;
+import log4j2.Log4j;
 
 public class Display {
 	
@@ -181,7 +182,6 @@ public static JLabel casePossible() {
 	 			clearPossibility();
 	 			Main.panel.repaint();
 	 			Main.panel.revalidate();
-	 			System.out.println(piecesAttaquantRoiBlanc);
 		    }	
 		}); 
 		return possibility;
@@ -207,14 +207,14 @@ public static JLabel casePossible() {
 				nbtn.setLocation(btn.getLocation());
 
 	 				if(Main.team.equals("white") && Checked.isBlackKingAttacked(0,0)==true) {
-	 					System.out.println("Roi Noir attaqué");
+	 					Log4j.logInfo("Roi Noir attaqué");
 		    			piecesAttaquantRoiNoir.add(btn);
 		    			if(Checkmate.isBlackKingCheckmate(piecesAttaquantRoiNoir)==true) {
 		 					Game.gameEnd("Victoire des Blancs par Mat");
 		 				}
 		 			}
 	 				if(Main.team.equals("black") && Checked.isWhiteKingAttacked(0,0)==true) {
-		 				System.out.println("Roi blanc attaqué");
+	 					Log4j.logInfo("Roi blanc attaqué");
 		 				piecesAttaquantRoiBlanc.add(btn);
 		 				if(Checkmate.isWhiteKingCheckmate(piecesAttaquantRoiBlanc)==true) {
 		 					Game.gameEnd("Victoire des Noirs par Mat");

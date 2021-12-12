@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 
+import log4j2.Log4j;
 import view.Display;
 
 public class Event {
@@ -13,8 +14,8 @@ public class Event {
 	 		   new java.awt.event.ActionListener(){
 	 		   public void actionPerformed(ActionEvent e) {
 	 			   JButton btn = (JButton)e.getSource();
-	 				System.out.println(Main.board[(btn.getY()-25)/75][(btn.getX()-200)/75]);
-	 				System.out.println(btn.getName());
+	 			    Log4j.logInfo(String.valueOf(Main.board[(btn.getY()-25)/75][(btn.getX()-200)/75]));
+	 			    Log4j.logInfo(btn.getName());
 	 				if(Main.team.equals("white")&&Main.board[(btn.getY()-25)/75][(btn.getX()-200)/75]<0 || Main.team.equals("black")&&Main.board[(btn.getY()-25)/75][(btn.getX()-200)/75]>0) {
 		 				  if(Display.buttonSelected!=null) {
 		 					 Display.buttonSelected.setBackground(null);

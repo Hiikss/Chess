@@ -9,7 +9,7 @@ public class TestLog4J {
     // Récupération de notre logger.
 	private static final Logger logger =  LogManager.getLogger(TestLog4J.class);
 
-    // Le point d'entrée du programme.
+    /*// Le point d'entrée du programme.
 	  public static void main(String[] args) {
 		
 		  // On produit un log de niveau informatif.
@@ -17,5 +17,5 @@ public class TestLog4J {
 
 	        // On produit un log de niveau erreur.
 	        logger.log( Level.ERROR, "Houston, we have a problem" );
-		  }
+		  }*/
 }
