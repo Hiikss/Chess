@@ -1,6 +1,0 @@
-[main] INFO  | log4j2.TestLog4J                                             | Hello World with Log4J 2 (TestLog4J.java:16)
-[main] ERROR | log4j2.TestLog4J                                             | Houston, we have a problem (TestLog4J.java:19)
-[main] INFO  | log4j2.TestLog4J                                             | Hello World with Log4J 2 (TestLog4J.java:16)
-[main] ERROR | log4j2.TestLog4J                                             | Houston, we have a problem (TestLog4J.java:19)
-[main] INFO  | Hello World with Log4J 2 (TestLog4J.java:16)
-[main] ERROR | Houston, we have a problem (TestLog4J.java:19)
