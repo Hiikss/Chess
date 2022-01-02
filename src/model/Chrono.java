@@ -7,6 +7,11 @@ import java.text.DecimalFormat;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
+/** 
+ * La classe <b>Chrono</b> appartient au package <b>model</b>.
+ * Cette classe créer un timer pour l'équipe blanche et l'équipe noir.
+ */
+
 public class Chrono {
 	
 	public static JLabel timerBlancLabel = new JLabel();
