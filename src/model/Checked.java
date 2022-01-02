@@ -1,5 +1,7 @@
 package model;
 
+
+
 public class Checked {
 
 	public static boolean isWhiteKingAttacked(int l1, int c1) {
