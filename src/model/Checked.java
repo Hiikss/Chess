@@ -1,6 +1,10 @@
 package model;
 
-
+/** 
+ * La classe <b>Checked</b> appartient au package <b>model</b>.
+ * Elle comprend 2 méthodes vérifiant si un roi est en échec.
+ * @see <b>isWhiteKingCheckmate<b>, <b>isBlackKingCheckmate<b>
+ */
 
 public class Checked {
 
