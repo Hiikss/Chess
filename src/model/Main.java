@@ -22,6 +22,11 @@ import view.Display;
 
 import javax.swing.JLabel;
 
+/** 
+ * La classe <b>Main</b> appartient au package <b>model</b>.
+ * Elle déclare la fenêtre de jeu et initialise l'échiquier ainsi que les pièces.
+ */
+
 @SuppressWarnings("serial")
 public class Main extends JFrame {
 	
