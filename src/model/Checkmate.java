@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
+/** 
+ * La classe <b>Checkmate</b> appartient au package <b>model</b>.
+ * Elle comprend 2 méthodes vérifiant si un roi est en échec et mat
+ * @see <b>isWhiteKingCheckmate<b>, <b>isBlackKingCheckmate<b>
+ */
+
 public class Checkmate {
 
 	public static boolean isWhiteKingCheckmate(ArrayList<JButton> pieces) {
@@ -263,7 +269,7 @@ public class Checkmate {
 		
 	}
 	
-public static boolean isBlackKingCheckmate(ArrayList<JButton> pieces) {
+	public static boolean isBlackKingCheckmate(ArrayList<JButton> pieces) {
 		
 		ArrayList<JButton> piecesCanBeKilled = new ArrayList<JButton>();
 		boolean canBlackKingMove = false;
