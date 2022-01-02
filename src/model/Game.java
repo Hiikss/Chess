@@ -9,6 +9,12 @@ import javax.swing.JLabel;
 
 import view.Display;
 
+/** 
+ * La classe <b>Game</b> appartient au package <b>model</b>.
+ * Elle regroupe trois méthodes permettant de changer d'équipe à chaque coups, de mettre un curseur sur les pièces et d'afficher les possibilités des pièces sélectionnées.
+ * @see <b>changeTeam<b>, <b>setCursor<b>, <b>piecePossibility<b>
+ */
+
 public class Game {
 	
 	public static ArrayList<JButton> piecesBlanches = new ArrayList<JButton>();
