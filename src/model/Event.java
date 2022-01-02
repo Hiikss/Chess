@@ -8,6 +8,12 @@ import javax.swing.JButton;
 import log4j2.Log4j;
 import view.Display;
 
+/** 
+ * La classe <b>Event</b> appartient au package <b>model</b>.
+ * Elle comprend une méthode permettant d'actualiser l'affichage à chaque actions.
+ * @see <b>actionPerformed<b>
+ */
+
 public class Event {
 	
 	public static java.awt.event.ActionListener btnclicked = 
