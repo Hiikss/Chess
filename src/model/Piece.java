@@ -3,6 +3,12 @@ package model;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+/** 
+ * La classe <b>Piece</b> appartient au package <b>model</b>.
+ * Elle comprend trois méthodes relatives aux valeurs associées aux images de pièce ainsi qu'aux boutons.
+ * @see <b>valueToPieceIcon<b>, <b>createPieceButton<b>, <b>getButtonTarget<b>
+ */
+
 public class Piece {
 	
 	private static int btn = 0;
