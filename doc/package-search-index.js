@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"controller"},{"l":"log4j2"},{"l":"model"},{"l":"test"},{"l":"view"}];updateSearchResults();
