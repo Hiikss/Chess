@@ -11,7 +11,7 @@ class PieceTest {
 	Piece c = new Piece();
 	
 	@Test
-	void testValueToPieceIcon() {	//Fonction de test vérifiant l'image attribuée à la valeur de la piece
+	void testValueToPieceIcon() {	//Fonction de test vï¿½rifiant l'image attribuï¿½e ï¿½ la valeur de la piece
 		Assertions.assertEquals(Piece.ipb, Piece.valueToPieceIcon(1));
 		Assertions.assertEquals(Piece.icb, Piece.valueToPieceIcon(2));
 		Assertions.assertEquals(Piece.ifb, Piece.valueToPieceIcon(3));
