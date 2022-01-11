@@ -34,9 +34,9 @@ public class Main extends JFrame {
 	
 	public static final String RES_PATH = "src/main/resources/"; //chemin ressource
 	
-	public static Image boardImage = Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/chessboardblue.png")); //chemin de l'image de l'�chiquier
+	public static Image boardImage = Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/chessboardblue.png")); //chemin de l'image de l'échiquier
 	
-	public static String team = "white";	//D�finition de l'�quipe qui commence
+	public static String team = "white";	//Définition de l'équipe qui commence
 	
 	public static JDialog fin = new JDialog(instance, "Fin de la partie", true); //fenetre de fin de partie
 	
@@ -52,7 +52,7 @@ public class Main extends JFrame {
 
 	private String[] strNums;
 	
-	public static int [][] board = new int [8][8]; //d�claration du tableau tableau multidimensionel
+	public static int [][] board = new int [8][8]; //déclaration du tableau tableau multidimensionel
 	
 	
 	/**
@@ -76,9 +76,9 @@ public class Main extends JFrame {
         	}
         }
 
-		Player.initBoard();  //initialisation de l'�chiquier
+		Player.initBoard();  //initialisation de l'échiquier
 		
-		this.setTitle("Chess"); //propri�t�s de la frame
+		this.setTitle("Chess"); //propriétés de la frame
 		this.setSize(1100, 700);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setContentPane(panel);
@@ -87,7 +87,7 @@ public class Main extends JFrame {
 		this.setVisible(true);
 		
     	
-		panel.addMouseListener(new MouseAdapter() { //enl�ve les s�lections lorsqu'on clique sur le panel
+		panel.addMouseListener(new MouseAdapter() { //enlève les sélections lorsqu'on clique sur le panel
 
             @Override
             public void mouseReleased(MouseEvent e) { 
@@ -102,7 +102,7 @@ public class Main extends JFrame {
             }
         });
 		
-		fin.setLayout(null); //propri�t�s du JDialog
+		fin.setLayout(null); //propriétés du JDialog
 		fin.setResizable(false);
 		fin.setSize(450, 260);
 		fin.setLocationRelativeTo(null);
