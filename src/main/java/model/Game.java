@@ -11,7 +11,7 @@ import view.Display;
 
 /** 
  * La classe <b>Game</b> appartient au package <b>model</b>.
- * Elle regroupe trois méthodes permettant de changer d'équipe à chaque coups, de mettre un curseur sur les pièces et d'afficher les possibilités des pièces sélectionnées.
+ * Elle regroupe trois mÃ©thodes permettant de changer d'Ã©quipe Ã  chaque coups, de mettre un curseur sur les piÃ¨ces et d'afficher les possibilitÃ©s des piÃ¨ces sÃ©lectionnÃ©es.
  * @see <b>changeTeam<b>, <b>setCursor<b>, <b>piecePossibility<b>
  */
 

@@ -10,7 +10,7 @@ import view.Display;
 
 /** 
  * La classe <b>Event</b> appartient au package <b>model</b>.
- * Elle comprend une méthode permettant d'actualiser l'affichage à chaque actions.
+ * Elle comprend une mÃ©thode permettant d'actualiser l'affichage Ã  chaque actions.
  * @see <b>actionPerformed<b>
  */
 

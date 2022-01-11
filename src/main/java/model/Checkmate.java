@@ -6,7 +6,7 @@ import javax.swing.JButton;
 
 /** 
  * La classe <b>Checkmate</b> appartient au package <b>model</b>.
- * Elle comprend 2 méthodes vérifiant si un roi est en échec et mat.
+ * Elle comprend 2 mÃ©thodes vÃ©rifiant si un roi est en Ã©chec et mat.
  * @see <b>isWhiteKingCheckmate<b>, <b>isBlackKingCheckmate<b>
  */
 

@@ -9,7 +9,7 @@ import view.Display;
 
 /** 
  * La classe <b>Movement</b> appartient au package <b>model</b>.
- * Elle comprend 8 méthodes relatives aux différents types de déplacements et d'affichages de déplacements.
+ * Elle comprend 8 mÃ©thodes relatives aux diffÃ©rents types de dÃ©placements et d'affichages de deÃ©placements.
  * @see <b>displayPossibleKill<b>, <b>displayPossibility<b>
  * @see <b>deplacementPionBlanc<b>, <b>deplacementPionNoir<b>, <b>deplacementDiag<b>, <b>deplacementLigne<b>,  <b>deplacementCavalier<b>, <b>deplacementRoi<b>,
  */

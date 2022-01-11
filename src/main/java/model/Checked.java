@@ -2,7 +2,7 @@ package model;
 
 /** 
  * La classe <b>Checked</b> appartient au package <b>model</b>.
- * Elle comprend 2 méthodes vérifiant si un roi est en échec.
+ * Elle comprend 2 mÃ©thodes vÃ©rifiant si un roi est en Ã©chec.
  * @see <b>isWhiteKingCheckmate<b>, <b>isBlackKingCheckmate<b>
  */
 

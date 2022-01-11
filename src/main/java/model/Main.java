@@ -24,7 +24,7 @@ import javax.swing.JLabel;
 
 /** 
  * La classe <b>Main</b> appartient au package <b>model</b>.
- * Elle déclare la fenêtre de jeu et initialise l'échiquier ainsi que les pièces.
+ * Elle dï¿½clare la fenï¿½tre de jeu et initialise l'ï¿½chiquier ainsi que les piï¿½ces.
  */
 
 @SuppressWarnings("serial")
@@ -32,11 +32,11 @@ public class Main extends JFrame {
 	
 	public static Main instance;
 	
-	public static final String RES_PATH = "/resources/"; //chemin ressource
+	public static final String RES_PATH = "src/main/resources/"; //chemin ressource
 	
-	public static Image boardImage = Toolkit.getDefaultToolkit().getImage(Main.class.getResource(RES_PATH+"chessboardblue.png")); //chemin de l'image de l'échiquier
+	public static Image boardImage = Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/chessboardblue.png")); //chemin de l'image de l'ï¿½chiquier
 	
-	public static String team = "white";	//Définition de l'équipe qui commence
+	public static String team = "white";	//Dï¿½finition de l'ï¿½quipe qui commence
 	
 	public static JDialog fin = new JDialog(instance, "Fin de la partie", true); //fenetre de fin de partie
 	
@@ -48,11 +48,11 @@ public class Main extends JFrame {
         }
     };
     
-    public ImageIcon boardIcon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(Main.class.getResource(RES_PATH+"chessboardblue.png"))); 
+    public ImageIcon boardIcon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/chessboardblue.png"))); 
 
 	private String[] strNums;
 	
-	public static int [][] board = new int [8][8]; //déclaration du tableau tableau multidimensionel
+	public static int [][] board = new int [8][8]; //dï¿½claration du tableau tableau multidimensionel
 	
 	
 	/**
@@ -63,7 +63,7 @@ public class Main extends JFrame {
 		
 		panel.setLayout(null); //layout null
 		
-		InputStream in = getClass().getResourceAsStream(RES_PATH+"chessboard.txt"); //recherche du fichier ressource chessboard.txt
+		InputStream in = getClass().getResourceAsStream("/chessboard.txt"); //recherche du fichier ressource chessboard.txt
         BufferedReader br = new BufferedReader(new InputStreamReader(in)); //lecture du fichier
         for(int l = 0; l<8; l++) { //fonction permettant de convertir le fichier texte en tableau multidimensionel
             try {
@@ -76,9 +76,9 @@ public class Main extends JFrame {
         	}
         }
 
-		Player.initBoard();  //initialisation de l'échiquier
+		Player.initBoard();  //initialisation de l'ï¿½chiquier
 		
-		this.setTitle("Chess"); //propriétés de la frame
+		this.setTitle("Chess"); //propriï¿½tï¿½s de la frame
 		this.setSize(1100, 700);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setContentPane(panel);
@@ -87,7 +87,7 @@ public class Main extends JFrame {
 		this.setVisible(true);
 		
     	
-		panel.addMouseListener(new MouseAdapter() { //enlève les sélections lorsqu'on clique sur le panel
+		panel.addMouseListener(new MouseAdapter() { //enlï¿½ve les sï¿½lections lorsqu'on clique sur le panel
 
             @Override
             public void mouseReleased(MouseEvent e) { 
@@ -102,7 +102,7 @@ public class Main extends JFrame {
             }
         });
 		
-		fin.setLayout(null); //propriétés du JDialog
+		fin.setLayout(null); //propriï¿½tï¿½s du JDialog
 		fin.setResizable(false);
 		fin.setSize(450, 260);
 		fin.setLocationRelativeTo(null);

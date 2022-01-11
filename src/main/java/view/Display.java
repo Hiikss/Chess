@@ -26,8 +26,8 @@ public class Display {
 	public static ArrayList<JButton> piecesAttaquantRoiBlanc = new ArrayList<JButton>();
 	public static ArrayList<JButton> piecesAttaquantRoiNoir = new ArrayList<JButton>();
 	
-	public static ImageIcon ipoint = new ImageIcon(Display.class.getResource(Main.RES_PATH+"point.png"));
-	public static ImageIcon icercle = new ImageIcon(Display.class.getResource(Main.RES_PATH+"cercle.png"));
+	public static ImageIcon ipoint = new ImageIcon(Display.class.getResource("/point.png"));
+	public static ImageIcon icercle = new ImageIcon(Display.class.getResource("/cercle.png"));
 	
 	public static boolean hasWhiteKingMoved = false;
 	public static boolean hasBlackKingMoved = false;
@@ -123,27 +123,27 @@ public static JLabel casePossible() {
 		    		Main.board[(btn.getY()-25)/75][(btn.getX()-200)/75]=0;
 		    		btn.setLocation(label.getX(), label.getY());
 		    		if(Main.team.equals("white") && Checked.isWhiteKingAttacked(0,0)==true){
-		    			System.out.println("Roi blanc attaqué");			
+		    			System.out.println("Roi blanc attaquï¿½");			
 		    			Main.board[(y-25)/75][(x-200)/75]=Main.board[(btn.getY()-25)/75][(btn.getX()-200)/75];
 		    			Main.board[(btn.getY()-25)/75][(btn.getX()-200)/75]=0;
 		    			btn.setLocation(x,y);
 		    		}
 		    		else if(Main.team.equals("black") && Checked.isBlackKingAttacked(0,0)==true) {
-		 				System.out.println("Roi Noir attaqué");
+		 				System.out.println("Roi Noir attaquï¿½");
 		 				Main.board[(y-25)/75][(x-200)/75]=Main.board[(btn.getY()-25)/75][(btn.getX()-200)/75];
 		 				Main.board[(btn.getY()-25)/75][(btn.getX()-200)/75]=0;
 		 				btn.setLocation(x,y);
 		 			}	
 		 			else {
 		 				if(Main.team.equals("white") && Checked.isBlackKingAttacked(0,0)==true) {
-			    			System.out.println("Roi Noir attaqué");
+			    			System.out.println("Roi Noir attaquï¿½");
 			    			piecesAttaquantRoiNoir.add(btn);	
 			    			if(Checkmate.isBlackKingCheckmate(piecesAttaquantRoiNoir)==true) {
 			 					Game.gameEnd("Victoire des Blancs par Mat");
 			 				}
 			 			}
 		 				if(Main.team.equals("black") && Checked.isWhiteKingAttacked(0,0)==true) {
-			 				System.out.println("Roi blanc attaqué");
+			 				System.out.println("Roi blanc attaquï¿½");
 			 				piecesAttaquantRoiBlanc.add(btn);
 			 				if(Checkmate.isWhiteKingCheckmate(piecesAttaquantRoiBlanc)==true) {
 			 					Game.gameEnd("Victoire des Noirs par Mat");
@@ -207,14 +207,14 @@ public static JLabel casePossible() {
 				nbtn.setLocation(btn.getLocation());
 
 	 				if(Main.team.equals("white") && Checked.isBlackKingAttacked(0,0)==true) {
-	 					Log4j.logInfo("Roi Noir attaqué");
+	 					Log4j.logInfo("Roi Noir attaquï¿½");
 		    			piecesAttaquantRoiNoir.add(btn);
 		    			if(Checkmate.isBlackKingCheckmate(piecesAttaquantRoiNoir)==true) {
 		 					Game.gameEnd("Victoire des Blancs par Mat");
 		 				}
 		 			}
 	 				if(Main.team.equals("black") && Checked.isWhiteKingAttacked(0,0)==true) {
-	 					Log4j.logInfo("Roi blanc attaqué");
+	 					Log4j.logInfo("Roi blanc attaquï¿½");
 		 				piecesAttaquantRoiBlanc.add(btn);
 		 				if(Checkmate.isWhiteKingCheckmate(piecesAttaquantRoiBlanc)==true) {
 		 					Game.gameEnd("Victoire des Noirs par Mat");
