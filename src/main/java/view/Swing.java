@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,20 +9,16 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Swing extends JFrame implements Strategy{
 	
-	
-	
-	public static Image boardImage = Toolkit.getDefaultToolkit().getImage(Swing.class.getResource("/chessboardblue.png")); //chemin de l'image de l'échiquier
-	
-	public static JPanel panel = new JPanel() { //affichage de l'image sur le panel
-		@Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            g.drawImage(boardImage, 200, 25, null);
-        }
-    };
-	
     @Override
-    public int performAction() {
+    public int performAction(Image board) {
+    	
+    	JPanel panel = new JPanel() { //affichage de l'image sur le panel
+    		@Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(board, 200, 25, null);
+            }
+        };
 		
 		panel.setLayout(null); //layout null
 		
