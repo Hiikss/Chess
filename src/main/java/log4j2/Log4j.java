@@ -6,13 +6,16 @@ import org.apache.logging.log4j.Logger;
 
 public class Log4j {
 
-	private static final Logger logger =  LogManager.getLogger(Log4j.class);
-
+	private final Logger logger =  LogManager.getLogger(Log4j.class);
+	private String log;
 	
-	public static void logInfo(String info) {
+	public String getLog() {
+		return log;
+	}
 	
-	logger.log( Level.INFO, info );
-	
+	public void logInfo(String log) {
+		this.log = log;
+		logger.log( Level.INFO, log );
 	}
 
 }
