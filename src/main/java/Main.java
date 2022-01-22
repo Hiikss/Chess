@@ -12,15 +12,14 @@ public class Main {
 	private static int vue = 0;
 	
 	public static void main(String[] args) throws IOException{
+		
 		BufferedImage boardImage = ImageIO.read(Main.class.getResource("/chessboardblue.png")); //chemin de l'image de l'échiquier
+		
 		switch(vue) {
-		case 0:
+		case 0: //cas où la vue est en swing
 			Display view = new Display(new Swing());
 			view.executeStrategy(boardImage);
 			break;
 		}
-		
-		
 	}
-
 }

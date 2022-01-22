@@ -6,6 +6,11 @@ import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/** 
+ * La classe <b>Swing</b> appartient au package <b>view</b>.
+ * C'est une classe concrete qui implémente l'interface Strategy
+ * Il s'agit de la vue en Swing
+ */
 @SuppressWarnings("serial")
 public class Swing extends JFrame implements Strategy{
 	
@@ -29,7 +34,7 @@ public class Swing extends JFrame implements Strategy{
 		this.setLocationRelativeTo(null);
  		this.setResizable(false);
 		this.setVisible(true);
-		return 0;
+		return 1;
 		
 	
 	}

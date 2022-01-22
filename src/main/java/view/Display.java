@@ -2,6 +2,10 @@ package view;
 
 import java.awt.Image;
 
+/** 
+ * La classe <b>Display</b> appartient au package <b>view</b>.
+ * Il s'agit d'une classe Context qui utilise la strategy
+ */
 public class Display {
 	
 	private Strategy strategy;
