@@ -3,6 +3,8 @@ package model;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import log4j2.Log4j;
+
 public class Piece {
 	
 	private ImageIcon ipb = new ImageIcon(Piece.class.getResource("/pb.png"));
@@ -24,6 +26,8 @@ public class Piece {
 	private JButton piece = new JButton();
 
 	private int btn = 0;
+	
+	private Log4j log = new Log4j();
 	
 	public ImageIcon getImage(int valPiece) {
 		switch(valPiece){
@@ -52,14 +56,14 @@ public class Piece {
 	    	   setImage(itb);
 	           break;
 	           
-	       case -1: 
+	       case -1:
 	    	   setImage(ipn);
 	           break;
 	   
 	       case -9:
 	    	   setImage(idn);
 	           break;
-	   
+	  
 	       case -10:
 	    	   setImage(irn);
 	           break;
@@ -85,7 +89,7 @@ public class Piece {
 		this.icon = icon;
 	}
 	
-	public JButton getButton() {
+	public JButton getButton(int value) {
 		piece.setName("b"+btn);
 		/*if(btn<=15) {
 			piecesNoires.add(piece);
@@ -94,6 +98,11 @@ public class Piece {
 			piecesBlanches.add(piece);
 		}*/
 		btn++;
+		piece.setLayout(null);
+		piece.setIcon(getImage(value));
+		piece.setContentAreaFilled(false);
+		piece.setBorderPainted(false);
+		log.logInfo("pièce retournée "+btn);
 		return piece;
 	}
 }

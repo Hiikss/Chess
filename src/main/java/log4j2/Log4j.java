@@ -12,10 +12,10 @@ public class Log4j {
 	public String getLog() {
 		return log;
 	}
-	
+
 	public void logInfo(String log) {
 		this.log = log;
-		logger.log( Level.INFO, log );
+		logger.log(Level.INFO, log);
 	}
 
 }

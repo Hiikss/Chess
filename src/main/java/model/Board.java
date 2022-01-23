@@ -12,8 +12,8 @@ public class Board {
 	private String[] strNums;
 	
 	private int [][] board = new int [8][8];
-
-	Log4j log = new Log4j();	
+	
+	private Log4j log = new Log4j();	
 	
 	public Board() {
 		InputStream in = getClass().getResourceAsStream("/chessboard.txt"); //recherche du fichier ressource chessboard.txt
@@ -30,7 +30,7 @@ public class Board {
         }
         log.logInfo(board.toString());
 	}
-	
+
 	public int getBoard(int l, int c){
 		return board[l][c];
 	}

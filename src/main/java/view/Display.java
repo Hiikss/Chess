@@ -10,7 +10,7 @@ import log4j2.Log4j;
  */
 public class Display {
 	
-	Log4j log = new Log4j();
+	private Log4j log = new Log4j();
 	
 	private int vue = 0;
 	
@@ -24,11 +24,11 @@ public class Display {
 	public int executeStrategy(Image board){
 	   return strategy.performAction(board);
 	}
-
+	
 	public int getView() {
 		return vue;
 	}
-	
+
 	public void setView(int vue) {
 		this.vue = vue;
 	}
