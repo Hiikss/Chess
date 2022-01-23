@@ -7,19 +7,19 @@ import log4j2.Log4j;
 
 public class Piece {
 	
-	private ImageIcon ipb = new ImageIcon(Piece.class.getResource("/pb.png"));
-	private ImageIcon idb = new ImageIcon(Piece.class.getResource("/db.png"));
-	private ImageIcon irb = new ImageIcon(Piece.class.getResource("/rb.png"));
-	private ImageIcon ifb = new ImageIcon(Piece.class.getResource("/fb.png"));
-	private ImageIcon icb = new ImageIcon(Piece.class.getResource("/cb.png"));
-	private ImageIcon itb = new ImageIcon(Piece.class.getResource("/tb.png"));
+	public static ImageIcon ipb = new ImageIcon(Piece.class.getResource("/pb.png"));
+	public static ImageIcon idb = new ImageIcon(Piece.class.getResource("/db.png"));
+	public static ImageIcon irb = new ImageIcon(Piece.class.getResource("/rb.png"));
+	public static ImageIcon ifb = new ImageIcon(Piece.class.getResource("/fb.png"));
+	public static ImageIcon icb = new ImageIcon(Piece.class.getResource("/cb.png"));
+	public static ImageIcon itb = new ImageIcon(Piece.class.getResource("/tb.png"));
 	
-	private ImageIcon ipn = new ImageIcon(Piece.class.getResource("/pn.png"));
-	private ImageIcon idn = new ImageIcon(Piece.class.getResource("/dn.png"));
-	private ImageIcon irn = new ImageIcon(Piece.class.getResource("/rn.png"));
-	private ImageIcon ifn = new ImageIcon(Piece.class.getResource("/fn.png"));
-	private ImageIcon icn = new ImageIcon(Piece.class.getResource("/cn.png"));
-	private ImageIcon itn = new ImageIcon(Piece.class.getResource("/tn.png"));
+	public static ImageIcon ipn = new ImageIcon(Piece.class.getResource("/pn.png"));
+	public static ImageIcon idn = new ImageIcon(Piece.class.getResource("/dn.png"));
+	public static ImageIcon irn = new ImageIcon(Piece.class.getResource("/rn.png"));
+	public static ImageIcon ifn = new ImageIcon(Piece.class.getResource("/fn.png"));
+	public static ImageIcon icn = new ImageIcon(Piece.class.getResource("/cn.png"));
+	public static ImageIcon itn = new ImageIcon(Piece.class.getResource("/tn.png"));
 	
 	private ImageIcon icon = new ImageIcon();
 	
