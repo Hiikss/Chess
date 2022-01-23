@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import model.Board;
 import model.Init;
 import view.Display;
 import view.Swing;
@@ -30,8 +31,7 @@ public class Main {
 			view.executeStrategy(boardImage);
 			break;
 		}
-		
-		
+
 		init.initBoard();
 		//Controller controller = new Controller(init, view);
 	}
