@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import log4j2.Log4j;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Board {
 	
@@ -13,7 +15,7 @@ public class Board {
 	
 	private int [][] board = new int [8][8];
 	
-	private Log4j log = new Log4j();	
+	private final Logger logger =  LogManager.getLogger(this);	
 	
 	public Board() {
 		InputStream in = getClass().getResourceAsStream("/chessboard.txt"); //recherche du fichier ressource chessboard.txt
@@ -28,7 +30,7 @@ public class Board {
         		board[l][c] = Integer.parseInt(strNums[c]);
         	}
         }
-        log.logInfo(board.toString());
+        logger.log(Level.INFO, board.toString());
 	}
 
 	public int getBoard(int l, int c){

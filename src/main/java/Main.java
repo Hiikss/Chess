@@ -4,9 +4,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import controller.Controller;
-import log4j2.Log4j;
-import model.Init;
 import model.Model;
 import view.Display;
 import view.Swing;
@@ -18,7 +20,7 @@ public class Main {
 	
 	public static Main instance;
 	
-	private Log4j log = new Log4j();
+	private final Logger logger =  LogManager.getLogger(this);
 	
 	public Main() throws IOException {
 		BufferedImage boardImage = ImageIO.read(Main.class.getResource("/chessboardblue.png")); //chemin de l'image de l'échiquier
@@ -26,7 +28,7 @@ public class Main {
 		//Init init = new Init();
 		Display view = null;
 		Model model = new Model();
-		
+
 		switch(vue) {
 		case 0: //cas où la vue est en swing
 			view = new Display(new Swing());
@@ -35,8 +37,12 @@ public class Main {
 			view = new Display(new Swingtest());
 			break;
 		}
+		
 		view.executeStrategy(boardImage);
 		Controller controller = new Controller(model, view);
+		logger.log(Level.INFO, "controller = "+controller);
+		model.setController(controller);
+		//controller.initBoard();
 	}
 	
 	public static void main(String[] args) throws IOException{	

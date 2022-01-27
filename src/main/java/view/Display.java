@@ -5,45 +5,57 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 
-import log4j2.Log4j;
-
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 /** 
  * La classe <b>Display</b> appartient au package <b>view</b>.
  * Il s'agit d'une classe Context qui utilise la strategy
  */
 public class Display {
 	
-	private Log4j log = new Log4j();
+	private final Logger logger =  LogManager.getLogger(this);
 	
-	private Swing swing = new Swing();
+	private Swing swing;
 	
-	private int vue = 0;
+	private JPanel panel;
 	
 	private Strategy strategy;
 
 	public Display(Strategy strategy){
 	   this.strategy = strategy;
-	   log.logInfo("création vue");
+	   logger.log(Level.INFO, "création vue");
 	}
 
 	public int executeStrategy(Image board){
-	   return strategy.performAction(board);
-	}
-	
-	public int getView() {
-		return vue;
-	}
-	
-	public void setView(int vue) {
-		this.vue = vue;
+	   strategy.performAction(board);
+	   return 1;
 	}
 	
 	public JPanel getPanel() {
-		return swing.getPanel();
+		return panel;
 	}
 	
-	public int addComponent(JPanel panel, Component component) {
+	public void setPanel(JPanel panel) {
+		this.panel = panel;
+	}
+	
+	public Swing getSwing() {
+		return swing;
+	}
+	
+	public void setSwing(Swing swing) {
+		this.swing = swing;
+	}
+	
+	public int addComponent(Component component) {
+		panel = getPanel();
+		swing = getSwing();
 		swing.addComponent(panel, component);
 		return 1;
+	}
+	public void setView(Display view) {
+		swing.setView(view);
+		
 	}
 }

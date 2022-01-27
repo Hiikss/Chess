@@ -3,7 +3,9 @@ package model;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import log4j2.Log4j;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Piece {
 	
@@ -27,7 +29,7 @@ public class Piece {
 
 	private int btn = 0;
 	
-	private Log4j log = new Log4j();
+	private final Logger logger =  LogManager.getLogger(this);	
 	
 	public ImageIcon getImage(int valPiece) {
 		switch(valPiece){
@@ -102,7 +104,7 @@ public class Piece {
 		piece.setIcon(getImage(value));
 		piece.setContentAreaFilled(false);
 		piece.setBorderPainted(false);
-		log.logInfo("pièce retournée "+btn);
+		logger.log(Level.INFO, "pièce retournée "+btn);
 		return piece;
 	}
 }
