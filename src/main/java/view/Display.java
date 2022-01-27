@@ -1,6 +1,9 @@
 package view;
 
+import java.awt.Component;
 import java.awt.Image;
+
+import javax.swing.JPanel;
 
 import log4j2.Log4j;
 
@@ -11,6 +14,8 @@ import log4j2.Log4j;
 public class Display {
 	
 	private Log4j log = new Log4j();
+	
+	private Swing swing = new Swing();
 	
 	private int vue = 0;
 	
@@ -28,8 +33,17 @@ public class Display {
 	public int getView() {
 		return vue;
 	}
-
+	
 	public void setView(int vue) {
 		this.vue = vue;
+	}
+	
+	public JPanel getPanel() {
+		return swing.getPanel();
+	}
+	
+	public int addComponent(JPanel panel, Component component) {
+		swing.addComponent(panel, component);
+		return 1;
 	}
 }

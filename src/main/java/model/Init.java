@@ -1,11 +1,9 @@
 package model;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
-import controller.Controller;
 import log4j2.Log4j;
-import view.Display;
-import view.Swing;
 
 public class Init {
 
@@ -13,15 +11,14 @@ public class Init {
 
 	private Piece piece = new Piece();
 	
-	//Display swing = new Display(null);
-
-	//Init init = new Init();
+	private JPanel panel;
 	
-	//Controller controller = new Controller(init, swing);
+	//Display swing = new Display(null);
 	
 	public int initBoard() {
 		JButton bouton;
 		Board board = new Board();
+		log.logInfo(""+panel);
 		for(int l=0; l<8; l++) {
 			for(int c=0; c<8; c++) {
 				int value = board.getBoard(l,c) ;

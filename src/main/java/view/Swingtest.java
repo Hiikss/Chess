@@ -14,10 +14,12 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Swingtest extends JFrame implements Strategy{
 	
+	private JPanel panel;
+	
     @Override
     public int performAction(Image board) {
     	
-    	JPanel panel = new JPanel() { //affichage de l'image sur le panel
+    	panel = new JPanel() { //affichage de l'image sur le panel
     		@Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -35,8 +37,10 @@ public class Swingtest extends JFrame implements Strategy{
  		this.setResizable(false);
 		this.setVisible(true);
 		return 1;
-		
-	
 	}
+    
+    public JPanel getPanel() {
+   	 return panel;
+    }
 
 }

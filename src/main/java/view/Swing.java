@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -18,7 +19,7 @@ public class Swing extends JFrame implements Strategy{
 
     @Override
     public int performAction(Image board) {
-    	
+    
     	panel = new JPanel() { //affichage de l'image sur le panel
     		@Override
             protected void paintComponent(Graphics g) {
@@ -43,6 +44,11 @@ public class Swing extends JFrame implements Strategy{
     
      public JPanel getPanel() {
     	 return panel;
+     }
+     
+     public int addComponent(JPanel panel, Component component) {
+    	 panel.add(component);
+    	 return 1;
      }
 
 }
