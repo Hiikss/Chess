@@ -25,7 +25,6 @@ public class Main {
 	public Main() throws IOException {
 		BufferedImage boardImage = ImageIO.read(Main.class.getResource("/chessboardblue.png")); //chemin de l'image de l'échiquier
 		
-		//Init init = new Init();
 		Display view = null;
 		Model model = new Model();
 

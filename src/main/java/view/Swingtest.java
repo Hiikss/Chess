@@ -43,6 +43,7 @@ public class Swingtest extends JFrame implements Strategy{
 		this.setLocationRelativeTo(null);
  		this.setResizable(false);
 		this.setVisible(true);
+		logger.log(Level.INFO, "vue = swingtest");
 		return 1;
 	}
     
@@ -58,7 +59,6 @@ public class Swingtest extends JFrame implements Strategy{
     public int updateView() {
    	 panel.repaint();
 		 panel.revalidate();
-		 logger.log(Level.INFO, "swing");
    	 return 1;
     }
 }
