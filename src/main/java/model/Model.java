@@ -2,11 +2,15 @@ package model;
 
 import java.awt.Component;
 
+import javax.swing.JButton;
+
 import controller.Controller;
 
 public class Model {
 
 	private Init init = new Init(this);
+	
+	private Piece piece = new Piece();
 	
 	private Board board;
 	
@@ -29,6 +33,10 @@ public class Model {
 	
 	public void initBoard() {
 		init.initBoard();
+	}
+	
+	public JButton getButton(int value, int l, int c) {
+		return piece.getButton(value, l, c);
 	}
 	
 	public void updateView() {

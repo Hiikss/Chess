@@ -9,8 +9,6 @@ import org.apache.logging.log4j.Logger;
 public class Init {
 
 	private final Logger logger =  LogManager.getLogger(this);
-
-	private Piece piece = new Piece();
 	
 	private Model model;
 	
@@ -26,7 +24,7 @@ public class Init {
 				int value = model.getBoard(l,c) ;
 				
 				if(value!=0) {
-					bouton = piece.getButton(value, l, c);
+					bouton = model.getButton(value, l, c);
 					model.addComponent(bouton);
 				}
 			}
