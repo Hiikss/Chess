@@ -1,10 +1,15 @@
 package view;
 
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /** 
  * La classe <b>Swing</b> appartient au package <b>view</b>.
@@ -16,7 +21,7 @@ public class Swingtest extends JFrame implements Strategy{
 	
 	private JPanel panel;
 	
-	private Display view;
+	private final Logger logger =  LogManager.getLogger(this);
 	
     @Override
     public int performAction(Image board) {
@@ -41,12 +46,19 @@ public class Swingtest extends JFrame implements Strategy{
 		return 1;
 	}
     
-    public int setDisplay(Display view) {
-   	 this.view = view;
+    public void setPanel(JPanel panel) {
+   	 this.panel = panel;
+    }
+    
+    public int addComponent(Component component) {
+   	 panel.add(component);
    	 return 1;
     }
-
-    public Display getView() {
-    	return view;
+    
+    public int updateView() {
+   	 panel.repaint();
+		 panel.revalidate();
+		 logger.log(Level.INFO, "swing");
+   	 return 1;
     }
 }

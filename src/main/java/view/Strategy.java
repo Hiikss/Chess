@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Component;
 import java.awt.Image;
 
 /** 
@@ -10,6 +11,8 @@ public interface Strategy {
 
 	public int performAction(Image board);
 	
-	public int setDisplay(Display view);
+	public int updateView();
+	
+	public int addComponent(Component component);
 	
 }

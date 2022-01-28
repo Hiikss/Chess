@@ -31,15 +31,12 @@ public class Main {
 
 		switch(vue) {
 		case 0: //cas où la vue est en swing
-			view = new Display(new Swing());
-			view.setDisplay(view);
+			view = new Display(new Swing());			
 			break;
 		case 1:
 			view = new Display(new Swingtest());
-			view.setDisplay(view);
 			break;
 		}
-		
 		view.executeStrategy(boardImage);
 		Controller controller = new Controller(model, view);
 		logger.log(Level.INFO, "controller = "+controller);
