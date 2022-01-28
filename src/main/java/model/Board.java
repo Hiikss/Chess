@@ -15,8 +15,8 @@ public class Board {
 	
 	private int [][] board = new int [8][8];
 	
-	private final Logger logger =  LogManager.getLogger(this);	
-	
+	private final Logger logger =  LogManager.getLogger(this);
+
 	public Board() {
 		InputStream in = getClass().getResourceAsStream("/chessboard.txt"); //recherche du fichier ressource chessboard.txt
         BufferedReader br = new BufferedReader(new InputStreamReader(in)); //lecture du fichier
@@ -30,11 +30,14 @@ public class Board {
         		board[l][c] = Integer.parseInt(strNums[c]);
         	}
         }
-        logger.log(Level.INFO, board.toString());
+        logger.log(Level.INFO, "board " + board.toString());
 	}
 
-	public int getBoard(int l, int c){
-		return board[l][c];
+	public int[][] getBoard(){
+		return board;
 	}
 	
+	public void setBoard(int[][] board) {
+		this.board = board;
+	}
 }

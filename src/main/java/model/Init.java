@@ -14,18 +14,16 @@ public class Init {
 	
 	private Model model;
 	
-	//Display swing = new Display(null);
-	
 	public Init(Model model) {
 		this.model = model;
 	}
 	
 	public int initBoard() {
 		JButton bouton;
-		Board board = new Board();
+		model.createBoard();
 		for(int l=0; l<8; l++) {
 			for(int c=0; c<8; c++) {
-				int value = board.getBoard(l,c) ;
+				int value = model.getBoard(l,c) ;
 				
 				if(value!=0) {
 					bouton = piece.getButton(value, l, c);

@@ -27,7 +27,7 @@ public class Piece {
 
 	private int btn = 0;
 	
-	private final Logger logger =  LogManager.getLogger(this);	
+	private final Logger logger =  LogManager.getLogger(this);
 	
 	public ImageIcon getImage(int valPiece) {
 		switch(valPiece){
