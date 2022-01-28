@@ -26,4 +26,8 @@ public class Model {
 	public void initBoard() {
 		init.initBoard();
 	}
+	
+	public void updateView() {
+		controller.updateView();
+	}
 }

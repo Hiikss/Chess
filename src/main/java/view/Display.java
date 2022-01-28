@@ -32,6 +32,11 @@ public class Display {
 	   return 1;
 	}
 	
+	public int setDisplay(Display view) {
+		strategy.setDisplay(view);
+		return 1;
+	}
+	
 	public JPanel getPanel() {
 		return panel;
 	}
@@ -40,22 +45,19 @@ public class Display {
 		this.panel = panel;
 	}
 	
-	public Swing getSwing() {
-		return swing;
-	}
-	
 	public void setSwing(Swing swing) {
 		this.swing = swing;
 	}
 	
 	public int addComponent(Component component) {
 		panel = getPanel();
-		swing = getSwing();
-		swing.addComponent(panel, component);
+		panel.add(component);
+		logger.log(Level.INFO, "Pièce ajoutée au panel");
 		return 1;
 	}
-	public void setView(Display view) {
-		swing.setView(view);
-		
+	
+	public void updateView() {
+		panel.repaint();
+		panel.revalidate();
 	}
 }

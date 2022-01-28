@@ -16,6 +16,8 @@ public class Swingtest extends JFrame implements Strategy{
 	
 	private JPanel panel;
 	
+	private Display view;
+	
     @Override
     public int performAction(Image board) {
     	
@@ -39,8 +41,12 @@ public class Swingtest extends JFrame implements Strategy{
 		return 1;
 	}
     
-    public JPanel getPanel() {
-   	 return panel;
+    public int setDisplay(Display view) {
+   	 this.view = view;
+   	 return 1;
     }
 
+    public Display getView() {
+    	return view;
+    }
 }

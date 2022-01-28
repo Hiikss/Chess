@@ -23,4 +23,8 @@ public class Controller {
 		view.addComponent(component);
 		return 1;
 	}
+	
+	public void updateView() {
+		view.updateView();
+	}
 }

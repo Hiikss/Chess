@@ -28,11 +28,12 @@ public class Init {
 				int value = board.getBoard(l,c) ;
 				
 				if(value!=0) {
-					bouton = piece.getButton(value);
+					bouton = piece.getButton(value, l, c);
 					model.addComponent(bouton);
 				}
 			}
 		}
+		model.updateView();
 		logger.log(Level.INFO, "Échiquier initialisé");
 		return 1;
 	}

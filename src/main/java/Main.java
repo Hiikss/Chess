@@ -32,9 +32,11 @@ public class Main {
 		switch(vue) {
 		case 0: //cas où la vue est en swing
 			view = new Display(new Swing());
+			view.setDisplay(view);
 			break;
 		case 1:
 			view = new Display(new Swingtest());
+			view.setDisplay(view);
 			break;
 		}
 		
@@ -42,7 +44,7 @@ public class Main {
 		Controller controller = new Controller(model, view);
 		logger.log(Level.INFO, "controller = "+controller);
 		model.setController(controller);
-		//controller.initBoard();
+		controller.initBoard();
 	}
 	
 	public static void main(String[] args) throws IOException{	

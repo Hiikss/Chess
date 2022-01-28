@@ -10,4 +10,6 @@ public interface Strategy {
 
 	public int performAction(Image board);
 	
+	public int setDisplay(Display view);
+	
 }

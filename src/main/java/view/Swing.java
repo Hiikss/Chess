@@ -21,13 +21,14 @@ public class Swing extends JFrame implements Strategy{
 
 	private JPanel panel;
 	
+	public Swing swing;
+	
 	private final Logger logger =  LogManager.getLogger(this);
 	
 	private Display view;
 	
     @Override
     public int performAction(Image board) {
-
     	panel = new JPanel() { //affichage de l'image sur le panel
     		@Override
             protected void paintComponent(Graphics g) {
@@ -37,7 +38,7 @@ public class Swing extends JFrame implements Strategy{
         };
         
 		panel.setLayout(null); //layout null
-		setPanel(panel);
+		view.setPanel(panel);
 		this.setTitle("Chess"); //propriétés de la frame
 		this.setSize(1100, 700);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -45,9 +46,7 @@ public class Swing extends JFrame implements Strategy{
 		this.setLocationRelativeTo(null);
  		this.setResizable(false);
 		this.setVisible(true);
-		logger.log(Level.INFO, "view = "+view);
-		/*view = getDisplay();
-		view.setPanel(getPanel());*/
+		
 		return 1;
 	}
     
@@ -64,13 +63,13 @@ public class Swing extends JFrame implements Strategy{
     	 panel.add(component);
     	 return 1;
      }
-     
-     public Display getDisplay() {
-    	 return view;
+
+     public Display getView() {
+     	return view;
      }
      
-     public void setView(Display view) {
- 		this.view = view;
- 		
- 	}
+     public int setDisplay(Display view) {
+    	 this.view = view;
+    	 return 1;
+     }
 }

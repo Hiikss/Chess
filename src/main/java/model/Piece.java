@@ -24,8 +24,6 @@ public class Piece {
 	private ImageIcon itn = new ImageIcon(Piece.class.getResource("/tn.png"));
 	
 	private ImageIcon icon = new ImageIcon();
-	
-	private JButton piece = new JButton();
 
 	private int btn = 0;
 	
@@ -91,7 +89,8 @@ public class Piece {
 		this.icon = icon;
 	}
 	
-	public JButton getButton(int value) {
+	public JButton getButton(int value, int l, int c) {
+		JButton piece = new JButton();
 		piece.setName("b"+btn);
 		/*if(btn<=15) {
 			piecesNoires.add(piece);
@@ -100,6 +99,7 @@ public class Piece {
 			piecesBlanches.add(piece);
 		}*/
 		btn++;
+		piece.setBounds(200+75*c, 25+75*l, 75, 75);
 		piece.setLayout(null);
 		piece.setIcon(getImage(value));
 		piece.setContentAreaFilled(false);
