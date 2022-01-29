@@ -7,6 +7,12 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/** 
+ * La classe <b>Piece</b> appartient au package <b>model</b>.
+ * Elle comprend trois m�thodes relatives aux valeurs associ�es aux images de pi�ce ainsi qu'aux boutons.
+ * @see <b>getImage</b>, <b>setImage</b>, <b>getButton</b>
+ */
+
 public class Piece {
 	
 	private ImageIcon ipb = new ImageIcon(Piece.class.getResource("/pb.png"));

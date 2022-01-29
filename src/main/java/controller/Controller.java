@@ -3,14 +3,14 @@ package controller;
 import java.awt.Component;
 
 import model.Model;
-import view.Display;
+import view.View;
 
 public class Controller {
 	
-	private Display view;
+	private View view;
 	private Model model;
 	
-	public Controller(Model model, Display view) {
+	public Controller(Model model, View view) {
 		this.model = model;
 		this.view = view;
 	}

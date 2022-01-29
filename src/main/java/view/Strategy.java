@@ -9,7 +9,7 @@ import java.awt.Image;
  */
 public interface Strategy {
 
-	public int performAction(Image board);
+	public int createFrame(Image board);
 	
 	public int updateView();
 	

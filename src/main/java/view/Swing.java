@@ -3,7 +3,10 @@ package view;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -23,10 +26,12 @@ public class Swing extends JFrame implements Strategy{
 	
 	public Swing swing;
 	
+	
+	
 	private final Logger logger =  LogManager.getLogger(this);
 	
     @Override
-    public int performAction(Image board) {
+    public int createFrame(Image board) {
     	panel = new JPanel() { //affichage de l'image sur le panel
     		@Override
             protected void paintComponent(Graphics g) {
@@ -34,9 +39,19 @@ public class Swing extends JFrame implements Strategy{
                 g.drawImage(board, 200, 25, null);
             }
         };      
+        
+        BufferedImage icon = null;
+		try {
+			icon = ImageIO.read(Swing.class.getResource("/rb.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 		panel.setLayout(null); //layout null
 		this.setTitle("Chess"); //propriétés de la frame
 		this.setSize(1100, 700);
+		this.setIconImage(icon);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setContentPane(panel);
 		this.setLocationRelativeTo(null);
