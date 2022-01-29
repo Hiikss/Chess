@@ -25,10 +25,12 @@ public class Swing extends JFrame implements Strategy{
 
 	private JPanel panel;
 	
-	public Swing swing;
+	private final Logger logger =  LogManager.getLogger(this); //log4j2
 	
-	private final Logger logger =  LogManager.getLogger(this);
-	
+	/**
+	  * La méthode createFrame permet de créer la frame et d'y ajouter un panel.
+	  * @param board image de l'échiquier à mettre en background
+	  */
     @Override
     public int createFrame(Image board) {
     	panel = new JPanel() { //affichage de l'image sur le panel
@@ -41,34 +43,40 @@ public class Swing extends JFrame implements Strategy{
         
         BufferedImage icon = null;
 		try {
-			icon = ImageIO.read(Swing.class.getResource("/rb.png"));
+			icon = ImageIO.read(Swing.class.getResource("/rb.png")); //cherche l'image rb.png
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
 		panel.setLayout(null); //layout null
-		this.setTitle("Chess"); //propriétés de la frame
-		this.setSize(1100, 700);
-		this.setIconImage(icon);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setContentPane(panel);
-		this.setLocationRelativeTo(null);
- 		this.setResizable(false);
-		this.setVisible(true);
+		
+		this.setTitle("Chess"); //nom de la frame
+		this.setSize(1100, 700); //taille de la frame
+		this.setIconImage(icon); //icon de la frame
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE); //quitte l'application lorsqu'elle est fermée
+		this.setContentPane(panel); //ajoute le panel à la frame
+		this.setLocationRelativeTo(null); //met la frame au milieu de l'écran
+ 		this.setResizable(false); //on ne peut pas redimentionner la frame 
+		this.setVisible(true); //on voit la frame
 		logger.log(Level.INFO, "vue = swing");
 		return 1;
 	}
-    
-     public void setPanel(JPanel panel) {
-    	 this.panel = panel;
-     }
      
+     /**
+	  * La méthode addComponent permet d'ajouter un composant au panel.
+	  * @param component composant à ajouter au panel
+	  */
+     @Override
      public int addComponent(Component component) {
     	 panel.add(component);
     	 return 1;
      }
      
+     /**
+	  * La méthode updateView permet de mettre à jour la vue.
+	  */
+     @Override
      public int updateView() {
     	 panel.repaint();
  		 panel.revalidate();
