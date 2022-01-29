@@ -15,8 +15,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /** 
- * La classe <b>Swing</b> appartient au package <b>view</b>.
- * C'est une classe concrete qui implémente l'interface Strategy. 
+ * La classe <b>Swing</b> appartient au package <b>view</b>, c'est une classe concrète qui implémente l'interface Strategy. 
  * Il s'agit de la vue Swingtest.
  * @author Thomas
  */

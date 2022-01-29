@@ -6,9 +6,9 @@ import java.awt.Image;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 /** 
- * La classe <b>View</b> appartient au package <b>view</b>.
- * Il s'agit d'une classe Context qui utilise les différentes strategies. 
+ * La classe <b>View</b> appartient au package <b>view</b>, c'est la classe context de l'interface Strategy.
  * C'est la classe qui gère la vue dans le modèle MVC.
  * @author Thomas
  */

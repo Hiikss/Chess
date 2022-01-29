@@ -15,25 +15,32 @@ import view.Swing;
 import view.Swingtest;
 
 /** 
- * La classe <b>Main</b> appartient au package <b>java</b>.
- * Il s'agit de la classe principale qui lance l'application.
+ * La classe <b>Main</b> appartient au package <b>java</b>, c'est la classe principale qui lance l'application.
  * @author Thomas
  */
-
 public class Main {
 	
 	private static int vue = 0;
 	
+	/**
+	 * classe Main
+	 */
 	public static Main instance;
 	
-	private final Logger logger =  LogManager.getLogger(this); //log4j2
+	private final Logger logger =  LogManager.getLogger(this); //log4j
 	
 	/**
 	  * La méthode Main est la méthode principale de la classe Main.
 	  * Elle permet de choisir la vue qui est affichée et appelle l'initialisation de l'échiquier.
 	  */
-	public Main() throws IOException {
-		BufferedImage boardImage = ImageIO.read(Main.class.getResource("/chessboardblue.png")); //chemin de l'image de l'échiquier
+	public Main() {
+		BufferedImage boardImage = null;
+		try {
+			boardImage = ImageIO.read(Main.class.getResource("/chessboardblue.png")); //chemin de l'image de l'échiquier
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		
 		View view = null; //la classe View est instanciée
 		Model model = new Model(); //la classe model est instanciée
@@ -59,7 +66,7 @@ public class Main {
 	  * @see #Main()
 	  * @param args les arguments de la méthode main
 	  */
-	public static void main(String[] args) throws IOException{	
+	public static void main(String[] args){	
 		instance = new Main(); //execute la fonction Main() lors du démarrage de l'application
 	}
 
