@@ -4,16 +4,29 @@ import java.awt.Component;
 import java.awt.Image;
 
 /** 
- * L'interface <b>Strategy</b> appartient au package <b>view</b>, elle définie les méthodes qui seront implémentées dans les classes concrètes
- * .
+ * L'interface <b>Strategy</b> appartient au package <b>view</b>, elle définie les méthodes qui sont implémentées dans les classes concrètes.
  * @author Thomas
  */
 public interface Strategy {
 
+	/**
+	  * Méthode de l'interface Strategy.
+	  * @see Swing#createFrame(Image board)
+	  * @param board image de l'échiquier à afficher sur le panel
+	  */
 	public int createFrame(Image board);
 	
+	/**
+	  * Méthode de l'interface Strategy.
+	  * @see Swing#updateView()
+	  */
 	public int updateView();
 	
+	/**
+	  * Méthode de l'interface Strategy.
+	  * @see Swing#addComponent(Component component)
+	  * @param component composant à ajouter au panel
+	  */
 	public int addComponent(Component component);
 	
 }

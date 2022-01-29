@@ -9,6 +9,10 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/** 
+ * La classe <b>Board</b> appartient au package <b>model</b>
+ * @author Thomas
+ */
 public class Board {
 	
 	private String[] strNums;
