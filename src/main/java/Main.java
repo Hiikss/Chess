@@ -16,16 +16,22 @@ import view.Swingtest;
 
 /** 
  * La classe <b>Main</b> appartient au package <b>java</b>.
- * Il s'agit de la classe principale qui lance l'application
+ * Il s'agit de la classe principale qui lance l'application.
+ * @author Thomas
  */
+
 public class Main {
 	
 	private static int vue = 0;
 	
 	public static Main instance;
 	
-	private final Logger logger =  LogManager.getLogger(this);
+	private final Logger logger =  LogManager.getLogger(this); //log4j2
 	
+	/**
+	  * La méthode Main est la méthode principale de la classe Main.
+	  * Elle permet de choisir la vue qui est affichée et appelle l'initialisation de l'échiquier.
+	  */
 	public Main() throws IOException {
 		BufferedImage boardImage = ImageIO.read(Main.class.getResource("/chessboardblue.png")); //chemin de l'image de l'échiquier
 		
@@ -43,10 +49,16 @@ public class Main {
 		view.createFrame(boardImage); //on crée la frame et le panel de la vue
 		Controller controller = new Controller(model, view); //la classe Controller est instanciée
 		logger.log(Level.INFO, "controller = " + controller);
-		model.setController(controller);
+		model.setController(controller); //on donne le controller au model
 		controller.initBoard(); //on initialise l'échiquier
 	}
 	
+	/**
+	  * La méthode main commence l'exécution du programme.
+	  * On appelle la méthode Main().
+	  * @see #Main()
+	  * @param args les arguments de la méthode main
+	  */
 	public static void main(String[] args) throws IOException{	
 		instance = new Main(); //execute la fonction Main() lors du démarrage de l'application
 	}

@@ -6,6 +6,10 @@ import javax.swing.JButton;
 
 import controller.Controller;
 
+/** 
+ * La classe <b>Model</b> appartient au package <b>model</b>.
+ * C'est la classe qui gère le modèle dans le modèle MVC
+ */
 public class Model {
 
 	private Init init = new Init(this);

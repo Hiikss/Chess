@@ -9,8 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 /** 
  * La classe <b>Piece</b> appartient au package <b>model</b>.
- * Elle comprend trois m�thodes relatives aux valeurs associ�es aux images de pi�ce ainsi qu'aux boutons.
- * @see <b>getImage</b>, <b>setImage</b>, <b>getButton</b>
+ * Elle comprend trois méthodes relatives aux valeurs associées aux images de pièce ainsi qu'aux boutons.
  */
 
 public class Piece {

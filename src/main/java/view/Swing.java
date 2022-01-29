@@ -16,8 +16,9 @@ import org.apache.logging.log4j.Logger;
 
 /** 
  * La classe <b>Swing</b> appartient au package <b>view</b>.
- * C'est une classe concrete qui implémente l'interface Strategy
- * Il s'agit de la vue en Swing
+ * C'est une classe concrete qui implémente l'interface Strategy. 
+ * Il s'agit de la vue Swing.
+ * @author Thomas
  */
 @SuppressWarnings("serial")
 public class Swing extends JFrame implements Strategy{
@@ -25,8 +26,6 @@ public class Swing extends JFrame implements Strategy{
 	private JPanel panel;
 	
 	public Swing swing;
-	
-	
 	
 	private final Logger logger =  LogManager.getLogger(this);
 	
