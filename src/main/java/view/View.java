@@ -59,10 +59,20 @@ public class View {
 		strategy.updateView();
 	}
 	
+	/**
+	 * La méthode getX appelle la méthode getX de l'interface Strategy
+	 * @see Strategy#getX()
+	 * @return la valeur horizontale en pixel
+	 */
 	public int getX() {
 		return strategy.getX();
 	}
 	
+	/**
+	 * La méthode getY appelle la méthode getY de l'interface Strategy
+	 * @see Strategy#getY()
+	 * @return la valeur verticale en pixel
+	 */
 	public int getY() {
 		return strategy.getY();
 	}
