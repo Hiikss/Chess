@@ -22,9 +22,15 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings("serial")
 public class Swingtest extends JFrame implements Strategy{
 	
+	/**
+	 * JPanel de la frame
+	 */
 	private JPanel panel;
 	
-	private final Logger logger =  LogManager.getLogger(this); //log4j2
+	/**
+	 * logger du log4j
+	 */
+	private final Logger logger =  LogManager.getLogger(this); //log4j
 	
 	/**
 	  * La méthode createFrame permet de créer la frame et d'y ajouter un panel.

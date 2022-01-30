@@ -13,12 +13,14 @@ public interface Strategy {
 	  * Méthode de l'interface Strategy.
 	  * @see Swing#createFrame(Image board)
 	  * @param board image de l'échiquier à afficher sur le panel
+	  * @return 1 si la méthode a bien été exécutée
 	  */
 	public int createFrame(Image board);
 	
 	/**
 	  * Méthode de l'interface Strategy.
 	  * @see Swing#updateView()
+	  * @return 1 si la méthode a bien été exécutée
 	  */
 	public int updateView();
 	
@@ -26,6 +28,7 @@ public interface Strategy {
 	  * Méthode de l'interface Strategy.
 	  * @see Swing#addComponent(Component component)
 	  * @param component composant à ajouter au panel
+	  * @return 1 si la méthode a bien été exécutée
 	  */
 	public int addComponent(Component component);
 	

@@ -35,6 +35,7 @@ public class Controller {
 	  * La méthode addComponentToPanel la méthode addComponent de la classe View
 	  * @see View#addComponent(Component component)
 	  * @param component composant à ajouter au panel
+	  * @return  si la méthode a bien été exécutée
 	  */
 	public int addComponentToPanel(Component component) {
 		view.addComponent(component);

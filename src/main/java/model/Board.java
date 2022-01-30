@@ -21,6 +21,9 @@ public class Board {
 	
 	private final Logger logger =  LogManager.getLogger(this);
 
+	/** 
+	 * La méthode Board est la méthode principale de la classe Board, elle créer un tableau multidimentionnel à partir du fichier chessboard.txt
+	 */
 	public Board() {
 		InputStream in = getClass().getResourceAsStream("/chessboard.txt"); //recherche du fichier ressource chessboard.txt
         BufferedReader br = new BufferedReader(new InputStreamReader(in)); //lecture du fichier
@@ -36,11 +39,19 @@ public class Board {
         }
         logger.log(Level.INFO, "board " + board.toString());
 	}
-
+	
+	/** 
+	 * La méthode getBoard retourne la valeur board
+	 * @return le tableau multidimentionnel board
+	 */
 	public int[][] getBoard(){
 		return board;
 	}
 	
+	/** 
+	 * La méthode setBoard permet d'attribuer une valeur au tableau board
+	 * @param board tableau multidimentionnel
+	 */
 	public void setBoard(int[][] board) {
 		this.board = board;
 	}

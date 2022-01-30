@@ -33,6 +33,11 @@ public class Piece {
 	
 	private final Logger logger =  LogManager.getLogger(this);
 	
+	/**
+	 * La méthode getImage attribut une image de pièce en fonction de la valeur de la pièece.
+	 * @param valPiece valeur de la pièce
+	 * @return l'image de la pièce
+	 */
 	public ImageIcon getImage(int valPiece) {
 		switch(valPiece){
 		   
@@ -88,11 +93,22 @@ public class Piece {
 		return icon;
 	}
 	
+	/**
+	 * La méthode setImage permet de mettre l'image de paramètre dans la variable icon
+	 * @param icon image à attribuer à la variable icon
+	 */
 	public void setImage(ImageIcon icon)
 	{
 		this.icon = icon;
 	}
 	
+	/**
+	 * La méthode getButton créer un nouveau bouton en lui attribuant une icon en fonction de sa valeur dans le tableau
+	 * @param value valeur de la pièce
+	 * @param l ligne du tableau multidimentionnel
+	 * @param c colonne du tableau multidimentionnel
+	 * @return un bouton qui correspond à la pièce
+	 */
 	public JButton getButton(int value, int l, int c) {
 		JButton piece = new JButton();
 		piece.setName("b"+btn);

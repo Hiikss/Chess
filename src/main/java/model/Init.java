@@ -16,10 +16,19 @@ public class Init {
 	
 	private Model model;
 	
+	/**
+	 * La méthode Init est la méthode principale de la classe Init. 
+	 * Elle attribut la classe Model à la variable model
+	 * @param model classe Model
+	 */
 	public Init(Model model) {
 		this.model = model;
 	}
 	
+	/**
+	 * La méthode initBoard initialise l'échiquier en ajoutant chaque pièce par rapport au fichier chessboard.txt 
+	 * @return 1 si la méthode a bien été exécutée
+	 */
 	public int initBoard() {
 		JButton bouton;
 		model.createBoard();

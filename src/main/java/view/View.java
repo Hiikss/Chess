@@ -32,6 +32,7 @@ public class View {
 	  * La méthode View appelle la méthode createFrame de l'interface Strategy.
 	  * @see Strategy#createFrame(Image board)
 	  * @param board image de l'échiquier à afficher sur le panel
+	  * @return 1 si la méthode a bien été exécutée
 	  */
 	public int createFrame(Image board){
 	   strategy.createFrame(board);
@@ -42,6 +43,7 @@ public class View {
 	  * La méthode addComponent appelle la méthode addComponent de l'interface Strategy.
 	  * @see Strategy#addComponent(Component component)
 	  * @param component composant à ajouter au panel
+	  * @return 1 si la méthode a bien été exécutée
 	  */
 	public int addComponent(Component component) {
 		strategy.addComponent(component);

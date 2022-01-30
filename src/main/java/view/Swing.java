@@ -22,13 +22,20 @@ import org.apache.logging.log4j.Logger;
 @SuppressWarnings("serial")
 public class Swing extends JFrame implements Strategy{
 
+	/**
+	 * JPanel de la frame
+	 */
 	private JPanel panel;
 	
-	private final Logger logger =  LogManager.getLogger(this); //log4j2
+	/**
+	 * logger du log4j
+	 */
+	private final Logger logger =  LogManager.getLogger(this); //log4j
 	
 	/**
 	  * La méthode createFrame permet de créer la frame et d'y ajouter un panel.
 	  * @param board image de l'échiquier à mettre en background
+	  * @return 1 si la méthode a bien été exécutée
 	  */
     @Override
     public int createFrame(Image board) {
@@ -65,6 +72,7 @@ public class Swing extends JFrame implements Strategy{
      /**
 	  * La méthode addComponent permet d'ajouter un composant au panel.
 	  * @param component composant à ajouter au panel
+	  * @return 1 si la méthode a bien été exécutée
 	  */
      @Override
      public int addComponent(Component component) {
@@ -74,6 +82,7 @@ public class Swing extends JFrame implements Strategy{
      
      /**
 	  * La méthode updateView permet de mettre à jour la vue.
+	  * @return 1 si la méthode a bien été exécutée
 	  */
      @Override
      public int updateView() {

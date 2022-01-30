@@ -41,7 +41,7 @@ public class Model {
 	/**
 	  * la méthode addComponent appeller la méthode getController de la classe Controller
 	  * @see Controller#addComponentToPanel(Component component)
-	  * @param component composant à ajouter au panel
+	  * @param c composant à ajouter au panel
 	  */
 	public void addComponent(Component c) {
 		controller = getController();
