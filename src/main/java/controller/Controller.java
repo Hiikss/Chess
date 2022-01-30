@@ -49,4 +49,22 @@ public class Controller {
 	public void updateView() {
 		view.updateView();
 	}
+	
+	/**
+	 * La méthode getX appelle la méthode getX de la classe View
+	 * @see View#getX()
+	 * @return la valeur horizontale en pixel
+	 */
+	public int getX() {
+		return view.getX();
+	}
+	
+	/**
+	 * La méthode getY appelle la méthode getY de la classe View
+	 * @see View#getX()
+	 * @return la valeur horizontale en pixel
+	 */
+	public int getY() {
+		return view.getY();
+	}
 }

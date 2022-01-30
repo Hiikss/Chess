@@ -58,4 +58,12 @@ public class View {
 	public void updateView() {
 		strategy.updateView();
 	}
+	
+	public int getX() {
+		return strategy.getX();
+	}
+	
+	public int getY() {
+		return strategy.getY();
+	}
 }

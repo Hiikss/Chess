@@ -33,6 +33,16 @@ public class Swing extends JFrame implements Strategy{
 	private final Logger logger =  LogManager.getLogger(this); //log4j
 	
 	/**
+	 * int qui définie la valeur horizontale de l'espace entre la bordure et l'échiquier
+	 */
+	private int x = 200;
+	
+	/**
+	 * int qui définie la valeur verticale de l'espace entre la bordure et l'échiquier
+	 */
+	private int y = 25;
+	
+	/**
 	  * La méthode createFrame permet de créer la frame et d'y ajouter un panel.
 	  * @param board image de l'échiquier à mettre en background
 	  * @return 1 si la méthode a bien été exécutée
@@ -43,7 +53,7 @@ public class Swing extends JFrame implements Strategy{
     		@Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(board, 200, 25, null);
+                g.drawImage(board, x, y, null);
             }
         };      
         
@@ -89,5 +99,21 @@ public class Swing extends JFrame implements Strategy{
     	 panel.repaint();
  		 panel.revalidate();
     	 return 1;
+     }
+     
+     /**
+ 	 * La méthode getX retourne la valeur de la variable x
+ 	 * @return la valeur horizontale en pixel
+ 	 */
+     public int getX() {
+    	 return x;
+     }
+     
+     /**
+ 	 * La méthode getY retourne la valeur de la variable x
+ 	 * @return la valeur horizontale en pixel
+ 	 */
+     public int getY() {
+    	 return y;
      }
 }

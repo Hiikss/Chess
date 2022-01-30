@@ -9,7 +9,7 @@ import model.Piece;
 
 class PieceTest {
 
-	Piece piece = new Piece();
+	Piece piece = new Piece(null);
 	
 	private ImageIcon ipb = new ImageIcon(Piece.class.getResource("/pb.png"));
 	private ImageIcon idb = new ImageIcon(Piece.class.getResource("/db.png"));

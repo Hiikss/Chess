@@ -14,11 +14,15 @@ public class Model {
 
 	private Init init = new Init(this);
 	
-	private Piece piece = new Piece();
+	private Piece piece = new Piece(this);
 	
 	private Board board;
 	
 	private Controller controller;
+	
+	private int x;
+	
+	private int y;
 	
 	private int [][] chessboard = new int [8][8];
 	
@@ -53,6 +57,8 @@ public class Model {
 	  * @see Init#initBoard()
 	  */
 	public void initBoard() {
+		setX(controller.getX());
+		setY(controller.getY());
 		init.initBoard();
 	}
 	
@@ -95,5 +101,36 @@ public class Model {
 	  */
 	public void createBoard() {
 		this.board = new Board();
+	}
+	
+	/**
+	 * La méthode getX retourne la valeur de la variable x
+	 * @return la valeur horizontale en pixel
+	 */
+	public int getX() {
+		return x;
+	}
+	
+	/**
+	 * La méthode setX attribue une valeur à la variable x
+	 * @param x valeur horizontale en pixel
+	 */
+	public void setX(int x) {
+		this.x = x;
+	}
+	
+	/**
+	 * La méthode setY attribue une valeur à la variable y
+	 * @param y valeur verticale en pixel
+	 */
+	public void setY(int y) {
+		this.y = y;
+	}
+	/**
+	 * La méthode getX retourne la valeur de la variable y
+	 * @return la valeur verticale en pixel
+	 */
+	public int getY() {
+		return y;
 	}
 }

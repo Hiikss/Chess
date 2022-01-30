@@ -32,4 +32,17 @@ public interface Strategy {
 	  */
 	public int addComponent(Component component);
 	
+	/**
+	 * Méthode de l'interface Strategy
+	 * @see Swing#getX()
+	 * @return la valeur horizontale en pixel
+	 */
+	public int getX();
+	
+	/**
+	 * Méthode de l'interface Strategy
+	 * @see Swing#getY()
+	 * @return la valeur verticale en pixel
+	 */
+	public int getY();
 }

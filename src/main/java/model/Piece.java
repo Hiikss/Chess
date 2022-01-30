@@ -31,10 +31,21 @@ public class Piece {
 
 	private int btn = 0;
 	
+	private Model model;
+	
 	private final Logger logger =  LogManager.getLogger(this);
 	
 	/**
-	 * La méthode getImage attribut une image de pièce en fonction de la valeur de la pièece.
+	 * La méthode Piece est la méthode principale de la classe Piece.
+	 * Elle attribut la classe Model à la variable model
+	 * @param model classe Model
+	 */
+	public Piece(Model model) {
+		this.model = model;
+	}
+	
+	/**
+	 * La méthode getImage attribut une image de pièce en fonction de la valeur de la pièce.
 	 * @param valPiece valeur de la pièce
 	 * @return l'image de la pièce
 	 */
@@ -119,7 +130,7 @@ public class Piece {
 			piecesBlanches.add(piece);
 		}*/
 		btn++;
-		piece.setBounds(200+75*c, 25+75*l, 75, 75);
+		piece.setBounds(model.getX()+75*c, model.getY()+75*l, 75, 75);
 		piece.setLayout(null);
 		piece.setIcon(getImage(value));
 		piece.setContentAreaFilled(false);

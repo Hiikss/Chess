@@ -33,6 +33,16 @@ public class Swingtest extends JFrame implements Strategy{
 	private final Logger logger =  LogManager.getLogger(this); //log4j
 	
 	/**
+	 * int qui définie la valeur horizontale de l'espace entre la bordure et l'échiquier
+	 */
+	private int x = 200;
+	
+	/**
+	 * int qui définie la valeur verticale de l'espace entre la bordure et l'échiquier
+	 */
+	private int y = 25;
+	
+	/**
 	  * La méthode createFrame permet de créer la frame et d'y ajouter un panel.
 	  * @param board image de l'échiquier à mettre en background
 	  */
@@ -86,5 +96,13 @@ public class Swingtest extends JFrame implements Strategy{
    	 panel.repaint();
 		 panel.revalidate();
    	 return 1;
+    }
+    
+    public int getX() {
+    	return x;
+    }
+    
+    public int getY() {
+   	    return y;
     }
 }
