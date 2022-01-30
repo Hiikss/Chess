@@ -11,7 +11,6 @@ import org.apache.logging.log4j.Logger;
  * La classe <b>Piece</b> appartient au package <b>model</b>.
  * @author Thomas
  */
-
 public class Piece {
 	
 	private ImageIcon ipb = new ImageIcon(Piece.class.getResource("/pb.png"));
