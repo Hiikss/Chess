@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -75,5 +76,9 @@ public class View {
 	 */
 	public int getY() {
 		return strategy.getY();
+	}
+	
+	public void addListener(MouseAdapter listener) {
+		strategy.addListener(listener);
 	}
 }

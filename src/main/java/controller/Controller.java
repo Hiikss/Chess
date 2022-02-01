@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
 
 import model.Model;
 import view.View;
@@ -14,6 +15,10 @@ public class Controller {
 	private View view;
 	
 	private Model model;
+	
+	private Event event;
+	
+	private MouseAdapter listener;
 	/**
 	  * la méthode Controller permet de mettre en lien les 3 éléments du pattern MVC
 	  * @param model classe Model
@@ -22,6 +27,7 @@ public class Controller {
 	public Controller(Model model, View view) {
 		this.model = model;
 		this.view = view;
+		this.event = new Event(this);
 	}
 	/**
 	  * La méthode initBoard la méthode initBoard de la classe Model
@@ -67,4 +73,16 @@ public class Controller {
 	public int getY() {
 		return view.getY();
 	}
+	
+	public void setListener(MouseAdapter listener) {
+		this.listener = listener;
+		view.addListener(this.listener);
+	}
+	public Event getEvent() {
+		return event;
+	}
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+	
 }

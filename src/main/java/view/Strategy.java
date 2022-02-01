@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
 
 /** 
  * L'interface <b>Strategy</b> appartient au package <b>view</b>, elle définie les méthodes qui sont implémentées dans les classes concrètes.
@@ -45,4 +46,6 @@ public interface Strategy {
 	 * @return la valeur verticale en pixel
 	 */
 	public int getY();
+	
+	public void addListener(MouseAdapter listener);
 }

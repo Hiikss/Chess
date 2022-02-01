@@ -3,6 +3,7 @@ package view;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -66,7 +67,6 @@ public class Swing extends JFrame implements Strategy{
 		}
         
 		panel.setLayout(null); //layout null
-		
 		this.setTitle("Chess"); //nom de la frame
 		this.setSize(1100, 700); //taille de la frame
 		this.setIconImage(icon); //icon de la frame
@@ -115,5 +115,10 @@ public class Swing extends JFrame implements Strategy{
  	 */
      public int getY() {
     	 return y;
+     }
+     
+     @Override
+     public void addListener(MouseAdapter listener) {
+ 		 panel.addMouseListener(listener);
      }
 }
