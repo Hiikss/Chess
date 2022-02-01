@@ -105,6 +105,7 @@ public class Swing extends JFrame implements Strategy{
  	 * La méthode getX retourne la valeur de la variable x
  	 * @return la valeur horizontale en pixel
  	 */
+     @Override
      public int getX() {
     	 return x;
      }
@@ -113,6 +114,7 @@ public class Swing extends JFrame implements Strategy{
  	 * La méthode getY retourne la valeur de la variable x
  	 * @return la valeur horizontale en pixel
  	 */
+     @Override
      public int getY() {
     	 return y;
      }

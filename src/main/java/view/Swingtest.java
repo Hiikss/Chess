@@ -3,6 +3,7 @@ package view;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -98,11 +99,19 @@ public class Swingtest extends JFrame implements Strategy{
    	 return 1;
     }
     
+    @Override
     public int getX() {
     	return x;
     }
     
+    @Override
     public int getY() {
    	    return y;
     }
+    
+    @Override
+    public void addListener(MouseAdapter listener) {
+		 panel.addMouseListener(listener);
+    }
+
 }
