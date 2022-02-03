@@ -78,6 +78,10 @@ public class Controller {
 		this.listener = listener;
 		view.addListener(this.listener);
 	}
+	
+	public MouseAdapter addListener() {
+		return listener;
+	}
 	public Event getEvent() {
 		return event;
 	}

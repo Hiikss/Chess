@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
 
 import javax.swing.JButton;
 
@@ -132,5 +133,9 @@ public class Model {
 	 */
 	public int getY() {
 		return y;
+	}
+	
+	public MouseAdapter addListener() {
+		return controller.addListener();
 	}
 }
