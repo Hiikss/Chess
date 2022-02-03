@@ -23,7 +23,7 @@ public class Event{
 	public Event(Controller controller) {
 		setController(controller);
 		
-		this.mouseAdapter = new MouseAdapter() { //enlève les sélections lorsqu'on clique sur le panel
+		this.mouseAdapter = new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) { 
             	logger.log(Level.INFO, "test");
