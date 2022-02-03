@@ -15,7 +15,7 @@ import view.Swingtest;
  */
 public class Main {
 	
-	private static int vue = 0;
+	private static int vue = 1;
 	
 	/**
 	 * classe Main

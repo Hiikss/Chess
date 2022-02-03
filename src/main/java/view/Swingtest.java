@@ -52,7 +52,7 @@ public class Swingtest extends JFrame implements Strategy{
     public int createFrame() {
     	
 		try {
-			boardImage = ImageIO.read(Swing.class.getResource("/chessboardblue.png")); //chemin de l'image de l'échiquier
+			boardImage = ImageIO.read(Swing.class.getResource("/chessboardgreen.png")); //chemin de l'image de l'échiquier
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
