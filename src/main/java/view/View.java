@@ -35,8 +35,8 @@ public class View {
 	  * @param board image de l'échiquier à afficher sur le panel
 	  * @return 1 si la méthode a bien été exécutée
 	  */
-	public int createFrame(Image board){
-	   strategy.createFrame(board);
+	public int createFrame(){
+	   strategy.createFrame();
 	   return 1;
 	}
 	

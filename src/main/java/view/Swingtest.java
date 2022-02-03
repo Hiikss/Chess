@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -43,18 +42,27 @@ public class Swingtest extends JFrame implements Strategy{
 	 */
 	private int y = 25;
 	
+	private BufferedImage boardImage = null;
+	
 	/**
 	  * La méthode createFrame permet de créer la frame et d'y ajouter un panel.
 	  * @param board image de l'échiquier à mettre en background
 	  */
     @Override
-    public int createFrame(Image board) {
+    public int createFrame() {
+    	
+		try {
+			boardImage = ImageIO.read(Swing.class.getResource("/chessboardblue.png")); //chemin de l'image de l'échiquier
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
     	
     	panel = new JPanel() { //affichage de l'image sur le panel
     		@Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(board, 200, 25, null);
+                g.drawImage(boardImage, 200, 25, null);
             }
         };
         

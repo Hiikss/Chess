@@ -16,7 +16,7 @@ public interface Strategy {
 	  * @param board image de l'échiquier à afficher sur le panel
 	  * @return 1 si la méthode a bien été exécutée
 	  */
-	public int createFrame(Image board);
+	public int createFrame();
 	
 	/**
 	  * Méthode de l'interface Strategy.
