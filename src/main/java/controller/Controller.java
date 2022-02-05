@@ -19,6 +19,7 @@ public class Controller {
 	private Event event;
 	
 	private MouseAdapter listener;
+
 	/**
 	  * la méthode Controller permet de mettre en lien les 3 éléments du pattern MVC
 	  * @param model classe Model
@@ -82,11 +83,24 @@ public class Controller {
 	public MouseAdapter addListener() {
 		return listener;
 	}
+	
 	public Event getEvent() {
 		return event;
 	}
+	
 	public void setEvent(Event event) {
 		this.event = event;
 	}
 	
+	public String getTeam() {
+		return model.getTeam();
+	}
+	
+	public void setTeam(String team) {
+		model.setTeam(team);
+	}
+	
+	public int getBoard(int x, int y) {
+		return model.getBoard(y, x);
+	}
 }

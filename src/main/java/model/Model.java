@@ -27,6 +27,8 @@ public class Model {
 	
 	private int [][] chessboard = new int [8][8];
 	
+	private String team = "white";
+	
 	/**
 	  * la méthode getController retourne le controller.
 	  * @return le controller 
@@ -137,5 +139,13 @@ public class Model {
 	
 	public MouseAdapter addListener() {
 		return controller.addListener();
+	}
+
+	public String getTeam() {
+		return team;
+	}
+
+	public void setTeam(String team) {
+		this.team = team;
 	}
 }

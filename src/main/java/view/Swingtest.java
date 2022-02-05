@@ -35,7 +35,7 @@ public class Swingtest extends JFrame implements Strategy{
 	/**
 	 * int qui définie la valeur horizontale de l'espace entre la bordure et l'échiquier
 	 */
-	private int x = 200;
+	private int x = 250;
 	
 	/**
 	 * int qui définie la valeur verticale de l'espace entre la bordure et l'échiquier
@@ -62,7 +62,7 @@ public class Swingtest extends JFrame implements Strategy{
     		@Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(boardImage, 200, 25, null);
+                g.drawImage(boardImage, x, y, null);
             }
         };
         
