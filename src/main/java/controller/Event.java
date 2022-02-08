@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -64,7 +65,7 @@ public class Event{
 	 					}
             		}
             	}
-            	else {
+            	else if(e.getSource() instanceof JPanel && btnSelected!=null){
             		logger.log(Level.INFO, "panel cliqué");
             	}
             	controller.updateView();
