@@ -39,9 +39,9 @@ public class Event{
             public void mouseReleased(MouseEvent e) { 
             	String team = getTeam();
             	JButton piece = (JButton) e.getSource();
-            	int x = (piece.getX()-200)/75;
-            	int y = (piece.getY()-25)/75;
-            	int pieceValue = getIntInBoard(y, x);
+            	int l = (piece.getY()-25)/75;
+            	int c = (piece.getX()-200)/75;
+            	int pieceValue = getIntInBoard(l, c);
             	logger.log(Level.INFO, "pièce cliquée");
             	if((team.equals("white") && pieceValue<0 || team.equals("black") && pieceValue>0) && btnSelected!=null) { //clique sur pièce de l'équipe adverse
             		btnSelected.setBackground(null);
@@ -56,6 +56,7 @@ public class Event{
 	 						piece.setBackground(Color.decode("#348339"));
 	 						btnSelected = piece;
 	 						piece.setOpaque(true);
+	 						controller.piecePossibilities(l, c, pieceValue);
 	 					}
 	 					else { 
 	 						btnSelected = null;
@@ -65,6 +66,7 @@ public class Event{
 	 					piece.setBackground(Color.decode("#348339"));
 	 					btnSelected = piece;
 	 					piece.setOpaque(true);
+	 					controller.piecePossibilities(l, c, pieceValue);
             		}
             	}
             	controller.updateView();

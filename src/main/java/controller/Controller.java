@@ -119,4 +119,11 @@ public class Controller {
 	public int getIntInBoard(int x, int y) {
 		return model.getIntInBoard(y, x);
 	}
+	
+	public void piecePossibilities(int l, int c, int value) {
+		model.piecePossibilities(l, c, value);
+	}
+	public int getSquareSize() {
+		return view.getSquareSize();
+	}
 }

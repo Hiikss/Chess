@@ -42,6 +42,8 @@ public class Swing extends JFrame implements Strategy{
 	 */
 	private int y = 25;
 	
+	private int squareSize = 75;
+	
 	private BufferedImage boardImage = null;
 	
 	/**
@@ -131,4 +133,9 @@ public class Swing extends JFrame implements Strategy{
      public void addListener(MouseAdapter listener) {
  		 panel.addMouseListener(listener);
      }
+
+	@Override
+	public int getSquareSize() {
+		return squareSize;
+	}
 }

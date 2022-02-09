@@ -81,4 +81,8 @@ public class View {
 	public void addListener(MouseAdapter listener) {
 		strategy.addListener(listener);
 	}
+
+	public int getSquareSize() {
+		return strategy.getSquareSize();
+	}
 }

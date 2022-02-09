@@ -42,6 +42,8 @@ public class Swingtest extends JFrame implements Strategy{
 	 */
 	private int y = 25;
 	
+	private int squareSize = 75;
+	
 	private BufferedImage boardImage = null;
 	
 	/**
@@ -122,4 +124,8 @@ public class Swingtest extends JFrame implements Strategy{
 		 panel.addMouseListener(listener);
     }
 
+    @Override
+	public int getSquareSize() {
+		return squareSize;
+	}
 }

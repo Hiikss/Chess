@@ -4,57 +4,54 @@ public class Movement {
 	
 	private Model model;
 	
-	private int[][] board;
-	
 	private String team;
 
 	public Movement(Model model) {
 		this.model = model;
 	}
 	
-	/*public void displayPossibleKill(int x, int y, JLabel possibility) {
+	public void displayPossibleKill(int l, int c) {
 		possibility = Display.casePossibleKill();
 		Piece.getButtonTarget(x,y).add(possibility);
 	}
 	
-	public void displayPossibility(int x, int y, JLabel possibility) {
-		possibility = Display.casePossible();
+	public void displayPossibility(int x, int y) {
+		JLabel possibility = Display.casePossible();
 		possibility.setLocation(x,y);
 		Main.panel.add(possibility);
 	}
 	
-	public void deplacementPionBlanc(int x, int y, int l, int c, JLabel possibility) {
-		board = model.getChessboard();
+	public void deplacementPionBlanc(int l, int c, int[][] board) {
 		if(l==6) {
 			for(int i=1;i<=2;i++) {
 		
-				if(Main.board[l-i][c]==0) {
-					displayPossibility(x,y-(75*i),possibility);
+				if(board[l-i][c]==0) {
+					displayPossibility(l-i, c);
 				}
 				else {
 					i=3;
 				}
 			}
 		}
-		else if(l>0 && Main.board[l-1][c]==0){
-			displayPossibility(x,y-75,possibility);
+		else if(l>0 && board[l-1][c]==0){
+			displayPossibility(l-1, c);
 		}
 		if(l>0) {
 			if(c>0) {
-				if(Main.board[l-1][c-1]<0) {		
-					displayPossibleKill(x-75,y-75, possibility);
+				if(board[l-1][c-1]<0) {		
+					displayPossibleKill(l-1, c-1);
 		
 				}
 			}
 			if(c<7) {
-				if(Main.board[l-1][c+1]<0) {			
-					possibility=Display.casePossibleKill();
-					displayPossibleKill(x+75,y-75, possibility);
+				if(board[l-1][c+1]<0) {			
+					//possibility=Display.casePossibleKill();
+					displayPossibleKill(l-1, c+1);
 				}
 			}
 	
 		}
-		if(l==3) {
+		/*if(l==3) {
 			Component[] components = Main.panel.getComponents();
  			   for (Component component : components) {
  				   if (component instanceof JButton) {
@@ -66,16 +63,16 @@ public class Movement {
  					   }
  				   }
  			   }
-		}
+		}*/
 		
 	}
 	
-	public void deplacementPionNoir(int x, int y, int l, int c, JLabel possibility) {
+	public void deplacementPionNoir(int l, int c, int[][] board) {
 		
 		if(l==1) {
 			for(int i=1;i<=2;i++) {		
-				if(Main.board[l+i][c]==0) {
-					displayPossibility(x,y+(75*i),possibility);
+				if(board[l+i][c]==0) {
+					displayPossibility(l+1,c);
 				}
 				else {
 					i=3;
@@ -83,24 +80,24 @@ public class Movement {
 		
 			}
 		}
-		else if(l<7 && Main.board[l+1][c]==0){
-			displayPossibility(x,y+75,possibility);
+		else if(l<7 && board[l+1][c]==0){
+			displayPossibility(l+1, c);
 		}
 		if(l<7) {
 			if(c>0) {
-				if(Main.board[l+1][c-1]>0) {
-					displayPossibleKill(x-75,y+75,possibility);		
+				if(board[l+1][c-1]>0) {
+					displayPossibleKill(l+1, c-1);		
 				}
 			}	
 			if(c<7) {
-				if(Main.board[l+1][c+1]>0) {
-					possibility=Display.casePossibleKill();
-					displayPossibleKill(x+75,y+75,possibility);		
+				if(board[l+1][c+1]>0) {
+					//possibility=Display.casePossibleKill();
+					displayPossibleKill(l+1, c+1);		
 				}
 			}
 	
 		}
-		if(l==4) {
+		/*if(l==4) {
 			Component[] components = Main.panel.getComponents();
  			   for (Component component : components) {
  				   if (component instanceof JButton) {
@@ -112,7 +109,7 @@ public class Movement {
  					   }
  				   }
  			   }
-		}
+		}*/
 		
 	}
 	
@@ -378,5 +375,4 @@ public class Movement {
 			}
 		}
 	}
-	*/
 }

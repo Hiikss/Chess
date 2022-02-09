@@ -19,11 +19,15 @@ public class Model {
 	
 	private Board board;
 	
+	private Movement movement = new Movement(this);
+	
 	private Controller controller;
 	
 	private int x;
 	
 	private int y;
+	
+	private int squareSize;
 	
 	private int [][] chessboard = new int [8][8];
 	
@@ -62,6 +66,7 @@ public class Model {
 	public void initBoard() {
 		setX(controller.getX());
 		setY(controller.getY());
+		setSquareSize(controller.getSquareSize());
 		init.initBoard();
 	}
 	
@@ -74,7 +79,7 @@ public class Model {
 	  * @return la pièce qui correspond à la valeur dans le tableau multidimentionnel 
 	  */
 	public JButton getButton(int value, int l, int c) {
-		return piece.getButton(value, l, c);
+		return piece.getButton(value, l, c, squareSize);
 	}
 	
 	/**
@@ -141,6 +146,14 @@ public class Model {
 		return y;
 	}
 	
+	public int getSquareSize() {
+		return squareSize;
+	}
+	
+	public void setSquareSize(int squareSize) {
+		this.squareSize = squareSize;
+	}
+	
 	public MouseAdapter addListener() {
 		return controller.getButtonListener();
 	}
@@ -151,5 +164,34 @@ public class Model {
 
 	public void setTeam(String team) {
 		this.team = team;
+	}
+	
+	public void piecePossibilities(int l, int c, int value) {
+		
+		if(value==1) {
+			
+			movement.deplacementPionBlanc(l, c, chessboard);
+		}
+		else if(value==-1) {
+			movement.deplacementPionNoir(l, c, value);
+		}
+		else if(value==2 || value==-2) {
+			
+			movement.deplacementCavalier(l,c,value);
+		}
+		else if(value==3 || value==-3) {
+
+			movement.deplacementDiag(l,c,value);
+		}
+		else if(value==5 || value==-5) {
+			
+			movement.deplacementLigne(l,c);
+		}
+		else if(value==9 || value==-9) {
+			
+			movement.deplacementDiag(l,c);
+			movement.deplacementLigne(l,c);
+		}
+		
 	}
 }

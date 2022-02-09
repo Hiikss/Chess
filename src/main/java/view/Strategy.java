@@ -47,5 +47,7 @@ public interface Strategy {
 	 */
 	public int getY();
 	
+	public int getSquareSize();
+	
 	public void addListener(MouseAdapter listener);
 }

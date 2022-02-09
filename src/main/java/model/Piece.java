@@ -120,7 +120,7 @@ public class Piece {
 	 * @param c colonne du tableau multidimentionnel
 	 * @return un bouton qui correspond à la pièce
 	 */
-	public JButton getButton(int value, int l, int c) {
+	public JButton getButton(int value, int l, int c, int squareSize) {
 		JButton piece = new JButton();
 		piece.setName("b"+btn);
 		/*if(btn<=15) {
@@ -130,7 +130,7 @@ public class Piece {
 			piecesBlanches.add(piece);
 		}*/
 		btn++;
-		piece.setBounds(model.getX()+75*c, model.getY()+75*l, 75, 75);
+		piece.setBounds(model.getX()+squareSize*c, model.getY()+squareSize*l, squareSize, squareSize);
 		piece.setLayout(null);
 		piece.setIcon(getImage(value));
 		piece.setContentAreaFilled(false);
