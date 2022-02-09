@@ -93,10 +93,14 @@ public class Model {
 	  * @param c colonne du tableau multidimentionnel
 	  * @return la valeur dans le tableau à la ligne l et à la colonne c
 	  */
-	public int getBoard(int l, int c){
+	public int getIntInBoard(int l, int c){
 		this.chessboard = board.getBoard();
 		return chessboard[l][c];
-	} 
+	}
+	
+	public int[][] getChessboard(){
+		return chessboard;
+	}
 	
 	/**
 	  * la méthode createBoard appelle la méthode Board de la classe Board et stock la valeur dans la variable board.
@@ -138,7 +142,7 @@ public class Model {
 	}
 	
 	public MouseAdapter addListener() {
-		return controller.addListener();
+		return controller.getButtonListener();
 	}
 
 	public String getTeam() {

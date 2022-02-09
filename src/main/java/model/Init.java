@@ -34,7 +34,7 @@ public class Init {
 		model.createBoard();
 		for(int l=0; l<8; l++) {
 			for(int c=0; c<8; c++) {
-				int value = model.getBoard(l,c) ;
+				int value = model.getIntInBoard(l,c) ;
 				
 				if(value!=0) {
 					bouton = model.getButton(value, l, c);

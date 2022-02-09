@@ -18,8 +18,13 @@ public class Controller {
 	
 	private Event event;
 	
-	private MouseAdapter listener;
+	private MouseAdapter buttonListener;
 
+	private MouseAdapter panelListener;
+	
+	private MouseAdapter moveLabelListener;
+	
+	private MouseAdapter killLabelListener;
 	/**
 	  * la méthode Controller permet de mettre en lien les 3 éléments du pattern MVC
 	  * @param model classe Model
@@ -75,13 +80,24 @@ public class Controller {
 		return view.getY();
 	}
 	
-	public void setListener(MouseAdapter listener) {
-		this.listener = listener;
-		view.addListener(this.listener);
+	public void setListener(MouseAdapter buttonListener, MouseAdapter panelListener, MouseAdapter moveLabelListener, MouseAdapter killLabelListener) {
+		this.buttonListener = buttonListener;
+		this.panelListener = panelListener;
+		this.moveLabelListener = moveLabelListener;
+		this.killLabelListener = killLabelListener;
+		view.addListener(this.panelListener);
 	}
 	
-	public MouseAdapter addListener() {
-		return listener;
+	public MouseAdapter getButtonListener() {
+		return buttonListener;
+	}
+	
+	public MouseAdapter getMoveLabelListener() {
+		return moveLabelListener;
+	}
+	
+	public MouseAdapter getKillLabelListener() {
+		return killLabelListener;
 	}
 	
 	public Event getEvent() {
@@ -100,7 +116,7 @@ public class Controller {
 		model.setTeam(team);
 	}
 	
-	public int getBoard(int x, int y) {
-		return model.getBoard(y, x);
+	public int getIntInBoard(int x, int y) {
+		return model.getIntInBoard(y, x);
 	}
 }
