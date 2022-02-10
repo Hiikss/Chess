@@ -126,4 +126,8 @@ public class Controller {
 	public int getSquareSize() {
 		return view.getSquareSize();
 	}
+	
+	public void clearPossibilities() {
+		view.clearPossibilities();
+	}
 }

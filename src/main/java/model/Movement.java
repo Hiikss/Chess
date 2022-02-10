@@ -9,17 +9,24 @@ public class Movement {
 	
 	private Model model;
 	
-	private String team;
-	
 	private ImageIcon ipoint = new ImageIcon(Piece.class.getResource("/point.png"));
+	
+	private ImageIcon icercle = new ImageIcon(Piece.class.getResource("/cercle.png"));
 
 	public Movement(Model model) {
 		this.model = model;
 	}
 	
-	public void displayPossibleKill(int l, int c) {
-		possibility = Display.casePossibleKill();
-		Piece.getButtonTarget(x,y).add(possibility);
+	public void createPossibilityKill(int l, int c) {
+			int x = model.getX();
+			int y = model.getY();
+			int size = model.getSquareSize();
+			JLabel possibility = new JLabel();
+			possibility.setIcon(icercle);
+			possibility.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			possibility.addMouseListener(model.addKillLabelListener());
+			possibility.setBounds(x+c*size, y+l*size, size, size);
+			model.addComponent(possibility);
 	}
 	
 	public void createPossibility(int l, int c) {
@@ -52,14 +59,12 @@ public class Movement {
 		if(l>0) {
 			if(c>0) {
 				if(board[l-1][c-1]<0) {		
-					displayPossibleKill(l-1, c-1);
-		
+					createPossibilityKill(l-1, c-1);
 				}
 			}
 			if(c<7) {
 				if(board[l-1][c+1]<0) {			
-					//possibility=Display.casePossibleKill();
-					displayPossibleKill(l-1, c+1);
+					createPossibilityKill(l-1, c+1);
 				}
 			}
 	
@@ -80,37 +85,35 @@ public class Movement {
 		
 	}
 	
-	/*public void deplacementPionNoir(int l, int c, int[][] board) {
+	public void deplacementPionNoir(int l, int c, int[][] board) {
 		
 		if(l==1) {
 			for(int i=1;i<=2;i++) {		
 				if(board[l+i][c]==0) {
-					displayPossibility(l+1,c);
+					createPossibility(l+i,c);
 				}
 				else {
 					i=3;
 				}
-		
 			}
 		}
 		else if(l<7 && board[l+1][c]==0){
-			displayPossibility(l+1, c);
+			createPossibility(l+1, c);
 		}
 		if(l<7) {
 			if(c>0) {
 				if(board[l+1][c-1]>0) {
-					displayPossibleKill(l+1, c-1);		
+					createPossibilityKill(l+1, c-1);		
 				}
 			}	
 			if(c<7) {
 				if(board[l+1][c+1]>0) {
-					//possibility=Display.casePossibleKill();
-					displayPossibleKill(l+1, c+1);		
+					createPossibilityKill(l+1, c+1);		
 				}
 			}
 	
 		}
-		if(l==4) {
+		/*if(l==4) {
 			Component[] components = Main.panel.getComponents();
  			   for (Component component : components) {
  				   if (component instanceof JButton) {
@@ -122,24 +125,24 @@ public class Movement {
  					   }
  				   }
  			   }
-		}
+		}*/
 		
 	}
 	
-	public void deplacementDiag(int x, int y, int l, int c, JLabel possibility) {
+	public void deplacementDiag(int l, int c, int[][] board, String team) {
 
 		for(int i=1;i<=7;i++) {
 			if(l-i>=0 && c-i>=0) {
-				if(Main.team.equals("white") && Main.board[l-i][c-i]<0) {
-					displayPossibleKill(x-(75*i),y-(75*i), possibility);
+				if(team.equals("white") && board[l-i][c-i]<0) {
+					createPossibilityKill(l-i, c-i);
 					i=8;
 				}
-				else if(Main.team.equals("black") && Main.board[l-i][c-i]>0) {
-					displayPossibleKill(x-(75*i),y-(75*i), possibility);
+				else if(team.equals("black") && board[l-i][c-i]>0) {
+					createPossibilityKill(l-i, c-i);
 					i=8;
 				}
-				else if(Main.board[l-i][c-i]==0){
-					displayPossibility(x-(75*i),y-(75*i), possibility);
+				else if(board[l-i][c-i]==0){
+					createPossibility(l-i, c-i);
 				}
 				else {
 					i=8;
@@ -149,16 +152,16 @@ public class Movement {
 		}
 		for(int i=1;i<=7;i++) {
 			if(l+i<=7 && c-i>=0) {
-				if(Main.team.equals("white") && Main.board[l+i][c-i]<0) {
-					displayPossibleKill(x-(75*i),y+(75*i), possibility);
+				if(team.equals("white") && board[l+i][c-i]<0) {
+					createPossibilityKill(l+i, c-i);
 					i=8;
 				}
-				else if (Main.team.equals("black") && Main.board[l+i][c-i]>0) {
-					displayPossibleKill(x-(75*i),y+(75*i), possibility);
+				else if (team.equals("black") && board[l+i][c-i]>0) {
+					createPossibilityKill(l+i, c-i);
 					i=8;
 				}
-				else if(Main.board[l+i][c-i]==0){
-					displayPossibility(x-(75*i),y+(75*i), possibility);
+				else if(board[l+i][c-i]==0){
+					createPossibility(l+i, c-i);
 				}
 				else {
 					i=8;
@@ -168,16 +171,16 @@ public class Movement {
 		}
 		for(int i=1;i<=7;i++) {
 			if(l-i>=0 && c+i<=7) {
-				if(Main.team.equals("white") && Main.board[l-i][c+i]<0) {
-					displayPossibleKill(x+(75*i),y-(75*i), possibility);
+				if(team.equals("white") && board[l-i][c+i]<0) {
+					createPossibilityKill(l-i, c+i);
 					i=8;
 				}
-				else if (Main.team.equals("black") && Main.board[l-i][c+i]>0) {
-					displayPossibleKill(x+(75*i),y-(75*i), possibility);
+				else if (team.equals("black") && board[l-i][c+i]>0) {
+					createPossibilityKill(l-i, c+i);
 					i=8;
 				}
-				else if(Main.board[l-i][c+i]==0){
-					displayPossibility(x+(75*i),y-(75*i), possibility);
+				else if(board[l-i][c+i]==0){
+					createPossibility(l-i, c+i);
 				}
 				else {
 					i=8;
@@ -187,16 +190,16 @@ public class Movement {
 		}
 		for(int i=1;i<=7;i++) {
 			if(l+i<=7 && c+i<=7) {
-				if(Main.team.equals("white") && Main.board[l+i][c+i]<0) {
-					displayPossibleKill(x+(75*i),y+(75*i), possibility);
+				if(team.equals("white") && board[l+i][c+i]<0) {
+					createPossibilityKill(l+i, c+i);
 					i=8;
 				}
-				else if(Main.team.equals("black") && Main.board[l+i][c+i]>0) {
-					displayPossibleKill(x+(75*i),y+(75*i), possibility);
+				else if(team.equals("black") && board[l+i][c+i]>0) {
+					createPossibilityKill(l+i, c+i);
 					i=8;
 				}
-				else if(Main.board[l+i][c+i]==0){
-					displayPossibility(x+(75*i),y+(75*i), possibility);
+				else if(board[l+i][c+i]==0){
+					createPossibility(l+i, c+i);
 				}
 				else {
 					i=8;
@@ -208,20 +211,20 @@ public class Movement {
 		
 	}
 	
-	public void deplacementLigne(int x, int y, int l, int c, JLabel possibility) {
+	public void deplacementLigne(int l, int c, int[][] board, String team) {
 		
 		for(int i=1;i<=7;i++) {
 			if(l-i>=0) {
-				if(Main.team.equals("white") && Main.board[l-i][c]<0) {
-					displayPossibleKill(x,y-(75*i), possibility);
+				if(team.equals("white") && board[l-i][c]<0) {
+					createPossibilityKill(l-i, c);
 					i=8;
 				}
-				else if(Main.team.equals("black") && Main.board[l-i][c]>0) {
-					displayPossibleKill(x,y-(75*i), possibility);
+				else if(team.equals("black") && board[l-i][c]>0) {
+					createPossibilityKill(l-i, c);
 					i=8;
 				}
-				else if(Main.board[l-i][c]==0){
-					displayPossibility(x,y-(75*i), possibility);
+				else if(board[l-i][c]==0){
+					createPossibility(l-i, c);
 				}
 				else {
 					i=8;
@@ -231,16 +234,16 @@ public class Movement {
 		}
 		for(int i=1;i<=7;i++) {
 			if(l+i<=7) {
-				if(Main.team.equals("white") && Main.board[l+i][c]<0) {
-					displayPossibleKill(x,y+(75*i), possibility);
+				if(team.equals("white") && board[l+i][c]<0) {
+					createPossibilityKill(l+i, c);
 					i=8;
 				}
-				else if(Main.team.equals("black") && Main.board[l+i][c]>0) {
-					displayPossibleKill(x,y+(75*i), possibility);
+				else if(team.equals("black") && board[l+i][c]>0) {
+					createPossibilityKill(l+i, c);
 					i=8;
 				}
-				else if(Main.board[l+i][c]==0){
-					displayPossibility(x,y+(75*i), possibility);
+				else if(board[l+i][c]==0){
+					createPossibility(l+i, c);
 				}
 				else {
 					i=8;
@@ -250,16 +253,16 @@ public class Movement {
 		}
 		for(int i=1;i<=7;i++) {
 			if(c-i>=0) {
-				if(Main.team.equals("white") && Main.board[l][c-i]<0) {
-					displayPossibleKill(x-(75*i),y, possibility);
+				if(team.equals("white") && board[l][c-i]<0) {
+					createPossibilityKill(l, c-i);
 					i=8;
 				}
-				else if(Main.team.equals("black") && Main.board[l][c-i]>0) {
-					displayPossibleKill(x-(75*i),y, possibility);
+				else if(team.equals("black") && board[l][c-i]>0) {
+					createPossibilityKill(l, c-i);
 					i=8;
 				}
-				else if(Main.board[l][c-i]==0){
-					displayPossibility(x-(75*i),y, possibility);
+				else if(board[l][c-i]==0){
+					createPossibility(l, c-i);
 				}
 				else {
 					i=8;
@@ -269,16 +272,16 @@ public class Movement {
 		}
 		for(int i=1;i<=7;i++) {
 			if(c+i<=7) {
-				if(Main.team.equals("white") && Main.board[l][c+i]<0) {
-					displayPossibleKill(x+(75*i),y, possibility);
+				if(team.equals("white") && board[l][c+i]<0) {
+					createPossibilityKill(l, c+i);
 					i=8;
 				}
-				else if(Main.team.equals("black") && Main.board[l][c+i]>0) {
-					displayPossibleKill(x+(75*i),y, possibility);
+				else if(team.equals("black") && board[l][c+i]>0) {
+					createPossibilityKill(l, c+i);
 					i=8;
 				}
-				else if(Main.board[l][c+i]==0){
-					displayPossibility(x+(75*i),y, possibility);
+				else if(board[l][c+i]==0){
+					createPossibility(l, c+i);
 				}
 				else {
 					i=8;
@@ -289,103 +292,103 @@ public class Movement {
 		}
 	}
 	
-	public void deplacementCavalier(int x, int y, int l, int c, JLabel possibility) {
+	public void deplacementCavalier(int l, int c, int[][] board, String team) {
 		
 		if(l>0) {
 			if(c>1) {
-				if(Main.team.equals("white") && Main.board[l-1][c-2]<0) {				
-					displayPossibleKill(x-150,y-75, possibility);
+				if(team.equals("white") && board[l-1][c-2]<0) {				
+					createPossibilityKill(l-1, c-2);
 				}
-				else if(Main.team.equals("black") && Main.board[l-1][c-2]>0) {				
-					displayPossibleKill(x-150,y-75, possibility);
+				else if(team.equals("black") && board[l-1][c-2]>0) {				
+					createPossibilityKill(l-1, c-2);
 				}
-				else if(Main.board[l-1][c-2]==0){
-					displayPossibility(x-150,y-75, possibility);
+				else if(board[l-1][c-2]==0){
+					createPossibility(l-1, c-2);
 				}
 			}
 			if(c<6) {
-				if(Main.team.equals("white") && Main.board[l-1][c+2]<0) {		
-					displayPossibleKill(x+150,y-75, possibility);
+				if(team.equals("white") && board[l-1][c+2]<0) {		
+					createPossibilityKill(l-1, c+2);
 				}
-				else if(Main.team.equals("black") && Main.board[l-1][c+2]>0) {		
-					displayPossibleKill(x+150,y-75, possibility);
+				else if(team.equals("black") && board[l-1][c+2]>0) {		
+					createPossibilityKill(l-1, c+2);
 				}
-				else if(Main.board[l-1][c+2]==0){
-					displayPossibility(x+150,y-75, possibility);
+				else if(board[l-1][c+2]==0){
+					createPossibility(l-1, c+2);
 				}					
 			}
 		}
 		if(l>1) {
 			if(c>0) {
-				if(Main.team.equals("white") && Main.board[l-2][c-1]<0) {				
-					displayPossibleKill(x-75,y-150, possibility);
+				if(team.equals("white") && board[l-2][c-1]<0) {				
+					createPossibilityKill(l-2, c-1);
 				}
-				else if(Main.team.equals("black") && Main.board[l-2][c-1]>0) {				
-					displayPossibleKill(x-75,y-150, possibility);
+				else if(team.equals("black") && board[l-2][c-1]>0) {				
+					createPossibilityKill(l-2, c-1);
 				}
-				else if(Main.board[l-2][c-1]==0){
-					displayPossibility(x-75,y-150, possibility);
+				else if(board[l-2][c-1]==0){
+					createPossibility(l-2, c-1);
 				}
 			}
 			if(c<7) {
-				if(Main.team.equals("white") && Main.board[l-2][c+1]<0) {				
-					displayPossibleKill(x+75,y-150, possibility);
+				if(team.equals("white") && board[l-2][c+1]<0) {				
+					createPossibilityKill(l-2, c+1);
 				}
-				else if(Main.team.equals("black") && Main.board[l-2][c+1]>0) {				
-					displayPossibleKill(x+75,y-150, possibility);
+				else if(team.equals("black") && board[l-2][c+1]>0) {				
+					createPossibilityKill(l-2, c+1);
 				}
-				else if(Main.board[l-2][c+1]==0){
-					displayPossibility(x+75,y-150, possibility);
+				else if(board[l-2][c+1]==0){
+					createPossibility(l-2, c+1);
 				}			
 			}
 		}
 		if(l<7) {
 			if(c>1) {
-				if(Main.team.equals("white") && Main.board[l+1][c-2]<0) {				
-					displayPossibleKill(x-150,y+75, possibility);
+				if(team.equals("white") && board[l+1][c-2]<0) {				
+					createPossibilityKill(l+1, c-2);
 				}
-				else if(Main.team.equals("black") && Main.board[l+1][c-2]>0) {				
-					displayPossibleKill(x-150,y+75, possibility);
+				else if(team.equals("black") && board[l+1][c-2]>0) {				
+					createPossibilityKill(l+1, c-2);
 				}
-				else if(Main.board[l+1][c-2]==0){
-					displayPossibility(x-150,y+75, possibility);
+				else if(board[l+1][c-2]==0){
+					createPossibility(l+1, c-2);
 				}
 			}
 			if(c<6) {
-				if(Main.team.equals("white") && Main.board[l+1][c+2]<0) {				
-					displayPossibleKill(x+150,y+75, possibility);
+				if(team.equals("white") && board[l+1][c+2]<0) {				
+					createPossibilityKill(l+1, c+2);
 				}
-				else if(Main.team.equals("black") && Main.board[l+1][c+2]>0) {				
-					displayPossibleKill(x+150,y+75, possibility);
+				else if(team.equals("black") && board[l+1][c+2]>0) {				
+					createPossibilityKill(l+1, c+2);
 				}
-				else if(Main.board[l+1][c+2]==0){
-					displayPossibility(x+150,y+75, possibility);
+				else if(board[l+1][c+2]==0){
+					createPossibility(l+1, c+2);
 				}
 			}
 		}
 		if(l<6) {
 			if(c>0) {
-				if(Main.team.equals("white") && Main.board[l+2][c-1]<0) {				
-					displayPossibleKill(x-75,y+150, possibility);
+				if(team.equals("white") && board[l+2][c-1]<0) {				
+					createPossibilityKill(l+2, c-1);
 				}
-				else if(Main.team.equals("black") && Main.board[l+2][c-1]>0) {				
-					displayPossibleKill(x-75,y+150, possibility);
+				else if(team.equals("black") && board[l+2][c-1]>0) {				
+					createPossibilityKill(l+2, c-1);
 				}
-				else if(Main.board[l+2][c-1]==0){
-					displayPossibility(x-75,y+150, possibility);
+				else if(board[l+2][c-1]==0){
+					createPossibility(l+2, c-1);
 				}			
 			}
 			if(c<7) {
-				if(Main.team.equals("white") && Main.board[l+2][c+1]<0) {				
-					displayPossibleKill(x+75,y+150, possibility);
+				if(team.equals("white") && board[l+2][c+1]<0) {				
+					createPossibilityKill(l+2, c+1);
 				}
-				else if(Main.team.equals("black") && Main.board[l+2][c+1]>0) {				
-					displayPossibleKill(x+75,y+150, possibility);
+				else if(team.equals("black") && board[l+2][c+1]>0) {				
+					createPossibilityKill(l+2, c+1);
 				}
-				else if(Main.board[l+2][c+1]==0){
-					displayPossibility(x+75,y+150, possibility);
+				else if(board[l+2][c+1]==0){
+					createPossibility(l+2, c+1);
 				}				
 			}
 		}
-	}*/
+	}
 }

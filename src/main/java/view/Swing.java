@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.image.BufferedImage;
@@ -9,6 +10,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -137,5 +140,24 @@ public class Swing extends JFrame implements Strategy{
 	@Override
 	public int getSquareSize() {
 		return squareSize;
+	}
+	
+	@Override
+	public void clearPossibilities() {
+		Component[] components = panel.getComponents();
+		for (Component component : components) {
+			if (component instanceof JLabel) {
+		        panel.remove(component);
+		    }
+			if (component instanceof JButton) {
+		        Component[] buttons = ((Container) component).getComponents();
+		        JButton btn = (JButton) component;
+		        for (Component comp : buttons) {
+		        	if (comp instanceof JLabel) {
+				        btn.remove(comp);
+				    }
+		        }
+		    }
+		} 
 	}
 }

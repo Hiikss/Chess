@@ -161,6 +161,10 @@ public class Model {
 	public MouseAdapter addMoveLabelListener() {
 		return controller.getMoveLabelListener();
 	}
+	
+	public MouseAdapter addKillLabelListener() {
+		return controller.getKillLabelListener();
+	}
 
 	public String getTeam() {
 		return team;
@@ -176,22 +180,22 @@ public class Model {
 			
 			movement.deplacementPionBlanc(l, c, chessboard);
 		}
-		/*else if(value==-1) {
-			movement.deplacementPionNoir(l, c, value);
+		else if(value==-1) {
+			movement.deplacementPionNoir(l, c, chessboard);
 		}
 		else if(value==2 || value==-2) {
 			
-			movement.deplacementCavalier(l,c,value);
+			movement.deplacementCavalier(l,c,chessboard, team);
 		}
 		else if(value==3 || value==-3) {
 
-			movement.deplacementDiag(l,c,value);
+			movement.deplacementDiag(l,c,chessboard, team);
 		}
 		else if(value==5 || value==-5) {
 			
-			movement.deplacementLigne(l,c);
+			movement.deplacementLigne(l,c,chessboard, team);
 		}
-		else if(value==9 || value==-9) {
+		/*else if(value==9 || value==-9) {
 			
 			movement.deplacementDiag(l,c);
 			movement.deplacementLigne(l,c);

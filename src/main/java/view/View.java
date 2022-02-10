@@ -85,4 +85,8 @@ public class View {
 	public int getSquareSize() {
 		return strategy.getSquareSize();
 	}
+	
+	public void clearPossibilities() {
+		strategy.clearPossibilities();
+	}
 }

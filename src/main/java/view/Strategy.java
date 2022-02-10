@@ -50,4 +50,6 @@ public interface Strategy {
 	public int getSquareSize();
 	
 	public void addListener(MouseAdapter listener);
+	
+	public void clearPossibilities();
 }
