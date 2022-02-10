@@ -4,6 +4,8 @@ import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 
+import javax.swing.JButton;
+
 /** 
  * L'interface <b>Strategy</b> appartient au package <b>view</b>, elle définie les méthodes qui sont implémentées dans les classes concrètes.
  * @author Thomas
@@ -52,4 +54,6 @@ public interface Strategy {
 	public void addListener(MouseAdapter listener);
 	
 	public void clearPossibilities();
+
+	public void removeButton(JButton btnKilled);
 }

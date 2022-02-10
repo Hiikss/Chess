@@ -23,9 +23,9 @@ public class Movement {
 			int size = model.getSquareSize();
 			JLabel possibility = new JLabel();
 			possibility.setIcon(icercle);
+			possibility.setBounds(x+c*size, y+l*size, size, size);
 			possibility.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			possibility.addMouseListener(model.addKillLabelListener());
-			possibility.setBounds(x+c*size, y+l*size, size, size);
 			model.addComponent(possibility);
 	}
 	

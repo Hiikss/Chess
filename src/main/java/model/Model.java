@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import controller.Controller;
 
@@ -195,11 +196,32 @@ public class Model {
 			
 			movement.deplacementLigne(l,c,chessboard, team);
 		}
-		/*else if(value==9 || value==-9) {
+		else if(value==9 || value==-9) {
 			
-			movement.deplacementDiag(l,c);
-			movement.deplacementLigne(l,c);
+			movement.deplacementDiag(l,c,chessboard, team);
+			movement.deplacementLigne(l,c,chessboard, team);
 		}
-		*/
+	}
+
+	public void pieceMove(JButton btn, JLabel possibility) {
+		int xBtn = btn.getX();
+		int yBtn = btn.getY();
+		int xPossibility = possibility.getX();
+		int yPossibility = possibility.getY();
+		chessboard[(yPossibility-y)/squareSize][(xPossibility-x)/squareSize]=chessboard[(yBtn-y)/squareSize][(xBtn-x)/squareSize];
+		chessboard[(yBtn-y)/squareSize][(xBtn-x)/squareSize]=0;
+		btn.setLocation(xPossibility, yPossibility);
+	}
+
+	public void pieceKill(JButton btn, JLabel possibility) {
+		JButton btnKilled = (JButton) possibility.getParent();
+		int xBtn = btn.getX();
+		int yBtn = btn.getY();
+		int xBtnKilled = btnKilled.getX();
+		int yBtnKilled = btnKilled.getY();
+		chessboard[(yBtnKilled-y)/squareSize][(xBtnKilled-x)/squareSize]=chessboard[(yBtn-y)/squareSize][(xBtn-x)/squareSize];
+		chessboard[(yBtn-y)/squareSize][(xBtn-x)/squareSize]=0;
+		controller.removeButton(btnKilled);
+		btn.setLocation(btnKilled.getLocation());
 	}
 }

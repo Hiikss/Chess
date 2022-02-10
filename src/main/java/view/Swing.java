@@ -160,4 +160,9 @@ public class Swing extends JFrame implements Strategy{
 		    }
 		} 
 	}
+
+	@Override
+	public void removeButton(JButton btnKilled) {
+		panel.remove(btnKilled);
+	}
 }

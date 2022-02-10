@@ -133,7 +133,7 @@ public class Swingtest extends JFrame implements Strategy{
 	}
     
 	@Override
-	public void clearPossibilities() {
+	public void clearPossibilities() {;
 		Component[] components = panel.getComponents();
 		for (Component component : components) {
 			if (component instanceof JLabel) {
@@ -149,5 +149,10 @@ public class Swingtest extends JFrame implements Strategy{
 		        }
 		    }
 		} 
+	}
+	
+	@Override
+	public void removeButton(JButton btnKilled) {
+		panel.remove(btnKilled);
 	}
 }

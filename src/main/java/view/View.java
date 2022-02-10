@@ -4,6 +4,8 @@ import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 
+import javax.swing.JButton;
+
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -88,5 +90,9 @@ public class View {
 	
 	public void clearPossibilities() {
 		strategy.clearPossibilities();
+	}
+
+	public void removeButton(JButton btnKilled) {
+		strategy.removeButton(btnKilled);
 	}
 }

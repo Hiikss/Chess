@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -43,7 +44,7 @@ public class Event{
             	int c = (piece.getX()-200)/75;
             	int pieceValue = getIntInBoard(l, c);
             	logger.log(Level.INFO, "pièce cliquée");
-            	controller.clearPossibilities();
+            	//controller.clearPossibilities();
             	if((team.equals("white") && pieceValue<0 || team.equals("black") && pieceValue>0) && btnSelected!=null) { //clique sur pièce de l'équipe adverse
             		btnSelected.setBackground(null);
             		btnSelected.setOpaque(false);
@@ -91,10 +92,14 @@ public class Event{
         
         this.moveLabelListener = new MouseAdapter() {
             @Override
-            public void mouseReleased(MouseEvent e) { 
-            	
+            public void mouseReleased(MouseEvent e) {
             	logger.log(Level.INFO, "label cliqué");
-            	
+            	JLabel possibility =  (JLabel) e.getSource();
+            	controller.pieceMove(btnSelected, possibility);
+            	btnSelected.setBackground(null);
+        		btnSelected.setOpaque(false);
+        		btnSelected=null;
+            	controller.clearPossibilities();
             	controller.updateView();
             }
         };
@@ -104,7 +109,9 @@ public class Event{
             public void mouseReleased(MouseEvent e) { 
             
             	logger.log(Level.INFO, "label cliqué");
-
+            	JLabel possibility =  (JLabel) e.getSource();
+            	controller.pieceKill(btnSelected, possibility);
+            	controller.clearPossibilities();
             	controller.updateView();
             }
         };

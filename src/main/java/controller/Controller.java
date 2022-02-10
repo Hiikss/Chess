@@ -3,6 +3,9 @@ package controller;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 import model.Model;
 import view.View;
 
@@ -129,5 +132,16 @@ public class Controller {
 	
 	public void clearPossibilities() {
 		view.clearPossibilities();
+	}
+	public void pieceMove(JButton btnSelected, JLabel possibility) {
+		model.pieceMove(btnSelected, possibility);
+		
+	}
+	public void pieceKill(JButton btnSelected, JLabel possibility) {
+		model.pieceKill(btnSelected, possibility);
+	}
+	public void removeButton(JButton btnKilled) {
+		view.removeButton(btnKilled);
+		
 	}
 }
