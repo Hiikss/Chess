@@ -48,7 +48,7 @@ public class View {
 	  */
 	public int addComponent(Component component) {
 		strategy.addComponent(component);
-		logger.log(Level.INFO, "Pièce ajoutée au panel");
+		logger.log(Level.INFO, "Élément ajouté au panel");
 		return 1;
 	}
 	

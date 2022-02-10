@@ -11,16 +11,10 @@ public class Movement {
 	
 	private String team;
 	
-	private int x;
-	
-	private int y;
-	
 	private ImageIcon ipoint = new ImageIcon(Piece.class.getResource("/point.png"));
 
 	public Movement(Model model) {
 		this.model = model;
-		this.x = model.getX();
-		this.y = model.getY();
 	}
 	
 	public void displayPossibleKill(int l, int c) {
@@ -29,6 +23,8 @@ public class Movement {
 	}
 	
 	public void createPossibility(int l, int c) {
+		int x = model.getX();
+		int y = model.getY();
 		int size = model.getSquareSize();
 		JLabel possibility = new JLabel();
 		possibility.setIcon(ipoint);
