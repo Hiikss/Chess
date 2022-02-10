@@ -1,7 +1,9 @@
 package model;
 
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -31,6 +33,10 @@ public class Model {
 	private int squareSize;
 	
 	private int [][] chessboard = new int [8][8];
+	
+	private ArrayList<JButton> piecesBlanches = new ArrayList<JButton>();
+	
+	private ArrayList<JButton> piecesNoires = new ArrayList<JButton>();
 	
 	private String team = "white";
 	
@@ -88,6 +94,7 @@ public class Model {
 	  * @see Controller#updateView()
 	  */
 	public void updateView() {
+		setCursor();
 		controller.updateView();
 	}
 	
@@ -223,5 +230,52 @@ public class Model {
 		chessboard[(yBtn-y)/squareSize][(xBtn-x)/squareSize]=0;
 		controller.removeButton(btnKilled);
 		btn.setLocation(btnKilled.getLocation());
+	}
+
+	public JButton getPieceAt(int x, int y) {
+		return controller.getPieceAt(x, y);
+	}
+	
+	public void setWhitePieces(){
+		for(int l=0; l<8; l++) {
+			for(int c=0; c<8; c++) {
+				if(chessboard[l][c]>0) {
+					JButton piece = getPieceAt(x+c*squareSize, y+l*squareSize);
+					piecesBlanches.add(piece);
+				}
+			}
+		}
+	}
+	
+	public void setBlackPieces(){
+		for(int l=0; l<8; l++) {
+			for(int c=0; c<8; c++) {
+				if(chessboard[l][c]<0) {
+					JButton piece = getPieceAt(x+c*squareSize, y+l*squareSize);
+					piecesNoires.add(piece);
+				}
+			}
+		}
+	}
+	
+	public void setCursor() {
+		int sizePiecesBlanches = piecesBlanches.size();
+		int sizePiecesNoires = piecesNoires.size();
+		if(team.equals("white")) {
+			for(int i=0;i<sizePiecesNoires;i++) {
+				piecesNoires.get(i).setCursor(null);
+			}
+			for(int i=0;i<sizePiecesBlanches;i++) {
+				piecesBlanches.get(i).setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+		}
+		if(team.equals("black")) {
+			for(int i=0;i<sizePiecesNoires;i++) {
+				piecesNoires.get(i).setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+			for(int i=0;i<sizePiecesBlanches;i++) {
+				piecesBlanches.get(i).setCursor(null);
+			}
+		}
 	}
 }

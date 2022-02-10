@@ -165,4 +165,16 @@ public class Swing extends JFrame implements Strategy{
 	public void removeButton(JButton btnKilled) {
 		panel.remove(btnKilled);
 	}
+
+	@Override
+	public JButton getPieceAt(int x, int y) {
+		JButton btn = null;
+		Component[] components = panel.getComponents();
+		for (Component component : components) {
+			if (component instanceof JButton && component.getX()==x && component.getY()==y) {
+		        btn = (JButton) component;
+		    }
+		}
+		return btn;
+	}
 }

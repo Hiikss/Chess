@@ -144,4 +144,7 @@ public class Controller {
 		view.removeButton(btnKilled);
 		
 	}
+	public JButton getPieceAt(int x, int y) {
+		return view.getPieceAt(x, y);
+	}
 }

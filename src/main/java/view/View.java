@@ -95,4 +95,8 @@ public class View {
 	public void removeButton(JButton btnKilled) {
 		strategy.removeButton(btnKilled);
 	}
+
+	public JButton getPieceAt(int x, int y) {
+		return strategy.getPieceAt(x, y);
+	}
 }
