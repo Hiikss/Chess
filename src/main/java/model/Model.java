@@ -154,8 +154,12 @@ public class Model {
 		this.squareSize = squareSize;
 	}
 	
-	public MouseAdapter addListener() {
+	public MouseAdapter addButtonListener() {
 		return controller.getButtonListener();
+	}
+	
+	public MouseAdapter addMoveLabelListener() {
+		return controller.getMoveLabelListener();
 	}
 
 	public String getTeam() {
@@ -172,7 +176,7 @@ public class Model {
 			
 			movement.deplacementPionBlanc(l, c, chessboard);
 		}
-		else if(value==-1) {
+		/*else if(value==-1) {
 			movement.deplacementPionNoir(l, c, value);
 		}
 		else if(value==2 || value==-2) {
@@ -192,6 +196,6 @@ public class Model {
 			movement.deplacementDiag(l,c);
 			movement.deplacementLigne(l,c);
 		}
-		
+		*/
 	}
 }

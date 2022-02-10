@@ -135,7 +135,7 @@ public class Piece {
 		piece.setIcon(getImage(value));
 		piece.setContentAreaFilled(false);
 		piece.setBorderPainted(false);
-		piece.addMouseListener(model.addListener());
+		piece.addMouseListener(model.addButtonListener());
 		logger.log(Level.INFO, "pièce retournée "+btn);
 		return piece;
 	}

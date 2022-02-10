@@ -1,13 +1,26 @@
 package model;
 
+import java.awt.Cursor;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 public class Movement {
 	
 	private Model model;
 	
 	private String team;
+	
+	private int x;
+	
+	private int y;
+	
+	private ImageIcon ipoint = new ImageIcon(Piece.class.getResource("/point.png"));
 
 	public Movement(Model model) {
 		this.model = model;
+		this.x = model.getX();
+		this.y = model.getY();
 	}
 	
 	public void displayPossibleKill(int l, int c) {
@@ -15,10 +28,14 @@ public class Movement {
 		Piece.getButtonTarget(x,y).add(possibility);
 	}
 	
-	public void displayPossibility(int x, int y) {
-		JLabel possibility = Display.casePossible();
-		possibility.setLocation(x,y);
-		Main.panel.add(possibility);
+	public void createPossibility(int l, int c) {
+		int size = model.getSquareSize();
+		JLabel possibility = new JLabel();
+		possibility.setIcon(ipoint);
+		possibility.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		possibility.addMouseListener(model.addMoveLabelListener());
+		possibility.setBounds(x+c*size, y+l*size, size, size);
+		model.addComponent(possibility);
 	}
 	
 	public void deplacementPionBlanc(int l, int c, int[][] board) {
@@ -26,7 +43,7 @@ public class Movement {
 			for(int i=1;i<=2;i++) {
 		
 				if(board[l-i][c]==0) {
-					displayPossibility(l-i, c);
+					createPossibility(l-i, c);
 				}
 				else {
 					i=3;
@@ -34,7 +51,7 @@ public class Movement {
 			}
 		}
 		else if(l>0 && board[l-1][c]==0){
-			displayPossibility(l-1, c);
+			createPossibility(l-1, c);
 		}
 		if(l>0) {
 			if(c>0) {
@@ -67,7 +84,7 @@ public class Movement {
 		
 	}
 	
-	public void deplacementPionNoir(int l, int c, int[][] board) {
+	/*public void deplacementPionNoir(int l, int c, int[][] board) {
 		
 		if(l==1) {
 			for(int i=1;i<=2;i++) {		
@@ -97,7 +114,7 @@ public class Movement {
 			}
 	
 		}
-		/*if(l==4) {
+		if(l==4) {
 			Component[] components = Main.panel.getComponents();
  			   for (Component component : components) {
  				   if (component instanceof JButton) {
@@ -109,7 +126,7 @@ public class Movement {
  					   }
  				   }
  			   }
-		}*/
+		}
 		
 	}
 	
@@ -374,5 +391,5 @@ public class Movement {
 				}				
 			}
 		}
-	}
+	}*/
 }
