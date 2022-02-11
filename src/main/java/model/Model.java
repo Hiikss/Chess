@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import controller.Controller;
 
 /** 
@@ -24,6 +28,8 @@ public class Model {
 	
 	private Movement movement = new Movement(this);
 	
+	private Checked checked = new Checked();
+	
 	private Controller controller;
 	
 	private int x;
@@ -37,6 +43,8 @@ public class Model {
 	private ArrayList<JButton> piecesBlanches = new ArrayList<JButton>();
 	
 	private ArrayList<JButton> piecesNoires = new ArrayList<JButton>();
+	
+	private final Logger logger =  LogManager.getLogger(this);
 	
 	private String team = "white";
 	
@@ -291,5 +299,15 @@ public class Model {
 			team = "white";
 		}
 		setCursor();
+	}
+
+	public void check() {
+		if(team.equals("white") && checked.isBlackKingAttacked(chessboard)==true) {
+			logger.log(Level.INFO, "Roi Noir attaqué");
+		}
+		else if(team.equals("black") && checked.isWhiteKingAttacked(chessboard)==true) {
+			logger.log(Level.INFO, "Roi Blanc attaqué");
+		}
+		
 	}
 }

@@ -150,4 +150,7 @@ public class Controller {
 	public void changeTeam() {
 		model.changeTeam();
 	}
+	public void check() {
+		model.check();
+	}
 }
