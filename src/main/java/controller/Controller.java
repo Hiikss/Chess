@@ -147,4 +147,7 @@ public class Controller {
 	public JButton getPieceAt(int x, int y) {
 		return view.getPieceAt(x, y);
 	}
+	public void changeTeam() {
+		model.changeTeam();
+	}
 }

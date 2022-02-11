@@ -75,6 +75,7 @@ public class Model {
 		setY(controller.getY());
 		setSquareSize(controller.getSquareSize());
 		init.initBoard();
+		setCursor();
 	}
 	
 	/**
@@ -94,7 +95,6 @@ public class Model {
 	  * @see Controller#updateView()
 	  */
 	public void updateView() {
-		setCursor();
 		controller.updateView();
 	}
 	
@@ -208,6 +208,10 @@ public class Model {
 			movement.deplacementDiag(l,c,chessboard, team);
 			movement.deplacementLigne(l,c,chessboard, team);
 		}
+		else if(value==10 || value==-10) {
+			
+			movement.deplacementRoi(l,c,chessboard, team);
+		}
 	}
 
 	public void pieceMove(JButton btn, JLabel possibility) {
@@ -277,5 +281,15 @@ public class Model {
 				piecesBlanches.get(i).setCursor(null);
 			}
 		}
+	}
+
+	public void changeTeam() {
+		if(team.equals("white")) {
+			team = "black";
+		}
+		else {
+			team = "white";
+		}
+		setCursor();
 	}
 }

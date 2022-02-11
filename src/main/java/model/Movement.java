@@ -391,4 +391,95 @@ public class Movement {
 			}
 		}
 	}
+	
+	public void deplacementRoi(int l, int c, int[][] board, String team) {
+		if(l>0) {
+			if(c>0) {
+				if(team.equals("white") && board[l-1][c-1]<0) {				
+					createPossibilityKill(l-1, c-1);
+				}
+				else if(team.equals("black") && board[l-1][c-1]>0) {				
+					createPossibilityKill(l-1, c-1);
+				}
+				else if(board[l-1][c-1]==0 && (team.equals("white") || team.equals("black"))){
+					createPossibility(l-1, c-1);
+				}
+			}
+			if(c<7) {
+				if(team.equals("white") && board[l-1][c+1]<0) {				
+					createPossibilityKill(l-1, c+1);				
+				}
+				else if(team.equals("black") && board[l-1][c+1]>0) {				
+					createPossibilityKill(l-1, c+1);
+				}
+				else if(board[l-1][c+1]==0 && (team.equals("white") || team.equals("black"))){
+					createPossibility(l-1, c+1);
+				}
+			}
+			if(team.equals("white") && board[l-1][c]<0) {				
+				createPossibilityKill(l-1, c);
+			}
+			else if(team.equals("black") && board[l-1][c]>0) {				
+				createPossibilityKill(l-1, c);
+			}
+			else if(board[l-1][c]==0 && (team.equals("white")|| team.equals("black"))){
+				createPossibility(l-1, c);
+			}
+		}
+		if(l<7) {
+			if(c>0) {
+				if(team.equals("white") && board[l+1][c-1]<0) {				
+					createPossibilityKill(l+1, c-1);
+				}
+				else if(team.equals("black") && board[l+1][c-1]>0) {				
+					createPossibilityKill(l+1, c-1);
+				}
+				else if(board[l+1][c-1]==0 && (team.equals("white") || team.equals("black"))){
+					createPossibility(l+1, c-1);
+				}
+			}
+			if(c<7) {
+				if(team.equals("white") && board[l+1][c+1]<0) {				
+					createPossibilityKill(l+1, c+1);
+				}
+				else if(team.equals("black") && board[l+1][c+1]>0) {				
+					createPossibilityKill(l+1, c+1);
+				}
+				else if(board[l+1][c+1]==0 && (team.equals("white") || team.equals("black"))){
+					createPossibility(l+1, c+1);
+				}		
+			}
+			if(team.equals("white") && board[l+1][c]<0) {				
+				createPossibilityKill(l+1, c);
+			}
+			else if(team.equals("black") && board[l+1][c]>0) {				
+				createPossibilityKill(l+1, c);
+			}
+			else if(board[l+1][c]==0 && (team.equals("white") || team.equals("black"))){
+				createPossibility(l+1, c);
+			}
+		}
+		if(c>0) {
+			if(team.equals("white") && board[l][c-1]<0) {				
+				createPossibilityKill(l, c-1);
+			}
+			else if(team.equals("black") && board[l][c-1]>0) {				
+				createPossibilityKill(l, c-1);
+			}
+			else if(board[l][c-1]==0 && (team.equals("white") || team.equals("black"))){
+				createPossibility(l, c-1);
+			}
+		}
+		if(c<7) {
+			if(team.equals("white") && board[l][c+1]<0) {				
+				createPossibilityKill(l, c+1);
+			}
+			else if(team.equals("black") && board[l][c+1]>0) {				
+				createPossibilityKill(l, c+1);
+			}
+			else if(board[l][c+1]==0 && (team.equals("white") || team.equals("black"))){
+				createPossibility(l, c+1);
+			}
+		}
+	}
 }

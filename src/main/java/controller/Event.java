@@ -92,6 +92,7 @@ public class Event{
             	logger.log(Level.INFO, "label cliqué");
             	JLabel possibility =  (JLabel) e.getSource();
             	controller.pieceMove(btnSelected, possibility);
+            	controller.changeTeam();
             	update();
             }
         };
@@ -102,6 +103,7 @@ public class Event{
             	logger.log(Level.INFO, "label cliqué");
             	JLabel possibility =  (JLabel) e.getSource();
             	controller.pieceKill(btnSelected, possibility);
+            	controller.changeTeam();
             	update();
             }
         };
