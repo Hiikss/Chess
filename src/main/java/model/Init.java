@@ -44,7 +44,6 @@ public class Init {
 		}
 		model.setWhitePieces();
 		model.setBlackPieces();
-		model.updateView();
 		logger.log(Level.INFO, "Échiquier initialisé");
 		return 1;
 	}

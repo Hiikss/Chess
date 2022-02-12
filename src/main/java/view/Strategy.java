@@ -58,4 +58,5 @@ public interface Strategy {
 	public void removeButton(JButton btnKilled);
 
 	public JButton getPieceAt(int x, int y);
+	
 }

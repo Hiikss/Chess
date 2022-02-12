@@ -146,7 +146,7 @@ public class Swing extends JFrame implements Strategy{
 	public void clearPossibilities() {
 		Component[] components = panel.getComponents();
 		for (Component component : components) {
-			if (component instanceof JLabel) {
+			if (component instanceof JLabel && component.getX()>=x) {
 		        panel.remove(component);
 		    }
 			if (component instanceof JButton) {

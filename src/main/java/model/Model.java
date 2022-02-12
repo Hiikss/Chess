@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -30,6 +31,8 @@ public class Model {
 	
 	private Checked checked = new Checked();
 	
+	private Chrono chrono = new Chrono(this);
+	
 	private Controller controller;
 	
 	private int x;
@@ -47,6 +50,11 @@ public class Model {
 	private final Logger logger =  LogManager.getLogger(this);
 	
 	private String team = "white";
+	
+	private Timer timerBlanc;	
+	private Timer timerNoir;
+	
+
 	
 	/**
 	  * la méthode getController retourne le controller.
@@ -83,7 +91,9 @@ public class Model {
 		setY(controller.getY());
 		setSquareSize(controller.getSquareSize());
 		init.initBoard();
+		chrono.countdownTimer();
 		setCursor();
+		updateView();
 	}
 	
 	/**
@@ -292,11 +302,17 @@ public class Model {
 	}
 
 	public void changeTeam() {
+		setTimerBlanc(getTimerBlanc());
+		setTimerNoir(getTimerNoir());
 		if(team.equals("white")) {
 			team = "black";
+			timerBlanc.stop();
+			timerNoir.start();
 		}
 		else {
 			team = "white";
+			timerNoir.stop();
+			timerBlanc.start();
 		}
 		setCursor();
 	}
@@ -309,5 +325,21 @@ public class Model {
 			logger.log(Level.INFO, "Roi Blanc attaqué");
 		}
 		
+	}
+	
+	public void setTimerBlanc(Timer timerBlanc) {
+		this.timerBlanc = timerBlanc;
+	}
+	
+	public void setTimerNoir(Timer timerNoir) {
+		this.timerNoir = timerNoir;
+	}
+	
+	public Timer getTimerBlanc() {
+		return chrono.getWhiteTimer();
+	}
+	
+	public Timer getTimerNoir() {
+		return chrono.getBlackTimer();
 	}
 }
