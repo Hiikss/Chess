@@ -215,16 +215,16 @@ public class Model {
 		}
 		else if(value==3 || value==-3) {
 
-			movement.deplacementDiag(l,c,chessboard, team);
+			movement.deplacementDiag(l,c,chessboard, team, value);
 		}
 		else if(value==5 || value==-5) {
 			
-			movement.deplacementLigne(l,c,chessboard, team);
+			movement.deplacementLigne(l,c,chessboard, team, value);
 		}
 		else if(value==9 || value==-9) {
 			
-			movement.deplacementDiag(l,c,chessboard, team);
-			movement.deplacementLigne(l,c,chessboard, team);
+			movement.deplacementDiag(l,c,chessboard, team, value);
+			movement.deplacementLigne(l,c,chessboard, team, value);
 		}
 		else if(value==10 || value==-10) {
 			
