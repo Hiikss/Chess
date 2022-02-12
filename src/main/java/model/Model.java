@@ -318,10 +318,10 @@ public class Model {
 	}
 
 	public void check() {
-		if(team.equals("white") && checked.isBlackKingAttacked(chessboard)==true) {
+		if(team.equals("white") && isBlackKingAttacked(chessboard)==true) {
 			logger.log(Level.INFO, "Roi Noir attaqué");
 		}
-		else if(team.equals("black") && checked.isWhiteKingAttacked(chessboard)==true) {
+		else if(team.equals("black") && isWhiteKingAttacked(chessboard)==true) {
 			logger.log(Level.INFO, "Roi Blanc attaqué");
 		}
 		
@@ -341,5 +341,20 @@ public class Model {
 	
 	public Timer getTimerNoir() {
 		return chrono.getBlackTimer();
+	}
+	
+	public  void gameEnd(String reason) {
+		timerNoir.stop();
+		timerBlanc.stop();
+		controller.gameEnd(reason);
+
+	}
+	
+	public boolean isWhiteKingAttacked(int[][] board) {
+		return checked.isWhiteKingAttacked(board);
+	}
+	
+	public boolean isBlackKingAttacked(int[][] board) {
+		return checked.isBlackKingAttacked(board);
 	}
 }

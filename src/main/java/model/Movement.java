@@ -42,9 +42,11 @@ public class Movement {
 	}
 	
 	public void deplacementPionBlanc(int l, int c, int[][] board) {
+		int[][] newBoard = board;
 		if(l==6) {
 			for(int i=1;i<=2;i++) {
-		
+				/*newBoard[l][c] = 0;
+				newBoard[l-i][c] = 1;*/
 				if(board[l-i][c]==0) {
 					createPossibility(l-i, c);
 				}
@@ -481,5 +483,13 @@ public class Movement {
 				createPossibility(l, c+1);
 			}
 		}
+	}
+	
+	public boolean isWhiteKingAttacked(int[][] board) {
+		return model.isWhiteKingAttacked(board);
+	}
+	
+	public boolean isBlackKingAttacked(int[][] board) {
+		return model.isBlackKingAttacked(board);
 	}
 }

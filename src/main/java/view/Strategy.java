@@ -59,4 +59,6 @@ public interface Strategy {
 
 	public JButton getPieceAt(int x, int y);
 	
+	public void gameEnd(String reason);
+	
 }

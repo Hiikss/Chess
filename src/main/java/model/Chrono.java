@@ -27,18 +27,23 @@ public class Chrono {
 	
 	public void countdownTimer() {
 		
-		timerBlancLabel.setText("10:00");
-		timerBlancLabel.setBounds(75, 575, 100, 30);
-		timerBlancLabel.setFont(new Font("Arial",Font.PLAIN,29));
 		msBlanc = 0;
 		secondBlanc = 0;
 		minuteBlanc = 10;
-		timerNoirLabel.setText("10:00");
-		timerNoirLabel.setBounds(75, 50, 100, 30);
-		timerNoirLabel.setFont(new Font("Arial",Font.PLAIN,29));
+		ddSecondBlanc = dFormat.format(secondBlanc);
+		ddMinuteBlanc = dFormat.format(minuteBlanc);
+		timerBlancLabel.setText(ddMinuteBlanc + ":" + ddSecondBlanc);
+		timerBlancLabel.setBounds(75, 575, 150, 30);
+		timerBlancLabel.setFont(new Font("Arial",Font.PLAIN,29));
+		
 		msNoir = 0;
 		secondNoir = 0;
 		minuteNoir = 10;
+		ddSecondNoir = dFormat.format(secondNoir);
+		ddMinuteNoir = dFormat.format(minuteNoir);	
+		timerNoirLabel.setText(ddMinuteNoir + ":" + ddSecondNoir);
+		timerNoirLabel.setBounds(75, 50, 100, 30);
+		timerNoirLabel.setFont(new Font("Arial",Font.PLAIN,29));
 		
 		timerBlanc = new Timer(10, new ActionListener() {
 		
@@ -46,9 +51,8 @@ public class Chrono {
 				public void actionPerformed(ActionEvent e) {
 					
 					msBlanc--;
-					
 					if(msBlanc==-1) {
-						msBlanc = 59;
+						msBlanc = 65;
 						secondBlanc--;
 						ddSecondBlanc = dFormat.format(secondBlanc);
 						ddMinuteBlanc = dFormat.format(minuteBlanc);	
@@ -59,11 +63,11 @@ public class Chrono {
 						minuteBlanc--;
 						ddSecondBlanc = dFormat.format(secondBlanc);
 						ddMinuteBlanc = dFormat.format(minuteBlanc);	
-						timerBlancLabel.setText(ddMinuteBlanc + ":" + ddSecondBlanc);
+						timerBlancLabel.setText(ddMinuteBlanc + ":" + ddSecondBlanc );
 					}
-					/*if(minuteBlanc==0 && secondBlanc==0 && msBlanc==0) {
+					if(minuteBlanc==0 && secondBlanc==0 && msBlanc==0) {
 						model.gameEnd("Victoire des Noirs au temps");
-					}*/
+					}
 				}
 			});	
 		
@@ -75,7 +79,7 @@ public class Chrono {
 				msNoir--;
 				
 				if(msNoir==-1) {
-					msNoir = 59;
+					msNoir = 65;
 					secondNoir--;
 					ddSecondNoir = dFormat.format(secondNoir);
 					ddMinuteNoir = dFormat.format(minuteNoir);	
@@ -89,9 +93,9 @@ public class Chrono {
 					ddMinuteNoir = dFormat.format(minuteNoir);	
 					timerNoirLabel.setText(ddMinuteNoir + ":" + ddSecondNoir);
 				}
-				/*if(minuteNoir==0 && secondNoir==0 && msNoir==0) {
+				if(minuteNoir==0 && secondNoir==0 && msNoir==0) {
 					model.gameEnd("Victoire des Blancs au temps");
-				}*/
+				}
 			}
 		});	
 		

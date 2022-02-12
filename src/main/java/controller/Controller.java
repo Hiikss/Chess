@@ -153,4 +153,7 @@ public class Controller {
 	public void check() {
 		model.check();
 	}
+	public void gameEnd(String reason) {
+		view.gameEnd(reason);
+	}
 }

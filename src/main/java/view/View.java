@@ -99,4 +99,8 @@ public class View {
 	public JButton getPieceAt(int x, int y) {
 		return strategy.getPieceAt(x, y);
 	}
+
+	public void gameEnd(String reason) {
+		strategy.gameEnd(reason);
+	}
 }

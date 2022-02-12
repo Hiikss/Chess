@@ -2,13 +2,17 @@ package view;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -48,6 +52,8 @@ public class Swingtest extends JFrame implements Strategy{
 	private int squareSize = 75;
 	
 	private BufferedImage boardImage = null;
+	
+	private JDialog fin = new JDialog(this, "Fin de la partie", true);
 	
 	/**
 	  * La méthode createFrame permet de créer la frame et d'y ajouter un panel.
@@ -89,6 +95,18 @@ public class Swingtest extends JFrame implements Strategy{
  		this.setResizable(false); //on ne peut pas redimentionner la frame 
 		this.setVisible(true); //on voit la frame
 		logger.log(Level.INFO, "vue = swingtest");
+		fin.setLayout(null); //propriétés du JDialog
+		fin.setResizable(false);
+		fin.setSize(450, 260);
+		fin.setLocationRelativeTo(null);
+		
+		fin.addWindowListener(new WindowAdapter() 
+		{
+			  public void windowClosing(WindowEvent e)
+			  {
+				  System.exit(0);
+			  }
+		});	
 		return 1;
 	}
     
@@ -136,7 +154,7 @@ public class Swingtest extends JFrame implements Strategy{
 	public void clearPossibilities() {;
 		Component[] components = panel.getComponents();
 		for (Component component : components) {
-			if (component instanceof JLabel) {
+			if (component instanceof JLabel && component.getX()>=x) {
 		        panel.remove(component);
 		    }
 			if (component instanceof JButton) {
@@ -166,5 +184,15 @@ public class Swingtest extends JFrame implements Strategy{
 		    }
 		}
 		return btn;
+	}
+	
+	@Override
+	public void gameEnd(String reason) {
+		JLabel label = new JLabel();
+		label.setText(reason);
+		label.setFont(new Font("Arial",Font.PLAIN,20));
+		label.setBounds(50, 50, 300, 50);
+		fin.add(label);
+		fin.setVisible(true);
 	}
 }

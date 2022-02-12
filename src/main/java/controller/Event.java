@@ -40,8 +40,8 @@ public class Event{
             public void mouseReleased(MouseEvent e) { 
             	String team = getTeam();
             	JButton piece = (JButton) e.getSource();
-            	int l = (piece.getY()-25)/75;
-            	int c = (piece.getX()-200)/75;
+            	int l = (piece.getY()-controller.getY())/controller.getSquareSize();
+            	int c = (piece.getX()-controller.getX())/controller.getSquareSize();
             	int pieceValue = getIntInBoard(l, c);
             	logger.log(Level.INFO, "pièce cliquée");
             	controller.clearPossibilities();
