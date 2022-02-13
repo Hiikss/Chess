@@ -415,193 +415,353 @@ public class Movement {
 		}
 	}
 	
-	public void deplacementCavalier(int l, int c, int[][] board, String team) {
-		
+	public void deplacementCavalier(int l, int c, int[][] board, String team, int value) {
+		int[][] newBoard = copyBoard(board);
 		if(l>0) {
 			if(c>1) {
-				if(team.equals("white") && board[l-1][c-2]<0) {				
-					createPossibilityKill(l-1, c-2);
+				newBoard[l][c] = 0;
+				newBoard[l-1][c-2] = value;
+				if(team.equals("white")) {
+					if(board[l-1][c-2]==0 && isWhiteKingAttacked(newBoard)==false){
+						createPossibility(l-1, c-2);
+					}
+					else if(board[l-1][c-2]<0 && isWhiteKingAttacked(newBoard)==false) {
+						createPossibilityKill(l-1, c-2);
+					}
 				}
-				else if(team.equals("black") && board[l-1][c-2]>0) {				
-					createPossibilityKill(l-1, c-2);
-				}
-				else if(board[l-1][c-2]==0){
-					createPossibility(l-1, c-2);
+				else {
+					if(board[l-1][c-2]==0 && isBlackKingAttacked(newBoard)==false){
+						createPossibility(l-1, c-2);
+					}
+					else if(board[l-1][c-2]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l-1, c-2);
+					}
 				}
 			}
 			if(c<6) {
-				if(team.equals("white") && board[l-1][c+2]<0) {		
-					createPossibilityKill(l-1, c+2);
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l-1][c+2] = value;
+				if(team.equals("white")) {
+					if(board[l-1][c+2]==0 && isWhiteKingAttacked(newBoard)==false){
+						createPossibility(l-1, c+2);
+					}
+					else if(board[l-1][c+2]<0 && isWhiteKingAttacked(newBoard)==false) {
+						createPossibilityKill(l-1, c+2);
+					}
 				}
-				else if(team.equals("black") && board[l-1][c+2]>0) {		
-					createPossibilityKill(l-1, c+2);
-				}
-				else if(board[l-1][c+2]==0){
-					createPossibility(l-1, c+2);
+				else {
+					if(board[l-1][c+2]==0 && isBlackKingAttacked(newBoard)==false){
+						createPossibility(l-1, c+2);
+					}
+					else if(board[l-1][c+2]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l-1, c+2);
+					}
 				}					
 			}
 		}
 		if(l>1) {
 			if(c>0) {
-				if(team.equals("white") && board[l-2][c-1]<0) {				
-					createPossibilityKill(l-2, c-1);
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l-2][c-1] = value;
+				if(team.equals("white")) {
+					if(board[l-2][c-1]==0 && isWhiteKingAttacked(newBoard)==false){
+						createPossibility(l-2, c-1);
+					}
+					else if(board[l-2][c-1]<0 && isWhiteKingAttacked(newBoard)==false) {
+						createPossibilityKill(l-2, c-1);
+					}
 				}
-				else if(team.equals("black") && board[l-2][c-1]>0) {				
-					createPossibilityKill(l-2, c-1);
-				}
-				else if(board[l-2][c-1]==0){
-					createPossibility(l-2, c-1);
+				else {
+					if(board[l-2][c-1]==0 && isBlackKingAttacked(newBoard)==false){
+						createPossibility(l-2, c-1);
+					}
+					else if(board[l-2][c-1]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l-2, c-1);
+					}
 				}
 			}
 			if(c<7) {
-				if(team.equals("white") && board[l-2][c+1]<0) {				
-					createPossibilityKill(l-2, c+1);
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l-2][c+1] = value;
+				if(team.equals("white")) {
+					if(board[l-2][c+1]==0 && isWhiteKingAttacked(newBoard)==false){
+						createPossibility(l-2, c+1);
+					}
+					else if(board[l-2][c+1]<0 && isWhiteKingAttacked(newBoard)==false) {
+						createPossibilityKill(l-2, c+1);
+					}
 				}
-				else if(team.equals("black") && board[l-2][c+1]>0) {				
-					createPossibilityKill(l-2, c+1);
-				}
-				else if(board[l-2][c+1]==0){
-					createPossibility(l-2, c+1);
+				else {
+					if(board[l-2][c+1]==0 && isBlackKingAttacked(newBoard)==false){
+						createPossibility(l-2, c+1);
+					}
+					else if(board[l-2][c+1]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l-2, c+1);
+					}
 				}			
 			}
 		}
 		if(l<7) {
 			if(c>1) {
-				if(team.equals("white") && board[l+1][c-2]<0) {				
-					createPossibilityKill(l+1, c-2);
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l+1][c-2] = value;
+				if(team.equals("white")) {
+					if(board[l+1][c-2]==0 && isWhiteKingAttacked(newBoard)==false){
+						createPossibility(l+1, c-2);
+					}
+					else if(board[l+1][c-2]<0 && isWhiteKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+1, c-2);
+					}
 				}
-				else if(team.equals("black") && board[l+1][c-2]>0) {				
-					createPossibilityKill(l+1, c-2);
-				}
-				else if(board[l+1][c-2]==0){
-					createPossibility(l+1, c-2);
+				else {
+					if(board[l+1][c-2]==0 && isBlackKingAttacked(newBoard)==false){
+						createPossibility(l+1, c-2);
+					}
+					else if(board[l+1][c-2]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+1, c-2);
+					}
 				}
 			}
 			if(c<6) {
-				if(team.equals("white") && board[l+1][c+2]<0) {				
-					createPossibilityKill(l+1, c+2);
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l+1][c+2] = value;
+				if(team.equals("white")) {
+					if(board[l+1][c+2]==0 && isWhiteKingAttacked(newBoard)==false){
+						createPossibility(l+1, c+2);
+					}
+					else if(board[l+1][c+2]<0 && isWhiteKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+1, c+2);
+					}
 				}
-				else if(team.equals("black") && board[l+1][c+2]>0) {				
-					createPossibilityKill(l+1, c+2);
-				}
-				else if(board[l+1][c+2]==0){
-					createPossibility(l+1, c+2);
+				else {
+					if(board[l+1][c+2]==0 && isBlackKingAttacked(newBoard)==false){
+						createPossibility(l+1, c+2);
+					}
+					else if(board[l+1][c+2]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+1, c+2);
+					}
 				}
 			}
 		}
 		if(l<6) {
 			if(c>0) {
-				if(team.equals("white") && board[l+2][c-1]<0) {				
-					createPossibilityKill(l+2, c-1);
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l+2][c-1] = value;
+				if(team.equals("white")) {
+					if(board[l+2][c-1]==0 && isWhiteKingAttacked(newBoard)==false){
+						createPossibility(l+2, c-1);
+					}
+					else if(board[l+2][c-1]<0 && isWhiteKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+2, c-1);
+					}
 				}
-				else if(team.equals("black") && board[l+2][c-1]>0) {				
-					createPossibilityKill(l+2, c-1);
-				}
-				else if(board[l+2][c-1]==0){
-					createPossibility(l+2, c-1);
+				else {
+					if(board[l+2][c-1]==0 && isBlackKingAttacked(newBoard)==false){
+						createPossibility(l+2, c-1);
+					}
+					else if(board[l+2][c-1]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+2, c-1);
+					}
 				}			
 			}
 			if(c<7) {
-				if(team.equals("white") && board[l+2][c+1]<0) {				
-					createPossibilityKill(l+2, c+1);
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l+2][c+1] = value;
+				if(team.equals("white")) {
+					if(board[l+2][c+1]==0 && isWhiteKingAttacked(newBoard)==false){
+						createPossibility(l+2, c+1);
+					}
+					else if(board[l+2][c+1]<0 && isWhiteKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+2, c+1);
+					}
 				}
-				else if(team.equals("black") && board[l+2][c+1]>0) {				
-					createPossibilityKill(l+2, c+1);
-				}
-				else if(board[l+2][c+1]==0){
-					createPossibility(l+2, c+1);
-				}				
+				else {
+					if(board[l+2][c+1]==0 && isBlackKingAttacked(newBoard)==false){
+						createPossibility(l+2, c+1);
+					}
+					else if(board[l+2][c+1]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+2, c+1);
+					}
+				}			
 			}
 		}
 	}
 	
-	public void deplacementRoi(int l, int c, int[][] board, String team) {
+	public void deplacementRoi(int l, int c, int[][] board, String team, int value) {
+		int[][] newBoard = copyBoard(board);
 		if(l>0) {
 			if(c>0) {
-				if(team.equals("white") && board[l-1][c-1]<0) {				
-					createPossibilityKill(l-1, c-1);
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l-1][c-1] = value;
+				if(team.equals("white")) {
+					if(board[l-1][c-1]==0 && isWhiteKingAttacked(newBoard)==false){
+						createPossibility(l-1, c-1);
+					}
+					else if(board[l-1][c-1]<0 && isWhiteKingAttacked(newBoard)==false) {
+						createPossibilityKill(l-1, c-1);
+					}
 				}
-				else if(team.equals("black") && board[l-1][c-1]>0) {				
-					createPossibilityKill(l-1, c-1);
-				}
-				else if(board[l-1][c-1]==0 && (team.equals("white") || team.equals("black"))){
-					createPossibility(l-1, c-1);
+				else {
+					if(board[l-1][c-1]==0 && isBlackKingAttacked(newBoard)==false){
+						createPossibility(l-1, c-1);
+					}
+					else if(board[l-1][c-1]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l-1, c-1);
+					}
 				}
 			}
 			if(c<7) {
-				if(team.equals("white") && board[l-1][c+1]<0) {				
-					createPossibilityKill(l-1, c+1);				
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l-1][c+1] = value;
+				if(team.equals("white")) {
+					if(board[l-1][c+1]==0 && isWhiteKingAttacked(newBoard)==false){
+						createPossibility(l-1, c+1);
+					}
+					else if(board[l-1][c+1]<0 && isWhiteKingAttacked(newBoard)==false) {
+						createPossibilityKill(l-1, c+1);
+					}
 				}
-				else if(team.equals("black") && board[l-1][c+1]>0) {				
-					createPossibilityKill(l-1, c+1);
-				}
-				else if(board[l-1][c+1]==0 && (team.equals("white") || team.equals("black"))){
-					createPossibility(l-1, c+1);
+				else {
+					if(board[l-1][c+1]==0 && isBlackKingAttacked(newBoard)==false){
+						createPossibility(l-1, c+1);
+					}
+					else if(board[l-1][c+1]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l-1, c+1);
+					}
 				}
 			}
-			if(team.equals("white") && board[l-1][c]<0) {				
-				createPossibilityKill(l-1, c);
+			newBoard = copyBoard(board);
+			newBoard[l][c] = 0;
+			newBoard[l-1][c] = value;
+			if(team.equals("white")) {
+				if(board[l-1][c]==0 && isWhiteKingAttacked(newBoard)==false){
+					createPossibility(l-1, c);
+				}
+				else if(board[l-1][c]<0 && isWhiteKingAttacked(newBoard)==false) {
+					createPossibilityKill(l-1, c);
+				}
 			}
-			else if(team.equals("black") && board[l-1][c]>0) {				
-				createPossibilityKill(l-1, c);
-			}
-			else if(board[l-1][c]==0 && (team.equals("white")|| team.equals("black"))){
-				createPossibility(l-1, c);
+			else {
+				if(board[l-1][c]==0 && isBlackKingAttacked(newBoard)==false){
+					createPossibility(l-1, c);
+				}
+				else if(board[l-1][c]>0 && isBlackKingAttacked(newBoard)==false) {
+					createPossibilityKill(l-1, c);
+				}
 			}
 		}
 		if(l<7) {
 			if(c>0) {
-				if(team.equals("white") && board[l+1][c-1]<0) {				
-					createPossibilityKill(l+1, c-1);
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l+1][c-1] = value;
+				if(team.equals("white")) {
+					if(board[l+1][c-1]==0 && isWhiteKingAttacked(newBoard)==false){
+						createPossibility(l+1, c-1);
+					}
+					else if(board[l+1][c-1]<0 && isWhiteKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+1, c-1);
+					}
 				}
-				else if(team.equals("black") && board[l+1][c-1]>0) {				
-					createPossibilityKill(l+1, c-1);
-				}
-				else if(board[l+1][c-1]==0 && (team.equals("white") || team.equals("black"))){
-					createPossibility(l+1, c-1);
+				else {
+					if(board[l+1][c-1]==0 && isBlackKingAttacked(newBoard)==false){
+						createPossibility(l+1, c-1);
+					}
+					else if(board[l+1][c-1]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+1, c-1);
+					}
 				}
 			}
 			if(c<7) {
-				if(team.equals("white") && board[l+1][c+1]<0) {				
-					createPossibilityKill(l+1, c+1);
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l+1][c+1] = value;
+				if(team.equals("white")) {
+					if(board[l+1][c+1]==0 && isWhiteKingAttacked(newBoard)==false){
+						createPossibility(l+1, c+1);
+					}
+					else if(board[l+1][c+1]<0 && isWhiteKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+1, c+1);
+					}
 				}
-				else if(team.equals("black") && board[l+1][c+1]>0) {				
-					createPossibilityKill(l+1, c+1);
-				}
-				else if(board[l+1][c+1]==0 && (team.equals("white") || team.equals("black"))){
-					createPossibility(l+1, c+1);
+				else {
+					if(board[l+1][c+1]==0 && isBlackKingAttacked(newBoard)==false){
+						createPossibility(l+1, c+1);
+					}
+					else if(board[l+1][c+1]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+1, c+1);
+					}
 				}		
 			}
-			if(team.equals("white") && board[l+1][c]<0) {				
-				createPossibilityKill(l+1, c);
+			newBoard = copyBoard(board);
+			newBoard[l][c] = 0;
+			newBoard[l+1][c] = value;
+			if(team.equals("white")) {
+				if(board[l+1][c]==0 && isWhiteKingAttacked(newBoard)==false){
+					createPossibility(l+1, c);
+				}
+				else if(board[l+1][c]<0 && isWhiteKingAttacked(newBoard)==false) {
+					createPossibilityKill(l+1, c);
+				}
 			}
-			else if(team.equals("black") && board[l+1][c]>0) {				
-				createPossibilityKill(l+1, c);
-			}
-			else if(board[l+1][c]==0 && (team.equals("white") || team.equals("black"))){
-				createPossibility(l+1, c);
+			else {
+				if(board[l+1][c]==0 && isBlackKingAttacked(newBoard)==false){
+					createPossibility(l+1, c);
+				}
+				else if(board[l+1][c]>0 && isBlackKingAttacked(newBoard)==false) {
+					createPossibilityKill(l+1, c);
+				}
 			}
 		}
 		if(c>0) {
-			if(team.equals("white") && board[l][c-1]<0) {				
-				createPossibilityKill(l, c-1);
+			newBoard = copyBoard(board);
+			newBoard[l][c] = 0;
+			newBoard[l][c-1] = value;
+			if(team.equals("white")) {
+				if(board[l][c-1]==0 && isWhiteKingAttacked(newBoard)==false){
+					createPossibility(l, c-1);
+				}
+				else if(board[l][c-1]<0 && isWhiteKingAttacked(newBoard)==false) {
+					createPossibilityKill(l, c-1);
+				}
 			}
-			else if(team.equals("black") && board[l][c-1]>0) {				
-				createPossibilityKill(l, c-1);
-			}
-			else if(board[l][c-1]==0 && (team.equals("white") || team.equals("black"))){
-				createPossibility(l, c-1);
+			else {
+				if(board[l][c-1]==0 && isBlackKingAttacked(newBoard)==false){
+					createPossibility(l, c-1);
+				}
+				else if(board[l][c-1]>0 && isBlackKingAttacked(newBoard)==false) {
+					createPossibilityKill(l, c-1);
+				}
 			}
 		}
 		if(c<7) {
-			if(team.equals("white") && board[l][c+1]<0) {				
-				createPossibilityKill(l, c+1);
+			newBoard = copyBoard(board);
+			newBoard[l][c] = 0;
+			newBoard[l][c+1] = value;
+			if(team.equals("white")) {
+				if(board[l][c+1]==0 && isWhiteKingAttacked(newBoard)==false){
+					createPossibility(l, c+1);
+				}
+				else if(board[l][c+1]<0 && isWhiteKingAttacked(newBoard)==false) {
+					createPossibilityKill(l, c+1);
+				}
 			}
-			else if(team.equals("black") && board[l][c+1]>0) {				
-				createPossibilityKill(l, c+1);
-			}
-			else if(board[l][c+1]==0 && (team.equals("white") || team.equals("black"))){
-				createPossibility(l, c+1);
+			else {
+				if(board[l][c+1]==0 && isBlackKingAttacked(newBoard)==false){
+					createPossibility(l, c+1);
+				}
+				else if(board[l][c+1]>0 && isBlackKingAttacked(newBoard)==false) {
+					createPossibilityKill(l, c+1);
+				}
 			}
 		}
 	}

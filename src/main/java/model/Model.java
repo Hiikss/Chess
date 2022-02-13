@@ -211,7 +211,7 @@ public class Model {
 		}
 		else if(value==2 || value==-2) {
 			
-			movement.deplacementCavalier(l,c,chessboard, team);
+			movement.deplacementCavalier(l,c,chessboard, team, value);
 		}
 		else if(value==3 || value==-3) {
 
@@ -228,7 +228,7 @@ public class Model {
 		}
 		else if(value==10 || value==-10) {
 			
-			movement.deplacementRoi(l,c,chessboard, team);
+			movement.deplacementRoi(l,c,chessboard, team, value);
 		}
 	}
 
