@@ -240,7 +240,7 @@ public class Model {
 		chessboard[(yPossibility-y)/squareSize][(xPossibility-x)/squareSize]=chessboard[(yBtn-y)/squareSize][(xBtn-x)/squareSize];
 		chessboard[(yBtn-y)/squareSize][(xBtn-x)/squareSize]=0;
 		btn.setLocation(xPossibility, yPossibility);
-		checkmate();
+		checkmate(chessboard);
 	}
 
 	public void pieceKill(JButton btn, JLabel possibility) {
@@ -253,6 +253,7 @@ public class Model {
 		chessboard[(yBtn-y)/squareSize][(xBtn-x)/squareSize]=0;
 		controller.removeButton(btnKilled);
 		btn.setLocation(btnKilled.getLocation());
+		checkmate(chessboard);
 	}
 
 	public JButton getPieceAt(int x, int y) {
@@ -359,10 +360,34 @@ public class Model {
 		return checked.isBlackKingAttacked(board);
 	}
 	
-	public void checkmate() {
-		if(checked.isWhiteKingAttacked(chessboard)==true && movement.deplacementRoi(7, 4, chessboard, team, 10)==false) {
-			//gameEnd("Échec et mat");
-			System.out.println("test");
+	public void checkmate(int[][] board) {
+		if(team.equals("black") && checked.isWhiteKingAttacked(chessboard)==true && movement.deplacementRoi(getKingX(10), getKingY(10), chessboard, "white", 10)==false) {
+			gameEnd("Victoire des noirs par mat");
 		}
+		else if(team.equals("white") && checked.isBlackKingAttacked(chessboard)==true && movement.deplacementRoi(getKingX(-10), getKingY(-10), chessboard, "black", -10)==false) {
+			gameEnd("Victoire des blancs par mat");
+		}
+	}
+	
+	public int getKingX(int value) {
+		for(int l=0; l<8; l++) {
+			for(int c=0; c<8; c++) {
+				if(chessboard[l][c]==value) {
+					return l;
+				}
+			}
+		}
+		return 0;
+	}
+	
+	public int getKingY(int value) {
+		for(int l=0; l<8; l++) {
+			for(int c=0; c<8; c++) {
+				if(chessboard[l][c]==value) {
+					return c;
+				}
+			}
+		}
+		return 0;
 	}
 }

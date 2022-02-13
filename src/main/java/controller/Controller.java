@@ -133,26 +133,29 @@ public class Controller {
 	public void clearPossibilities() {
 		view.clearPossibilities();
 	}
+	
 	public void pieceMove(JButton btnSelected, JLabel possibility) {
 		model.pieceMove(btnSelected, possibility);
 		
 	}
+	
 	public void pieceKill(JButton btnSelected, JLabel possibility) {
 		model.pieceKill(btnSelected, possibility);
 	}
+	
 	public void removeButton(JButton btnKilled) {
 		view.removeButton(btnKilled);
 		
 	}
+	
 	public JButton getPieceAt(int x, int y) {
 		return view.getPieceAt(x, y);
 	}
+	
 	public void changeTeam() {
 		model.changeTeam();
 	}
-	public void check() {
-		model.check();
-	}
+	
 	public void gameEnd(String reason) {
 		view.gameEnd(reason);
 	}
