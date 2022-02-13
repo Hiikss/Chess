@@ -168,14 +168,14 @@ public class Movement {
 		
 	}
 	
-	public boolean deplacementDiag(int l, int c, int[][] board, String team, int value) {
+	public boolean deplacementDiag(int l, int c, int[][] board, int value) {
 		boolean canKingMove = false;
 		int[][] newBoard = copyBoard(board);
 		for(int i=1;i<=7;i++) {
 			if(l-i>=0 && c-i>=0) {
 				newBoard[l-i+1][c-i+1] = 0;
 				newBoard[l-i][c-i] = value;
-				if(team.equals("white")) {
+				if(value>0) {
 					if(board[l-i][c-i]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l-i, c-i);
 						canKingMove = true;
@@ -210,7 +210,7 @@ public class Movement {
 			if(l+i<=7 && c-i>=0) {
 				newBoard[l+i-1][c-i+1] = 0;
 				newBoard[l+i][c-i] = value;
-				if(team.equals("white")) {
+				if(value>0) {
 					if(board[l+i][c-i]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l+i, c-i);
 						canKingMove = true;
@@ -245,7 +245,7 @@ public class Movement {
 			if(l-i>=0 && c+i<=7) {
 				newBoard[l-i+1][c+i-1] = 0;
 				newBoard[l-i][c+i] = value;
-				if(team.equals("white")) {
+				if(value>0) {
 					if(board[l-i][c+i]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l-i, c+i);
 						canKingMove = true;
@@ -280,7 +280,7 @@ public class Movement {
 			if(l+i<=7 && c+i<=7) {
 				newBoard[l+i-1][c+i-1] = 0;
 				newBoard[l+i][c+i] = value;
-				if(team.equals("white")) {
+				if(value>0) {
 					if(board[l+i][c+i]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l+i, c+i);
 						canKingMove = true;
@@ -313,14 +313,14 @@ public class Movement {
 		return canKingMove;
 	}
 	
-	public boolean deplacementLigne(int l, int c, int[][] board, String team, int value) {
+	public boolean deplacementLigne(int l, int c, int[][] board, int value) {
 		boolean canKingMove = false;
 		int[][] newBoard = copyBoard(board);
 		for(int i=1;i<=7;i++) {
 			if(l-i>=0) {
 				newBoard[l-i+1][c] = 0;
 				newBoard[l-i][c] = value;
-				if(team.equals("white")) {
+				if(value>0) {
 					if(board[l-i][c]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l-i, c);
 						canKingMove = true;
@@ -355,7 +355,7 @@ public class Movement {
 			if(l+i<=7) {
 				newBoard[l+i-1][c] = 0;
 				newBoard[l+i][c] = value;
-				if(team.equals("white")) {
+				if(value>0) {
 					if(board[l+i][c]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l+i, c);
 						canKingMove = true;
@@ -390,7 +390,7 @@ public class Movement {
 			if(c-i>=0) {
 				newBoard[l][c-i+1] = 0;
 				newBoard[l][c-i] = value;
-				if(team.equals("white")) {
+				if(value>0) {
 					if(board[l][c-i]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l, c-i);
 						canKingMove = true;
@@ -425,7 +425,7 @@ public class Movement {
 			if(c+i<=7) {
 				newBoard[l][c+i-1] = 0;
 				newBoard[l][c+i] = value;
-				if(team.equals("white")) {
+				if(value>0) {
 					if(board[l][c+i]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l, c+i);
 						canKingMove = true;
@@ -458,14 +458,14 @@ public class Movement {
 		return canKingMove;
 	}
 	
-	public boolean deplacementCavalier(int l, int c, int[][] board, String team, int value) {
+	public boolean deplacementCavalier(int l, int c, int[][] board, int value) {
 		boolean canKingMove = false;
 		int[][] newBoard = copyBoard(board);
 		if(l>0) {
 			if(c>1) {
 				newBoard[l][c] = 0;
 				newBoard[l-1][c-2] = value;
-				if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+				if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 					if(board[l-1][c-2]==0){
 						createPossibility(l-1, c-2);
 						canKingMove = true;
@@ -475,7 +475,7 @@ public class Movement {
 						canKingMove = true;
 					}
 				}
-				else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+				else if(value<0 && isBlackKingAttacked(newBoard)==false){
 					if(board[l-1][c-2]==0) {
 						createPossibility(l-1, c-2);
 						canKingMove = true;
@@ -490,7 +490,7 @@ public class Movement {
 				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l-1][c+2] = value;
-				if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+				if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 					if(board[l-1][c+2]==0){
 						createPossibility(l-1, c+2);
 						canKingMove = true;
@@ -500,7 +500,7 @@ public class Movement {
 						canKingMove = true;
 					}
 				}
-				else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+				else if(value<0 && isBlackKingAttacked(newBoard)==false){
 					if(board[l-1][c+2]==0){
 						createPossibility(l-1, c+2);
 						canKingMove = true;
@@ -517,7 +517,7 @@ public class Movement {
 				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l-2][c-1] = value;
-				if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+				if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 					if(board[l-2][c-1]==0){
 						createPossibility(l-2, c-1);
 						canKingMove = true;
@@ -527,7 +527,7 @@ public class Movement {
 						canKingMove = true;
 					}
 				}
-				else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+				else if(value<0 && isBlackKingAttacked(newBoard)==false){
 					if(board[l-2][c-1]==0){
 						createPossibility(l-2, c-1);
 						canKingMove = true;
@@ -542,7 +542,7 @@ public class Movement {
 				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l-2][c+1] = value;
-				if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+				if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 					if(board[l-2][c+1]==0){
 						createPossibility(l-2, c+1);
 						canKingMove = true;
@@ -552,7 +552,7 @@ public class Movement {
 						canKingMove = true;
 					}
 				}
-				else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+				else if(value<0 && isBlackKingAttacked(newBoard)==false){
 					if(board[l-2][c+1]==0){
 						createPossibility(l-2, c+1);
 						canKingMove = true;
@@ -569,7 +569,7 @@ public class Movement {
 				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l+1][c-2] = value;
-				if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+				if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 					if(board[l+1][c-2]==0){
 						createPossibility(l+1, c-2);
 						canKingMove = true;
@@ -579,7 +579,7 @@ public class Movement {
 						canKingMove = true;
 					}
 				}
-				else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+				else if(value<0 && isBlackKingAttacked(newBoard)==false){
 					if(board[l+1][c-2]==0){
 						createPossibility(l+1, c-2);
 						canKingMove = true;
@@ -594,7 +594,7 @@ public class Movement {
 				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l+1][c+2] = value;
-				if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+				if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 					if(board[l+1][c+2]==0){
 						createPossibility(l+1, c+2);
 						canKingMove = true;
@@ -604,7 +604,7 @@ public class Movement {
 						canKingMove = true;
 					}
 				}
-				else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+				else if(value<0 && isBlackKingAttacked(newBoard)==false){
 					if(board[l+1][c+2]==0){
 						createPossibility(l+1, c+2);
 						canKingMove = true;
@@ -621,7 +621,7 @@ public class Movement {
 				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l+2][c-1] = value;
-				if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+				if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 					if(board[l+2][c-1]==0){
 						createPossibility(l+2, c-1);
 						canKingMove = true;
@@ -631,7 +631,7 @@ public class Movement {
 						canKingMove = true;
 					}
 				}
-				else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+				else if(value<0 && isBlackKingAttacked(newBoard)==false){
 					if(board[l+2][c-1]==0){
 						createPossibility(l+2, c-1);
 						canKingMove = true;
@@ -646,7 +646,7 @@ public class Movement {
 				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l+2][c+1] = value;
-				if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+				if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 					if(board[l+2][c+1]==0){
 						createPossibility(l+2, c+1);
 						canKingMove = true;
@@ -656,7 +656,7 @@ public class Movement {
 						canKingMove = true;
 					}
 				}
-				else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+				else if(value<0 && isBlackKingAttacked(newBoard)==false){
 					if(board[l+2][c+1]==0){
 						createPossibility(l+2, c+1);
 						canKingMove = true;
@@ -671,7 +671,7 @@ public class Movement {
 		return canKingMove;
 	}
 	
-	public boolean deplacementRoi(int l, int c, int[][] board, String team, int value) {
+	public boolean deplacementRoi(int l, int c, int[][] board, int value) {
 		boolean canKingMove = false;
 		int[][] newBoard = copyBoard(board);
 		if(l>0) {
@@ -679,7 +679,7 @@ public class Movement {
 				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l-1][c-1] = value;
-				if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+				if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 					if(board[l-1][c-1]==0){
 						createPossibility(l-1, c-1);						
 						canKingMove = true;
@@ -689,7 +689,7 @@ public class Movement {
 						canKingMove = true;
 					}
 				}
-				else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+				else if(value<0 && isBlackKingAttacked(newBoard)==false){
 					if(board[l-1][c-1]==0){
 						createPossibility(l-1, c-1);						
 						canKingMove = true;
@@ -704,7 +704,7 @@ public class Movement {
 				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l-1][c+1] = value;
-				if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+				if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 					if(board[l-1][c+1]==0){
 						createPossibility(l-1, c+1);						
 						canKingMove = true;
@@ -714,7 +714,7 @@ public class Movement {
 						canKingMove = true;
 					}
 				}
-				else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+				else if(value<0 && isBlackKingAttacked(newBoard)==false){
 					if(board[l-1][c+1]==0){
 						createPossibility(l-1, c+1);						
 						canKingMove = true;
@@ -728,7 +728,7 @@ public class Movement {
 			newBoard = copyBoard(board);
 			newBoard[l][c] = 0;
 			newBoard[l-1][c] = value;
-			if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+			if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 				if(board[l-1][c]==0){
 					createPossibility(l-1, c);					
 					canKingMove = true;
@@ -738,7 +738,7 @@ public class Movement {
 					canKingMove = true;
 				}
 			}
-			else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+			else if(value<0 && isBlackKingAttacked(newBoard)==false){
 				if(board[l-1][c]==0){
 					createPossibility(l-1, c);					
 					canKingMove = true;
@@ -754,7 +754,7 @@ public class Movement {
 				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l+1][c-1] = value;
-				if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+				if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 					if(board[l+1][c-1]==0){
 						createPossibility(l+1, c-1);						
 						canKingMove = true;
@@ -764,7 +764,7 @@ public class Movement {
 						canKingMove = true;
 					}
 				}
-				else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+				else if(value<0 && isBlackKingAttacked(newBoard)==false){
 					if(board[l+1][c-1]==0){
 						createPossibility(l+1, c-1);						
 						canKingMove = true;
@@ -779,7 +779,7 @@ public class Movement {
 				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l+1][c+1] = value;
-				if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+				if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 					if(board[l+1][c+1]==0){
 						createPossibility(l+1, c+1);						
 						canKingMove = true;
@@ -789,7 +789,7 @@ public class Movement {
 						canKingMove = true;
 					}
 				}
-				else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+				else if(value<0 && isBlackKingAttacked(newBoard)==false){
 					if(board[l+1][c+1]==0){
 						createPossibility(l+1, c+1);						
 						canKingMove = true;
@@ -803,7 +803,7 @@ public class Movement {
 			newBoard = copyBoard(board);
 			newBoard[l][c] = 0;
 			newBoard[l+1][c] = value;
-			if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+			if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 				if(board[l+1][c]==0){
 					createPossibility(l+1, c);					
 					canKingMove = true;
@@ -813,7 +813,7 @@ public class Movement {
 					canKingMove = true;
 				}
 			}
-			else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+			else if(value<0 && isBlackKingAttacked(newBoard)==false){
 				if(board[l+1][c]==0){
 					createPossibility(l+1, c);				
 					canKingMove = true;
@@ -828,7 +828,7 @@ public class Movement {
 			newBoard = copyBoard(board);
 			newBoard[l][c] = 0;
 			newBoard[l][c-1] = value;
-			if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+			if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 				if(board[l][c-1]==0){
 					createPossibility(l, c-1);					
 					canKingMove = true;
@@ -838,7 +838,7 @@ public class Movement {
 					canKingMove = true;
 				}
 			}
-			else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+			else if(value<0 && isBlackKingAttacked(newBoard)==false){
 				if(board[l][c-1]==0){
 					createPossibility(l, c-1);
 					canKingMove = true;
@@ -853,7 +853,7 @@ public class Movement {
 			newBoard = copyBoard(board);
 			newBoard[l][c] = 0;
 			newBoard[l][c+1] = value;
-			if(team.equals("white") && isWhiteKingAttacked(newBoard)==false) {
+			if(value>0 && isWhiteKingAttacked(newBoard)==false) {
 				if(board[l][c+1]==0){
 					createPossibility(l, c+1);
 					canKingMove = true;
@@ -863,7 +863,7 @@ public class Movement {
 					canKingMove = true;
 				}
 			}
-			else if(team.equals("black") && isBlackKingAttacked(newBoard)==false){
+			else if(value<0 && isBlackKingAttacked(newBoard)==false){
 				if(board[l][c+1]==0){
 					createPossibility(l, c+1);
 					canKingMove = true;

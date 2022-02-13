@@ -211,24 +211,24 @@ public class Model {
 		}
 		else if(value==2 || value==-2) {
 			
-			movement.deplacementCavalier(l,c,chessboard, team, value);
+			movement.deplacementCavalier(l,c,chessboard, value);
 		}
 		else if(value==3 || value==-3) {
 
-			movement.deplacementDiag(l,c,chessboard, team, value);
+			movement.deplacementDiag(l,c,chessboard, value);
 		}
 		else if(value==5 || value==-5) {
 			
-			movement.deplacementLigne(l,c,chessboard, team, value);
+			movement.deplacementLigne(l,c,chessboard, value);
 		}
 		else if(value==9 || value==-9) {
 			
-			movement.deplacementDiag(l,c,chessboard, team, value);
-			movement.deplacementLigne(l,c,chessboard, team, value);
+			movement.deplacementDiag(l,c,chessboard, value);
+			movement.deplacementLigne(l,c,chessboard, value);
 		}
 		else if(value==10 || value==-10) {
 			
-			movement.deplacementRoi(l,c,chessboard, team, value);
+			movement.deplacementRoi(l,c,chessboard, value);
 		}
 	}
 
@@ -376,19 +376,19 @@ public class Model {
 				if(board[l][c]==1 && movement.deplacementPionBlanc(l, c, chessboard)==true) {
 					isWhiteKingCheckmate = false;
 				}
-				else if(board[l][c]==2 && movement.deplacementCavalier(l, c, chessboard, "white", 2)==true) {
+				else if(board[l][c]==2 && movement.deplacementCavalier(l, c, chessboard, 2)==true) {
 					isWhiteKingCheckmate = false;
 				}
-				else if(board[l][c]==3 && movement.deplacementDiag(l, c, chessboard, "white", 3)==true) {
+				else if(board[l][c]==3 && movement.deplacementDiag(l, c, chessboard, 3)==true) {
 					isWhiteKingCheckmate = false;
 				}
-				else if(board[l][c]==5 && movement.deplacementLigne(l, c, chessboard, "white", 5)==true) {
+				else if(board[l][c]==5 && movement.deplacementLigne(l, c, chessboard, 5)==true) {
 					isWhiteKingCheckmate = false;
 				}
-				else if(board[l][c]==9 && (movement.deplacementLigne(l, c, chessboard, "white", 9)==true || movement.deplacementDiag(l, c, chessboard, "white", 9)==true)) {
+				else if(board[l][c]==9 && (movement.deplacementLigne(l, c, chessboard, 9)==true || movement.deplacementDiag(l, c, chessboard, 9)==true)) {
 					isWhiteKingCheckmate = false;
 				}
-				else if(board[l][c]==10 && movement.deplacementRoi(l, c, chessboard, "white", 10)==true) {
+				else if(board[l][c]==10 && movement.deplacementRoi(l, c, chessboard, 10)==true) {
 					isWhiteKingCheckmate = false;
 				}
 			}
@@ -403,19 +403,19 @@ public class Model {
 				if(board[l][c]==-1 && movement.deplacementPionNoir(l, c, chessboard)==true) {
 					isBlackKingCheckmate = false;
 				}
-				else if(board[l][c]==-2 && movement.deplacementCavalier(l, c, chessboard, "black", -2)==true) {
+				else if(board[l][c]==-2 && movement.deplacementCavalier(l, c, chessboard, -2)==true) {
 					isBlackKingCheckmate = false;
 				}
-				else if(board[l][c]==-3 && movement.deplacementDiag(l, c, chessboard, "black", -3)==true) {
+				else if(board[l][c]==-3 && movement.deplacementDiag(l, c, chessboard, -3)==true) {
 					isBlackKingCheckmate = false;
 				}
-				else if(board[l][c]==-5 && movement.deplacementLigne(l, c, chessboard, "black", -5)==true) {
+				else if(board[l][c]==-5 && movement.deplacementLigne(l, c, chessboard, -5)==true) {
 					isBlackKingCheckmate = false;
 				}
-				else if(board[l][c]==-9 && (movement.deplacementLigne(l, c, chessboard, "black", -9)==true || movement.deplacementDiag(l, c, chessboard, "black", -9)==true)) {
+				else if(board[l][c]==-9 && (movement.deplacementLigne(l, c, chessboard, -9)==true || movement.deplacementDiag(l, c, chessboard, -9)==true)) {
 					isBlackKingCheckmate = false;
 				}
-				else if(board[l][c]==-10 && movement.deplacementRoi(l, c, chessboard, "black", -10)==true) {
+				else if(board[l][c]==-10 && movement.deplacementRoi(l, c, chessboard, -10)==true) {
 					isBlackKingCheckmate = false;
 				}
 			}
