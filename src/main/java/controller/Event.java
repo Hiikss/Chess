@@ -91,9 +91,10 @@ public class Event{
             public void mouseReleased(MouseEvent e) {
             	logger.log(Level.INFO, "label cliqué");
             	JLabel possibility =  (JLabel) e.getSource();
-            	controller.pieceMove(btnSelected, possibility);    
-            	controller.changeTeam();
+            	controller.pieceMove(btnSelected, possibility);    	
             	update();
+            	controller.checkmate();
+            	controller.changeTeam();
             }
         };
         
@@ -103,8 +104,9 @@ public class Event{
             	logger.log(Level.INFO, "label cliqué");
             	JLabel possibility =  (JLabel) e.getSource();
             	controller.pieceKill(btnSelected, possibility);
-            	controller.changeTeam();
             	update();
+            	controller.checkmate();
+            	controller.changeTeam();
             }
         };
         

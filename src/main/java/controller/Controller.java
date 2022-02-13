@@ -159,4 +159,8 @@ public class Controller {
 	public void gameEnd(String reason) {
 		view.gameEnd(reason);
 	}
+	
+	public void checkmate() {
+		model.checkmate();
+	}
 }

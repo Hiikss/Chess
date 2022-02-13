@@ -51,9 +51,10 @@ public class Movement {
 		return newBoard;
 	}
 	
-	public boolean deplacementPionBlanc(int l, int c, int[][] board) {
+	public boolean deplacementPion(int l, int c, int[][] board, int value) {
 		boolean canKingMove = false;
 		int[][] newBoard = copyBoard(board);
+		if(value>0) {
 		newBoard[l][c] = 0;
 		newBoard[l-1][c] = 1;
 		if(l==6) {
@@ -95,81 +96,49 @@ public class Movement {
 			}
 	
 		}
-		/*if(l==3) {
-			Component[] components = Main.panel.getComponents();
- 			   for (Component component : components) {
- 				   if (component instanceof JButton) {
- 					   if(Display.pep.contains(component) && (component.getX()==x+75 || component.getX()==x-75)  && component.getY()==250) {
- 						  possibility=Display.casePossible();
- 							possibility.setLocation(component.getX(),175);
- 							Main.panel.add(possibility);
- 							Display.pepkill=true;
- 					   }
- 				   }
- 			   }
-		}*/
-		return canKingMove;
-		
-	}
-	
-	public boolean deplacementPionNoir(int l, int c, int[][] board) {
-		boolean canKingMove = false;
-		int[][] newBoard = copyBoard(board);
-		newBoard[l][c] = 0;
-		newBoard[l+1][c] = -1;
-		if(l==1) {
-			for(int i=1;i<=2;i++) {	
-				newBoard[l+i-1][c] = 0;
-				newBoard[l+i][c] = -1;
-				if(board[l+i][c]==0 && isBlackKingAttacked(newBoard)==false) {
-					createPossibility(l+i,c);
-					canKingMove = true;
+		}
+		else {
+			newBoard[l][c] = 0;
+			newBoard[l+1][c] = -1;
+			if(l==1) {
+				for(int i=1;i<=2;i++) {	
+					newBoard[l+i-1][c] = 0;
+					newBoard[l+i][c] = -1;
+					if(board[l+i][c]==0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibility(l+i,c);
+						canKingMove = true;
+					}
+					else if(isWhiteKingAttacked(newBoard)==false){
+						i=3;
+					}
 				}
-				else if(isWhiteKingAttacked(newBoard)==false){
-					i=3;
+			}
+			else if(l<7 && board[l+1][c]==0 && isBlackKingAttacked(newBoard)==false){
+				createPossibility(l+1, c);
+				canKingMove = true;
+			}
+			if(l<7) {
+				if(c>0) {
+					newBoard = copyBoard(board);
+					newBoard[l][c] = 0;
+					newBoard[l+1][c-1] = -1;
+					if(board[l+1][c-1]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+1, c-1);
+						canKingMove = true;
+					}
+				}	
+				if(c<7) {
+					newBoard = copyBoard(board);
+					newBoard[l][c] = 0;
+					newBoard[l+1][c+1] = -1;
+					if(board[l+1][c+1]>0 && isBlackKingAttacked(newBoard)==false) {
+						createPossibilityKill(l+1, c+1);
+						canKingMove = true;
+					}
 				}
 			}
 		}
-		else if(l<7 && board[l+1][c]==0 && isBlackKingAttacked(newBoard)==false){
-			createPossibility(l+1, c);
-			canKingMove = true;
-		}
-		if(l<7) {
-			if(c>0) {
-				newBoard = copyBoard(board);
-				newBoard[l][c] = 0;
-				newBoard[l+1][c-1] = -1;
-				if(board[l+1][c-1]>0 && isBlackKingAttacked(newBoard)==false) {
-					createPossibilityKill(l+1, c-1);
-					canKingMove = true;
-				}
-			}	
-			if(c<7) {
-				newBoard = copyBoard(board);
-				newBoard[l][c] = 0;
-				newBoard[l+1][c+1] = -1;
-				if(board[l+1][c+1]>0 && isBlackKingAttacked(newBoard)==false) {
-					createPossibilityKill(l+1, c+1);
-					canKingMove = true;
-				}
-			}
-	
-		}
-		/*if(l==4) {
-			Component[] components = Main.panel.getComponents();
- 			   for (Component component : components) {
- 				   if (component instanceof JButton) {
- 					   if(Display.pep.contains(component) && (component.getX()==x+75 || component.getX()==x-75)  && component.getY()==325) {
- 						  possibility=Display.casePossible();
- 							possibility.setLocation(component.getX(),400);
- 							Main.panel.add(possibility);
- 							Display.pepkill=true;
- 					   }
- 				   }
- 			   }
-		}*/
 		return canKingMove;
-		
 	}
 	
 	public boolean deplacementDiag(int l, int c, int[][] board, int value) {
