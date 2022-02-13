@@ -362,9 +362,13 @@ public class Model {
 	
 	public void checkmate(int[][] board) {
 		if(team.equals("black") && checked.isWhiteKingAttacked(chessboard)==true && isWhiteKingCheckmate(chessboard)==true) {
+			controller.clearPossibilities();
+			controller.updateView();
 			gameEnd("Victoire des noirs par mat");
 		}
 		else if(team.equals("white") && checked.isBlackKingAttacked(chessboard)==true && isBlackKingCheckmate(chessboard)==true) {
+			controller.clearPossibilities();
+			controller.updateView();
 			gameEnd("Victoire des blancs par mat");
 		}
 	}

@@ -76,6 +76,7 @@ public class Movement {
 		}
 		if(l>0) {
 			if(c>0) {
+				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l-1][c-1] = 1;
 				if(board[l-1][c-1]<0 && isWhiteKingAttacked(newBoard)==false) {		
@@ -84,6 +85,7 @@ public class Movement {
 				}
 			}
 			if(c<7) {
+				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
 				newBoard[l-1][c+1] = 1;
 				if(board[l-1][c+1]<0 && isWhiteKingAttacked(newBoard)==false) {			
@@ -114,11 +116,11 @@ public class Movement {
 		boolean canKingMove = false;
 		int[][] newBoard = copyBoard(board);
 		newBoard[l][c] = 0;
-		newBoard[l+1][c] = 1;
+		newBoard[l+1][c] = -1;
 		if(l==1) {
 			for(int i=1;i<=2;i++) {	
 				newBoard[l+i-1][c] = 0;
-				newBoard[l+i][c] = 1;
+				newBoard[l+i][c] = -1;
 				if(board[l+i][c]==0 && isBlackKingAttacked(newBoard)==false) {
 					createPossibility(l+i,c);
 					canKingMove = true;
@@ -134,16 +136,18 @@ public class Movement {
 		}
 		if(l<7) {
 			if(c>0) {
+				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
-				newBoard[l+1][c-1] = 1;
+				newBoard[l+1][c-1] = -1;
 				if(board[l+1][c-1]>0 && isBlackKingAttacked(newBoard)==false) {
 					createPossibilityKill(l+1, c-1);
 					canKingMove = true;
 				}
 			}	
 			if(c<7) {
+				newBoard = copyBoard(board);
 				newBoard[l][c] = 0;
-				newBoard[l+1][c+1] = 1;
+				newBoard[l+1][c+1] = -1;
 				if(board[l+1][c+1]>0 && isBlackKingAttacked(newBoard)==false) {
 					createPossibilityKill(l+1, c+1);
 					canKingMove = true;
