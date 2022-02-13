@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -96,7 +98,7 @@ public class Swing extends JFrame implements Strategy{
 		this.setVisible(true); //on voit la frame
 		logger.log(Level.INFO, "vue = swing");
 		
-		fin.setLayout(null); //propriétés du JDialog
+		fin.setLayout(new BorderLayout()); //propriétés du JDialog
 		fin.setResizable(false);
 		fin.setSize(450, 260);
 		fin.setLocationRelativeTo(null);
@@ -200,10 +202,8 @@ public class Swing extends JFrame implements Strategy{
 
 	@Override
 	public void gameEnd(String reason) {
-		JLabel label = new JLabel();
-		label.setText(reason);
+		JLabel label = new JLabel(reason, SwingConstants.CENTER);
 		label.setFont(new Font("Arial",Font.PLAIN,20));
-		label.setBounds(50, 50, 300, 50);
 		fin.add(label);
 		fin.setVisible(true);
 	}
