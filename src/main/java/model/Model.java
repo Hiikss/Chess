@@ -361,33 +361,65 @@ public class Model {
 	}
 	
 	public void checkmate(int[][] board) {
-		if(team.equals("black") && checked.isWhiteKingAttacked(chessboard)==true && movement.deplacementRoi(getKingX(10), getKingY(10), chessboard, "white", 10)==false) {
+		if(team.equals("black") && checked.isWhiteKingAttacked(chessboard)==true && isWhiteKingCheckmate(chessboard)==true) {
 			gameEnd("Victoire des noirs par mat");
 		}
-		else if(team.equals("white") && checked.isBlackKingAttacked(chessboard)==true && movement.deplacementRoi(getKingX(-10), getKingY(-10), chessboard, "black", -10)==false) {
+		else if(team.equals("white") && checked.isBlackKingAttacked(chessboard)==true && isBlackKingCheckmate(chessboard)==true) {
 			gameEnd("Victoire des blancs par mat");
 		}
 	}
 	
-	public int getKingX(int value) {
+	public boolean isWhiteKingCheckmate(int[][] board) {
+		boolean isWhiteKingCheckmate = true;
 		for(int l=0; l<8; l++) {
 			for(int c=0; c<8; c++) {
-				if(chessboard[l][c]==value) {
-					return l;
+				if(board[l][c]==1 && movement.deplacementPionBlanc(l, c, chessboard)==true) {
+					isWhiteKingCheckmate = false;
+				}
+				else if(board[l][c]==2 && movement.deplacementCavalier(l, c, chessboard, "white", 2)==true) {
+					isWhiteKingCheckmate = false;
+				}
+				else if(board[l][c]==3 && movement.deplacementDiag(l, c, chessboard, "white", 3)==true) {
+					isWhiteKingCheckmate = false;
+				}
+				else if(board[l][c]==5 && movement.deplacementLigne(l, c, chessboard, "white", 5)==true) {
+					isWhiteKingCheckmate = false;
+				}
+				else if(board[l][c]==9 && (movement.deplacementLigne(l, c, chessboard, "white", 9)==true || movement.deplacementDiag(l, c, chessboard, "white", 9)==true)) {
+					isWhiteKingCheckmate = false;
+				}
+				else if(board[l][c]==10 && movement.deplacementRoi(l, c, chessboard, "white", 10)==true) {
+					isWhiteKingCheckmate = false;
 				}
 			}
 		}
-		return 0;
+		return isWhiteKingCheckmate;
 	}
 	
-	public int getKingY(int value) {
+	public boolean isBlackKingCheckmate(int[][] board) {
+		boolean isBlackKingCheckmate = true;
 		for(int l=0; l<8; l++) {
 			for(int c=0; c<8; c++) {
-				if(chessboard[l][c]==value) {
-					return c;
+				if(board[l][c]==-1 && movement.deplacementPionNoir(l, c, chessboard)==true) {
+					isBlackKingCheckmate = false;
+				}
+				else if(board[l][c]==-2 && movement.deplacementCavalier(l, c, chessboard, "black", -2)==true) {
+					isBlackKingCheckmate = false;
+				}
+				else if(board[l][c]==-3 && movement.deplacementDiag(l, c, chessboard, "black", -3)==true) {
+					isBlackKingCheckmate = false;
+				}
+				else if(board[l][c]==-5 && movement.deplacementLigne(l, c, chessboard, "black", -5)==true) {
+					isBlackKingCheckmate = false;
+				}
+				else if(board[l][c]==-9 && (movement.deplacementLigne(l, c, chessboard, "black", -9)==true || movement.deplacementDiag(l, c, chessboard, "black", -9)==true)) {
+					isBlackKingCheckmate = false;
+				}
+				else if(board[l][c]==-10 && movement.deplacementRoi(l, c, chessboard, "black", -10)==true) {
+					isBlackKingCheckmate = false;
 				}
 			}
 		}
-		return 0;
+		return isBlackKingCheckmate;
 	}
 }
