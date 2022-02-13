@@ -164,7 +164,7 @@ public class Movement {
 		for(int i=1;i<=7;i++) {
 			if(l-i>=0 && c-i>=0) {
 				newBoard[l-i+1][c-i+1] = 0;
-				newBoard[l-1][c-1] = value;
+				newBoard[l-i][c-i] = value;
 				if(team.equals("white")) {
 					if(board[l-i][c-i]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l-i, c-i);
@@ -173,7 +173,7 @@ public class Movement {
 						createPossibilityKill(l-i, c-i);
 						i=8;
 					}
-					else if(isWhiteKingAttacked(newBoard)==false){
+					else if(board[l-i][c-i]>0 || isWhiteKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -185,7 +185,7 @@ public class Movement {
 						createPossibilityKill(l-i, c-i);
 						i=8;
 					}
-					else if(isBlackKingAttacked(newBoard)==false){
+					else if(board[l-i][c-i]<0 || isBlackKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -195,7 +195,7 @@ public class Movement {
 		for(int i=1;i<=7;i++) {
 			if(l+i<=7 && c-i>=0) {
 				newBoard[l+i-1][c-i+1] = 0;
-				newBoard[l+1][c-1] = value;
+				newBoard[l+i][c-i] = value;
 				if(team.equals("white")) {
 					if(board[l+i][c-i]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l+i, c-i);
@@ -204,7 +204,7 @@ public class Movement {
 						createPossibilityKill(l+i, c-i);
 						i=8;
 					}
-					else if(isWhiteKingAttacked(newBoard)==false){
+					else if(board[l+i][c-i]>0 || isWhiteKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -216,7 +216,7 @@ public class Movement {
 						createPossibilityKill(l+i, c-i);
 						i=8;
 					}
-					else if(isBlackKingAttacked(newBoard)==false){
+					else if(board[l+i][c-i]<0 || isBlackKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -230,13 +230,13 @@ public class Movement {
 				if(team.equals("white")) {
 					if(board[l-i][c+i]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l-i, c+i);
-						System.out.println("test");
+						System.out.println(board[l-i+1][c+i-1]);
 					}
 					else if(board[l-i][c+i]<0 && isWhiteKingAttacked(newBoard)==false) {
 						createPossibilityKill(l-i, c+i);
 						i=8;
 					}
-					else if(isWhiteKingAttacked(newBoard)==false){
+					else if(board[l-i][c+i]>0 || isWhiteKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -248,7 +248,7 @@ public class Movement {
 						createPossibilityKill(l-i, c+i);
 						i=8;
 					}
-					else if(isBlackKingAttacked(newBoard)==false){
+					else if(board[l-i][c+i]<0 || isBlackKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -267,7 +267,7 @@ public class Movement {
 						createPossibilityKill(l+i, c+i);
 						i=8;
 					}
-					else if(isWhiteKingAttacked(newBoard)==false){
+					else if(board[l+i][c+i]>0 || isWhiteKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -279,7 +279,7 @@ public class Movement {
 						createPossibilityKill(l+i, c+i);
 						i=8;
 					}
-					else if(isBlackKingAttacked(newBoard)==false){
+					else if(board[l+i][c+i]<0 || isBlackKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -302,7 +302,7 @@ public class Movement {
 						createPossibilityKill(l-i, c);
 						i=8;
 					}
-					else if(isWhiteKingAttacked(newBoard)==false){
+					else if(board[l-i][c]>0 || isWhiteKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -314,7 +314,7 @@ public class Movement {
 						createPossibilityKill(l-i, c);
 						i=8;
 					}
-					else if(isBlackKingAttacked(newBoard)==false){
+					else if(board[l-i][c]<0 || isBlackKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -333,7 +333,7 @@ public class Movement {
 						createPossibilityKill(l+i, c);
 						i=8;
 					}
-					else if(isWhiteKingAttacked(newBoard)==false){
+					else if(board[l+i][c]>0 || isWhiteKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -345,7 +345,7 @@ public class Movement {
 						createPossibilityKill(l+i, c);
 						i=8;
 					}
-					else if(isBlackKingAttacked(newBoard)==false){
+					else if(board[l+i][c]<0 || isBlackKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -364,7 +364,7 @@ public class Movement {
 						createPossibilityKill(l, c-i);
 						i=8;
 					}
-					else if(isWhiteKingAttacked(newBoard)==false){
+					else if(board[l][c-i]>0 || isWhiteKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -376,7 +376,7 @@ public class Movement {
 						createPossibilityKill(l, c-i);
 						i=8;
 					}
-					else if(isBlackKingAttacked(newBoard)==false){
+					else if(board[l][c-i]<0 || isBlackKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -395,7 +395,7 @@ public class Movement {
 						createPossibilityKill(l, c+i);
 						i=8;
 					}
-					else if(isWhiteKingAttacked(newBoard)==false){
+					else if(board[l][c+i]>0 || isWhiteKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -407,7 +407,7 @@ public class Movement {
 						createPossibilityKill(l, c+i);
 						i=8;
 					}
-					else if(isBlackKingAttacked(newBoard)==false){
+					else if(board[l][c+i]<0 || isBlackKingAttacked(newBoard)==false){
 						i=8;
 					}
 				}
@@ -594,7 +594,7 @@ public class Movement {
 		}
 	}
 	
-	public void deplacementRoi(int l, int c, int[][] board, String team, int value) {
+	public boolean deplacementRoi(int l, int c, int[][] board, String team, int value) {
 		int[][] newBoard = copyBoard(board);
 		if(l>0) {
 			if(c>0) {
@@ -604,17 +604,21 @@ public class Movement {
 				if(team.equals("white")) {
 					if(board[l-1][c-1]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l-1, c-1);
+						return true;
 					}
 					else if(board[l-1][c-1]<0 && isWhiteKingAttacked(newBoard)==false) {
 						createPossibilityKill(l-1, c-1);
+						return true;
 					}
 				}
 				else {
 					if(board[l-1][c-1]==0 && isBlackKingAttacked(newBoard)==false){
 						createPossibility(l-1, c-1);
+						return true;
 					}
 					else if(board[l-1][c-1]>0 && isBlackKingAttacked(newBoard)==false) {
 						createPossibilityKill(l-1, c-1);
+						return true;
 					}
 				}
 			}
@@ -625,17 +629,21 @@ public class Movement {
 				if(team.equals("white")) {
 					if(board[l-1][c+1]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l-1, c+1);
+						return true;
 					}
 					else if(board[l-1][c+1]<0 && isWhiteKingAttacked(newBoard)==false) {
 						createPossibilityKill(l-1, c+1);
+						return true;
 					}
 				}
 				else {
 					if(board[l-1][c+1]==0 && isBlackKingAttacked(newBoard)==false){
 						createPossibility(l-1, c+1);
+						return true;
 					}
 					else if(board[l-1][c+1]>0 && isBlackKingAttacked(newBoard)==false) {
 						createPossibilityKill(l-1, c+1);
+						return true;
 					}
 				}
 			}
@@ -645,17 +653,21 @@ public class Movement {
 			if(team.equals("white")) {
 				if(board[l-1][c]==0 && isWhiteKingAttacked(newBoard)==false){
 					createPossibility(l-1, c);
+					return true;
 				}
 				else if(board[l-1][c]<0 && isWhiteKingAttacked(newBoard)==false) {
 					createPossibilityKill(l-1, c);
+					return true;
 				}
 			}
 			else {
 				if(board[l-1][c]==0 && isBlackKingAttacked(newBoard)==false){
 					createPossibility(l-1, c);
+					return true;
 				}
 				else if(board[l-1][c]>0 && isBlackKingAttacked(newBoard)==false) {
 					createPossibilityKill(l-1, c);
+					return true;
 				}
 			}
 		}
@@ -667,17 +679,21 @@ public class Movement {
 				if(team.equals("white")) {
 					if(board[l+1][c-1]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l+1, c-1);
+						return true;
 					}
 					else if(board[l+1][c-1]<0 && isWhiteKingAttacked(newBoard)==false) {
 						createPossibilityKill(l+1, c-1);
+						return true;
 					}
 				}
 				else {
 					if(board[l+1][c-1]==0 && isBlackKingAttacked(newBoard)==false){
 						createPossibility(l+1, c-1);
+						return true;
 					}
 					else if(board[l+1][c-1]>0 && isBlackKingAttacked(newBoard)==false) {
 						createPossibilityKill(l+1, c-1);
+						return true;
 					}
 				}
 			}
@@ -688,17 +704,21 @@ public class Movement {
 				if(team.equals("white")) {
 					if(board[l+1][c+1]==0 && isWhiteKingAttacked(newBoard)==false){
 						createPossibility(l+1, c+1);
+						return true;
 					}
 					else if(board[l+1][c+1]<0 && isWhiteKingAttacked(newBoard)==false) {
 						createPossibilityKill(l+1, c+1);
+						return true;
 					}
 				}
 				else {
 					if(board[l+1][c+1]==0 && isBlackKingAttacked(newBoard)==false){
 						createPossibility(l+1, c+1);
+						return true;
 					}
 					else if(board[l+1][c+1]>0 && isBlackKingAttacked(newBoard)==false) {
 						createPossibilityKill(l+1, c+1);
+						return true;
 					}
 				}		
 			}
@@ -708,17 +728,21 @@ public class Movement {
 			if(team.equals("white")) {
 				if(board[l+1][c]==0 && isWhiteKingAttacked(newBoard)==false){
 					createPossibility(l+1, c);
+					return true;
 				}
 				else if(board[l+1][c]<0 && isWhiteKingAttacked(newBoard)==false) {
 					createPossibilityKill(l+1, c);
+					return true;
 				}
 			}
 			else {
 				if(board[l+1][c]==0 && isBlackKingAttacked(newBoard)==false){
 					createPossibility(l+1, c);
+					return true;
 				}
 				else if(board[l+1][c]>0 && isBlackKingAttacked(newBoard)==false) {
 					createPossibilityKill(l+1, c);
+					return true;
 				}
 			}
 		}
@@ -729,17 +753,21 @@ public class Movement {
 			if(team.equals("white")) {
 				if(board[l][c-1]==0 && isWhiteKingAttacked(newBoard)==false){
 					createPossibility(l, c-1);
+					return true;
 				}
 				else if(board[l][c-1]<0 && isWhiteKingAttacked(newBoard)==false) {
 					createPossibilityKill(l, c-1);
+					return true;
 				}
 			}
 			else {
 				if(board[l][c-1]==0 && isBlackKingAttacked(newBoard)==false){
 					createPossibility(l, c-1);
+					return true;
 				}
 				else if(board[l][c-1]>0 && isBlackKingAttacked(newBoard)==false) {
 					createPossibilityKill(l, c-1);
+					return true;
 				}
 			}
 		}
@@ -750,20 +778,25 @@ public class Movement {
 			if(team.equals("white")) {
 				if(board[l][c+1]==0 && isWhiteKingAttacked(newBoard)==false){
 					createPossibility(l, c+1);
+					return true;
 				}
 				else if(board[l][c+1]<0 && isWhiteKingAttacked(newBoard)==false) {
 					createPossibilityKill(l, c+1);
+					return true;
 				}
 			}
 			else {
 				if(board[l][c+1]==0 && isBlackKingAttacked(newBoard)==false){
 					createPossibility(l, c+1);
+					return true;
 				}
 				else if(board[l][c+1]>0 && isBlackKingAttacked(newBoard)==false) {
 					createPossibilityKill(l, c+1);
+					return true;
 				}
 			}
 		}
+		return false;
 	}
 	
 	public boolean isWhiteKingAttacked(int[][] board) {
