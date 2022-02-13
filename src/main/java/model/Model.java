@@ -345,8 +345,8 @@ public class Model {
 	}
 	
 	public  void gameEnd(String reason) {
-		/*timerNoir.stop();
-		timerBlanc.stop();*/
+		timerNoir.stop();
+		timerBlanc.stop();
 		controller.gameEnd(reason);
 
 	}
@@ -361,7 +361,8 @@ public class Model {
 	
 	public void checkmate() {
 		if(checked.isWhiteKingAttacked(chessboard)==true && movement.deplacementRoi(7, 4, chessboard, team, 10)==false) {
-			gameEnd("Échec et mat");
+			//gameEnd("Échec et mat");
+			System.out.println("test");
 		}
 	}
 }
