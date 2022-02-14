@@ -52,6 +52,20 @@ public class Model {
 	
 	private String team = "white";
 	
+	public boolean hasTA1Moved = false;
+	public boolean hasTH1Moved = false;
+	public boolean hasWhiteKingMoved = false;
+	
+	public boolean roqueBlancGauche = false;
+	public boolean roqueBlancDroit = false;
+	
+	public boolean hasTA8Moved = false;
+	public boolean hasTH8Moved = false;
+	public boolean hasBlackKingMoved = false;
+	
+	public boolean roqueNoirGauche = false;
+	public boolean roqueNoirDroit = false;
+	
 	private Timer timerBlanc;	
 	private Timer timerNoir;
 	
@@ -231,25 +245,73 @@ public class Model {
 	}
 
 	public void pieceMove(JButton btn, JLabel possibility) {
-		int xBtn = btn.getX();
-		int yBtn = btn.getY();
-		int xPossibility = possibility.getX();
-		int yPossibility = possibility.getY();
-		chessboard[(yPossibility-y)/squareSize][(xPossibility-x)/squareSize]=chessboard[(yBtn-y)/squareSize][(xBtn-x)/squareSize];
-		chessboard[(yBtn-y)/squareSize][(xBtn-x)/squareSize]=0;
-		btn.setLocation(xPossibility, yPossibility);
+		int l = (possibility.getY()-y)/squareSize;
+		int c = (possibility.getX()-x)/squareSize;
+		int l1 = (btn.getY()-y)/squareSize;
+		int c1 = (btn.getX()-x)/squareSize;
+		if(roqueBlancGauche==true && l==7 && c==2) {
+			JButton p = getPieceAt(7,0);
+			p.setLocation(p.getX()+3*squareSize,p.getY());
+			chessboard[7][3]=5;
+			chessboard[7][0]=0;
+		}
+		else if(roqueBlancDroit==true && l==7 && c==6) {
+			JButton p = getPieceAt(7,7);
+			p.setLocation(p.getX()-2*squareSize,p.getY());
+			chessboard[7][5]=5;
+			chessboard[7][7]=0;
+		}
+		else if(roqueNoirGauche==true && l==0 && c==2) {
+			JButton p = getPieceAt(0,0);
+			p.setLocation(p.getX()+3*squareSize,p.getY());
+			chessboard[0][3]=-5;
+			chessboard[0][0]=0;
+		}
+		else if(roqueNoirDroit==true && l==0 && c==6) {
+			JButton p = getPieceAt(0,7);
+			p.setLocation(p.getX()-2*squareSize,p.getY());
+			chessboard[0][5]=-5;
+			chessboard[0][7]=0;
+		}
+		roque(l, c, l1, c1);
+		btn.setLocation(possibility.getLocation());
+		
+		
 	}
 
 	public void pieceKill(JButton btn, JLabel possibility) {
 		JButton btnKilled = (JButton) possibility.getParent();
-		int xBtn = btn.getX();
-		int yBtn = btn.getY();
-		int xBtnKilled = btnKilled.getX();
-		int yBtnKilled = btnKilled.getY();
-		chessboard[(yBtnKilled-y)/squareSize][(xBtnKilled-x)/squareSize]=chessboard[(yBtn-y)/squareSize][(xBtn-x)/squareSize];
-		chessboard[(yBtn-y)/squareSize][(xBtn-x)/squareSize]=0;
+		int l = (btnKilled.getY()-y)/squareSize;
+		int c = (btnKilled.getX()-x)/squareSize;
+		int l1 = (btn.getY()-y)/squareSize;
+		int c1 = (btn.getX()-x)/squareSize;
+		roque(l, c, l1, c1);
 		controller.removeButton(btnKilled);
 		btn.setLocation(btnKilled.getLocation());
+
+	}
+	
+	public void roque(int l, int c, int l1, int c1) {
+		chessboard[l][c]=chessboard[l1][c1];
+		chessboard[l1][c1]=0;
+		if(l1==7 && c1==0 && hasTA1Moved==false) {
+			hasTA1Moved = true;
+		}
+		if(l1==7 && c1==7 && hasTH1Moved==false) {
+			hasTH1Moved = true;
+		}
+		if(l1==7 && c1==4 && hasWhiteKingMoved==false) {
+			hasWhiteKingMoved = true;
+		}
+		if(l1==0 && c1==0 && hasTA8Moved==false) {
+			hasTA8Moved = true;
+		}
+		if(l1==0 && c1==7 && hasTH8Moved==false) {
+			hasTH8Moved = true;
+		}
+		if(l1==0 && c1==4 && hasBlackKingMoved==false) {
+			hasBlackKingMoved = true;
+		}
 	}
 
 	public JButton getPieceAt(int l, int c) {

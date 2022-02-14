@@ -18,8 +18,6 @@ public class Movement {
 	}
 	
 	public void createPossibilityKill(int l, int c) {
-			int x = model.getX();
-			int y = model.getY();
 			int size = model.getSquareSize();
 			JLabel possibility = new JLabel();
 			possibility.setIcon(icercle);
@@ -844,6 +842,38 @@ public class Movement {
 				else if(board[l][c+1]>0) {
 					createPossibilityKill(l, c+1);
 					canKingMove = true;
+				}
+			}
+			if(value>0) {
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l][c-2] = value;
+				if(model.hasTA1Moved==false && model.hasWhiteKingMoved==false && board[7][1]==0 && board[7][2]==0 && board[7][3]==0 && isWhiteKingAttacked(newBoard)==false) {
+					createPossibility(l,c-2);
+					model.roqueBlancGauche = true;
+				}
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l][c+2] = value;
+				if(model.hasTH1Moved==false && model.hasWhiteKingMoved==false && board[7][5]==0 && board[7][6]==0 && isWhiteKingAttacked(newBoard)==false) {
+					createPossibility(l,c+2);
+					model.roqueBlancDroit = true;
+				}
+			}
+			else {
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l][c-2] = value;
+				if(model.hasTA8Moved==false && model.hasBlackKingMoved==false && board[0][1]==0 && board[0][2]==0 && board[0][3]==0 && isBlackKingAttacked(newBoard)==false) {
+					createPossibility(l,c-2);
+					model.roqueNoirGauche = true;
+			}
+				newBoard = copyBoard(board);
+				newBoard[l][c] = 0;
+				newBoard[l][c+2] = value;
+				if(model.hasTH8Moved==false && model.hasBlackKingMoved==false && board[0][5]==0 && board[0][6]==0 && isBlackKingAttacked(newBoard)==false) {
+					createPossibility(l,c+2);
+					model.roqueNoirDroit = true;
 				}
 			}
 		}
