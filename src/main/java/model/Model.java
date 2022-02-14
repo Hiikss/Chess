@@ -406,6 +406,7 @@ public class Model {
 				}
 			}
 		}
+		controller.clearPossibilities();
 		return isKingCheckmate;
 	}
 }
