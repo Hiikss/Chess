@@ -148,8 +148,8 @@ public class Controller {
 		
 	}
 	
-	public JButton getPieceAt(int x, int y) {
-		return view.getPieceAt(x, y);
+	public JButton getPieceAt(int l, int c) {
+		return view.getPieceAt(l, c);
 	}
 	
 	public void changeTeam() {

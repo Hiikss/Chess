@@ -96,8 +96,8 @@ public class View {
 		strategy.removeButton(btnKilled);
 	}
 
-	public JButton getPieceAt(int x, int y) {
-		return strategy.getPieceAt(x, y);
+	public JButton getPieceAt(int l, int c) {
+		return strategy.getPieceAt(l, c);
 	}
 
 	public void gameEnd(String reason) {

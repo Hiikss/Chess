@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
@@ -251,15 +252,15 @@ public class Model {
 		btn.setLocation(btnKilled.getLocation());
 	}
 
-	public JButton getPieceAt(int x, int y) {
-		return controller.getPieceAt(x, y);
+	public JButton getPieceAt(int l, int c) {
+		return controller.getPieceAt(l, c);
 	}
 	
 	public void setWhitePieces(){
 		for(int l=0; l<8; l++) {
 			for(int c=0; c<8; c++) {
 				if(chessboard[l][c]>0) {
-					JButton piece = getPieceAt(x+c*squareSize, y+l*squareSize);
+					JButton piece = getPieceAt(l, c);
 					piecesBlanches.add(piece);
 				}
 			}
@@ -270,7 +271,7 @@ public class Model {
 		for(int l=0; l<8; l++) {
 			for(int c=0; c<8; c++) {
 				if(chessboard[l][c]<0) {
-					JButton piece = getPieceAt(x+c*squareSize, y+l*squareSize);
+					JButton piece = getPieceAt(l, c);
 					piecesNoires.add(piece);
 				}
 			}
@@ -359,12 +360,28 @@ public class Model {
 		if(team.equals("black") && checked.isWhiteKingAttacked(chessboard)==true && isKingCheckmate(chessboard, team)==true) {
 			controller.clearPossibilities();
 			controller.updateView();
+			setKingBackground(10);
 			gameEnd("Victoire des noirs par mat");
 		}
 		else if(team.equals("white") && checked.isBlackKingAttacked(chessboard)==true && isKingCheckmate(chessboard, team)==true) {
 			controller.clearPossibilities();
 			controller.updateView();
+			setKingBackground(-10);
 			gameEnd("Victoire des blancs par mat");
+		}
+	}
+	
+	public void setKingBackground(int value) {
+		JButton p;
+		for(int l=0; l<8; l++) {
+			for(int c=0; c<8; c++) {
+				if(chessboard[l][c]==value) {
+					p = getPieceAt(l, c);
+					p.setBackground(Color.decode("#ff1111"));
+					p.setOpaque(true);
+					break;
+				}
+			}
 		}
 	}
 	

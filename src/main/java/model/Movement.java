@@ -26,7 +26,7 @@ public class Movement {
 			possibility.setSize(size, size);
 			possibility.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			possibility.addMouseListener(model.addKillLabelListener());
-			model.getPieceAt(x+c*size, y+l*size).add(possibility);
+			model.getPieceAt(l, c).add(possibility);
 	}
 	
 	public void createPossibility(int l, int c) {

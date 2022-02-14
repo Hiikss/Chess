@@ -189,11 +189,13 @@ public class Swing extends JFrame implements Strategy{
 	}
 
 	@Override
-	public JButton getPieceAt(int x, int y) {
+	public JButton getPieceAt(int l, int c) {
+		int xp = x+c*squareSize;
+		int yp = y+l*squareSize;
 		JButton btn = null;
 		Component[] components = panel.getComponents();
 		for (Component component : components) {
-			if (component instanceof JButton && component.getX()==x && component.getY()==y) {
+			if (component instanceof JButton && component.getX()==xp && component.getY()==yp) {
 		        btn = (JButton) component;
 		    }
 		}

@@ -57,7 +57,7 @@ public interface Strategy {
 
 	public void removeButton(JButton btnKilled);
 
-	public JButton getPieceAt(int x, int y);
+	public JButton getPieceAt(int l, int c);
 	
 	public void gameEnd(String reason);
 	
