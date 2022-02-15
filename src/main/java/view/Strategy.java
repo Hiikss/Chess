@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.JButton;
@@ -61,4 +62,7 @@ public interface Strategy {
 	
 	public void gameEnd(String reason);
 	
+	public void addNewGameListener(ActionListener listener);
+	
+	public void deleteAllComponents();
 }

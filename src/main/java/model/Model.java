@@ -105,8 +105,10 @@ public class Model {
 		setX(controller.getX());
 		setY(controller.getY());
 		setSquareSize(controller.getSquareSize());
+		controller.deleteAllComponents();
 		init.initBoard();
 		chrono.countdownTimer();
+		stopTimers();
 		setCursor();
 		updateView();
 	}
@@ -404,8 +406,7 @@ public class Model {
 	}
 	
 	public  void gameEnd(String reason) {
-		timerNoir.stop();
-		timerBlanc.stop();
+		stopTimers();
 		controller.gameEnd(reason);
 
 	}
@@ -487,5 +488,12 @@ public class Model {
 		}
 		controller.clearPossibilities();
 		return isKingCheckmate;
+	}
+	
+	public void stopTimers() {
+		if(timerNoir!=null && timerBlanc!=null) {
+			timerNoir.stop();
+			timerBlanc.stop();
+		}
 	}
 }

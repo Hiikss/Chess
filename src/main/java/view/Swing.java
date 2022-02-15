@@ -5,6 +5,8 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -14,12 +16,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -98,7 +102,6 @@ public class Swing extends JFrame implements Strategy{
 		this.setLocationRelativeTo(null); //met la frame au milieu de l'écran
  		this.setResizable(false); //on ne peut pas redimentionner la frame 
 		this.setVisible(true); //on voit la frame
-		this.setJMenuBar(this.createMenuBar());
 		logger.log(Level.INFO, "vue = swing");
 		
 		fin.setLayout(new BorderLayout()); //propriétés du JDialog
@@ -213,10 +216,27 @@ public class Swing extends JFrame implements Strategy{
 		fin.setVisible(true);
 	}
 	
-	public JMenuBar createMenuBar() {
+	@Override
+	public void addNewGameListener(ActionListener listener) {
+		this.setJMenuBar(this.createMenuBar(listener));
+	}
+	
+	public JMenuBar createMenuBar(ActionListener listener) {
 		JMenuBar menuBar = new JMenuBar();
-		JMenu mnuFile = new JMenu( "File" );
-		menuBar.add(mnuFile);
+		JMenu menuParameters = new JMenu("Paramètres");
+		JMenuItem menuNewGame = new JMenuItem("Nouvelle partie");
+		menuNewGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
+		menuNewGame.addActionListener(listener);
+		menuParameters.add(menuNewGame);
+		menuBar.add(menuParameters);
 		return menuBar;
+	}
+
+	@Override
+	public void deleteAllComponents() {
+		Component[] components = panel.getComponents();
+		for (Component component : components) {
+		       panel.remove(component);
+		} 
 	}
 }
