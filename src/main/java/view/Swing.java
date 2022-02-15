@@ -18,6 +18,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -96,6 +98,7 @@ public class Swing extends JFrame implements Strategy{
 		this.setLocationRelativeTo(null); //met la frame au milieu de l'écran
  		this.setResizable(false); //on ne peut pas redimentionner la frame 
 		this.setVisible(true); //on voit la frame
+		this.setJMenuBar(this.createMenuBar());
 		logger.log(Level.INFO, "vue = swing");
 		
 		fin.setLayout(new BorderLayout()); //propriétés du JDialog
@@ -208,5 +211,12 @@ public class Swing extends JFrame implements Strategy{
 		label.setFont(new Font("Arial",Font.PLAIN,20));
 		fin.add(label);
 		fin.setVisible(true);
+	}
+	
+	public JMenuBar createMenuBar() {
+		JMenuBar menuBar = new JMenuBar();
+		JMenu mnuFile = new JMenu( "File" );
+		menuBar.add(mnuFile);
+		return menuBar;
 	}
 }
