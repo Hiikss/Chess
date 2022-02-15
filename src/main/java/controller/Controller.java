@@ -1,7 +1,6 @@
 package controller;
 
 import java.awt.Component;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.JButton;
@@ -30,7 +29,6 @@ public class Controller {
 	
 	private MouseAdapter killLabelListener;
 	
-	private ActionListener newGameListener;
 	/**
 	  * la méthode Controller permet de mettre en lien les 3 éléments du pattern MVC
 	  * @param model classe Model
@@ -86,14 +84,12 @@ public class Controller {
 		return view.getY();
 	}
 	
-	public void setListener(MouseAdapter buttonListener, MouseAdapter panelListener, MouseAdapter moveLabelListener, MouseAdapter killLabelListener, ActionListener newGameListener) {
+	public void setListener(MouseAdapter buttonListener, MouseAdapter panelListener, MouseAdapter moveLabelListener, MouseAdapter killLabelListener) {
 		this.buttonListener = buttonListener;
 		this.panelListener = panelListener;
 		this.moveLabelListener = moveLabelListener;
 		this.killLabelListener = killLabelListener;
-		this.newGameListener = newGameListener;
 		view.addListener(this.panelListener);
-		view.addNewGameListener(this.newGameListener);
 	}
 	
 	public MouseAdapter getButtonListener() {
@@ -169,9 +165,6 @@ public class Controller {
 		model.checkmate();
 	}
 	
-	public ActionListener newGameListener() {
-		return newGameListener;
-	}
 	public void deleteAllComponents() {
 		view.deleteAllComponents();
 		

@@ -2,10 +2,11 @@ package view;
 
 import java.awt.Component;
 import java.awt.Image;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.JButton;
+
+import controller.Controller;
 
 /** 
  * L'interface <b>Strategy</b> appartient au package <b>view</b>, elle définie les méthodes qui sont implémentées dans les classes concrètes.
@@ -62,7 +63,9 @@ public interface Strategy {
 	
 	public void gameEnd(String reason);
 	
-	public void addNewGameListener(ActionListener listener);
-	
 	public void deleteAllComponents();
+	
+	public void gameStart();
+
+	public void setController(Controller controller);
 }

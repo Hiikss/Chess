@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Component;
 import java.awt.Image;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.JButton;
@@ -10,6 +9,8 @@ import javax.swing.JButton;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import controller.Controller;
 
 /** 
  * La classe <b>View</b> appartient au package <b>view</b>, c'est la classe context de l'interface Strategy.
@@ -104,12 +105,16 @@ public class View {
 	public void gameEnd(String reason) {
 		strategy.gameEnd(reason);
 	}
-	
-	public void addNewGameListener(ActionListener listener) {
-		strategy.addNewGameListener(listener);
-	}
 
 	public void deleteAllComponents() {
 		strategy.deleteAllComponents();
+	}
+	
+	public void gameStart() {
+		strategy.gameStart();
+	}
+
+	public void setController(Controller controller) {
+		strategy.setController(controller);
 	}
 }

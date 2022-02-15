@@ -50,21 +50,21 @@ public class Model {
 	
 	private final Logger logger =  LogManager.getLogger(this);
 	
-	private String team = "white";
+	private String team;
 	
-	public boolean hasTA1Moved = false;
-	public boolean hasTH1Moved = false;
-	public boolean hasWhiteKingMoved = false;
+	public boolean hasTA1Moved;
+	public boolean hasTH1Moved;
+	public boolean hasWhiteKingMoved;
 	
-	public boolean roqueBlancGauche = false;
-	public boolean roqueBlancDroit = false;
+	public boolean roqueBlancGauche;
+	public boolean roqueBlancDroit;
 	
-	public boolean hasTA8Moved = false;
-	public boolean hasTH8Moved = false;
-	public boolean hasBlackKingMoved = false;
+	public boolean hasTA8Moved;
+	public boolean hasTH8Moved;
+	public boolean hasBlackKingMoved;
 	
-	public boolean roqueNoirGauche = false;
-	public boolean roqueNoirDroit = false;
+	public boolean roqueNoirGauche;
+	public boolean roqueNoirDroit;
 	
 	private Timer timerBlanc;	
 	private Timer timerNoir;
@@ -102,6 +102,17 @@ public class Model {
 	  * @see Init#initBoard()
 	  */
 	public void initBoard() {
+		team = "white";
+		hasTA1Moved = false;
+		hasTH1Moved = false;
+		hasWhiteKingMoved = false;
+		roqueBlancGauche = false;
+		roqueBlancDroit = false;
+		hasTA8Moved = false;
+		hasTH8Moved = false;
+		hasBlackKingMoved = false;
+		roqueNoirGauche = false;
+		roqueNoirDroit = false;
 		setX(controller.getX());
 		setY(controller.getY());
 		setSquareSize(controller.getSquareSize());

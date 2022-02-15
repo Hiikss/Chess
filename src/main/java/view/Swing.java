@@ -3,11 +3,14 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -16,8 +19,11 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -28,6 +34,8 @@ import javax.swing.JMenuItem;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import controller.Controller;
 
 /** 
  * La classe <b>Swing</b> appartient au package <b>view</b>, c'est une classe concrète qui implémente l'interface Strategy. 
@@ -41,6 +49,8 @@ public class Swing extends JFrame implements Strategy{
 	 * JPanel de la frame
 	 */
 	private JPanel panel;
+	
+	private Controller controller;
 	
 	/**
 	 * logger du log4j
@@ -61,7 +71,24 @@ public class Swing extends JFrame implements Strategy{
 	
 	private BufferedImage boardImage = null;
 	
+	private JLabel username = new JLabel("Nom d'utilisateur");
+	
+	private JLabel password = new JLabel("Mot de passe");
+	
+	private JLabel creerCompte = new JLabel("<html><u>Créer un compte</u></html>");
+	
+	private JLabel seConnecter = new JLabel("<html><u>Se connecter</u></html>");
+	
+	private JDialog debut = new JDialog(this, "Connexion joueur 1", true);
+	
 	private JDialog fin = new JDialog(this, "Fin de la partie", true);
+	
+	private JButton valider = new JButton("OK");
+	
+	private boolean createAccount = false;
+	
+	private JTextField usernameField = new JTextField();
+	private JTextField passwordField = new JPasswordField();
 	
 	/**
 	  * La méthode createFrame permet de créer la frame et d'y ajouter un panel.
@@ -102,7 +129,54 @@ public class Swing extends JFrame implements Strategy{
 		this.setLocationRelativeTo(null); //met la frame au milieu de l'écran
  		this.setResizable(false); //on ne peut pas redimentionner la frame 
 		this.setVisible(true); //on voit la frame
+		this.setJMenuBar(createMenuBar());
 		logger.log(Level.INFO, "vue = swing");
+		
+		username.setBounds(115,25, 100, 25);
+		password.setBounds(115,75, 100, 25);
+		usernameField.setBounds(115, 50, 200,25);
+		passwordField.setBounds(115, 100, 200,25);
+		creerCompte.setBounds(165, 135, 100, 25);
+		creerCompte.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		creerCompte.addMouseListener(new MouseAdapter()   {   
+	        public void mouseClicked(MouseEvent e)   
+	        {   
+	              createAccount = true;
+	              creerCompte.setVisible(false);
+	              seConnecter.setVisible(true);
+	        }   
+		});
+		seConnecter.setBounds(175, 135, 100, 25);
+		seConnecter.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		seConnecter.setVisible(false);
+		seConnecter.addMouseListener(new MouseAdapter()   {   
+	        public void mouseClicked(MouseEvent e)   
+	        {   
+	              createAccount = false;
+	              creerCompte.setVisible(true);
+	              seConnecter.setVisible(false);
+	        }   
+		});
+		valider.setBounds(175, 175, 80, 30);
+		valider.addActionListener(new ActionListener() { 
+			public void actionPerformed(ActionEvent e) { 
+				if(!usernameField.getText().equals("") && !passwordField.getText().equals("")) {
+					debut.dispose();
+					controller.initBoard();
+				}
+			} 
+		});
+		debut.setLayout(null);
+		debut.setResizable(false);
+		debut.setSize(450, 260);
+		debut.setLocationRelativeTo(null);
+		debut.add(username);
+		debut.add(password);
+		debut.add(usernameField);
+		debut.add(passwordField);
+		debut.add(valider);
+		debut.add(creerCompte);
+		debut.add(seConnecter);
 		
 		fin.setLayout(new BorderLayout()); //propriétés du JDialog
 		fin.setResizable(false);
@@ -216,17 +290,16 @@ public class Swing extends JFrame implements Strategy{
 		fin.setVisible(true);
 	}
 	
-	@Override
-	public void addNewGameListener(ActionListener listener) {
-		this.setJMenuBar(this.createMenuBar(listener));
-	}
-	
-	public JMenuBar createMenuBar(ActionListener listener) {
+	public JMenuBar createMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu menuParameters = new JMenu("Paramètres");
 		JMenuItem menuNewGame = new JMenuItem("Nouvelle partie");
 		menuNewGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
-		menuNewGame.addActionListener(listener);
+		menuNewGame.addActionListener(new ActionListener(){  
+			public void actionPerformed(ActionEvent e){ 
+				controller.initBoard();
+			}  
+		});  
 		menuParameters.add(menuNewGame);
 		menuBar.add(menuParameters);
 		return menuBar;
@@ -238,5 +311,15 @@ public class Swing extends JFrame implements Strategy{
 		for (Component component : components) {
 		       panel.remove(component);
 		} 
+	}
+
+	@Override
+	public void gameStart() {
+		debut.setVisible(true);
+	}
+
+	@Override
+	public void setController(Controller controller) {
+		this.controller = controller;
 	}
 }

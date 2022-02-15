@@ -21,6 +21,8 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import controller.Controller;
+
 /** 
  * La classe <b>Swing</b> appartient au package <b>view</b>, c'est une classe concrète qui implémente l'interface Strategy. 
  * Il s'agit de la vue Swingtest.
@@ -140,7 +142,7 @@ public class Swingtest extends JFrame implements Strategy{
    	    return y;
     }
     
-    @Override
+	@Override
     public void addListener(MouseAdapter listener) {
 		 panel.addMouseListener(listener);
     }
@@ -194,5 +196,23 @@ public class Swingtest extends JFrame implements Strategy{
 		label.setBounds(50, 50, 300, 50);
 		fin.add(label);
 		fin.setVisible(true);
+	}
+
+	@Override
+	public void deleteAllComponents() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void gameStart() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setController(Controller controller) {
+		// TODO Auto-generated method stub
+		
 	}
 }

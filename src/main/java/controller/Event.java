@@ -1,8 +1,6 @@
 package controller;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -30,20 +28,12 @@ public class Event{
 	
 	private MouseAdapter killLabelListener;
 	
-	private ActionListener newGameListener;
-	
 	private JButton btnSelected = null;
 	
 	private final Logger logger =  LogManager.getLogger(this); //log4j
 	
 	public Event(Controller controller) {
-		setController(controller);
-		
-		this.newGameListener = new  ActionListener(){  
-			public void actionPerformed(ActionEvent e){ 
-				controller.initBoard();
-			}  
-		};  
+		setController(controller);  
 			
 		this.buttonListener = new MouseAdapter() {
             @Override
@@ -120,7 +110,7 @@ public class Event{
             }
         };
         
-        controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener, newGameListener);
+        controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener);
 	}
 
 	public Controller getController() {

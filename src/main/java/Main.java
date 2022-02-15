@@ -45,7 +45,9 @@ public class Main {
 		Controller controller = new Controller(model, view); //la classe Controller est instanciée
 		logger.log(Level.INFO, "controller = " + controller);
 		model.setController(controller); //on donne le controller au model
-		controller.initBoard(); //on initialise l'échiquier
+		view.setController(controller);
+		view.gameStart();
+		//controller.initBoard(); //on initialise l'échiquier
 	}
 	
 	/**
