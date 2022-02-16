@@ -25,8 +25,9 @@ public class Connect {
         	stmt.setString(1, username);
         	ResultSet rs=stmt.executeQuery();  
         	if(rs.next()) {
-        		stmt=con.prepareStatement("select * from user where password=md5(?)");
+        		stmt=con.prepareStatement("select * from user where password=MD5(?)");
         		stmt.setString(1, password);
+        		rs=stmt.executeQuery();
         		if(rs.next()) {
         			System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+ rs.getString(3)); 
         			con.close();
