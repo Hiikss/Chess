@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -23,7 +22,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -85,8 +83,6 @@ public class Swing extends JFrame implements Strategy{
 	
 	private JButton valider = new JButton("OK");
 	
-	private boolean createAccount = false;
-	
 	private JTextField usernameField = new JTextField();
 	private JTextField passwordField = new JPasswordField();
 	
@@ -138,34 +134,13 @@ public class Swing extends JFrame implements Strategy{
 		passwordField.setBounds(115, 100, 200,25);
 		creerCompte.setBounds(165, 135, 100, 25);
 		creerCompte.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		creerCompte.addMouseListener(new MouseAdapter()   {   
-	        public void mouseClicked(MouseEvent e)   
-	        {   
-	              createAccount = true;
-	              creerCompte.setVisible(false);
-	              seConnecter.setVisible(true);
-	        }   
-		});
+
 		seConnecter.setBounds(175, 135, 100, 25);
 		seConnecter.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		seConnecter.setVisible(false);
-		seConnecter.addMouseListener(new MouseAdapter()   {   
-	        public void mouseClicked(MouseEvent e)   
-	        {   
-	              createAccount = false;
-	              creerCompte.setVisible(true);
-	              seConnecter.setVisible(false);
-	        }   
-		});
+
 		valider.setBounds(175, 175, 80, 30);
-		valider.addActionListener(new ActionListener() { 
-			public void actionPerformed(ActionEvent e) { 
-				if(!usernameField.getText().equals("") && !passwordField.getText().equals("")) {
-					debut.dispose();
-					controller.initBoard();
-				}
-			} 
-		});
+
 		debut.setLayout(null);
 		debut.setResizable(false);
 		debut.setSize(450, 260);
@@ -235,8 +210,11 @@ public class Swing extends JFrame implements Strategy{
      }
      
      @Override
-     public void addListener(MouseAdapter listener) {
+     public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener) {
  		 panel.addMouseListener(listener);
+ 		 valider.addActionListener(validateButtonListener);
+ 		 seConnecter.addMouseListener(switchLoggingListener);
+ 		 creerCompte.addMouseListener(switchLoggingListener);
      }
 
 	@Override
@@ -319,7 +297,22 @@ public class Swing extends JFrame implements Strategy{
 	}
 
 	@Override
-	public void setController(Controller controller) {
-		this.controller = controller;
+	public JTextField getUsernameField() {
+		return usernameField;
+	}
+
+	@Override
+	public JTextField getPasswordField() {
+		return passwordField;
+	}
+
+	@Override
+	public JLabel getCreerCompte() {
+		return creerCompte;
+	}
+
+	@Override
+	public JLabel getSeConnecter() {
+		return seConnecter;
 	}
 }

@@ -1,10 +1,12 @@
 package controller;
 
 import java.awt.Component;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 import model.Model;
 import view.View;
@@ -28,6 +30,10 @@ public class Controller {
 	private MouseAdapter moveLabelListener;
 	
 	private MouseAdapter killLabelListener;
+	
+	private MouseAdapter switchLoggingListener;
+	
+	private ActionListener validateButtonListener;
 	
 	/**
 	  * la méthode Controller permet de mettre en lien les 3 éléments du pattern MVC
@@ -84,12 +90,14 @@ public class Controller {
 		return view.getY();
 	}
 	
-	public void setListener(MouseAdapter buttonListener, MouseAdapter panelListener, MouseAdapter moveLabelListener, MouseAdapter killLabelListener) {
+	public void setListener(MouseAdapter buttonListener, MouseAdapter panelListener, MouseAdapter moveLabelListener, MouseAdapter killLabelListener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener) {
 		this.buttonListener = buttonListener;
 		this.panelListener = panelListener;
 		this.moveLabelListener = moveLabelListener;
 		this.killLabelListener = killLabelListener;
-		view.addListener(this.panelListener);
+		this.validateButtonListener = validateButtonListener;
+		this.switchLoggingListener = switchLoggingListener;
+		view.addListener(this.panelListener, this.validateButtonListener, this.switchLoggingListener);
 	}
 	
 	public MouseAdapter getButtonListener() {
@@ -168,5 +176,23 @@ public class Controller {
 	public void deleteAllComponents() {
 		view.deleteAllComponents();
 		
+	}
+	public JTextField getPasswordField() {
+		return view.getPasswordField();
+	}
+	public JTextField getUsernameField() {
+		return view.getUsernameField();
+	}
+	
+	public JLabel getCreerCompte() {
+		return view.getCreerCompte();
+	}
+
+	public JLabel getSeConnecter() {
+		return view.getSeConnecter();
+	}
+	
+	public int connect(String username, String password) {
+		return model.connect(username, password);
 	}
 }

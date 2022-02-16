@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import controller.Controller;
-import model.Connect;
 import model.Model;
 import view.View;
 import view.Swing;
@@ -46,8 +45,6 @@ public class Main {
 		Controller controller = new Controller(model, view); //la classe Controller est instanciée
 		logger.log(Level.INFO, "controller = " + controller);
 		model.setController(controller); //on donne le controller au model
-		view.setController(controller);
-		Connect.connect();
 		view.gameStart();
 		
 		//controller.initBoard(); //on initialise l'échiquier

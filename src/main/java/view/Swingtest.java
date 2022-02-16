@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -16,12 +17,11 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import controller.Controller;
 
 /** 
  * La classe <b>Swing</b> appartient au package <b>view</b>, c'est une classe concrète qui implémente l'interface Strategy. 
@@ -141,11 +141,6 @@ public class Swingtest extends JFrame implements Strategy{
     public int getY() {
    	    return y;
     }
-    
-	@Override
-    public void addListener(MouseAdapter listener) {
-		 panel.addMouseListener(listener);
-    }
 
     @Override
 	public int getSquareSize() {
@@ -211,8 +206,32 @@ public class Swingtest extends JFrame implements Strategy{
 	}
 
 	@Override
-	public void setController(Controller controller) {
-		// TODO Auto-generated method stub
+	public void addListener(MouseAdapter listener, ActionListener validateButtonListener,MouseAdapter switchLoggingListener) {
+		panel.addMouseListener(listener);
 		
+	}
+
+	@Override
+	public JTextField getUsernameField() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JTextField getPasswordField() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JLabel getCreerCompte() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JLabel getSeConnecter() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

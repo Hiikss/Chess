@@ -34,6 +34,8 @@ public class Model {
 	
 	private Chrono chrono = new Chrono(this);
 	
+	private Connect connect = new Connect();
+	
 	private Controller controller;
 	
 	private int x;
@@ -506,5 +508,9 @@ public class Model {
 			timerNoir.stop();
 			timerBlanc.stop();
 		}
+	}
+	
+	public int connect(String username, String password) {
+		return connect.connect(username, password);
 	}
 }

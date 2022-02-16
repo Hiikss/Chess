@@ -1,11 +1,14 @@
 package controller;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -27,6 +30,12 @@ public class Event{
 	private MouseAdapter moveLabelListener;
 	
 	private MouseAdapter killLabelListener;
+	
+	private ActionListener validateButtonListener;
+	
+	private MouseAdapter switchLoggingListener;
+	
+	private boolean createAccount = false;
 	
 	private JButton btnSelected = null;
 	
@@ -110,7 +119,43 @@ public class Event{
             }
         };
         
-        controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener);
+        this.validateButtonListener = new ActionListener() { 
+			public void actionPerformed(ActionEvent e) { 
+				if(!getUsernameField().getText().equals("") && !getPasswordField().getText().equals("")) {
+					if(createAccount==false) {
+						int test = controller.connect(getUsernameField().getText(), getPasswordField().getText());
+						if(test==1) {
+							logger.log(Level.INFO, "Connexion effectuée");
+							javax.swing.FocusManager.getCurrentManager().getActiveWindow().dispose();
+							controller.initBoard();
+						}
+						else if(test==2){
+							logger.log(Level.INFO, "Mot de passe erroné");
+						}
+						else if(test==3){
+							logger.log(Level.INFO, "Nom d'utilisateur erroné ou compte inexistant");
+						}
+					}
+				}
+			} 
+		};
+		
+		this.switchLoggingListener = new MouseAdapter() {   
+	        public void mouseClicked(MouseEvent e) {
+	        	if(createAccount==false) {
+	        		createAccount = true;
+	        		getCreerCompte().setVisible(false);
+	        		getSeConnecter().setVisible(true);
+	        	}
+	        	else {
+	        		createAccount = false;
+	        		getCreerCompte().setVisible(true);
+	        		getSeConnecter().setVisible(false);
+	        	}
+	        }   
+		};
+        
+        controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener, validateButtonListener, switchLoggingListener);
 	}
 
 	public Controller getController() {
@@ -139,5 +184,20 @@ public class Event{
 		btnSelected=null;
     	controller.clearPossibilities();
     	controller.updateView();
+	}
+	
+	public JTextField getPasswordField() {
+		return controller.getPasswordField();
+	}
+	public JTextField getUsernameField() {
+		return controller.getUsernameField();
+	}
+	
+	public JLabel getCreerCompte() {
+		return controller.getCreerCompte();
+	}
+
+	public JLabel getSeConnecter() {
+		return controller.getSeConnecter();
 	}
 }
