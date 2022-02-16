@@ -123,17 +123,20 @@ public class Event{
 			public void actionPerformed(ActionEvent e) { 
 				if(!getUsernameField().getText().equals("") && !getPasswordField().getText().equals("")) {
 					if(createAccount==false) {
-						int test = controller.connect(getUsernameField().getText(), getPasswordField().getText());
-						if(test==1) {
+						int connexion = controller.connect(getUsernameField().getText(), getPasswordField().getText());
+						if(connexion==1) {
 							logger.log(Level.INFO, "Connexion effectuée");
 							javax.swing.FocusManager.getCurrentManager().getActiveWindow().dispose();
 							controller.initBoard();
 						}
-						else if(test==2){
+						else if(connexion==2){
 							logger.log(Level.INFO, "Mot de passe erroné");
 						}
-						else if(test==3){
+						else if(connexion==3){
 							logger.log(Level.INFO, "Nom d'utilisateur erroné ou compte inexistant");
+						}
+						else if(connexion==4){
+							logger.log(Level.INFO, "Impossible de se connecter à la base de données");
 						}
 					}
 				}
