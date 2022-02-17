@@ -33,11 +33,15 @@ public class Event{
 	
 	private ActionListener validateButtonListener;
 	
+	private ActionListener newGameListener;
+	
 	private MouseAdapter switchLoggingListener;
 	
 	private boolean createAccount = false;
 	
 	private JButton btnSelected = null;
+	
+	private int joueur = 1;
 	
 	private final Logger logger =  LogManager.getLogger(this); //log4j
 	
@@ -125,15 +129,31 @@ public class Event{
 					if(createAccount==false) {
 						int connexion = controller.connect(getUsernameField().getText(), getPasswordField().getText());
 						if(connexion==1) {
-							logger.log(Level.INFO, "Connexion effectuée");
-							javax.swing.FocusManager.getCurrentManager().getActiveWindow().dispose();
-							controller.initBoard();
+							logger.log(Level.INFO, "Connexion joueur " + joueur + " effectuée");
+							getInfo().setText("<html><p style=color:green>Connexion effectuée</p></html>");
+							if(joueur==1) {
+								joueur=2;
+								createAccount=false;
+								getCreerCompte().setVisible(true);
+				        		getSeConnecter().setVisible(false);
+								setJDialogTitle("Connexion joueur " + joueur);
+								controller.createNewPlayer(joueur, getUsernameField().getText());
+								getUsernameField().setText(null);
+								getPasswordField().setText(null);
+							}
+							else {
+								controller.createNewPlayer(joueur, getUsernameField().getText());
+								javax.swing.FocusManager.getCurrentManager().getActiveWindow().dispose();
+								controller.initBoard();
+							}
 						}
 						else if(connexion==2){
 							logger.log(Level.ERROR, "Mot de passe erroné");
+							getInfo().setText("<html><p style=color:red>Mot de passe erroné</p></html>");
 						}
 						else if(connexion==3){
 							logger.log(Level.ERROR, "Nom d'utilisateur erroné ou compte inexistant");
+							getInfo().setText("<html><p style=color:red>Nom d'utilisateur erroné ou compte inexistant</p></html>");
 						}
 						else if(connexion==4){
 							logger.log(Level.ERROR, "Impossible de se connecter à la base de données");
@@ -142,12 +162,16 @@ public class Event{
 					else {
 						int connexion = controller.createAccount(getUsernameField().getText(), getPasswordField().getText());
 						if(connexion==1) {
-							logger.log(Level.INFO, "Connexion effectuée");
-							javax.swing.FocusManager.getCurrentManager().getActiveWindow().dispose();
-							controller.initBoard();
+							logger.log(Level.INFO, "Création de compte effectuée");
+							getInfo().setText("\"<html><p style=color:green>Le compte a bien été crée</p></html>");
+							setJDialogTitle("Connexion joueur " + joueur);
+			        		createAccount = false;
+			        		getCreerCompte().setVisible(true);
+			        		getSeConnecter().setVisible(false);
 						}
 						else if(connexion==2){
 							logger.log(Level.ERROR, "Nom d'utilisateur déjà existant");
+							getInfo().setText("<html><p style=color:red>Nom d'utilisateur déjà existant</p></html>");
 						}
 						else if(connexion==3){
 							logger.log(Level.ERROR, "Impossible de se connecter à la base de données");
@@ -160,19 +184,27 @@ public class Event{
 		this.switchLoggingListener = new MouseAdapter() {   
 	        public void mouseClicked(MouseEvent e) {
 	        	if(createAccount==false) {
+	        		setJDialogTitle("Création compte joueur " + joueur);
 	        		createAccount = true;
 	        		getCreerCompte().setVisible(false);
 	        		getSeConnecter().setVisible(true);
 	        	}
 	        	else {
+	        		setJDialogTitle("Connexion joueur " + joueur);
 	        		createAccount = false;
 	        		getCreerCompte().setVisible(true);
 	        		getSeConnecter().setVisible(false);
 	        	}
 	        }   
 		};
+		
+		 this.newGameListener = new ActionListener(){  
+				public void actionPerformed(ActionEvent e){ 
+					controller.initBoard();
+				}  
+			}; 
         
-        controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener, validateButtonListener, switchLoggingListener);
+        controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener, validateButtonListener, switchLoggingListener, newGameListener);
 	}
 
 	public Controller getController() {
@@ -216,5 +248,13 @@ public class Event{
 
 	public JLabel getSeConnecter() {
 		return controller.getSeConnecter();
+	}
+	
+	public JLabel getInfo() {
+		return controller.getInfo();
+	}
+	
+	public void setJDialogTitle(String title) {
+		controller.setJDialogTitle(title);
 	}
 }

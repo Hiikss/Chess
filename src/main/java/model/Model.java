@@ -518,4 +518,21 @@ public class Model {
 	public int createAccount(String username, String password) {
 		return connect.createAccount(username, password);
 	}
+
+	public void createNewPlayer(int joueur, String name) {
+		switch(joueur) {
+		case 1: 
+			initiatePlayer(joueur1, name);
+		break;
+		case 2: 
+			initiatePlayer(joueur2, name);
+			break;
+		}
+	}
+	
+	public void initiatePlayer(Joueur joueur, String name) {
+		joueur = new Joueur();
+		joueur.setName(name);
+		logger.log(Level.INFO, joueur.getName());
+	}
 }

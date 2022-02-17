@@ -6,19 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet; 
    
 public class Connect {  
-     /** 
-     * Connect to a sample database 
-     */  
+	
+	private String driverName = "com.mysql.cj.jdbc.Driver";
+	private String bdd = "chess";
+	private String url = "jdbc:mysql://localhost:3306/" + bdd;  
+	private String user = "root";
+	private String mdp = "mdp123";
+	
     public int connect(String username, String password) {  
 
     	try{  
-    		String driverName = "com.mysql.cj.jdbc.Driver";
-    		 
     		Class.forName(driverName);
-        	String bdd = "chess";
-        	String url = "jdbc:mysql://localhost:3306/" + bdd;  
-        	String user = "root";
-        	String mdp = "mdp123";
         	Connection con =DriverManager.getConnection(url, user, mdp);    
         	PreparedStatement stmt=con.prepareStatement("select username from user where username=?");  
         	stmt.setString(1, username);
@@ -48,13 +46,7 @@ public class Connect {
     
     public int createAccount(String username, String password) {
     	try{  
-    		String driverName = "com.mysql.cj.jdbc.Driver";
-    		 
     		Class.forName(driverName);
-        	String bdd = "chess";
-        	String url = "jdbc:mysql://localhost:3306/" + bdd;  
-        	String user = "root";
-        	String mdp = "mdp123";
         	Connection con =DriverManager.getConnection(url, user, mdp);    
         	PreparedStatement stmt=con.prepareStatement("select username from user where username=?");   
         	stmt.setString(1, username);

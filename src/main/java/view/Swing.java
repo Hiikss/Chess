@@ -7,7 +7,6 @@ import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -34,8 +33,6 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import controller.Controller;
-
 /** 
  * La classe <b>Swing</b> appartient au package <b>view</b>, c'est une classe concrète qui implémente l'interface Strategy. 
  * Il s'agit de la vue Swing.
@@ -48,8 +45,6 @@ public class Swing extends JFrame implements Strategy{
 	 * JPanel de la frame
 	 */
 	private JPanel panel;
-	
-	private Controller controller;
 	
 	/**
 	 * logger du log4j
@@ -78,11 +73,15 @@ public class Swing extends JFrame implements Strategy{
 	
 	private JLabel seConnecter = new JLabel("<html><u>Se connecter</u></html>");
 	
+	private JLabel info = new JLabel();
+	
 	private JDialog debut = new JDialog(this, "Connexion joueur 1", true);
 	
 	private JDialog fin = new JDialog(this, "Fin de la partie", true);
 	
 	private JButton valider = new JButton("OK");
+	
+	private JMenuItem menuNewGame = new JMenuItem("Nouvelle partie");
 	
 	private JTextField usernameField = new JTextField();
 	private JTextField passwordField = new JPasswordField();
@@ -98,7 +97,6 @@ public class Swing extends JFrame implements Strategy{
 		try {
 			boardImage = ImageIO.read(Swing.class.getResource("/chessboardblue.png")); //chemin de l'image de l'échiquier
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
     	panel = new JPanel() { //affichage de l'image sur le panel
@@ -113,7 +111,6 @@ public class Swing extends JFrame implements Strategy{
 		try {
 			icon = ImageIO.read(Swing.class.getResource("/rb.png")); //cherche l'image rb.png
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
@@ -129,11 +126,11 @@ public class Swing extends JFrame implements Strategy{
 		this.setJMenuBar(createMenuBar());
 		logger.log(Level.INFO, "vue = swing");
 		
-		username.setBounds(115,25, 100, 25);
-		password.setBounds(115,75, 100, 25);
-		usernameField.setBounds(115, 50, 200,25);
-		passwordField.setBounds(115, 100, 200,25);
-		creerCompte.setBounds(165, 135, 100, 25);
+		username.setBounds(115,30, 100, 25);
+		password.setBounds(115,80, 100, 25);
+		usernameField.setBounds(115, 55, 200,25);
+		passwordField.setBounds(115, 105, 200,25);
+		creerCompte.setBounds(165, 140, 100, 25);
 		creerCompte.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		creerCompte.addMouseListener(new java.awt.event.MouseAdapter() {
 		    public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -157,7 +154,8 @@ public class Swing extends JFrame implements Strategy{
 		});
 
 		valider.setBounds(175, 175, 80, 30);
-
+		info.setBounds(100, 5, 200, 25);
+		
 		debut.setLayout(null);
 		debut.setResizable(false);
 		debut.setSize(450, 260);
@@ -169,7 +167,7 @@ public class Swing extends JFrame implements Strategy{
 		debut.add(valider);
 		debut.add(creerCompte);
 		debut.add(seConnecter);
-		
+		debut.add(info);
 		fin.setLayout(new BorderLayout()); //propriétés du JDialog
 		fin.setResizable(false);
 		fin.setSize(450, 260);
@@ -227,11 +225,14 @@ public class Swing extends JFrame implements Strategy{
      }
      
      @Override
-     public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener) {
+     public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener) {
  		 panel.addMouseListener(listener);
  		 valider.addActionListener(validateButtonListener);
  		 seConnecter.addMouseListener(switchLoggingListener);
  		 creerCompte.addMouseListener(switchLoggingListener);
+ 		 usernameField.addActionListener(validateButtonListener);
+ 		 passwordField.addActionListener(validateButtonListener);
+ 		 menuNewGame.addActionListener(newGameListener); 
      }
 
 	@Override
@@ -288,13 +289,7 @@ public class Swing extends JFrame implements Strategy{
 	public JMenuBar createMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu menuParameters = new JMenu("Paramètres");
-		JMenuItem menuNewGame = new JMenuItem("Nouvelle partie");
 		menuNewGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
-		menuNewGame.addActionListener(new ActionListener(){  
-			public void actionPerformed(ActionEvent e){ 
-				controller.initBoard();
-			}  
-		});  
 		menuParameters.add(menuNewGame);
 		menuBar.add(menuParameters);
 		return menuBar;
@@ -310,6 +305,7 @@ public class Swing extends JFrame implements Strategy{
 
 	@Override
 	public void gameStart() {
+		updateView();
 		debut.setVisible(true);
 	}
 
@@ -331,5 +327,15 @@ public class Swing extends JFrame implements Strategy{
 	@Override
 	public JLabel getSeConnecter() {
 		return seConnecter;
+	}
+	
+	@Override
+	public JLabel getInfo() {
+		return info;
+	}
+
+	@Override
+	public void setJDialogTitle(String title) {
+		debut.setTitle(title);
 	}
 }

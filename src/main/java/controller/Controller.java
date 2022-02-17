@@ -31,10 +31,6 @@ public class Controller {
 	
 	private MouseAdapter killLabelListener;
 	
-	private MouseAdapter switchLoggingListener;
-	
-	private ActionListener validateButtonListener;
-	
 	/**
 	  * la méthode Controller permet de mettre en lien les 3 éléments du pattern MVC
 	  * @param model classe Model
@@ -90,14 +86,12 @@ public class Controller {
 		return view.getY();
 	}
 	
-	public void setListener(MouseAdapter buttonListener, MouseAdapter panelListener, MouseAdapter moveLabelListener, MouseAdapter killLabelListener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener) {
+	public void setListener(MouseAdapter buttonListener, MouseAdapter panelListener, MouseAdapter moveLabelListener, MouseAdapter killLabelListener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener) {
 		this.buttonListener = buttonListener;
 		this.panelListener = panelListener;
 		this.moveLabelListener = moveLabelListener;
 		this.killLabelListener = killLabelListener;
-		this.validateButtonListener = validateButtonListener;
-		this.switchLoggingListener = switchLoggingListener;
-		view.addListener(this.panelListener, this.validateButtonListener, this.switchLoggingListener);
+		view.addListener(this.panelListener, validateButtonListener, switchLoggingListener, newGameListener);
 	}
 	
 	public MouseAdapter getButtonListener() {
@@ -192,10 +186,21 @@ public class Controller {
 		return view.getSeConnecter();
 	}
 	
+	public JLabel getInfo() {
+		return view.getInfo();
+	}
+	
 	public int connect(String username, String password) {
 		return model.connect(username, password);
 	}
 	public int createAccount(String username, String password) {
 		return model.createAccount(username, password);
+	}
+	
+	public void setJDialogTitle(String title) {
+		view.setJDialogTitle(title);
+	}
+	public void createNewPlayer(int joueur, String name) {
+		model.createNewPlayer(joueur, name);
 	}
 }

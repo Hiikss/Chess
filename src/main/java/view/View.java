@@ -84,8 +84,8 @@ public class View {
 		return strategy.getY();
 	}
 	
-	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener) {
-		strategy.addListener(listener, validateButtonListener, switchLoggingListener);
+	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener) {
+		strategy.addListener(listener, validateButtonListener, switchLoggingListener, newGameListener);
 	}
 
 	public int getSquareSize() {
@@ -130,5 +130,13 @@ public class View {
 
 	public JLabel getSeConnecter() {
 		return strategy.getSeConnecter();
+	}
+	
+	public JLabel getInfo() {
+		return strategy.getInfo();
+	}
+
+	public void setJDialogTitle(String title) {
+		strategy.setJDialogTitle(title);
 	}
 }

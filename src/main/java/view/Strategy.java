@@ -55,7 +55,7 @@ public interface Strategy {
 	
 	public int getSquareSize();
 	
-	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener);
+	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener);
 	
 	public void clearPossibilities();
 
@@ -76,5 +76,9 @@ public interface Strategy {
 	public JLabel getCreerCompte();
 	
 	public JLabel getSeConnecter();
+	
+	public JLabel getInfo();
+	
+	public void setJDialogTitle(String title);
 	
 }

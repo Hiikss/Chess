@@ -206,7 +206,7 @@ public class Swingtest extends JFrame implements Strategy{
 	}
 
 	@Override
-	public void addListener(MouseAdapter listener, ActionListener validateButtonListener,MouseAdapter switchLoggingListener) {
+	public void addListener(MouseAdapter listener, ActionListener validateButtonListener,MouseAdapter switchLoggingListener, ActionListener newGameListener) {
 		panel.addMouseListener(listener);
 		
 	}
@@ -231,6 +231,18 @@ public class Swingtest extends JFrame implements Strategy{
 
 	@Override
 	public JLabel getSeConnecter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setJDialogTitle(String title) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public JLabel getInfo() {
 		// TODO Auto-generated method stub
 		return null;
 	}

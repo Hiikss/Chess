@@ -15,11 +15,11 @@ public class Joueur {
 		return name;
 	}
 
-	public Image getProfilePicture() {
+	public Image getIcon() {
 		return profilePicture;
 	}
 
-	public void setProfilePicture(Image profilePicture) {
+	public void setIcon(Image profilePicture) {
 		this.profilePicture = profilePicture;
 	}
 	
