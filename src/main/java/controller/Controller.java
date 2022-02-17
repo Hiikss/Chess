@@ -195,4 +195,7 @@ public class Controller {
 	public int connect(String username, String password) {
 		return model.connect(username, password);
 	}
+	public int createAccount(String username, String password) {
+		return model.createAccount(username, password);
+	}
 }

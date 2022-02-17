@@ -130,13 +130,27 @@ public class Event{
 							controller.initBoard();
 						}
 						else if(connexion==2){
-							logger.log(Level.INFO, "Mot de passe erroné");
+							logger.log(Level.ERROR, "Mot de passe erroné");
 						}
 						else if(connexion==3){
-							logger.log(Level.INFO, "Nom d'utilisateur erroné ou compte inexistant");
+							logger.log(Level.ERROR, "Nom d'utilisateur erroné ou compte inexistant");
 						}
 						else if(connexion==4){
-							logger.log(Level.INFO, "Impossible de se connecter à la base de données");
+							logger.log(Level.ERROR, "Impossible de se connecter à la base de données");
+						}
+					}
+					else {
+						int connexion = controller.createAccount(getUsernameField().getText(), getPasswordField().getText());
+						if(connexion==1) {
+							logger.log(Level.INFO, "Connexion effectuée");
+							javax.swing.FocusManager.getCurrentManager().getActiveWindow().dispose();
+							controller.initBoard();
+						}
+						else if(connexion==2){
+							logger.log(Level.ERROR, "Nom d'utilisateur déjà existant");
+						}
+						else if(connexion==3){
+							logger.log(Level.ERROR, "Impossible de se connecter à la base de données");
 						}
 					}
 				}

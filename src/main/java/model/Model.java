@@ -513,4 +513,8 @@ public class Model {
 	public int connect(String username, String password) {
 		return connect.connect(username, password);
 	}
+
+	public int createAccount(String username, String password) {
+		return connect.createAccount(username, password);
+	}
 }
