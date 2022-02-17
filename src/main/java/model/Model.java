@@ -71,7 +71,8 @@ public class Model {
 	private Timer timerBlanc;	
 	private Timer timerNoir;
 	
-
+	private Joueur joueur1;
+	private Joueur joueur2;
 	
 	/**
 	  * la méthode getController retourne le controller.

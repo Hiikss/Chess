@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Cursor;
@@ -134,10 +135,26 @@ public class Swing extends JFrame implements Strategy{
 		passwordField.setBounds(115, 100, 200,25);
 		creerCompte.setBounds(165, 135, 100, 25);
 		creerCompte.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
+		creerCompte.addMouseListener(new java.awt.event.MouseAdapter() {
+		    public void mouseEntered(java.awt.event.MouseEvent evt) {
+		    	creerCompte.setForeground(Color.red);
+		    }
+		    public void mouseExited(java.awt.event.MouseEvent evt) {
+		    	creerCompte.setForeground(null);
+		    }
+		});
+		
 		seConnecter.setBounds(175, 135, 100, 25);
 		seConnecter.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		seConnecter.setVisible(false);
+		seConnecter.addMouseListener(new java.awt.event.MouseAdapter() {
+		    public void mouseEntered(java.awt.event.MouseEvent evt) {
+		    	seConnecter.setForeground(Color.red);
+		    }
+		    public void mouseExited(java.awt.event.MouseEvent evt) {
+		    	seConnecter.setForeground(null);
+		    }
+		});
 
 		valider.setBounds(175, 175, 80, 30);
 

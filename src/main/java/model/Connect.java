@@ -21,7 +21,6 @@ public class Connect {
         	String mdp = "mdp123";
         	Connection con =DriverManager.getConnection(url, user, mdp);    
         	PreparedStatement stmt=con.prepareStatement("select username from user where username=?");  
-        	//stmt.executeUpdate("insert into user (username, password) values ('Hiiks', MD5('mdp123'));"); 
         	stmt.setString(1, username);
         	ResultSet rs=stmt.executeQuery();  
         	if(rs.next()) {
@@ -61,7 +60,7 @@ public class Connect {
         	stmt.setString(1, username);
         	ResultSet rs=stmt.executeQuery();  
         	if(rs.next()==false) {
-        		stmt.executeUpdate("insert into user (username, password) values (?, MD5(?));");
+        		stmt=con.prepareStatement("insert into user (username, password) values (?, MD5(?));");
         		stmt.setString(1, username);
         		stmt.setString(2, password);
         		stmt.executeUpdate();
