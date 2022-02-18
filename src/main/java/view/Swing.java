@@ -83,6 +83,8 @@ public class Swing extends JFrame implements Strategy{
 	
 	private JMenuItem menuNewGame = new JMenuItem("Nouvelle partie");
 	
+	private JMenuItem uploadImage = new JMenuItem("Changer image");
+	
 	private JTextField usernameField = new JTextField();
 	private JTextField passwordField = new JPasswordField();
 	
@@ -290,7 +292,9 @@ public class Swing extends JFrame implements Strategy{
 		JMenuBar menuBar = new JMenuBar();
 		JMenu menuParameters = new JMenu("Paramètres");
 		menuNewGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
+		uploadImage.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, KeyEvent.CTRL_DOWN_MASK));
 		menuParameters.add(menuNewGame);
+		menuParameters.add(uploadImage);
 		menuBar.add(menuParameters);
 		return menuBar;
 	}

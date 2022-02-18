@@ -310,6 +310,7 @@ public class Model {
 	public void roque(int l, int c, int l1, int c1) {
 		chessboard[l][c]=chessboard[l1][c1];
 		chessboard[l1][c1]=0;
+		
 		if(l1==7 && c1==0 && hasTA1Moved==false) {
 			hasTA1Moved = true;
 		}

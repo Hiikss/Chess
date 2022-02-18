@@ -50,6 +50,7 @@ public class Movement {
 	}
 	
 	public boolean deplacementPion(int l, int c, int[][] board, int value) {
+		setRockFalse();
 		boolean canKingMove = false;
 		int[][] newBoard = copyBoard(board);
 		if(value>0) {
@@ -140,6 +141,7 @@ public class Movement {
 	}
 	
 	public boolean deplacementDiag(int l, int c, int[][] board, int value) {
+		setRockFalse();
 		boolean canKingMove = false;
 		int[][] newBoard = copyBoard(board);
 		for(int i=1;i<=7;i++) {
@@ -285,6 +287,7 @@ public class Movement {
 	}
 	
 	public boolean deplacementLigne(int l, int c, int[][] board, int value) {
+		setRockFalse();
 		boolean canKingMove = false;
 		int[][] newBoard = copyBoard(board);
 		for(int i=1;i<=7;i++) {
@@ -430,6 +433,7 @@ public class Movement {
 	}
 	
 	public boolean deplacementCavalier(int l, int c, int[][] board, int value) {
+		setRockFalse();
 		boolean canKingMove = false;
 		int[][] newBoard = copyBoard(board);
 		if(l>0) {
@@ -643,6 +647,7 @@ public class Movement {
 	}
 	
 	public boolean deplacementRoi(int l, int c, int[][] board, int value) {
+		setRockFalse();
 		boolean canKingMove = false;
 		int[][] newBoard = copyBoard(board);
 		if(l>0) {
@@ -906,5 +911,12 @@ public class Movement {
 	
 	public boolean isBlackKingAttacked(int[][] board) {
 		return model.isBlackKingAttacked(board);
+	}
+	
+	public void setRockFalse() {
+		model.roqueNoirDroit = false;
+		model.roqueNoirGauche = false;
+		model.roqueBlancDroit = false;
+		model.roqueBlancGauche = false;
 	}
 }
