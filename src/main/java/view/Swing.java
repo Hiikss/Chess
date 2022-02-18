@@ -154,7 +154,7 @@ public class Swing extends JFrame implements Strategy{
 		});
 
 		valider.setBounds(175, 175, 80, 30);
-		info.setBounds(100, 5, 200, 25);
+		info.setBounds(90, 5, 300, 25);
 		
 		debut.setLayout(null);
 		debut.setResizable(false);

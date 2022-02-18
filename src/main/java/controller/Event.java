@@ -130,7 +130,7 @@ public class Event{
 						int connexion = controller.connect(getUsernameField().getText(), getPasswordField().getText());
 						if(connexion==1) {
 							logger.log(Level.INFO, "Connexion joueur " + joueur + " effectuée");
-							getInfo().setText("<html><p style=color:green>Connexion effectuée</p></html>");
+							getInfo().setText("<html><p style=color:green>&emsp;&emsp;&emsp;&emsp;&emsp;Connexion effectuée</p></html>");
 							if(joueur==1) {
 								joueur=2;
 								createAccount=false;
@@ -149,7 +149,7 @@ public class Event{
 						}
 						else if(connexion==2){
 							logger.log(Level.ERROR, "Mot de passe erroné");
-							getInfo().setText("<html><p style=color:red>Mot de passe erroné</p></html>");
+							getInfo().setText("<html><p style=color:red>&emsp;&emsp;&emsp;&emsp;&emsp; Mot de passe erroné</p></html>");
 						}
 						else if(connexion==3){
 							logger.log(Level.ERROR, "Nom d'utilisateur erroné ou compte inexistant");
@@ -163,7 +163,7 @@ public class Event{
 						int connexion = controller.createAccount(getUsernameField().getText(), getPasswordField().getText());
 						if(connexion==1) {
 							logger.log(Level.INFO, "Création de compte effectuée");
-							getInfo().setText("\"<html><p style=color:green>Le compte a bien été crée</p></html>");
+							getInfo().setText("\"<html><p style=color:green>&emsp;&emsp;&emsp;Le compte a bien été crée</p></html>");
 							setJDialogTitle("Connexion joueur " + joueur);
 			        		createAccount = false;
 			        		getCreerCompte().setVisible(true);
@@ -171,7 +171,7 @@ public class Event{
 						}
 						else if(connexion==2){
 							logger.log(Level.ERROR, "Nom d'utilisateur déjà existant");
-							getInfo().setText("<html><p style=color:red>Nom d'utilisateur déjà existant</p></html>");
+							getInfo().setText("<html><p style=color:red>&emsp;&emsp;&emsp;Nom d'utilisateur déjà existant</p></html>");
 						}
 						else if(connexion==3){
 							logger.log(Level.ERROR, "Impossible de se connecter à la base de données");
