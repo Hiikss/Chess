@@ -3,7 +3,9 @@ package controller;
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -87,12 +89,12 @@ public class Controller {
 	}
 	
 	public void setListener(MouseAdapter buttonListener, MouseAdapter panelListener, MouseAdapter moveLabelListener, MouseAdapter killLabelListener, ActionListener validateButtonListener, 
-			MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener) {
+			MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener, ActionListener parcourirListener) {
 		this.buttonListener = buttonListener;
 		this.panelListener = panelListener;
 		this.moveLabelListener = moveLabelListener;
 		this.killLabelListener = killLabelListener;
-		view.addListener(this.panelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener);
+		view.addListener(this.panelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener, parcourirListener);
 	}
 	
 	public MouseAdapter getButtonListener() {
@@ -206,5 +208,20 @@ public class Controller {
 	}
 	public void setUploadImageVisible() {
 		view.setUploadImageVisible();
+	}
+	
+	public ImageIcon getIcon(String joueur) {
+		return model.getIcon(joueur);
+	}
+	
+	public void setImageJ1(ImageIcon image) {
+		view.setImageJ1(image);
+	}
+
+	public void setImageJ2(ImageIcon image) {
+		view.setImageJ2(image);
+	}
+	public void setImageAccount(int joueur, File file) {
+		model.setImageAccount(joueur, file);
 	}
 }

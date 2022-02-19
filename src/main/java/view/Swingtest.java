@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -206,7 +207,8 @@ public class Swingtest extends JFrame implements Strategy{
 	}
 
 	@Override
-	public void addListener(MouseAdapter listener, ActionListener validateButtonListener,MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener) {
+	public void addListener(MouseAdapter listener, ActionListener validateButtonListener,MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener,
+			ActionListener parcourirListener) {
 		panel.addMouseListener(listener);
 		
 	}
@@ -249,6 +251,18 @@ public class Swingtest extends JFrame implements Strategy{
 
 	@Override
 	public void setUploadImageVisible() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setImageJ1(ImageIcon image) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setImageJ2(ImageIcon image) {
 		// TODO Auto-generated method stub
 		
 	}

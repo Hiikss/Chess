@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -55,7 +56,8 @@ public interface Strategy {
 	
 	public int getSquareSize();
 	
-	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener);
+	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener,
+			ActionListener parcourirListener);
 	
 	public void clearPossibilities();
 
@@ -82,5 +84,9 @@ public interface Strategy {
 	public void setJDialogTitle(String title);
 
 	public void setUploadImageVisible();
+	
+	public void setImageJ1(ImageIcon image);
+	
+	public void setImageJ2(ImageIcon image);
 	
 }

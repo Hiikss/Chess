@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -84,8 +85,9 @@ public class View {
 		return strategy.getY();
 	}
 	
-	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener) {
-		strategy.addListener(listener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener);
+	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener,
+			ActionListener parcourirListener) {
+		strategy.addListener(listener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener, parcourirListener);
 	}
 
 	public int getSquareSize() {
@@ -142,5 +144,13 @@ public class View {
 
 	public void setUploadImageVisible() {
 		strategy.setUploadImageVisible();
+	}
+	
+	public void setImageJ1(ImageIcon image) {
+		strategy.setImageJ1(image);
+	}
+
+	public void setImageJ2(ImageIcon image) {
+		strategy.setImageJ2(image);
 	}
 }

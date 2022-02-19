@@ -5,10 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -36,6 +39,8 @@ public class Event{
 	private ActionListener newGameListener;
 	
 	private ActionListener uploadImageListener;
+
+	private ActionListener parcourirListener;
 	
 	private MouseAdapter switchLoggingListener;
 	
@@ -166,7 +171,7 @@ public class Event{
 						int connexion = controller.createAccount(getUsernameField().getText(), getPasswordField().getText());
 						if(connexion==1) {
 							logger.log(Level.INFO, "Création de compte effectuée");
-							getInfo().setText("\"<html><p style=color:green>&emsp;&emsp;&emsp;Le compte a bien été crée</p></html>");
+							getInfo().setText("<html><p style=color:green>&emsp;&emsp;&emsp;Le compte a bien été crée</p></html>");
 							setJDialogTitle("Connexion joueur " + joueur);
 			        		createAccount = false;
 			        		getCreerCompte().setVisible(true);
@@ -211,11 +216,34 @@ public class Event{
 			
 		this.uploadImageListener = new ActionListener(){  
 			public void actionPerformed(ActionEvent e){
+				controller.setImageJ1(controller.getIcon("joueur 1"));
+				controller.setImageJ2(controller.getIcon("joueur 2"));
 				controller.setUploadImageVisible();
 			}  
 		};
+		
+		this.parcourirListener = new ActionListener(){  
+			public void actionPerformed(ActionEvent e){
+				JFileChooser fc = new JFileChooser();
+				fc.setDialogTitle("Choisissez une image : ");
+				fc.setAcceptAllFileFilterUsed(false);
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("*.png,*.jpg","jpg","png");
+		        fc.addChoosableFileFilter(filter);
+				int res = fc.showOpenDialog(null);
+				if (res == JFileChooser.APPROVE_OPTION) {
+					File file = fc.getSelectedFile();
+					String name = ((JButton)e.getSource()).getName();
+					if(name.equals("1")) {
+						controller.setImageAccount(1, file);
+					}
+					else {
+						controller.setImageAccount(2, file);
+					}
+				}
+			}  
+		};
         
-        controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener);
+        controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener, parcourirListener);
 	}
 
 	public Controller getController() {

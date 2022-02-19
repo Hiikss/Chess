@@ -22,6 +22,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -83,9 +84,19 @@ public class Swing extends JFrame implements Strategy{
 	
 	private JButton valider = new JButton("OK");
 	
+	private JButton validerImage = new JButton("OK");
+	
+	private JButton parcourirImage1 = new JButton("Parcourir");
+	
+	private JButton parcourirImage2 = new JButton("Parcourir");
+	
 	private JMenuItem menuNewGame = new JMenuItem("Nouvelle partie");
 	
 	private JMenuItem uploadImage = new JMenuItem("Changer image");
+	
+	private JLabel imageJ1 = new JLabel();
+	
+	private JLabel imageJ2 = new JLabel();
 	
 	private JTextField usernameField = new JTextField();
 	private JTextField passwordField = new JPasswordField();
@@ -173,10 +184,22 @@ public class Swing extends JFrame implements Strategy{
 		debut.add(seConnecter);
 		debut.add(info);
 		
+		imageJ1.setBounds(40, 10, 100, 100);
+		imageJ2.setBounds(290, 10, 100, 100);
+		parcourirImage1.setName("1");
+		parcourirImage1.setBounds(50, 130, 80, 30);
+		parcourirImage2.setName("2");
+		parcourirImage2.setBounds(300, 130, 80, 30);
+		validerImage.setBounds(175, 175, 80, 30);
 		changerImage.setLayout(null);
 		changerImage.setResizable(false);
 		changerImage.setSize(450, 260);
 		changerImage.setLocationRelativeTo(null);
+		changerImage.add(imageJ1);
+		changerImage.add(imageJ2);
+		changerImage.add(parcourirImage1);
+		changerImage.add(parcourirImage2);
+		changerImage.add(validerImage);
 		
 		fin.setLayout(new BorderLayout()); //propriétés du JDialog
 		fin.setResizable(false);
@@ -235,7 +258,8 @@ public class Swing extends JFrame implements Strategy{
      }
      
      @Override
-     public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener) {
+     public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener,
+    		 ActionListener parcourirListener) {
  		 panel.addMouseListener(listener);
  		 valider.addActionListener(validateButtonListener);
  		 seConnecter.addMouseListener(switchLoggingListener);
@@ -244,6 +268,8 @@ public class Swing extends JFrame implements Strategy{
  		 passwordField.addActionListener(validateButtonListener);
  		 menuNewGame.addActionListener(newGameListener); 
  		 uploadImage.addActionListener(uploadImageListener);
+ 		 parcourirImage1.addActionListener(parcourirListener);
+ 		parcourirImage2.addActionListener(parcourirListener);
      }
 
 	@Override
@@ -355,5 +381,15 @@ public class Swing extends JFrame implements Strategy{
 	@Override
 	public void setUploadImageVisible() {
 		changerImage.setVisible(true);
+	}
+
+	@Override
+	public void setImageJ1(ImageIcon image) {
+		imageJ1.setIcon(image);
+	}
+
+	@Override
+	public void setImageJ2(ImageIcon image) {
+		imageJ2.setIcon(image);
 	}
 }
