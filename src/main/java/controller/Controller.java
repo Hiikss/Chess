@@ -224,4 +224,12 @@ public class Controller {
 	public void setImageAccount(int joueur, File file) {
 		model.setImageAccount(joueur, file);
 	}
+	
+	public void setNameJ1(String name) {
+		view.setNameJ1(name);
+	}
+	
+	public void setNameJ2(String name) {
+		view.setNameJ2(name);
+	}
 }

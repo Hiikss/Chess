@@ -216,8 +216,8 @@ public class Event{
 			
 		this.uploadImageListener = new ActionListener(){  
 			public void actionPerformed(ActionEvent e){
-				controller.setImageJ1(controller.getIcon("joueur 1"));
-				controller.setImageJ2(controller.getIcon("joueur 2"));
+				//controller.setImageJ1(controller.getIcon("joueur 1"));
+				//controller.setImageJ2(controller.getIcon("joueur 2"));
 				controller.setUploadImageVisible();
 			}  
 		};

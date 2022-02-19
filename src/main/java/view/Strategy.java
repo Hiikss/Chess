@@ -89,4 +89,8 @@ public interface Strategy {
 	
 	public void setImageJ2(ImageIcon image);
 	
+	public void setNameJ1(String name);
+	
+	public void setNameJ2(String name);
+	
 }

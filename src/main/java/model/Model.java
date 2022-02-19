@@ -4,11 +4,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Font;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -100,12 +97,10 @@ public class Model {
 	}
 	
 	/**
-	  * la méthode addComponent appeller la méthode getController de la classe Controller
 	  * @see Controller#addComponentToPanel(Component component)
 	  * @param c composant à ajouter au panel
 	  */
 	public void addComponent(Component c) {
-		controller = getController();
 		controller.addComponentToPanel(c);
 	}
 	
@@ -545,21 +540,15 @@ public class Model {
 	}
 	
 	public void displayPlayer(Joueur joueur) {
-		JLabel label = new JLabel(joueur.getName());
-		JLabel labelImage = new JLabel();
 		ImageIcon img= new ImageIcon(joueur.getIcon().getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-		labelImage.setIcon(img);
-		label.setFont(new Font("Arial",Font.PLAIN,20));
 		if(joueur==joueur1) {
-			label.setBounds(895, 580, 100, 30);
-			labelImage.setBounds(895, 475, 100, 100);
+			controller.setNameJ1(joueur1.getName());
+			controller.setImageJ1(img);
 		}
 		else {
-			label.setBounds(895, 155, 100, 30);
-			labelImage.setBounds(895, 50, 100, 100);
+			controller.setNameJ2(joueur2.getName());
+			controller.setImageJ2(img);
 		}
-		controller.addComponentToPanel(label);
-		controller.addComponentToPanel(labelImage);
 	}
 	
 	public ImageIcon getIcon(String joueur) {
@@ -578,30 +567,20 @@ public class Model {
 		try {
 			image = ImageIO.read(file);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		ImageIcon img = new ImageIcon(image.getScaledInstance(100, 100, Image.SCALE_DEFAULT));
 		switch(joueur) {
 		case 1: 
 			joueur1.setIcon(img);
+			controller.setImageJ1(img);
 			connect.setImageAccount(joueur1.getName(), file);
 		break;
 		case 2: 
 			joueur2.setIcon(img);
+			controller.setImageJ2(img);
 			connect.setImageAccount(joueur2.getName(), file);
 		break;
 		}
-	}
-	
-	public Image getScaledImage(Image srcImg, int w, int h){
-	    BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-	    Graphics2D g2 = resizedImg.createGraphics();
-
-	    g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-	    g2.drawImage(srcImg, 0, 0, w, h, null);
-	    g2.dispose();
-
-	    return resizedImg;
 	}
 }

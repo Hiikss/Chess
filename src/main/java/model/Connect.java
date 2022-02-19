@@ -61,7 +61,6 @@ public class Connect {
 		try {
 			input = new FileInputStream(unknownImage);
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
     	try{  
@@ -120,7 +119,6 @@ public class Connect {
 		try {
 			input = new FileInputStream(file);
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
     	try{  

@@ -84,11 +84,9 @@ public class Swing extends JFrame implements Strategy{
 	
 	private JButton valider = new JButton("OK");
 	
-	private JButton validerImage = new JButton("OK");
+	private JButton parcourirImage1 = new JButton("Choisir");
 	
-	private JButton parcourirImage1 = new JButton("Parcourir");
-	
-	private JButton parcourirImage2 = new JButton("Parcourir");
+	private JButton parcourirImage2 = new JButton("Choisir");
 	
 	private JMenuItem menuNewGame = new JMenuItem("Nouvelle partie");
 	
@@ -97,6 +95,14 @@ public class Swing extends JFrame implements Strategy{
 	private JLabel imageJ1 = new JLabel();
 	
 	private JLabel imageJ2 = new JLabel();
+	
+	private JLabel imageJ1Panel = new JLabel();
+	
+	private JLabel imageJ2Panel = new JLabel();
+	
+	private JLabel nomJ1 = new JLabel();
+	
+	private JLabel nomJ2 = new JLabel();
 	
 	private JTextField usernameField = new JTextField();
 	private JTextField passwordField = new JPasswordField();
@@ -140,6 +146,17 @@ public class Swing extends JFrame implements Strategy{
 		this.setVisible(true); //on voit la frame
 		this.setJMenuBar(createMenuBar());
 		logger.log(Level.INFO, "vue = swing");
+		
+		imageJ1Panel.setBounds(895, 475, 100, 100);
+		imageJ2Panel.setBounds(895, 50, 100, 100);
+		nomJ1.setBounds(895, 580, 100, 30);
+		nomJ1.setFont(new Font("Arial",Font.PLAIN,20));
+		nomJ2.setFont(new Font("Arial",Font.PLAIN,20));
+		nomJ2.setBounds(895, 155, 100, 30);
+		panel.add(imageJ1Panel);
+		panel.add(imageJ2Panel);
+		panel.add(nomJ1);
+		panel.add(nomJ2);
 		
 		username.setBounds(115,30, 100, 25);
 		password.setBounds(115,80, 100, 25);
@@ -190,7 +207,6 @@ public class Swing extends JFrame implements Strategy{
 		parcourirImage1.setBounds(50, 130, 80, 30);
 		parcourirImage2.setName("2");
 		parcourirImage2.setBounds(300, 130, 80, 30);
-		validerImage.setBounds(175, 175, 80, 30);
 		changerImage.setLayout(null);
 		changerImage.setResizable(false);
 		changerImage.setSize(450, 260);
@@ -199,7 +215,13 @@ public class Swing extends JFrame implements Strategy{
 		changerImage.add(imageJ2);
 		changerImage.add(parcourirImage1);
 		changerImage.add(parcourirImage2);
-		changerImage.add(validerImage);
+		changerImage.addWindowListener(new WindowAdapter() 
+		{
+			public void windowClosing(WindowEvent e)
+			{
+				updateView();
+			}
+		});	
 		
 		fin.setLayout(new BorderLayout()); //propriétés du JDialog
 		fin.setResizable(false);
@@ -208,10 +230,10 @@ public class Swing extends JFrame implements Strategy{
 		
 		fin.addWindowListener(new WindowAdapter() 
 		{
-			  public void windowClosing(WindowEvent e)
-			  {
-				  System.exit(0);
-			  }
+			public void windowClosing(WindowEvent e)
+			{
+				System.exit(0);
+			}
 		});	
 		
 		return 1;
@@ -269,7 +291,7 @@ public class Swing extends JFrame implements Strategy{
  		 menuNewGame.addActionListener(newGameListener); 
  		 uploadImage.addActionListener(uploadImageListener);
  		 parcourirImage1.addActionListener(parcourirListener);
- 		parcourirImage2.addActionListener(parcourirListener);
+ 		 parcourirImage2.addActionListener(parcourirListener);
      }
 
 	@Override
@@ -338,7 +360,9 @@ public class Swing extends JFrame implements Strategy{
 	public void deleteAllComponents() {
 		Component[] components = panel.getComponents();
 		for (Component component : components) {
+			if(component.getX()<=x+squareSize*8) {
 		       panel.remove(component);
+			}
 		} 
 	}
 
@@ -386,10 +410,22 @@ public class Swing extends JFrame implements Strategy{
 	@Override
 	public void setImageJ1(ImageIcon image) {
 		imageJ1.setIcon(image);
+		imageJ1Panel.setIcon(image);
 	}
 
 	@Override
 	public void setImageJ2(ImageIcon image) {
 		imageJ2.setIcon(image);
+		imageJ2Panel.setIcon(image);
+	}
+
+	@Override
+	public void setNameJ1(String name) {
+		nomJ1.setText(name);
+	}
+
+	@Override
+	public void setNameJ2(String name) {
+		nomJ2.setText(name);
 	}
 }

@@ -266,4 +266,16 @@ public class Swingtest extends JFrame implements Strategy{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void setNameJ1(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setNameJ2(String name) {
+		// TODO Auto-generated method stub
+		
+	}
 }

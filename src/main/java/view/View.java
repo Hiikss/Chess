@@ -153,4 +153,12 @@ public class View {
 	public void setImageJ2(ImageIcon image) {
 		strategy.setImageJ2(image);
 	}
+	
+	public void setNameJ1(String name) {
+		strategy.setNameJ1(name);
+	}
+	
+	public void setNameJ2(String name) {
+		strategy.setNameJ2(name);
+	}
 }
