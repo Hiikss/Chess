@@ -206,7 +206,7 @@ public class Swingtest extends JFrame implements Strategy{
 	}
 
 	@Override
-	public void addListener(MouseAdapter listener, ActionListener validateButtonListener,MouseAdapter switchLoggingListener, ActionListener newGameListener) {
+	public void addListener(MouseAdapter listener, ActionListener validateButtonListener,MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener) {
 		panel.addMouseListener(listener);
 		
 	}
@@ -245,5 +245,11 @@ public class Swingtest extends JFrame implements Strategy{
 	public JLabel getInfo() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void setUploadImageVisible() {
+		// TODO Auto-generated method stub
+		
 	}
 }

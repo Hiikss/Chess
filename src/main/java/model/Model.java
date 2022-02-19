@@ -3,6 +3,7 @@ package model;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
@@ -71,8 +72,8 @@ public class Model {
 	private Timer timerBlanc;	
 	private Timer timerNoir;
 	
-	private Joueur joueur1;
-	private Joueur joueur2;
+	private Joueur joueur1 = new Joueur();
+	private Joueur joueur2 = new Joueur();
 	
 	/**
 	  * la méthode getController retourne le controller.
@@ -124,6 +125,8 @@ public class Model {
 		chrono.countdownTimer();
 		stopTimers();
 		setCursor();
+		displayPlayer(joueur1);
+		displayPlayer(joueur2);
 		updateView();
 	}
 	
@@ -523,17 +526,23 @@ public class Model {
 	public void createNewPlayer(int joueur, String name) {
 		switch(joueur) {
 		case 1: 
-			initiatePlayer(joueur1, name);
+			joueur1.setName(name);
 		break;
 		case 2: 
-			initiatePlayer(joueur2, name);
+			joueur2.setName(name);
 			break;
 		}
 	}
 	
-	public void initiatePlayer(Joueur joueur, String name) {
-		joueur = new Joueur();
-		joueur.setName(name);
-		logger.log(Level.INFO, joueur.getName());
+	public void displayPlayer(Joueur joueur) {
+		JLabel label = new JLabel(joueur.getName());
+		label.setFont(new Font("Arial",Font.PLAIN,20));
+		if(joueur==joueur1) {
+			label.setBounds(925, 500, 100, 30);
+		}
+		else {
+			label.setBounds(925, 100, 100, 30);
+		}
+		controller.addComponentToPanel(label);
 	}
 }

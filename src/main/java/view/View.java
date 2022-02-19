@@ -84,8 +84,8 @@ public class View {
 		return strategy.getY();
 	}
 	
-	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener) {
-		strategy.addListener(listener, validateButtonListener, switchLoggingListener, newGameListener);
+	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener) {
+		strategy.addListener(listener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener);
 	}
 
 	public int getSquareSize() {
@@ -138,5 +138,9 @@ public class View {
 
 	public void setJDialogTitle(String title) {
 		strategy.setJDialogTitle(title);
+	}
+
+	public void setUploadImageVisible() {
+		strategy.setUploadImageVisible();
 	}
 }

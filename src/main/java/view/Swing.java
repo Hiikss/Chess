@@ -79,6 +79,8 @@ public class Swing extends JFrame implements Strategy{
 	
 	private JDialog fin = new JDialog(this, "Fin de la partie", true);
 	
+	private JDialog changerImage = new JDialog(this, "Changer image de profil", true);
+	
 	private JButton valider = new JButton("OK");
 	
 	private JMenuItem menuNewGame = new JMenuItem("Nouvelle partie");
@@ -132,7 +134,7 @@ public class Swing extends JFrame implements Strategy{
 		password.setBounds(115,80, 100, 25);
 		usernameField.setBounds(115, 55, 200,25);
 		passwordField.setBounds(115, 105, 200,25);
-		creerCompte.setBounds(165, 140, 100, 25);
+		creerCompte.setBounds(165, 135, 100, 25);
 		creerCompte.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		creerCompte.addMouseListener(new java.awt.event.MouseAdapter() {
 		    public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -170,6 +172,12 @@ public class Swing extends JFrame implements Strategy{
 		debut.add(creerCompte);
 		debut.add(seConnecter);
 		debut.add(info);
+		
+		changerImage.setLayout(null);
+		changerImage.setResizable(false);
+		changerImage.setSize(450, 260);
+		changerImage.setLocationRelativeTo(null);
+		
 		fin.setLayout(new BorderLayout()); //propriétés du JDialog
 		fin.setResizable(false);
 		fin.setSize(450, 260);
@@ -227,7 +235,7 @@ public class Swing extends JFrame implements Strategy{
      }
      
      @Override
-     public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener) {
+     public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener) {
  		 panel.addMouseListener(listener);
  		 valider.addActionListener(validateButtonListener);
  		 seConnecter.addMouseListener(switchLoggingListener);
@@ -235,6 +243,7 @@ public class Swing extends JFrame implements Strategy{
  		 usernameField.addActionListener(validateButtonListener);
  		 passwordField.addActionListener(validateButtonListener);
  		 menuNewGame.addActionListener(newGameListener); 
+ 		 uploadImage.addActionListener(uploadImageListener);
      }
 
 	@Override
@@ -246,7 +255,7 @@ public class Swing extends JFrame implements Strategy{
 	public void clearPossibilities() {
 		Component[] components = panel.getComponents();
 		for (Component component : components) {
-			if (component instanceof JLabel && component.getX()>=x) {
+			if (component instanceof JLabel && component.getX()>=x && component.getX()<=x+squareSize*8) {
 		        panel.remove(component);
 		    }
 			if (component instanceof JButton) {
@@ -341,5 +350,10 @@ public class Swing extends JFrame implements Strategy{
 	@Override
 	public void setJDialogTitle(String title) {
 		debut.setTitle(title);
+	}
+
+	@Override
+	public void setUploadImageVisible() {
+		changerImage.setVisible(true);
 	}
 }

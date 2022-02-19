@@ -86,12 +86,13 @@ public class Controller {
 		return view.getY();
 	}
 	
-	public void setListener(MouseAdapter buttonListener, MouseAdapter panelListener, MouseAdapter moveLabelListener, MouseAdapter killLabelListener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener) {
+	public void setListener(MouseAdapter buttonListener, MouseAdapter panelListener, MouseAdapter moveLabelListener, MouseAdapter killLabelListener, ActionListener validateButtonListener, 
+			MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener) {
 		this.buttonListener = buttonListener;
 		this.panelListener = panelListener;
 		this.moveLabelListener = moveLabelListener;
 		this.killLabelListener = killLabelListener;
-		view.addListener(this.panelListener, validateButtonListener, switchLoggingListener, newGameListener);
+		view.addListener(this.panelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener);
 	}
 	
 	public MouseAdapter getButtonListener() {
@@ -202,5 +203,8 @@ public class Controller {
 	}
 	public void createNewPlayer(int joueur, String name) {
 		model.createNewPlayer(joueur, name);
+	}
+	public void setUploadImageVisible() {
+		view.setUploadImageVisible();
 	}
 }

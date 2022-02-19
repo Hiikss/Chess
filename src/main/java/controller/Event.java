@@ -35,6 +35,8 @@ public class Event{
 	
 	private ActionListener newGameListener;
 	
+	private ActionListener uploadImageListener;
+	
 	private MouseAdapter switchLoggingListener;
 	
 	private boolean createAccount = false;
@@ -132,7 +134,6 @@ public class Event{
 							logger.log(Level.INFO, "Connexion joueur " + joueur + " effectuée");
 							getInfo().setText("<html><p style=color:green>&emsp;&emsp;&emsp;&emsp;&emsp;Connexion effectuée</p></html>");
 							if(joueur==1) {
-								joueur=2;
 								createAccount=false;
 								getCreerCompte().setVisible(true);
 				        		getSeConnecter().setVisible(false);
@@ -140,6 +141,8 @@ public class Event{
 								controller.createNewPlayer(joueur, getUsernameField().getText());
 								getUsernameField().setText(null);
 								getPasswordField().setText(null);
+								getUsernameField().requestFocus();
+								joueur=2;
 							}
 							else {
 								controller.createNewPlayer(joueur, getUsernameField().getText());
@@ -188,23 +191,31 @@ public class Event{
 	        		createAccount = true;
 	        		getCreerCompte().setVisible(false);
 	        		getSeConnecter().setVisible(true);
+	        		getInfo().setText("");
 	        	}
 	        	else {
 	        		setJDialogTitle("Connexion joueur " + joueur);
 	        		createAccount = false;
 	        		getCreerCompte().setVisible(true);
 	        		getSeConnecter().setVisible(false);
+	        		getInfo().setText("");
 	        	}
 	        }   
 		};
 		
-		 this.newGameListener = new ActionListener(){  
-				public void actionPerformed(ActionEvent e){ 
-					controller.initBoard();
-				}  
-			}; 
+		this.newGameListener = new ActionListener(){  
+			public void actionPerformed(ActionEvent e){ 
+				controller.initBoard();
+			}  
+		};
+			
+		this.uploadImageListener = new ActionListener(){  
+			public void actionPerformed(ActionEvent e){
+				controller.setUploadImageVisible();
+			}  
+		};
         
-        controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener, validateButtonListener, switchLoggingListener, newGameListener);
+        controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener);
 	}
 
 	public Controller getController() {
