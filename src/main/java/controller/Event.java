@@ -140,19 +140,23 @@ public class Event{
 							getInfo().setText("<html><p style=color:green>&emsp;&emsp;&emsp;&emsp;&emsp;Connexion effectuée</p></html>");
 							if(joueur==1) {
 								createAccount=false;
+								controller.createNewPlayer(joueur, getUsernameField().getText());
+								joueur=2;
+								setJDialogTitle("Connexion joueur " + joueur);
 								getCreerCompte().setVisible(true);
 				        		getSeConnecter().setVisible(false);
-								setJDialogTitle("Connexion joueur " + joueur);
-								controller.createNewPlayer(joueur, getUsernameField().getText());
 								getUsernameField().setText(null);
 								getPasswordField().setText(null);
 								getUsernameField().requestFocus();
-								joueur=2;
+								
 							}
-							else {
+							else if(!controller.getNameJ1().equals(getUsernameField().getText())){
 								controller.createNewPlayer(joueur, getUsernameField().getText());
 								javax.swing.FocusManager.getCurrentManager().getActiveWindow().dispose();
 								controller.initBoard();
+							}
+							else {
+								getInfo().setText("<html><p style=color:red>&emsp;&emsp;&emsp;&emsp;&emsp; Joueur déjà connecté</p></html>");
 							}
 						}
 						else if(connexion==2){

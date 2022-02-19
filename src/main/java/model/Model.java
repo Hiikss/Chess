@@ -3,7 +3,6 @@ package model;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
-import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.io.File;
@@ -582,5 +581,9 @@ public class Model {
 			connect.setImageAccount(joueur2.getName(), file);
 		break;
 		}
+	}
+
+	public String getNameJ1() {
+		return joueur1.getName();
 	}
 }

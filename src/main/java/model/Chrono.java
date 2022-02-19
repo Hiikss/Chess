@@ -52,7 +52,7 @@ public class Chrono {
 					
 					msBlanc--;
 					if(msBlanc==-1) {
-						msBlanc = 99;
+						msBlanc = 69;
 						secondBlanc--;
 						ddSecondBlanc = dFormat.format(secondBlanc);
 						ddMinuteBlanc = dFormat.format(minuteBlanc);	
@@ -79,7 +79,7 @@ public class Chrono {
 				msNoir--;
 				
 				if(msNoir==-1) {
-					msNoir = 99;
+					msNoir = 69;
 					secondNoir--;
 					ddSecondNoir = dFormat.format(secondNoir);
 					ddMinuteNoir = dFormat.format(minuteNoir);	

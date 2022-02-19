@@ -28,15 +28,15 @@ public class Connect {
     	try{  
     		Class.forName(driverName);
         	Connection con =DriverManager.getConnection(url, user, mdp);    
-        	PreparedStatement stmt=con.prepareStatement("select username from user where username=?");  
+        	PreparedStatement stmt=con.prepareStatement("select username from user where binary username=?");  
         	stmt.setString(1, username);
         	ResultSet rs=stmt.executeQuery();  
         	if(rs.next()) {
-        		stmt=con.prepareStatement("select * from user where password=MD5(?)");
+        		stmt=con.prepareStatement("select * from user where password=MD5(?) and binary username=?");
         		stmt.setString(1, password);
+        		stmt.setString(2, username);
         		rs=stmt.executeQuery();
         		if(rs.next()) {
-        			System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+ rs.getString(3)); 
         			con.close();
         			return 1;
         		}
@@ -66,7 +66,7 @@ public class Connect {
     	try{  
     		Class.forName(driverName);
         	Connection con =DriverManager.getConnection(url, user, mdp);    
-        	PreparedStatement stmt=con.prepareStatement("select username from user where username=?");   
+        	PreparedStatement stmt=con.prepareStatement("select username from user where binary username=?");   
         	stmt.setString(1, username);
         	ResultSet rs=stmt.executeQuery();  
         	if(rs.next()==false) {
@@ -93,7 +93,7 @@ public class Connect {
     	try{
     		Class.forName(driverName);
     	    Connection con = DriverManager.getConnection(url, user, mdp);
-    	    PreparedStatement stmt=con.prepareStatement("select image from user where username=?");   
+    	    PreparedStatement stmt=con.prepareStatement("select image from user where binary username=?");   
            	stmt.setString(1, username);
             ResultSet rs=stmt.executeQuery();
     	    byte[] i = null;
@@ -124,7 +124,7 @@ public class Connect {
     	try{  
     		Class.forName(driverName);
         	Connection con =DriverManager.getConnection(url, user, mdp);    
-        	PreparedStatement stmt=con.prepareStatement("update user set image=? where username=?");   
+        	PreparedStatement stmt=con.prepareStatement("update user set image=? where binary username=?");   
         	stmt.setBinaryStream(1,(InputStream)input,(int)file.length());
         	stmt.setString(2, username);
         	stmt.executeUpdate();  

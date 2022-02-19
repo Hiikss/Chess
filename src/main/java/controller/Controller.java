@@ -232,4 +232,8 @@ public class Controller {
 	public void setNameJ2(String name) {
 		view.setNameJ2(name);
 	}
+	
+	public String getNameJ1() {
+		return model.getNameJ1();
+	}
 }

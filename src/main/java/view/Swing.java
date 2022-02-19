@@ -92,6 +92,8 @@ public class Swing extends JFrame implements Strategy{
 	
 	private JMenuItem uploadImage = new JMenuItem("Changer image");
 	
+	private JMenuItem uploadGame = new JMenuItem("Charger une partie");
+	
 	private JLabel imageJ1 = new JLabel();
 	
 	private JLabel imageJ2 = new JLabel();
@@ -350,8 +352,10 @@ public class Swing extends JFrame implements Strategy{
 		JMenu menuParameters = new JMenu("Paramètres");
 		menuNewGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
 		uploadImage.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, KeyEvent.CTRL_DOWN_MASK));
+		uploadGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, KeyEvent.CTRL_DOWN_MASK));
 		menuParameters.add(menuNewGame);
 		menuParameters.add(uploadImage);
+		menuParameters.add(uploadGame);
 		menuBar.add(menuParameters);
 		return menuBar;
 	}
