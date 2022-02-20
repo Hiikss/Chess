@@ -178,6 +178,29 @@ public class Connect {
 		return null;
     }
     
+    public int getGameSide(String player1, String player2) {
+    	try{  
+    		Class.forName(driverName);
+        	Connection con =DriverManager.getConnection(url, user, mdp);    
+        	PreparedStatement stmt=con.prepareStatement("select * from game where binary player1=? and binary player2=?");  
+        	stmt.setString(1, player2);
+        	stmt.setString(2, player1);
+        	ResultSet rs=stmt.executeQuery();  
+        	if(rs.next()) {
+        		con.close();
+       			return 1;
+        	}
+        	else {
+        		con.close();
+        		return 2;
+        	}
+    	}
+        catch(Exception e) { 
+    		System.out.println(e);
+    	}
+		return 3;
+    }
+    
     public int setGame(String player1, String player2, String board) {
 
     	try{  

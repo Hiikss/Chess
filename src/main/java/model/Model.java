@@ -301,8 +301,6 @@ public class Model {
 		}
 		roque(l, c, l1, c1);
 		btn.setLocation(possibility.getLocation());
-		
-		
 	}
 
 	public void pieceKill(JButton btn, JLabel possibility) {
@@ -555,7 +553,7 @@ public class Model {
 		}
 	}
 	
-	public ImageIcon getIcon(String joueur) {
+	public ImageIcon getResizedIcon(String joueur) {
 		if(joueur=="joueur 1") {
 			ImageIcon img= new ImageIcon(joueur1.getIcon().getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
 			return img;
@@ -637,6 +635,22 @@ public class Model {
 		chrono.countdownTimer();
 		stopTimers();
 		setCursor();
+		if(connect.getGameSide(joueur1.getName(), joueur2.getName())==1) {
+			changeSide();
+		}
 		updateView();
+	}
+	
+	public void changeSide() {
+		String nameInter = joueur1.getName();
+		ImageIcon iconInter = joueur1.getIcon();
+		joueur1.setName(joueur2.getName());
+		joueur1.setIcon(joueur2.getIcon());
+		joueur2.setName(nameInter);
+		joueur2.setIcon(iconInter);
+		controller.setNameJ1(joueur1.getName());
+		controller.setImageJ1(getResizedIcon("joueur 1"));
+		controller.setNameJ2(joueur2.getName());
+		controller.setImageJ2(getResizedIcon("joueur 2"));
 	}
 }

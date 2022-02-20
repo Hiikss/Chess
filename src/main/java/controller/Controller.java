@@ -212,7 +212,7 @@ public class Controller {
 	}
 	
 	public ImageIcon getIcon(String joueur) {
-		return model.getIcon(joueur);
+		return model.getResizedIcon(joueur);
 	}
 	
 	public void setImageJ1(ImageIcon image) {
