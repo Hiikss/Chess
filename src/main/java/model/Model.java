@@ -132,6 +132,7 @@ public class Model {
 		displayPlayer(joueur1);
 		displayPlayer(joueur2);
 		updateView();
+		System.out.println(boardToString(chessboard));
 	}
 	
 	/**
@@ -596,27 +597,37 @@ public class Model {
 		String stringBoard = "";
 		for(int l = 0; l<8; l++) {
 			for(int c = 0; c<8; c++) {
-				stringBoard = stringBoard + board[l][c];
-				if(!(l==7 && c==7)) {
-					stringBoard = stringBoard + ", ";
-				}
+				stringBoard = stringBoard + board[l][c] + ", ";
 			}
 		}
+		stringBoard = stringBoard + team + ", " + chrono.minuteBlanc + ", "  + chrono.secondBlanc + ", " +  chrono.minuteNoir + ", " + chrono.secondNoir + ", " + hasTA1Moved + ", " + hasTH1Moved + ", " 
+		+ hasWhiteKingMoved + ", " + hasTA8Moved + ", " + hasTH8Moved + ", " + hasBlackKingMoved;
+
 		return stringBoard;
 	}
 
 	public void getGame() {
 		String board = connect.getGame(joueur1.getName(), joueur2.getName());
-		String[] board1 = board.split(", ");
+		String[] arr = board.split(", ");
 		int[][] board2 = new int [8][8];
 		int i = 0;
 	    for(int l = 0; l < 8; l++) {
 	    	for(int c = 0; c < 8; c++) {
-	        board2[l][c] = Integer.parseInt(board1[i]);
-	        i++;
+	    		board2[l][c] = Integer.parseInt(arr[i]);
+	    		i++;
 	    	}
 	    }
-	    System.out.println(boardToString(board2));
+	    team = arr[64];
+	    chrono.minuteBlanc = Integer.parseInt(arr[65]);
+	    chrono.secondBlanc = Integer.parseInt(arr[66]);
+	    chrono.minuteNoir = Integer.parseInt(arr[67]);
+	    chrono.secondNoir = Integer.parseInt(arr[68]);
+	    hasTA1Moved = Boolean.parseBoolean(arr[69]);
+	    hasTH1Moved = Boolean.parseBoolean(arr[70]);
+	    hasWhiteKingMoved = Boolean.parseBoolean(arr[71]);
+	    hasTA8Moved = Boolean.parseBoolean(arr[72]);
+	    hasTH8Moved = Boolean.parseBoolean(arr[73]);
+	    hasBlackKingMoved = Boolean.parseBoolean(arr[74]);
 	    this.chessboard = board2;
 	    controller.deleteAllComponents();
 		init.initBoard();

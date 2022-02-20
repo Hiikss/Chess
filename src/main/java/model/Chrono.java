@@ -17,7 +17,7 @@ public class Chrono {
 	
 	private Timer timerBlanc;	
 	private Timer timerNoir;	
-	private int secondBlanc, minuteBlanc, secondNoir, minuteNoir, msBlanc, msNoir;
+	public int secondBlanc, minuteBlanc, secondNoir, minuteNoir, msBlanc, msNoir;
 	private String ddSecondBlanc, ddMinuteBlanc, ddSecondNoir, ddMinuteNoir;	
 	private DecimalFormat dFormat = new DecimalFormat("00");
 	

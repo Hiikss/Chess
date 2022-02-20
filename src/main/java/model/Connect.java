@@ -6,6 +6,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.sql.Connection;  
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,18 +19,16 @@ import java.sql.ResultSet;
 import javax.swing.ImageIcon; 
    
 public class Connect {  
-	
-	private File unknownImage = new File(Connect.class.getResource("/unknown.jpg").getFile());
-	
+
 	private String driverName = "com.mysql.cj.jdbc.Driver";
 	private String bdd = "chessino_chess";
 	private String url = "jdbc:mysql://web.inovaperf.fr:3306/" + bdd;  
 	private String user = "user";
 	private String mdp = "Mdp1234!";
 	
-    public int connect(String username, String password) {  
+    public int connect(String username, String password) {
 
-    	try{  
+    	try{
     		Class.forName(driverName);
         	Connection con =DriverManager.getConnection(url, user, mdp);    
         	PreparedStatement stmt=con.prepareStatement("select username from user where binary username=?");  
@@ -57,6 +60,18 @@ public class Connect {
     }
     
     public int createAccount(String username, String password) {
+    	URL imageURL = null;
+		try {
+			imageURL = Connect.class.getResource("/unknown.jpg").toURI().toURL();
+		} catch (MalformedURLException | URISyntaxException e2) {
+			e2.printStackTrace();
+		}
+    	File unknownImage = null;
+		try {
+			unknownImage = new File(URLDecoder.decode(imageURL.getFile(), "UTF-8"));
+		} catch (UnsupportedEncodingException e2) {
+			e2.printStackTrace();
+		}
     	FileInputStream input = null;
 		try {
 			input = new FileInputStream(unknownImage);
@@ -142,9 +157,11 @@ public class Connect {
     	try{  
     		Class.forName(driverName);
         	Connection con =DriverManager.getConnection(url, user, mdp);    
-        	PreparedStatement stmt=con.prepareStatement("select * from game where binary player1=? and player2=?");  
+        	PreparedStatement stmt=con.prepareStatement("select * from game where (binary player1=? and binary player2=?) or (binary player1=? and binary player2=?)");  
         	stmt.setString(1, player1);
         	stmt.setString(2, player2);
+        	stmt.setString(3, player2);
+        	stmt.setString(4, player1);
         	ResultSet rs=stmt.executeQuery();  
         	if(rs.next()) {
         		String board = rs.getString(3);
