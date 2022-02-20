@@ -609,36 +609,38 @@ public class Model {
 
 	public void getGame() {
 		String board = connect.getGame(joueur1.getName(), joueur2.getName());
-		String[] arr = board.split(", ");
-		int[][] board2 = new int [8][8];
-		int i = 0;
-	    for(int l = 0; l < 8; l++) {
-	    	for(int c = 0; c < 8; c++) {
-	    		board2[l][c] = Integer.parseInt(arr[i]);
-	    		i++;
-	    	}
-	    }
-	    team = arr[64];
-	    chrono.minuteBlanc = Integer.parseInt(arr[65]);
-	    chrono.secondBlanc = Integer.parseInt(arr[66]);
-	    chrono.minuteNoir = Integer.parseInt(arr[67]);
-	    chrono.secondNoir = Integer.parseInt(arr[68]);
-	    hasTA1Moved = Boolean.parseBoolean(arr[69]);
-	    hasTH1Moved = Boolean.parseBoolean(arr[70]);
-	    hasWhiteKingMoved = Boolean.parseBoolean(arr[71]);
-	    hasTA8Moved = Boolean.parseBoolean(arr[72]);
-	    hasTH8Moved = Boolean.parseBoolean(arr[73]);
-	    hasBlackKingMoved = Boolean.parseBoolean(arr[74]);
-	    chessboard = board2;
-	    controller.deleteAllComponents();
-		init.initBoard();
-		chrono.countdownTimer();
-		stopTimers();
-		setCursor();
+		if(board!=null) {
+			String[] arr = board.split(", ");
+			int[][] board2 = new int [8][8];
+			int i = 0;
+			for(int l = 0; l < 8; l++) {
+				for(int c = 0; c < 8; c++) {
+					board2[l][c] = Integer.parseInt(arr[i]);
+					i++;
+				}
+			}
+			team = arr[64];
+			chrono.minuteBlanc = Integer.parseInt(arr[65]);
+			chrono.secondBlanc = Integer.parseInt(arr[66]);
+			chrono.minuteNoir = Integer.parseInt(arr[67]);
+			chrono.secondNoir = Integer.parseInt(arr[68]);
+	    	hasTA1Moved = Boolean.parseBoolean(arr[69]);
+	    	hasTH1Moved = Boolean.parseBoolean(arr[70]);
+	    	hasWhiteKingMoved = Boolean.parseBoolean(arr[71]);
+	    	hasTA8Moved = Boolean.parseBoolean(arr[72]);
+	    	hasTH8Moved = Boolean.parseBoolean(arr[73]);
+	    	hasBlackKingMoved = Boolean.parseBoolean(arr[74]);
+	    	chessboard = board2;
+	    	controller.deleteAllComponents();
+	    	init.initBoard();
+	    	chrono.countdownTimer();
+	    	stopTimers();
+	    	setCursor();
 		if(connect.getGameSide(joueur1.getName(), joueur2.getName())==1) {
 			changeSide();
 		}
 		updateView();
+		}
 	}
 	
 	public void changeSide() {
