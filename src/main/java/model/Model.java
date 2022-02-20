@@ -126,13 +126,16 @@ public class Model {
 		createBoard();
 		this.chessboard = board.getBoard();
 		init.initBoard();
+		chrono.minuteBlanc = 10;
+	    chrono.secondBlanc = 0;
+	    chrono.minuteNoir = 10;
+	    chrono.secondNoir = 0;
 		chrono.countdownTimer();
 		stopTimers();
 		setCursor();
 		displayPlayer(joueur1);
 		displayPlayer(joueur2);
 		updateView();
-		System.out.println(boardToString(chessboard));
 	}
 	
 	/**
@@ -628,9 +631,12 @@ public class Model {
 	    hasTA8Moved = Boolean.parseBoolean(arr[72]);
 	    hasTH8Moved = Boolean.parseBoolean(arr[73]);
 	    hasBlackKingMoved = Boolean.parseBoolean(arr[74]);
-	    this.chessboard = board2;
+	    chessboard = board2;
 	    controller.deleteAllComponents();
 		init.initBoard();
+		chrono.countdownTimer();
+		stopTimers();
+		setCursor();
 		updateView();
 	}
 }

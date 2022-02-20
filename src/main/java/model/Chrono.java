@@ -26,19 +26,13 @@ public class Chrono {
 	}
 	
 	public void countdownTimer() {
-		
-		msBlanc = 0;
-		secondBlanc = 0;
-		minuteBlanc = 10;
+
 		ddSecondBlanc = dFormat.format(secondBlanc);
 		ddMinuteBlanc = dFormat.format(minuteBlanc);
 		timerBlancLabel.setText(ddMinuteBlanc + ":" + ddSecondBlanc);
 		timerBlancLabel.setBounds(75, 575, 150, 30);
 		timerBlancLabel.setFont(new Font("Arial",Font.PLAIN,29));
-		
-		msNoir = 0;
-		secondNoir = 0;
-		minuteNoir = 10;
+
 		ddSecondNoir = dFormat.format(secondNoir);
 		ddMinuteNoir = dFormat.format(minuteNoir);	
 		timerNoirLabel.setText(ddMinuteNoir + ":" + ddSecondNoir);

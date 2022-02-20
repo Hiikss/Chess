@@ -183,13 +183,33 @@ public class Connect {
     	try{  
     		Class.forName(driverName);
         	Connection con =DriverManager.getConnection(url, user, mdp);    
-        	PreparedStatement stmt=con.prepareStatement("insert into game (player1, player2, chessboard) values (?, ?, ?);");   
+        	PreparedStatement stmt=con.prepareStatement("select * from game where (player1=? and player2=?) or (player1=? and player2=?);"); 
         	stmt.setString(1, player1);
         	stmt.setString(2, player2);
-        	stmt.setString(3, board);
-        	stmt.executeUpdate();  
-        	con.close();
-        	return 1;
+        	stmt.setString(3, player2);
+        	stmt.setString(4, player1);
+        	ResultSet rs=stmt.executeQuery(); 
+        	if(rs.next()) {
+        		stmt=con.prepareStatement("update game set chessboard=? where (player1=? and player2=?) or (player1=? and player2=?);");
+        		stmt.setString(1, board);
+        		stmt.setString(2, player1);
+            	stmt.setString(3, player2);
+            	stmt.setString(4, player2);
+            	stmt.setString(5, player1);
+            	stmt.executeUpdate(); 
+        		con.close();
+        		return 1;
+        	}
+        	else {
+        		stmt.close();
+        		stmt=con.prepareStatement("insert into game (player1, player2, chessboard) values (?, ?, ?);");   
+        		stmt.setString(1, player1);
+        		stmt.setString(2, player2);
+        		stmt.setString(3, board);
+        		stmt.executeUpdate();  
+        		con.close();
+        		return 1;
+        	}
     	}
         catch(Exception e) { 
     		System.out.println(e);
