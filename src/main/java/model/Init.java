@@ -31,7 +31,6 @@ public class Init {
 	 */
 	public int initBoard() {
 		JButton bouton;
-		model.createBoard();
 		for(int l=0; l<8; l++) {
 			for(int c=0; c<8; c++) {
 				int value = model.getIntInBoard(l,c) ;

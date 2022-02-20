@@ -89,12 +89,13 @@ public class Controller {
 	}
 	
 	public void setListener(MouseAdapter buttonListener, MouseAdapter panelListener, MouseAdapter moveLabelListener, MouseAdapter killLabelListener, ActionListener validateButtonListener, 
-			MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener, ActionListener parcourirListener) {
+			MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener, ActionListener parcourirListener, ActionListener saveGameListener,
+			ActionListener loadGameListener) {
 		this.buttonListener = buttonListener;
 		this.panelListener = panelListener;
 		this.moveLabelListener = moveLabelListener;
 		this.killLabelListener = killLabelListener;
-		view.addListener(this.panelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener, parcourirListener);
+		view.addListener(this.panelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener, parcourirListener, saveGameListener, loadGameListener);
 	}
 	
 	public MouseAdapter getButtonListener() {
@@ -235,5 +236,11 @@ public class Controller {
 	
 	public String getNameJ1() {
 		return model.getNameJ1();
+	}
+	public void setGame() {
+		model.setGame();
+	}
+	public void getGame() {
+		model.getGame();
 	}
 }

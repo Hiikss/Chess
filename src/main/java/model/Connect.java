@@ -18,10 +18,10 @@ public class Connect {
 	private File unknownImage = new File(Connect.class.getResource("/unknown.jpg").getFile());
 	
 	private String driverName = "com.mysql.cj.jdbc.Driver";
-	private String bdd = "chess";
-	private String url = "jdbc:mysql://localhost:3306/" + bdd;  
-	private String user = "root";
-	private String mdp = "mdp123";
+	private String bdd = "chessino_chess";
+	private String url = "jdbc:mysql://web.inovaperf.fr:3306/" + bdd;  
+	private String user = "user";
+	private String mdp = "Mdp1234!";
 	
     public int connect(String username, String password) {  
 
@@ -127,6 +127,49 @@ public class Connect {
         	PreparedStatement stmt=con.prepareStatement("update user set image=? where binary username=?");   
         	stmt.setBinaryStream(1,(InputStream)input,(int)file.length());
         	stmt.setString(2, username);
+        	stmt.executeUpdate();  
+        	con.close();
+        	return 1;
+    	}
+        catch(Exception e) { 
+    		System.out.println(e);
+    	}
+		return 2;
+    }
+    
+    public String getGame(String player1, String player2) {  
+    	
+    	try{  
+    		Class.forName(driverName);
+        	Connection con =DriverManager.getConnection(url, user, mdp);    
+        	PreparedStatement stmt=con.prepareStatement("select * from game where binary player1=? and player2=?");  
+        	stmt.setString(1, player1);
+        	stmt.setString(2, player2);
+        	ResultSet rs=stmt.executeQuery();  
+        	if(rs.next()) {
+        		String board = rs.getString(3);
+       			con.close();
+       			return board;
+        	}
+        	else {
+        		con.close();
+        	}
+    	}
+        catch(Exception e) { 
+    		System.out.println(e);
+    	}
+		return null;
+    }
+    
+    public int setGame(String player1, String player2, String board) {
+
+    	try{  
+    		Class.forName(driverName);
+        	Connection con =DriverManager.getConnection(url, user, mdp);    
+        	PreparedStatement stmt=con.prepareStatement("insert into game (player1, player2, chessboard) values (?, ?, ?);");   
+        	stmt.setString(1, player1);
+        	stmt.setString(2, player2);
+        	stmt.setString(3, board);
         	stmt.executeUpdate();  
         	con.close();
         	return 1;

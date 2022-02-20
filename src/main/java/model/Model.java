@@ -123,6 +123,8 @@ public class Model {
 		setY(controller.getY());
 		setSquareSize(controller.getSquareSize());
 		controller.deleteAllComponents();
+		createBoard();
+		this.chessboard = board.getBoard();
 		init.initBoard();
 		chrono.countdownTimer();
 		stopTimers();
@@ -161,7 +163,6 @@ public class Model {
 	  * @return la valeur dans le tableau à la ligne l et à la colonne c
 	  */
 	public int getIntInBoard(int l, int c){
-		this.chessboard = board.getBoard();
 		return chessboard[l][c];
 	}
 	
@@ -585,5 +586,40 @@ public class Model {
 
 	public String getNameJ1() {
 		return joueur1.getName();
+	}
+
+	public void setGame() {
+		connect.setGame(joueur1.getName(), joueur2.getName(), boardToString(chessboard));
+	}
+	
+	public String boardToString(int[][] board) {
+		String stringBoard = "";
+		for(int l = 0; l<8; l++) {
+			for(int c = 0; c<8; c++) {
+				stringBoard = stringBoard + board[l][c];
+				if(!(l==7 && c==7)) {
+					stringBoard = stringBoard + ", ";
+				}
+			}
+		}
+		return stringBoard;
+	}
+
+	public void getGame() {
+		String board = connect.getGame(joueur1.getName(), joueur2.getName());
+		String[] board1 = board.split(", ");
+		int[][] board2 = new int [8][8];
+		int i = 0;
+	    for(int l = 0; l < 8; l++) {
+	    	for(int c = 0; c < 8; c++) {
+	        board2[l][c] = Integer.parseInt(board1[i]);
+	        i++;
+	    	}
+	    }
+	    System.out.println(boardToString(board2));
+	    this.chessboard = board2;
+	    controller.deleteAllComponents();
+		init.initBoard();
+		updateView();
 	}
 }

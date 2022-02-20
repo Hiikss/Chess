@@ -37,6 +37,11 @@ public class Board {
         		board[l][c] = Integer.parseInt(strNums[c]);
         	}
         }
+        try {
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
         logger.log(Level.INFO, "board " + board.toString());
 	}
 	

@@ -208,7 +208,7 @@ public class Swingtest extends JFrame implements Strategy{
 
 	@Override
 	public void addListener(MouseAdapter listener, ActionListener validateButtonListener,MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener,
-			ActionListener parcourirListener) {
+			ActionListener parcourirListener, ActionListener saveGameListener, ActionListener loadGameListener) {
 		panel.addMouseListener(listener);
 		
 	}

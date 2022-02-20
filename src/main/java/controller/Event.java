@@ -42,6 +42,10 @@ public class Event{
 
 	private ActionListener parcourirListener;
 	
+	private ActionListener loadGameListener;
+	
+	private ActionListener saveGameListener;
+	
 	private MouseAdapter switchLoggingListener;
 	
 	private boolean createAccount = false;
@@ -246,8 +250,21 @@ public class Event{
 				}
 			}  
 		};
+		
+		this.saveGameListener = new ActionListener(){  
+			public void actionPerformed(ActionEvent e){
+				controller.setGame();
+			}  
+		};
+		
+		this.loadGameListener = new ActionListener(){  
+			public void actionPerformed(ActionEvent e){
+				controller.getGame();
+			}  
+		};
         
-        controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener, parcourirListener);
+        controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener,
+        		parcourirListener, saveGameListener,  loadGameListener);
 	}
 
 	public Controller getController() {

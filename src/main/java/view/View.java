@@ -86,8 +86,8 @@ public class View {
 	}
 	
 	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener,
-			ActionListener parcourirListener) {
-		strategy.addListener(listener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener, parcourirListener);
+			ActionListener parcourirListener, ActionListener saveGameListener, ActionListener loadGameListener) {
+		strategy.addListener(listener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener, parcourirListener, saveGameListener, loadGameListener);
 	}
 
 	public int getSquareSize() {

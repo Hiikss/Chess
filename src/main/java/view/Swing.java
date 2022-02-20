@@ -92,7 +92,9 @@ public class Swing extends JFrame implements Strategy{
 	
 	private JMenuItem uploadImage = new JMenuItem("Changer image");
 	
-	private JMenuItem uploadGame = new JMenuItem("Charger une partie");
+	private JMenuItem saveGame = new JMenuItem("Sauvegarder une partie");
+	
+	private JMenuItem loadGame = new JMenuItem("Charger une partie");
 	
 	private JLabel imageJ1 = new JLabel();
 	
@@ -283,7 +285,7 @@ public class Swing extends JFrame implements Strategy{
      
      @Override
      public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener,
-    		 ActionListener parcourirListener) {
+    		 ActionListener parcourirListener, ActionListener saveGameListener,ActionListener loadGameListener) {
  		 panel.addMouseListener(listener);
  		 valider.addActionListener(validateButtonListener);
  		 seConnecter.addMouseListener(switchLoggingListener);
@@ -294,6 +296,8 @@ public class Swing extends JFrame implements Strategy{
  		 uploadImage.addActionListener(uploadImageListener);
  		 parcourirImage1.addActionListener(parcourirListener);
  		 parcourirImage2.addActionListener(parcourirListener);
+ 		 saveGame.addActionListener(saveGameListener);
+ 		 loadGame.addActionListener(loadGameListener);
      }
 
 	@Override
@@ -352,10 +356,12 @@ public class Swing extends JFrame implements Strategy{
 		JMenu menuParameters = new JMenu("Paramètres");
 		menuNewGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
 		uploadImage.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, KeyEvent.CTRL_DOWN_MASK));
-		uploadGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, KeyEvent.CTRL_DOWN_MASK));
+		loadGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
+		saveGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
 		menuParameters.add(menuNewGame);
 		menuParameters.add(uploadImage);
-		menuParameters.add(uploadGame);
+		menuParameters.add(loadGame);
+		menuParameters.add(saveGame);
 		menuBar.add(menuParameters);
 		return menuBar;
 	}

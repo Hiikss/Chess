@@ -57,7 +57,7 @@ public interface Strategy {
 	public int getSquareSize();
 	
 	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener,
-			ActionListener parcourirListener);
+			ActionListener parcourirListener, ActionListener saveGameListener, ActionListener loadGameListener);
 	
 	public void clearPossibilities();
 
