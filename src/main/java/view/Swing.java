@@ -104,6 +104,10 @@ public class Swing extends JFrame implements Strategy{
 	
 	private JLabel imageJ2Panel = new JLabel();
 	
+	private JLabel nomJ1Panel = new JLabel();
+	
+	private JLabel nomJ2Panel = new JLabel();
+	
 	private JLabel nomJ1 = new JLabel();
 	
 	private JLabel nomJ2 = new JLabel();
@@ -153,14 +157,14 @@ public class Swing extends JFrame implements Strategy{
 		
 		imageJ1Panel.setBounds(895, 475, 100, 100);
 		imageJ2Panel.setBounds(895, 50, 100, 100);
-		nomJ1.setBounds(895, 580, 100, 30);
-		nomJ1.setFont(new Font("Arial",Font.PLAIN,20));
-		nomJ2.setFont(new Font("Arial",Font.PLAIN,20));
-		nomJ2.setBounds(895, 155, 100, 30);
+		nomJ1Panel.setBounds(895, 580, 100, 30);
+		nomJ1Panel.setFont(new Font("Arial",Font.PLAIN,20));
+		nomJ2Panel.setFont(new Font("Arial",Font.PLAIN,20));
+		nomJ2Panel.setBounds(895, 155, 100, 30);
 		panel.add(imageJ1Panel);
 		panel.add(imageJ2Panel);
-		panel.add(nomJ1);
-		panel.add(nomJ2);
+		panel.add(nomJ1Panel);
+		panel.add(nomJ2Panel);
 		
 		username.setBounds(115,30, 100, 25);
 		password.setBounds(115,80, 100, 25);
@@ -207,10 +211,14 @@ public class Swing extends JFrame implements Strategy{
 		
 		imageJ1.setBounds(40, 10, 100, 100);
 		imageJ2.setBounds(290, 10, 100, 100);
+		nomJ1.setBounds(40, 120, 100, 20);
+		nomJ2.setBounds(290, 120, 100, 20);
+		nomJ1.setFont(new Font("Arial",Font.PLAIN,18));
+		nomJ2.setFont(new Font("Arial",Font.PLAIN,18));
 		parcourirImage1.setName("1");
-		parcourirImage1.setBounds(50, 130, 80, 30);
+		parcourirImage1.setBounds(50, 160, 80, 30);
 		parcourirImage2.setName("2");
-		parcourirImage2.setBounds(300, 130, 80, 30);
+		parcourirImage2.setBounds(300, 160, 80, 30);
 		changerImage.setLayout(null);
 		changerImage.setResizable(false);
 		changerImage.setSize(450, 260);
@@ -219,6 +227,8 @@ public class Swing extends JFrame implements Strategy{
 		changerImage.add(imageJ2);
 		changerImage.add(parcourirImage1);
 		changerImage.add(parcourirImage2);
+		changerImage.add(nomJ1);
+		changerImage.add(nomJ2);
 		changerImage.addWindowListener(new WindowAdapter() 
 		{
 			public void windowClosing(WindowEvent e)
@@ -432,10 +442,12 @@ public class Swing extends JFrame implements Strategy{
 	@Override
 	public void setNameJ1(String name) {
 		nomJ1.setText(name);
+		nomJ1Panel.setText(name);
 	}
 
 	@Override
 	public void setNameJ2(String name) {
 		nomJ2.setText(name);
+		nomJ2Panel.setText(name);
 	}
 }
