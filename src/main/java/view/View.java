@@ -146,6 +146,10 @@ public class View {
 		strategy.setUploadImageVisible();
 	}
 	
+	public void setLoadGameVisible() {
+		strategy.setLoadGameVisible();
+	}
+	
 	public void setImageJ1(ImageIcon image) {
 		strategy.setImageJ1(image);
 	}

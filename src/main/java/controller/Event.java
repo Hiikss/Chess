@@ -259,7 +259,7 @@ public class Event{
 		
 		this.loadGameListener = new ActionListener(){  
 			public void actionPerformed(ActionEvent e){
-				controller.getGame();
+				controller.setLoadGameVisible();
 			}  
 		};
         

@@ -82,6 +82,8 @@ public class Swing extends JFrame implements Strategy{
 	
 	private JDialog changerImage = new JDialog(this, "Changer image de profil", true);
 	
+	private JDialog chargerPartie = new JDialog(this, "Charger une partie", true);
+	
 	private JButton valider = new JButton("OK");
 	
 	private JButton parcourirImage1 = new JButton("Choisir");
@@ -208,6 +210,11 @@ public class Swing extends JFrame implements Strategy{
 		debut.add(creerCompte);
 		debut.add(seConnecter);
 		debut.add(info);
+		
+		chargerPartie.setSize(450, 260);
+		chargerPartie.setLocationRelativeTo(null);
+		chargerPartie.setLayout(null);
+		chargerPartie.setLocationRelativeTo(null);
 		
 		imageJ1.setBounds(40, 10, 100, 100);
 		imageJ2.setBounds(290, 10, 100, 100);
@@ -449,5 +456,10 @@ public class Swing extends JFrame implements Strategy{
 	public void setNameJ2(String name) {
 		nomJ2.setText(name);
 		nomJ2Panel.setText(name);
+	}
+
+	@Override
+	public void setLoadGameVisible() {
+		chargerPartie.setVisible(true);
 	}
 }

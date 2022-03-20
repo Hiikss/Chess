@@ -21,10 +21,10 @@ import javax.swing.ImageIcon;
 public class Connect {  
 
 	private String driverName = "com.mysql.cj.jdbc.Driver";
-	private String bdd = "chessino_chess";
-	private String url = "jdbc:mysql://web.inovaperf.fr:3306/" + bdd;  
-	private String user = "user";
-	private String mdp = "Mdp1234!";
+	private String bdd = "chess";
+	private String url = "jdbc:mysql://localhost:3306/" + bdd;  
+	private String user = "root";
+	private String mdp = "mdp123";
 	
     public int connect(String username, String password) {
 
@@ -157,14 +157,14 @@ public class Connect {
     	try{  
     		Class.forName(driverName);
         	Connection con =DriverManager.getConnection(url, user, mdp);    
-        	PreparedStatement stmt=con.prepareStatement("select * from game where (binary player1=? and binary player2=?) or (binary player1=? and binary player2=?)");  
+        	PreparedStatement stmt=con.prepareStatement("select chessboard from game where (binary player1=? and binary player2=?) or (binary player1=? and binary player2=?)");  
         	stmt.setString(1, player1);
         	stmt.setString(2, player2);
         	stmt.setString(3, player2);
         	stmt.setString(4, player1);
         	ResultSet rs=stmt.executeQuery();  
         	if(rs.next()) {
-        		String board = rs.getString(3);
+        		String board = rs.getString(1);
        			con.close();
        			return board;
         	}
@@ -202,37 +202,16 @@ public class Connect {
     }
     
     public int setGame(String player1, String player2, String board) {
-
     	try{  
     		Class.forName(driverName);
         	Connection con =DriverManager.getConnection(url, user, mdp);    
-        	PreparedStatement stmt=con.prepareStatement("select * from game where (player1=? and player2=?) or (player1=? and player2=?);"); 
-        	stmt.setString(1, player1);
-        	stmt.setString(2, player2);
-        	stmt.setString(3, player2);
-        	stmt.setString(4, player1);
-        	ResultSet rs=stmt.executeQuery(); 
-        	if(rs.next()) {
-        		stmt=con.prepareStatement("update game set chessboard=? where (player1=? and player2=?) or (player1=? and player2=?);");
-        		stmt.setString(1, board);
-        		stmt.setString(2, player1);
-            	stmt.setString(3, player2);
-            	stmt.setString(4, player2);
-            	stmt.setString(5, player1);
-            	stmt.executeUpdate(); 
-        		con.close();
-        		return 1;
-        	}
-        	else {
-        		stmt.close();
-        		stmt=con.prepareStatement("insert into game (player1, player2, chessboard) values (?, ?, ?);");   
+        	PreparedStatement stmt=con.prepareStatement("insert into game (player1, player2, chessboard) values (?, ?, ?);");   
         		stmt.setString(1, player1);
         		stmt.setString(2, player2);
         		stmt.setString(3, board);
         		stmt.executeUpdate();  
         		con.close();
         		return 1;
-        	}
     	}
         catch(Exception e) { 
     		System.out.println(e);

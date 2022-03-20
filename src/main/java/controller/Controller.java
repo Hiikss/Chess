@@ -211,6 +211,10 @@ public class Controller {
 		view.setUploadImageVisible();
 	}
 	
+	public void setLoadGameVisible() {
+		view.setLoadGameVisible();
+	}
+	
 	public ImageIcon getIcon(String joueur) {
 		return model.getResizedIcon(joueur);
 	}

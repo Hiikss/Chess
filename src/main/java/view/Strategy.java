@@ -85,6 +85,8 @@ public interface Strategy {
 
 	public void setUploadImageVisible();
 	
+	public void setLoadGameVisible();
+	
 	public void setImageJ1(ImageIcon image);
 	
 	public void setImageJ2(ImageIcon image);

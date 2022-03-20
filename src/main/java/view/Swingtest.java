@@ -278,4 +278,10 @@ public class Swingtest extends JFrame implements Strategy{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void setLoadGameVisible() {
+		// TODO Auto-generated method stub
+		
+	}
 }
