@@ -60,7 +60,7 @@ public class Model {
 	
 	private String team;
 	
-	private String gameid;
+	private String gameid = null;
 	
 	public boolean hasTA1Moved;
 	public boolean hasTH1Moved;
@@ -433,7 +433,9 @@ public class Model {
 	
 	public  void gameEnd(String reason) {
 		stopTimers();
-		connect.deleteGame(gameid);
+		if(gameid!=null) {
+			connect.deleteGame(gameid);
+		}
 		controller.gameEnd(reason);
 	}
 	
@@ -594,7 +596,7 @@ public class Model {
 	}
 
 	public void setGame() {
-		connect.setGame(joueur1.getName(), joueur2.getName(), boardToString(chessboard));
+		gameid = connect.setGame(gameid, joueur1.getName(), joueur2.getName(), boardToString(chessboard));
 	}
 	
 	public String boardToString(int[][] board) {

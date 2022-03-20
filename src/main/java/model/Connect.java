@@ -224,22 +224,38 @@ public class Connect {
 		return 3;
     }
     
-    public int setGame(String player1, String player2, String board) {
+    public String setGame(String id, String player1, String player2, String board) {
     	try{  
     		Class.forName(driverName);
-        	Connection con =DriverManager.getConnection(url, user, mdp);    
-        	PreparedStatement stmt=con.prepareStatement("insert into game (player1, player2, chessboard) values (?, ?, ?);");   
+        	Connection con =DriverManager.getConnection(url, user, mdp);
+        	if(id!=null) {
+        		PreparedStatement stmt=con.prepareStatement("update game set chessboard=? where id=?;");
+        		stmt.setString(1, board);
+        		stmt.setString(2, id);
+            	stmt.executeUpdate(); 
+        		con.close();
+        		return id;
+        	}
+        	else {
+        		PreparedStatement stmt=con.prepareStatement("insert into game (player1, player2, chessboard) values (?, ?, ?);");     
         		stmt.setString(1, player1);
         		stmt.setString(2, player2);
         		stmt.setString(3, board);
         		stmt.executeUpdate();  
-        		con.close();
-        		return 1;
+        		stmt=con.prepareStatement("select max(id) from game;");
+        		stmt.executeQuery();
+        		ResultSet rs=stmt.executeQuery();
+        		if(rs.next()) {
+        			id = rs.getString(1);
+            		con.close();
+           			return id;
+            	}
+        	}
     	}
         catch(Exception e) { 
     		System.out.println(e);
     	}
-		return 2;
+		return null;
     }
 
 	public int deleteGame(String gameid) {
