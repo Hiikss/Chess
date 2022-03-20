@@ -229,7 +229,7 @@ public class Connect {
     		Class.forName(driverName);
         	Connection con =DriverManager.getConnection(url, user, mdp);
         	if(id!=null) {
-        		PreparedStatement stmt=con.prepareStatement("update game set chessboard=? where id=?;");
+        		PreparedStatement stmt=con.prepareStatement("update game set chessboard=?, date=CURRENT_TIMESTAMP where id=?;");
         		stmt.setString(1, board);
         		stmt.setString(2, id);
             	stmt.executeUpdate(); 
