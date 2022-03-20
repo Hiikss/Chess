@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -86,8 +87,8 @@ public class View {
 	}
 	
 	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener,
-			ActionListener parcourirListener, ActionListener saveGameListener, ActionListener loadGameListener) {
-		strategy.addListener(listener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener, parcourirListener, saveGameListener, loadGameListener);
+			ActionListener parcourirListener, ActionListener saveGameListener, ActionListener loadGameListener, ActionListener loadButtonListener) {
+		strategy.addListener(listener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener, parcourirListener, saveGameListener, loadGameListener, loadButtonListener);
 	}
 
 	public int getSquareSize() {
@@ -164,5 +165,13 @@ public class View {
 	
 	public void setNameJ2(String name) {
 		strategy.setNameJ2(name);
+	}
+	
+	public void addItemsToList(List<String> items) {
+		strategy.addItemsToList(items);
+	}
+	
+	public String getItem() {
+		return strategy.getItem();
 	}
 }

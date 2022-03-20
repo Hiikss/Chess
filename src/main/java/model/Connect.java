@@ -15,6 +15,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon; 
    
@@ -152,16 +154,37 @@ public class Connect {
 		return 2;
     }
     
-    public String getGame(String player1, String player2) {  
+    public List<String> getGameList(String player1, String player2) {  
     	
-    	try{  
+    	try{
     		Class.forName(driverName);
         	Connection con =DriverManager.getConnection(url, user, mdp);    
-        	PreparedStatement stmt=con.prepareStatement("select chessboard from game where (binary player1=? and binary player2=?) or (binary player1=? and binary player2=?)");  
+        	PreparedStatement stmt=con.prepareStatement("select id,date from game where (binary player1=? and binary player2=?) or (binary player1=? and binary player2=?)");  
         	stmt.setString(1, player1);
         	stmt.setString(2, player2);
         	stmt.setString(3, player2);
         	stmt.setString(4, player1);
+        	ResultSet rs=stmt.executeQuery();
+        	List<String> items = new ArrayList<String>();
+        	while (rs.next()) {
+        		items.add(rs.getString(1) + " - " + rs.getString(2));
+        	}
+        	con.close();
+        	return items;
+    	}
+        catch(Exception e) { 
+    		System.out.println(e);
+    	}
+		return null;
+    }	
+    
+    public String getGame(String id) {  
+    	
+    	try{  
+    		Class.forName(driverName);
+        	Connection con =DriverManager.getConnection(url, user, mdp);    
+        	PreparedStatement stmt=con.prepareStatement("select chessboard from game where id=?");  
+        	stmt.setString(1, id);
         	ResultSet rs=stmt.executeQuery();  
         	if(rs.next()) {
         		String board = rs.getString(1);
@@ -209,6 +232,22 @@ public class Connect {
         		stmt.setString(1, player1);
         		stmt.setString(2, player2);
         		stmt.setString(3, board);
+        		stmt.executeUpdate();  
+        		con.close();
+        		return 1;
+    	}
+        catch(Exception e) { 
+    		System.out.println(e);
+    	}
+		return 2;
+    }
+
+	public int deleteGame(String gameid) {
+		try{  
+    		Class.forName(driverName);
+        	Connection con =DriverManager.getConnection(url, user, mdp);    
+        	PreparedStatement stmt=con.prepareStatement("delete from game where id=?");   
+        		stmt.setString(1, gameid);
         		stmt.executeUpdate();  
         		con.close();
         		return 1;

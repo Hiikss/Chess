@@ -14,6 +14,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -22,8 +23,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -90,6 +93,8 @@ public class Swing extends JFrame implements Strategy{
 	
 	private JButton parcourirImage2 = new JButton("Choisir");
 	
+	private JButton loadGameButton = new JButton("Charger");
+	
 	private JMenuItem menuNewGame = new JMenuItem("Nouvelle partie");
 	
 	private JMenuItem uploadImage = new JMenuItem("Changer image");
@@ -113,6 +118,8 @@ public class Swing extends JFrame implements Strategy{
 	private JLabel nomJ1 = new JLabel();
 	
 	private JLabel nomJ2 = new JLabel();
+	
+	private JComboBox<String> gameList = new JComboBox<String>();
 	
 	private JTextField usernameField = new JTextField();
 	private JTextField passwordField = new JPasswordField();
@@ -211,10 +218,14 @@ public class Swing extends JFrame implements Strategy{
 		debut.add(seConnecter);
 		debut.add(info);
 		
+		loadGameButton.setBounds(175, 175, 80, 30);
+		gameList.setBounds(115, 30, 200, 25);
 		chargerPartie.setSize(450, 260);
 		chargerPartie.setLocationRelativeTo(null);
 		chargerPartie.setLayout(null);
 		chargerPartie.setLocationRelativeTo(null);
+		chargerPartie.add(gameList);
+		chargerPartie.add(loadGameButton);
 		
 		imageJ1.setBounds(40, 10, 100, 100);
 		imageJ2.setBounds(290, 10, 100, 100);
@@ -302,7 +313,7 @@ public class Swing extends JFrame implements Strategy{
      
      @Override
      public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener,
-    		 ActionListener parcourirListener, ActionListener saveGameListener,ActionListener loadGameListener) {
+    		 ActionListener parcourirListener, ActionListener saveGameListener,ActionListener loadGameListener, ActionListener loadButtonListener) {
  		 panel.addMouseListener(listener);
  		 valider.addActionListener(validateButtonListener);
  		 seConnecter.addMouseListener(switchLoggingListener);
@@ -315,6 +326,7 @@ public class Swing extends JFrame implements Strategy{
  		 parcourirImage2.addActionListener(parcourirListener);
  		 saveGame.addActionListener(saveGameListener);
  		 loadGame.addActionListener(loadGameListener);
+ 		 loadGameButton.addActionListener(loadButtonListener);
      }
 
 	@Override
@@ -461,5 +473,15 @@ public class Swing extends JFrame implements Strategy{
 	@Override
 	public void setLoadGameVisible() {
 		chargerPartie.setVisible(true);
+	}
+
+	@Override
+	public void addItemsToList(List<String> items) {
+		gameList.setModel(new DefaultComboBoxModel<String>(items.toArray(new String[0])));
+	}
+
+	@Override
+	public String getItem() {
+		return gameList.getSelectedItem().toString();
 	}
 }

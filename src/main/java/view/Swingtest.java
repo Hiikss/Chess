@@ -10,6 +10,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -208,7 +209,7 @@ public class Swingtest extends JFrame implements Strategy{
 
 	@Override
 	public void addListener(MouseAdapter listener, ActionListener validateButtonListener,MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener,
-			ActionListener parcourirListener, ActionListener saveGameListener, ActionListener loadGameListener) {
+			ActionListener parcourirListener, ActionListener saveGameListener, ActionListener loadGameListener, ActionListener loadButtonListener) {
 		panel.addMouseListener(listener);
 		
 	}
@@ -283,5 +284,17 @@ public class Swingtest extends JFrame implements Strategy{
 	public void setLoadGameVisible() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void addItemsToList(List<String> item) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getItem() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

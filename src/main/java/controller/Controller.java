@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.io.File;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -90,12 +91,12 @@ public class Controller {
 	
 	public void setListener(MouseAdapter buttonListener, MouseAdapter panelListener, MouseAdapter moveLabelListener, MouseAdapter killLabelListener, ActionListener validateButtonListener, 
 			MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener, ActionListener parcourirListener, ActionListener saveGameListener,
-			ActionListener loadGameListener) {
+			ActionListener loadGameListener, ActionListener loadButtonListener) {
 		this.buttonListener = buttonListener;
 		this.panelListener = panelListener;
 		this.moveLabelListener = moveLabelListener;
 		this.killLabelListener = killLabelListener;
-		view.addListener(this.panelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener, parcourirListener, saveGameListener, loadGameListener);
+		view.addListener(this.panelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener, parcourirListener, saveGameListener, loadGameListener, loadButtonListener);
 	}
 	
 	public MouseAdapter getButtonListener() {
@@ -244,7 +245,20 @@ public class Controller {
 	public void setGame() {
 		model.setGame();
 	}
-	public void getGame() {
-		model.getGame();
+	
+	public void getGame(String item) {
+		model.getGame(item);
+	}
+	
+	public void addGamesToItem() {
+		model.addGameToItem();
+	}
+	
+	public void addItemsToList(List<String> items) {
+		view.addItemsToList(items);
+	}
+	
+	public String getItem() {
+		return view.getItem();
 	}
 }

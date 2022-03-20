@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -57,7 +58,7 @@ public interface Strategy {
 	public int getSquareSize();
 	
 	public void addListener(MouseAdapter listener, ActionListener validateButtonListener, MouseAdapter switchLoggingListener, ActionListener newGameListener, ActionListener uploadImageListener,
-			ActionListener parcourirListener, ActionListener saveGameListener, ActionListener loadGameListener);
+			ActionListener parcourirListener, ActionListener saveGameListener, ActionListener loadGameListener, ActionListener loadButtonListener);
 	
 	public void clearPossibilities();
 
@@ -94,5 +95,9 @@ public interface Strategy {
 	public void setNameJ1(String name);
 	
 	public void setNameJ2(String name);
+	
+	public void addItemsToList(List<String> item);
+	
+	public String getItem();
 	
 }

@@ -46,6 +46,8 @@ public class Event{
 	
 	private ActionListener saveGameListener;
 	
+	private ActionListener loadButtonListener;
+	
 	private MouseAdapter switchLoggingListener;
 	
 	private boolean createAccount = false;
@@ -224,8 +226,6 @@ public class Event{
 			
 		this.uploadImageListener = new ActionListener(){  
 			public void actionPerformed(ActionEvent e){
-				//controller.setImageJ1(controller.getIcon("joueur 1"));
-				//controller.setImageJ2(controller.getIcon("joueur 2"));
 				controller.setUploadImageVisible();
 			}  
 		};
@@ -259,12 +259,20 @@ public class Event{
 		
 		this.loadGameListener = new ActionListener(){  
 			public void actionPerformed(ActionEvent e){
+				controller.addGamesToItem();
 				controller.setLoadGameVisible();
 			}  
 		};
         
+		this.loadButtonListener = new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				controller.getGame(controller.getItem());
+				javax.swing.FocusManager.getCurrentManager().getActiveWindow().dispose();
+			}
+		};
+		
         controller.setListener(buttonListener, panelListener, moveLabelListener, killLabelListener, validateButtonListener, switchLoggingListener, newGameListener, uploadImageListener,
-        		parcourirListener, saveGameListener,  loadGameListener);
+        		parcourirListener, saveGameListener,  loadGameListener, loadButtonListener);
 	}
 
 	public Controller getController() {
